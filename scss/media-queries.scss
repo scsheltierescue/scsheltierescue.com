@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 1220px) {
+    .main-header .header_title {
+        font-size: 1.25em;
+    }
+}
+
+@media only screen and (max-width: 1025px) {
+    .main-header .header_title {
+        margin-top: 50px;
+    }
+    .main-header .header_title .sc,
+    .main-header .header_title .sr {
+        display: block;
+        line-height: 70px;
+    }
+}
+
+@media only screen and (max-width: 815px) {
+    .main-header a img {
+        width: 127px;
+        height: 150px;
+    }
+    .main-header .header_title {
+        display: block;
+        line-height: 2em;
+    }
+    .main-nav {
+        width: 100%;
+        float: none;
+        margin-bottom: 1em;
+    }
+    .main-nav a {
+        text-align: center;
+    }
+    .main-header .header_title {
+        float: none;
+        word-break: keep-all;
+        word-wrap: break-word;
+        margin: 0;
+        text-align: center;
+    }
+    .main-content {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 715px) {
+    .main-header .header_title {
+        line-height: 1.7em;
+    }
+    .main-header .header_title .sc,
+    .main-header .header_title .sr {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .main-header a {
+        display: none;
+    }
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
