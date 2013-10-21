@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Available Dogs</title>
+    <meta name="description" content="List of SC Sheltie Rescue dogs available for adoption.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.113.css"> <!-- Cache Busting: Update the # when you update normalize.css -->
+    <link rel="stylesheet" href="css/main.20131009.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  </head>
+  <body>
+    <!--[if lte IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="wrapper">
+      <header class="main-header clearfix">
+        <h1>
+          <a href="index.html">
+            <img src="img/scsr_logo.jpg" alt="SCSR logo" width="206" height="244" />
+          </a>
+          <span class="header_title"><span class="sc">South Carolina</span> <span class="sr">Sheltie Rescue</span></span>
+        </h1>
+      </header>
+
+      <section class="nav-and-main-content clearfix">
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">SCSR Home</a></li>
+            <li><a href="available.html">Available Dogs</a></li>
+            <li><a href="apply2adopt.html">Adoption Application</a></li>
+            <li><a href="surrender.html">Surrendering a Sheltie</a></li>
+            <li><a href="helpandadvice.html">Help and Advice</a></li>
+            <li><a href="events.html">Rescue Events</a></li>
+          </ul>
+        </nav>
+
+        <main role="main" class="main-content">
+          <h2 class="headline first">Available for Adoption</h2>
+          <p>You can view our available dogs below or on our <a href="http://www.petfinder.com/pet-search?animal_type=&pet_breed=&pet_age=&pet_size=&specialNeeds=&declawedPets=&children=&status=&shelter_pet_id=&internal=&contact=&name=&shelter_id=SC92&sort=" target="_blank">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please copy and paste the <a href="apply2adopt.html">application</a> and send it to us via <a href="mailto:amanda@southcarolinasheltierescue.com">email</a>.</p>
+
+          <div id="pets" class="clearfix"></div>
+          <div id="spinner" class="loading_spinner"></div>
+
+          <input id="btnMore" type="button" class="invisible" value="View More" />
+        </main>
+      </section>
+
+      <footer class="main-footer">
+        <p>SC Sheltie Rescue &middot; P.O. Box 11414 &middot; Columbia, SC 29211 &middot; 803.920.0644</p>
+      </footer>
+    </div>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      /*(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');*/
+    </script>
+
+    <script>
+      var currentOffset = 0;
+      var opts = {
+        lines: 13, // The number of lines to draw
+        length: 20, // The length of each line
+        width: 10, // The line thickness
+        radius: 30, // The radius of the inner circle
+        corners: 1, // Corner roundness (0..1)
+        rotate: 0, // The rotation offset
+        direction: 1, // 1: clockwise, -1: counterclockwise
+        color: '#000', // #rgb or #rrggbb or array of colors
+        speed: 0.7, // Rounds per second
+        trail: 25, // Afterglow percentage
+        shadow: false, // Whether to render a shadow
+        hwaccel: false, // Whether to use hardware acceleration
+        className: 'spinner', // The CSS class to assign to the spinner
+        zIndex: 2e9, // The z-index (defaults to 2000000000)
+        top: 'auto', // Top position relative to parent in px
+        left: 'auto' // Left position relative to parent in px
+      };
+      var spinner_target = document.getElementById('spinner');
+      var spinner = null;
+
+      function spin_start() {
+        spinner.spin(spinner_target);
+      }
+
+      function spin_stop() {
+        spinner.stop();
+      }
+
+      /*
+       * Call petfinder.php to get a list of available dogs. Then append to the HTML document.
+       */
+      function getPets() {
+        var $btnMore = $("#btnMore");
+        var $spinner = $("#spinner");
+        var url = "petfinder.php";
+        var data = {
+          offset: currentOffset
+        };
+
+        if(!$btnMore.hasClass("invisible")) {
+          $btnMore.addClass("invisible");
+        }
+        $spinner.show();
+        if(!spinner) {
+          spinner = new Spinner(opts).spin(spinner_target);
+        } else {
+          spin_start();
+        }
+
+        $.getJSON(url, data, function(resp) {
+          currentOffset = parseInt(resp.petfinder.lastOffset.$t, 10);
+          var pets = resp.petfinder.pets.pet;
+
+          $(pets).each(function(i, item) {
+            $("#pets").append(formatPet(item));
+          });
+
+          $spinner.hide();
+          spin_stop();
+          if(pets.length === 25) { // Pulled the maximum amount of pets
+            $btnMore.removeClass("invisible");
+          }
+        }, "json");
+      }
+
+      /*
+       * Format each pet HTML block.
+       */
+      function formatPet(pet) {
+        var div = $("<div class='clearfix'></div>");
+        var name = pet.name.$t;
+        if(name === "Application") {
+          return null;
+        }
+        $(div).append("<h3>"+name+"</h3>");
+        var desc = $("<div class='clearfix'>"+pet.description.$t+"</div>");
+        if(pet.media.photos && pet.media.photos.photo.length > 0)
+        {
+          var img = $("<img />")
+          .attr("src", pet.media.photos.photo[0].$t)
+          .attr("alt", name)
+          .attr("align", "left")
+          .css({
+            border:"solid 2px gainsboro",
+            padding:"3px",
+            margin:"5px",
+            width:"200px"
+          });
+          $(desc).prepend(img);
+        }
+        $("a", desc).attr("target", "_blank");
+        $(div).append(desc).append("<hr />").css({padding: "4px", margin:"3px"});
+        return div;
+      }
+
+      /*
+       * Retrieve data on document ready.
+       */
+      $(document).ready(function() {
+        getPets();
+        $("#btnMore").click(function() {
+          getPets();
+        });
+      });
+    </script>
+  </body>
+</html>

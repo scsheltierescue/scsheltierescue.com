@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Alex DiLiberto | Developer | @adilibe | Charlotte, NC, USA
+    Amanda Kozlowsky | Developer | Charlotte, NC, USA
+
+# THANKS
+
+    Everyone who puts in the time, money and effort to help make the SC Sheltie Rescue possible
+    My sweetheart Amanda
+    Interwebs
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Normalize.css, jQuery, Modernizr, H5BP, Sublime Text 2
