@@ -504,64 +504,6 @@ textarea {
 .clearfix {
   *zoom: 1; }
 
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid required HTTP connection: h5bp.com/r
-   ========================================================================== */
-@media print {
-  * {
-    background: transparent !important;
-    color: #000 !important;
-    /* Black prints faster: h5bp.com/s */
-    box-shadow: none !important;
-    text-shadow: none !important; }
-
-  a,
-  a:visited {
-    text-decoration: underline; }
-
-  a[href]:after {
-    content: " (" attr(href) ")"; }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")"; }
-
-  /*
-   * Don't show links for images, or javascript/internal links
-   */
-  .ir a:after,
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
-    content: ""; }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid; }
-
-  thead {
-    display: table-header-group;
-    /* h5bp.com/t */ }
-
-  tr,
-  img {
-    page-break-inside: avoid; }
-
-  img {
-    max-width: 100% !important; }
-
-  @page {
-    margin: 0.5cm; }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3; }
-
-  h2,
-  h3 {
-    page-break-after: avoid; } }
 meta.foundation-mq-small {
   font-family: "only screen and (min-width: 768px)";
   width: 768px; }
@@ -5295,157 +5237,30 @@ a.th {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-@media only screen and (min-width: 1220px) {
-  .main-header .header_title {
-    font-size: 1.25em; } }
-@media only screen and (max-width: 1025px) {
-  .main-header .header_title {
-    margin-top: 50px; }
-
-  .main-header .header_title .sc,
-  .main-header .header_title .sr {
-    display: block;
-    line-height: 70px; } }
-@media only screen and (max-width: 815px) {
-  .main-header a img {
-    width: 127px;
-    height: 150px; }
-
-  .main-header .header_title {
-    display: block;
-    line-height: 2em; }
-
-  .main-nav {
-    width: 100%;
-    float: none;
-    margin-bottom: 1em; }
-
-  .main-nav a {
-    text-align: center; }
-
-  .main-header .header_title {
-    float: none;
-    word-break: keep-all;
-    word-wrap: break-word;
-    margin: 0;
-    text-align: center; }
-
-  .main-content {
-    width: 100%; } }
-@media only screen and (max-width: 715px) {
-  .main-header .header_title {
-    line-height: 1.7em; }
-
-  .main-header .header_title .sc,
-  .main-header .header_title .sr {
-    display: block; } }
-@media only screen and (max-width: 550px) {
-  .main-header a {
-    display: none; } }
-@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */ }
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-
-body {
-  background-color: #69F;
-  font: 100% Verdana, Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  color: #000; }
-
-.wrapper {
-  width: 80%;
-  background: #FFF;
-  margin: 0 auto;
-  border: 1px solid #000;
-  text-align: left;
-  background-color: #FF9;
-  box-shadow: inset 0 0 10px #000; }
-
-.loading_spinner {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto; }
-
-#btnMore {
-  padding: 20px; }
-
-/* <header.main-header> */
-.main-header {
-  padding: 0;
-  margin-bottom: 1em; }
-
-.main-header h1 {
-  margin: 0.4em; }
-
-.main-header a {
-  text-decoration: none;
-  float: left; }
-
-.main-header .header_title {
-  float: left;
-  line-height: 244px;
-  /* Height of SCSC Logo */
-  margin-left: 1em; }
-
-/* </header.main-header> */
-/* <section.nav-and-main-content> */
-.nav-and-main-content {
-  padding: 0 1em; }
-
-/* </section.nav-and-main-content> */
-/* <nav.main-nav> */
-.main-nav {
-  width: 25%;
-  float: left; }
-
-.main-nav ul {
-  margin: 0;
-  padding-left: 0; }
-
-.main-nav a {
-  display: block;
-  cursor: pointer;
-  background-color: #69F;
-  padding: 0.5em 0.75em;
-  color: #FF9;
-  text-decoration: none;
-  -webkit-transition: padding .5s;
-  -moz-transition: padding .5s;
-  -o-transition: padding .5s;
-  transition: padding .5s; }
-
-.no-touch .main-nav a:hover,
-.no-touch .main-nav a:focus {
-  padding-left: 1.25em;
-  background-color: #5C8AE6; }
-
-/* </nav.main-nav> */
-/* <main.main-content> */
-.main-content {
-  width: 75%;
-  float: left;
-  padding: 0 1em; }
-
-.main-content .headline.first {
-  margin-top: 0; }
-
-.main-content .inline-photo-1 {
-  float: right; }
-
-/* </main.main-content> */
-/* <footer.main-footer> */
-.main-footer {
-  font-size: 1.4em;
+.main-header .sc,
+.main-header .sr {
   text-align: center; }
 
-/* <footer.main-footer> */
+.head_panel {
+  margin-top: 1em; }
+
+.center {
+  display: block;
+  margin: 0 auto; }
+
+.main-footer {
+  overflow: hidden;
+  height: 200px;
+  line-height: 200px;
+  position: relative;
+  background: #111111;
+  font-weight: bold;
+  color: white; }
+  .main-footer p {
+    line-height: 200px;
+    text-align: center; }
+  .main-footer .name:after, .main-footer .po-box:after, .main-footer .city-state-zip:after {
+    content: '\00B7\00A0'; }

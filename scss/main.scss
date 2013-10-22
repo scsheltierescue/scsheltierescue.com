@@ -2,7 +2,6 @@
 
 @import "vendor/boilerplate-defaults";
 @import "vendor/boilerplate-helpers";
-@import "vendor/boilerplate-print";
 @import "vendor/foundation";
 
 @import "media-queries";
@@ -12,113 +11,159 @@
    Author's custom styles
    ========================================================================== */
 
-*,
-*:before,
-*:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
- }
-
-body {
-    background-color: #69F;
-    font: 100% Verdana, Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
+.main-header .sc,
+.main-header .sr {
     text-align: center;
-    color: #000;
 }
 
-.wrapper {
-    width: 80%;
-    background: #FFF;
-    margin: 0 auto;
-    border: 1px solid #000;
-    text-align: left;
-    background-color: #FF9;
-    box-shadow: inset 0 0 10px #000;
+.head_panel {
+    margin-top: 1em;
 }
 
-.loading_spinner {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-}
-
-#btnMore {
-    padding: 20px;
-}
-
-/* <header.main-header> */
-.main-header {
-    padding: 0;
-    margin-bottom: 1em;
-}
-.main-header h1 {
-    margin: 0.4em;
-}
-.main-header a {
-    text-decoration: none;
-    float: left;
-}
-.main-header .header_title {
-    float: left;
-    line-height: 244px; /* Height of SCSC Logo */
-    margin-left: 1em;
-}
-/* </header.main-header> */
-
-/* <section.nav-and-main-content> */
-.nav-and-main-content {
-    padding: 0 1em;
-}
-/* </section.nav-and-main-content> */
-
-/* <nav.main-nav> */
-.main-nav {
-    width: 25%;
-    float: left;
-}
-.main-nav ul {
-    margin: 0;
-    padding-left: 0;
-}
-.main-nav a {
+.center {
     display: block;
-    cursor: pointer;
-    background-color: #69F;
-    padding: 0.5em 0.75em;
-    color: #FF9;
-    text-decoration: none;
-    -webkit-transition: padding .5s;
-    -moz-transition: padding .5s;
-    -o-transition: padding .5s;
-    transition: padding .5s;
+    margin: 0 auto;
 }
-.no-touch .main-nav a:hover,
-.no-touch .main-nav a:focus {
-    padding-left: 1.25em;
-    background-color: #5C8AE6;
-}
-/* </nav.main-nav> */
 
-/* <main.main-content> */
-.main-content {
-    width: 75%;
-    float: left;
-    padding: 0 1em;
-}
-.main-content .headline.first {
-    margin-top: 0;
-}
-.main-content .inline-photo-1 {
-    float: right;
-}
-/* </main.main-content> */
+// .main-footer {
+//     height: 300px;
+// }
 
-/* <footer.main-footer> */
+// .main-footer {
+//     & .name,
+//     & .po-box,
+//     & .city-state-zip,
+//     & .tel {
+//         display: block;
+//     }
+// }
+
 .main-footer {
-    font-size: 1.4em;
-    text-align: center
+    overflow: hidden;
+    height: $footer-height;
+    line-height: $footer-height;
+    position: relative;
+    background: $topbar-bg-color;
+    font-weight: bold;
+    color: white;
+    p {
+        line-height: $footer-height;
+        text-align: center;
+    }
+    & .name:after,
+    & .po-box:after,
+    & .city-state-zip:after {
+        content: '\00B7\00A0'; // &middot;&nbsp;
+    }
 }
-/* <footer.main-footer> */
+
+// *,
+// *:before,
+// *:after {
+//     -webkit-box-sizing: border-box;
+//     -moz-box-sizing: border-box;
+//     box-sizing: border-box;
+//  }
+
+// body {
+//     background-color: #69F;
+//     font: 100% Verdana, Arial, Helvetica, sans-serif;
+//     margin: 0;
+//     padding: 0;
+//     text-align: center;
+//     color: #000;
+// }
+
+// .wrapper {
+//     width: 80%;
+//     background: #FFF;
+//     margin: 0 auto;
+//     border: 1px solid #000;
+//     text-align: left;
+//     background-color: #FF9;
+//     box-shadow: inset 0 0 10px #000;
+// }
+
+// .loading_spinner {
+//     width: 100px;
+//     height: 100px;
+//     margin: 0 auto;
+// }
+
+// #btnMore {
+//     padding: 20px;
+// }
+
+// /* <header.main-header> */
+// .main-header {
+//     padding: 0;
+//     margin-bottom: 1em;
+// }
+// .main-header h1 {
+//     margin: 0.4em;
+// }
+// .main-header a {
+//     text-decoration: none;
+//     float: left;
+// }
+// .main-header .header_title {
+//     float: left;
+//     line-height: 244px; /* Height of SCSC Logo */
+//     margin-left: 1em;
+// }
+// /* </header.main-header> */
+
+// /* <section.nav-and-main-content> */
+// .nav-and-main-content {
+//     padding: 0 1em;
+// }
+// /* </section.nav-and-main-content> */
+
+// /* <nav.main-nav> */
+// .main-nav {
+//     width: 25%;
+//     float: left;
+// }
+// .main-nav ul {
+//     margin: 0;
+//     padding-left: 0;
+// }
+// .main-nav a {
+//     display: block;
+//     cursor: pointer;
+//     background-color: #69F;
+//     padding: 0.5em 0.75em;
+//     color: #FF9;
+//     text-decoration: none;
+//     -webkit-transition: padding .5s;
+//     -moz-transition: padding .5s;
+//     -o-transition: padding .5s;
+//     transition: padding .5s;
+// }
+// .no-touch .main-nav a:hover,
+// .no-touch .main-nav a:focus {
+//     padding-left: 1.25em;
+//     background-color: #5C8AE6;
+// }
+// /* </nav.main-nav> */
+
+// /* <main.main-content> */
+// .main-content {
+//     width: 75%;
+//     float: left;
+//     padding: 0 1em;
+// }
+// .main-content .headline.first {
+//     margin-top: 0;
+// }
+// .main-content .inline-photo-1 {
+//     float: right;
+// }
+// /* </main.main-content> */
+
+// /* <footer.main-footer> */
+// .main-footer {
+//     font-size: 1.4em;
+//     text-align: center
+// }
+// /* <footer.main-footer> */
