@@ -5268,3 +5268,8 @@ a.th {
 .paypal-donate {
   text-align: center;
   margin: 0; }
+
+.loading_spinner {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto; }
