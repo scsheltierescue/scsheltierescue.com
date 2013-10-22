@@ -5264,3 +5264,7 @@ a.th {
     text-align: center; }
   .main-footer .name:after, .main-footer .po-box:after, .main-footer .city-state-zip:after {
     content: '\00B7\00A0'; }
+
+.paypal-donate {
+  text-align: center;
+  margin: 0; }
