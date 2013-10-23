@@ -5288,3 +5288,6 @@ body {
 
 .pad-left {
   padding-left: 40px; }
+
+.alert-box > p {
+  margin-bottom: 0; }
