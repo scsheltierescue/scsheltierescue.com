@@ -1535,6 +1535,7 @@ div,
 dl,
 dt,
 dd,
+ul,
 ol,
 li,
 h1,
@@ -5284,3 +5285,6 @@ body {
   width: 100px;
   height: 100px;
   margin: 0 auto; }
+
+.pad-left {
+  padding-left: 40px; }
