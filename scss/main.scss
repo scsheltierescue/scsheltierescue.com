@@ -11,6 +11,21 @@
    Author's custom styles
    ========================================================================== */
 
+html,
+body {
+    height: 100%;
+}
+
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -$footer-height;
+  &:after {
+      content: "";
+      display: block;
+      height: $footer-height;
+  }
+}
+
 .main-header .sc,
 .main-header .sr {
     text-align: center;
@@ -24,19 +39,6 @@
     display: block;
     margin: 0 auto;
 }
-
-// .main-footer {
-//     height: 300px;
-// }
-
-// .main-footer {
-//     & .name,
-//     & .po-box,
-//     & .city-state-zip,
-//     & .tel {
-//         display: block;
-//     }
-// }
 
 .main-footer {
     overflow: hidden;

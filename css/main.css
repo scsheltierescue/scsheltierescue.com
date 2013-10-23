@@ -5240,6 +5240,18 @@ a.th {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+html,
+body {
+  height: 100%; }
+
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -200px; }
+  .page-wrap:after {
+    content: "";
+    display: block;
+    height: 200px; }
+
 .main-header .sc,
 .main-header .sr {
   text-align: center; }

@@ -7,7 +7,7 @@
     <title>Available Dogs</title>
     <meta name="description" content="List of SC Sheltie Rescue dogs available for adoption.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.20131009.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/main.20131022.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
@@ -15,48 +15,50 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="contain-to-grid sticky">
-      <nav class="top-bar">
-        <ul class="title-area">
-          <!-- Title Area -->
-          <li class="name">
-            <h1 class="show-for-medium-up"><a href="index.html">South Carolina Sheltie Rescue</a></h1>
-            <h1 class="show-for-small"><a href="index.html">SCSR</a></h1>
-          </li>
-          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-        </ul>
-
-        <section class="top-bar-section">
-          <ul class="right">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li class="has-dropdown"><a href="available.html">Adopt</a>
-              <ul class="dropdown">
-                <li><a href="#">Adoption Requirements</a></li>
-                <li><a href="available.html">Adoptable Dogs</a></li>
-                <li><a href="apply2adopt.html">Adoption Application</a></li>
-                <li><a href="apply2adopt.html">Fostering Application</a></li>
-              </ul>
+    <div class="page-wrap">
+      <div class="contain-to-grid sticky">
+        <nav class="top-bar">
+          <ul class="title-area">
+            <!-- Title Area -->
+            <li class="name">
+              <h1 class="show-for-medium-up"><a href="index.html">South Carolina Sheltie Rescue</a></h1>
+              <h1 class="show-for-small"><a href="index.html">SCSR</a></h1>
             </li>
-            <li><a href="surrender.html">Surrender a Sheltie</a></li>
-            <li><a href="helpandadvice.html">Help and Advice</a></li>
-            <li><a href="events.html">Rescue Events</a></li>
+            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
           </ul>
-        </section>
-      </nav>
-    </div>
 
-    <div class="row">
-      <div class="large-12 medium-12 small-12 columns">
-        <main role="main" class="main-content">
-          <h2 class="headline first">Available for Adoption</h2>
-          <p>You can view our available dogs below or on our <a href="http://www.petfinder.com/pet-search?animal_type=&pet_breed=&pet_age=&pet_size=&specialNeeds=&declawedPets=&children=&status=&shelter_pet_id=&internal=&contact=&name=&shelter_id=SC92&sort=" target="_blank">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please copy and paste the <a href="apply2adopt.html">application</a> and send it to us via <a href="mailto:amanda@southcarolinasheltierescue.com">email</a>.</p>
+          <section class="top-bar-section">
+            <ul class="right">
+              <li class="active"><a href="index.html">Home</a></li>
+              <li class="has-dropdown"><a href="available_dogs.html">Adopt</a>
+                <ul class="dropdown">
+                  <!-- <li><a href="#">Adoption Requirements</a></li> -->
+                  <li><a href="available_dogs.html">Adoptable Dogs</a></li>
+                  <li><a href="apply_to_adopt.html">Adoption Application</a></li>
+                  <li><a href="apply_to_foster.html">Fostering Application</a></li>
+                </ul>
+              </li>
+              <li><a href="surrender.html">Surrender a Sheltie</a></li>
+              <li><a href="help_and_advice.html">Help and Advice</a></li>
+              <li><a href="events.html">Rescue Events</a></li>
+            </ul>
+          </section>
+        </nav>
+      </div>
 
-          <div id="pets" class="clearfix"></div>
-          <div id="spinner" class="loading_spinner"></div>
+      <div class="row">
+        <div class="large-12 medium-12 small-12 columns">
+          <main role="main" class="main-content">
+            <h2 class="headline first">Available for Adoption</h2>
+            <p>You can view our available dogs below or on our <a href="http://www.petfinder.com/pet-search?animal_type=&pet_breed=&pet_age=&pet_size=&specialNeeds=&declawedPets=&children=&status=&shelter_pet_id=&internal=&contact=&name=&shelter_id=SC92&sort=" target="_blank">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please copy and paste the <a href="apply2adopt.html">application</a> and send it to us via <a href="mailto:amanda@southcarolinasheltierescue.com">email</a>.</p>
 
-          <input id="btnMore" type="button" class="invisible" value="View More" />
-        </main>
+            <div id="pets" class="clearfix"></div>
+            <div id="spinner" class="loading_spinner"></div>
+
+            <input id="btnMore" type="button" class="invisible" value="View More" />
+          </main>
+        </div>
       </div>
     </div>
 
@@ -70,12 +72,11 @@
     </footer>
 
 
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-
+    <script src="js/foundation.min.js"></script>
     <script>
       var currentOffset = 0;
       var opts = {
@@ -183,6 +184,40 @@
           getPets();
         });
       });
+    </script>
+    <script>
+      $(document)
+        .foundation('dropdown topbar')
+        .foundation('orbit', {
+          animation: 'fade',
+          timer_speed: 5000,
+          pause_on_hover: true,
+          resume_on_mouseout: true,
+          animation_speed: 500,
+          stack_on_small: true,
+          navigation_arrows: true,
+          slide_number: true,
+          container_class: 'orbit-container',
+          stack_on_small_class: 'orbit-stack-on-small',
+          next_class: 'orbit-next',
+          prev_class: 'orbit-prev',
+          timer_container_class: 'orbit-timer',
+          timer_paused_class: 'paused',
+          timer_progress_class: 'orbit-progress',
+          slides_container_class: 'orbit-slides-container',
+          bullets_container_class: 'orbit-bullets',
+          bullets_active_class: 'active',
+          slide_number_class: 'orbit-slide-number',
+          caption_class: 'orbit-caption',
+          active_slide_class: 'active',
+          orbit_transition_class: 'orbit-transitioning',
+          bullets: true,
+          timer: true,
+          next_on_click: false,
+          variable_height: false,
+          before_slide_change: function(){},
+          after_slide_change: function(){}
+        });
     </script>
   </body>
 </html>
