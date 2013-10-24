@@ -4,27 +4,37 @@ module.exports = function(grunt) {
     watch: {
       sass: {
         files: ['scss/**/*.{scss,sass}','scss/_partials/**/*.{scss,sass}'],
-        tasks: ['sass:dist']
+        tasks: ['sass:dist','cssmin:minify']
       }
-      // livereload: {
-      //   files: ['*.html', '*.php', 'js/**/*.{js,json}', 'css/*.css','img/**/*.{png,jpg,jpeg,gif,webp,svg}'],
-      //   options: {
-      //     livereload: true
-      //   }
-      // }
     },
     sass: {
       dist: {
         files: {
           'css/main.css': 'scss/main.scss'
         }
-        // options: {
-        //   sourcemap: 'true'
-        // }
+      }
+    },
+    cssmin: {
+      minify: {
+        expand: true,
+        cwd: 'css/',
+        src: ['*.css', '!*.min.css'],
+        dest: 'css/',
+        ext: '.css'
       }
     }
   });
-  grunt.registerTask('default', ['watch']);
+
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+
+  grunt.registerTask('build', [
+      'cssmin:minify'
+  ]);
+
+  grunt.registerTask('default', [
+      'watch',
+      'build'
+  ]);
 };
