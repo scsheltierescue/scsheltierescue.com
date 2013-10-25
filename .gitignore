@@ -1,3 +1,6 @@
+# Special ignore
+credentials.php
+
 # Always-ignore extensions
 *.diff
 *.err
