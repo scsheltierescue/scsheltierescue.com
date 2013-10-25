@@ -55,7 +55,7 @@
             <?php
               //SMTP needs accurate times, and the PHP time zone MUST be set
               date_default_timezone_set('America/New_York');
-              require 'phpmailer_5.2.7/PHPMailerAutoload.php';
+              require 'phpmailer/PHPMailerAutoload.php';
               include 'credentials.php';
 
               $subject = 'SHELTIE ADOPTION';
