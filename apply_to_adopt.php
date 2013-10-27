@@ -33,7 +33,7 @@
               <li><a href="index.html">Home</a></li>
               <li class="has-dropdown"><a href="available_dogs.html">Adopt</a>
                 <ul class="dropdown">
-                  <!-- <li><a href="#">Adoption Requirements</a></li> -->
+                  <li><a href="adoption_requirements.html">Adoption Requirements</a></li>
                   <li><a href="available_dogs.html">Adoptable Dogs</a></li>
                   <li class="active"><a href="apply_to_adopt.php">Adoption Application</a></li>
                   <li><a href="apply_to_foster.php">Fostering Application</a></li>
@@ -353,10 +353,10 @@
                   <textarea name="previous_vets"></textarea>
 
                   <p>By submitting this form, I am attesting to the truthfulness of my answers. I understand that falsification of any of the above information will be grounds to disallow the adoption of a rescue Sheltie.</p>
-                  <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. Thank you for considering a dog from South Carolina Sheltie Rescue. If you have any questions, or if we can be of assistance, please do not hesitate to e-mail.</p>
+                  <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. Thank you for considering a dog from South Carolina Sheltie Rescue. If you have any questions, or if we can be of assistance, please do not hesitate to <a href="mailto:amanda@southcarolinasheltierescue.com">email</a> us.</p>
                   <p><strong>We reserve the right to refuse any applicant.</strong></p>
 
-                  <input id="submit" name="submit" type="submit" value="Submit">
+                  <input id="submit" name="submit" type="submit" class="large button expand" value="Submit">
                 </div>
               </div>
 
@@ -367,12 +367,28 @@
     </div>
 
     <footer class="main-footer">
-      <p>
-        <span class="name">SC Sheltie Rescue </span>
-        <span class="po-box">P.O. Box 11414 </span>
-        <span class="city-state-zip">Columbia, SC 29211 </span>
-        <span class="tel">803.920.0644</span>
-      </p>
+      <section id="social-media" class="social-media">
+        <a href="http://www.petfinder.com/pet-search?shelterid=SC92" target="_blank">
+          <span class="icon-bone"></span><span class="visuallyhidden">Petfinder</span>
+        </a>
+        <a href="https://www.facebook.com/SouthCarolinaSheltieRescue" target="_blank">
+          <span class="icon-facebook"></span><span class="visuallyhidden">Facebook</span>
+        </a>
+        <a href="https://twitter.com/scsheltierescue" target="_blank">
+          <span class="icon-twitter"></span><span class="visuallyhidden">Twitter</span>
+        </a>
+      </section>
+      <section id="address" class="address">
+        <p class="no-margin-bottom">
+          <span class="name">SC Sheltie Rescue</span><br/>
+          <span class="po-box">P.O. Box 11414</span><br/>
+          <span class="city-state-zip">Columbia, SC 29211</span><br/>
+          <span class="tel">803.920.0644</span>
+        </p>
+      </section>
+      <section id="copyright" class="copyright">
+        <small>&copy; <script>document.write(new Date().getFullYear())</script><noscript>2013</noscript> South Carolina Sheltie Rescue</small>
+      </section>
     </footer>
 
 
