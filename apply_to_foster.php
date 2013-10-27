@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Adoption Application</title>
-    <meta name="description" content="Apply to adopt a sheltie today with the SC Sheltie Rescue.">
+    <title>Fostering Application</title>
+    <meta name="description" content="Apply to foster a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.20131026.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
@@ -35,8 +35,8 @@
                 <ul class="dropdown">
                   <!-- <li><a href="#">Adoption Requirements</a></li> -->
                   <li><a href="available_dogs.html">Adoptable Dogs</a></li>
-                  <li class="active"><a href="apply_to_adopt.php">Adoption Application</a></li>
-                  <li><a href="apply_to_foster.php">Fostering Application</a></li>
+                  <li><a href="apply_to_adopt.php">Adoption Application</a></li>
+                  <li class="active"><a href="apply_to_foster.php">Fostering Application</a></li>
                 </ul>
               </li>
               <li><a href="surrender.html">Surrender a Sheltie</a></li>
@@ -50,7 +50,7 @@
       <div class="row">
         <div class="large-12 medium-12 small-12 columns">
           <main role="main" class="main-content">
-            <h2 class="headline first">Adoption Application</h2>
+            <h2 class="headline first">Fostering Application</h2>
 
             <?php
               //SMTP needs accurate times, and the PHP time zone MUST be set
@@ -60,11 +60,11 @@
               require_once 'phpmailer/class.smtp.php';
               include_once 'credentials.php';
 
-              $subject = 'SHELTIE ADOPTION';
+              $subject = 'SHELTIE FOSTERING';
               $to_email = 'amanda@southcarolinasheltierescue.com';
               $to_name = 'Amanda';
               $from_email = 'webserver@southcarolinasheltierescue.com';
-              $from_name = 'Adoption Application';
+              $from_name = 'Fostering Application';
               $host = 'mail.southcarolinasheltierescue.com';
 
               $name = $_POST['name'];
@@ -74,7 +74,6 @@
               $workphone = $_POST['workphone'];
               $occupation = $_POST['occupation'];
               $fulltime = $_POST['fulltime'];
-              $why_adopt = $_POST['why_adopt'];
               $owned_previously = $_POST['owned_previously'];
               $still_have_sheltie = $_POST['still_have_sheltie'];
               $last_dog = $_POST['last_dog'];
@@ -83,7 +82,6 @@
               $last_five_vehicle = $_POST['last_five_vehicle'];
               $last_five_disease = $_POST['last_five_disease'];
               $last_five_explain = $_POST['last_five_explain'];
-              $purpose = $_POST['purpose'];
               $other_animals = $_POST['other_animals'];
               $household_members = $_POST['household_members'];
               $home_type = $_POST['home_type'];
@@ -93,20 +91,13 @@
               $home_during_day = $_POST['home_during_day'];
               $indoors_outdoors = $_POST['indoors_outdoors'];
               $sex_preference = $_POST['sex_preference'];
-              $color_preference = $_POST['color_preference'];
               $older_dog = $_POST['older_dog'];
-              $size_preference = $_POST['size_preference'];
               $family_aware = $_POST['family_aware'];
-              $financial_responsibility = $_POST['financial_responsibility'];
               $moving_soon = $_POST['moving_soon'];
               $allergic = $_POST['allergic'];
               $animal_control_regulations = $_POST['animal_control_regulations'];
-              $gift = $_POST['gift'];
-              $spayed_neutered = $_POST['spayed_neutered'];
-              $getting_rid_of_dog = $_POST['getting_rid_of_dog'];
               $home_visit = $_POST['home_visit'];
               $hear_about_scsr = $_POST['hear_about_scsr'];
-              $accept_fee = $_POST['accept_fee'];
               $previous_vets = $_POST['previous_vets'];
 
               if ($_POST['submit']) {
@@ -148,40 +139,31 @@
                     ."5.  Phone(W): ".$workphone."\n"
                     ."6.  Occupation: ".$occupation."\n"
                     ."7.  Full-Time: ".$fulltime."\n"
-                    ."8.  Why do you want a Shetland Sheepdog?: \n".$why_adopt."\n"
-                    ."9.  Have you ever owned a Sheltie before?: ".$owned_previously."\n"
-                    ."10. And if so, do you still have that dog?: \n".$still_have_sheltie."\n"
-                    ."11. What happened to your last dog?: \n".$last_dog."\n"
-                    ."12. During the last five years, have you lost a pet (not through death)?: ".$last_five_lost_pet."\n"
-                    ."13. During the last five years, have you had one poisoned?: ".$last_five_poison."\n"
-                    ."14. During the last five years, have you had an animal killed by a vehicle?: ".$last_five_vehicle."\n"
-                    ."15. During the last five years, have you had an animal die due to disease?: ".$last_five_disease."\n"
-                    ."16. If you answered yes to any of the the previous four questions, please explain: \n".$last_five_explain."\n"
-                    ."17. For what purpose do you want this dog?: \n".$purpose."\n"
-                    ."18. Do you have any other animals? (name, type, age, sex, neutered/spayed): \n".$other_animals."\n"
-                    ."19. Please list everyone who lives in your household and their age.: \n".$household_members."\n"
-                    ."20. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
-                    ."21. Do you rent or own?: ".$rent_own."\n"
-                    ."22. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
-                    ."23. Do you have a yard and if so, is it fenced? (list type of fencing): \n".$yard_type."\n"
-                    ."24. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
-                    ."25. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
-                    ."26. Do you have a sex preference?: ".$sex_preference."\n"
-                    ."27. Do you have a color preference? (If yes, please list first and second choices): \n".$color_preference."\n"
-                    ."28. Would you consider an older dog? To what age?: \n".$older_dog."\n"
-                    ."29. What size Sheltie do you prefer?: \n".$size_preference."\n"
-                    ."30. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
-                    ."31. Are you prepared to assume the financial responsibilities of caring for an animal? (inoculations, heartworm preventative, veterinarian care, good quality food, licensing, etc.): ".$financial_responsibility."\n"
-                    ."32. Are you planning to move in the near future?: ".$moving_soon."\n"
-                    ."33. Is anyone in your house allergic to animals?: ".$allergic."\n"
-                    ."34. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
-                    ."35. Is this Sheltie going to be a gift? (If yes, for whom and do they know): \n".$gift."\n"
-                    ."36. Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?: ".$spayed_neutered."\n"
-                    ."37. What circumstances, in your mind, justify getting rid of a dog?: \n".$getting_rid_of_dog."\n"
-                    ."38. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
-                    ."39. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
-                    ."40. Do you accept that there will be an adoption fee for the adopted dog?: ".$accept_fee."\n"
-                    ."41. Please provide the name and number of any vets used in the past 5 years.: \n".$previous_vets;
+                    ."8.  Have you ever owned a Sheltie before?: ".$owned_previously."\n"
+                    ."9.  And if so, do you still have that dog?: \n".$still_have_sheltie."\n"
+                    ."10. What happened to your last dog?: \n".$last_dog."\n"
+                    ."11. During the last five years, have you lost a pet (not through death)?: ".$last_five_lost_pet."\n"
+                    ."12. During the last five years, have you had one poisoned?: ".$last_five_poison."\n"
+                    ."13. During the last five years, have you had an animal killed by a vehicle?: ".$last_five_vehicle."\n"
+                    ."14. During the last five years, have you had an animal die due to disease?: ".$last_five_disease."\n"
+                    ."15. If you answered yes to any of the the previous four questions, please explain: \n".$last_five_explain."\n"
+                    ."16. Do you have any other animals? (name, type, age, sex, neutered/spayed): \n".$other_animals."\n"
+                    ."17. Please list everyone who lives in your household and their age.: \n".$household_members."\n"
+                    ."18. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
+                    ."19. Do you rent or own?: ".$rent_own."\n"
+                    ."20. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
+                    ."21. Do you have a yard and if so, is it fenced? (list type of fencing): \n".$yard_type."\n"
+                    ."22. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
+                    ."23. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
+                    ."24. Do you have a sex preference?: ".$sex_preference."\n"
+                    ."25. Would you consider an older dog? To what age?: \n".$older_dog."\n"
+                    ."26. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
+                    ."27. Are you planning to move in the near future?: ".$moving_soon."\n"
+                    ."28. Is anyone in your house allergic to animals?: ".$allergic."\n"
+                    ."29. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
+                    ."30. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
+                    ."31. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
+                    ."32. Please provide the name and number of any vets used in the past 5 years.: \n".$previous_vets;
 
                   //Set the body text
                   $mail->Body = $message;
@@ -208,7 +190,7 @@
 
             ?>
 
-            <form action="apply_to_adopt.php" method="POST" autocomplete="off">
+            <form action="apply_to_foster.php" method="POST" autocomplete="off">
 
               <div class="row">
                 <div class="large-12 medium-12 small-12 columns">
@@ -233,9 +215,6 @@
                   <label>Are you employed full-time?</label>
                   <input name="fulltime" type="radio" value="Yes">Yes<br>
                   <input name="fulltime" type="radio" value="No">No
-
-                  <label>Why do you want a Shetland Sheepdog?</label>
-                  <textarea name="why_adopt"></textarea>
 
                   <label>Have you ever owned a Sheltie before?</label>
                   <input name="owned_previously" type="radio" value="Yes">Yes<br>
@@ -265,9 +244,6 @@
 
                   <label>If you answered yes to any of the the previous four questions, please explain.</label>
                   <textarea name="last_five_explain"></textarea>
-
-                  <label>For what purpose do you want this dog?</label>
-                  <textarea name="purpose"></textarea>
 
                   <label>Do you have any other animals? (name, type, age, sex, neutered/spayed)</label>
                   <textarea name="other_animals"></textarea>
@@ -299,22 +275,12 @@
                   <input name="sex_preference" type="radio" value="Male">Yes, Male<br>
                   <input name="sex_preference" type="radio" value="Female">Yes, Female
 
-                  <label>Do you have a color preference? (If yes, please list first and second choices)</label>
-                  <textarea name="color_preference"></textarea>
-
                   <label>Would you consider an older dog? To what age?</label>
                   <textarea name="older_dog"></textarea>
 
-                  <label>What size Sheltie do you prefer?</label>
-                  <textarea name="size_preference"></textarea>
-
-                  <label>Are other members of your household aware that you are considering adopting a pet?</label>
+                  <label>Are other members of your household aware that you are considering fostering a Sheltie?</label>
                   <input name="family_aware" type="radio" value="Yes">Yes<br>
                   <input name="family_aware" type="radio" value="No">No
-
-                  <label>Are you prepared to assume the financial responsibilities of caring for an animal? (inoculations, heartworm preventative, veterinarian care, good quality food, licensing, etc.)</label>
-                  <input name="financial_responsibility" type="radio" value="Yes">Yes<br>
-                  <input name="financial_responsibility" type="radio" value="No">No
 
                   <label>Are you planning to move in the near future?</label>
                   <input name="moving_soon" type="radio" value="Yes">Yes<br>
@@ -328,16 +294,6 @@
                   <input name="animal_control_regulations" type="radio" value="Yes">Yes<br>
                   <input name="animal_control_regulations" type="radio" value="No">No
 
-                  <label>Is this Sheltie going to be a gift? (If yes, for whom and do they know)</label>
-                  <textarea name="gift"></textarea>
-
-                  <label>Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?</label>
-                  <input name="spayed_neutered" type="radio" value="Yes">Yes<br>
-                  <input name="spayed_neutered" type="radio" value="No">No
-
-                  <label>What circumstances, in your mind, justify getting rid of a dog?</label>
-                  <textarea name="getting_rid_of_dog"></textarea>
-
                   <label>Are you willing to allow a Rescue representative to visit your home by appointment?</label>
                   <input name="home_visit" type="radio" value="Yes">Yes<br>
                   <input name="home_visit" type="radio" value="No">No
@@ -345,15 +301,11 @@
                   <label>How did you hear about South Carolina Sheltie Rescue?</label>
                   <textarea name="hear_about_scsr"></textarea>
 
-                  <label>Do you accept that there will be an adoption fee for the adopted dog?</label>
-                  <input name="accept_fee" type="radio" value="Yes">Yes<br>
-                  <input name="accept_fee" type="radio" value="No">No
-
                   <label>Please provide the name and number of any vets used in the past 5 years.</label>
                   <textarea name="previous_vets"></textarea>
 
-                  <p>By submitting this form, I am attesting to the truthfulness of my answers. I understand that falsification of any of the above information will be grounds to disallow the adoption of a rescue Sheltie.</p>
-                  <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. Thank you for considering a dog from South Carolina Sheltie Rescue. If you have any questions, or if we can be of assistance, please do not hesitate to e-mail.</p>
+                  <p>By submitting this form, I am attesting to the truthfulness of my answers.</p>
+                  <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. If you have any questions, or if we can be of assistance, please do not hesitate to e-mail.</p>
                   <p><strong>We reserve the right to refuse any applicant.</strong></p>
 
                   <input id="submit" name="submit" type="submit" value="Submit">
