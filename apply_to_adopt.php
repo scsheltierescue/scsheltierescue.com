@@ -7,7 +7,7 @@
     <title>Adoption Application</title>
     <meta name="description" content="Apply to adopt a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.20131023.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/main.20131026.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
@@ -30,12 +30,12 @@
 
           <section class="top-bar-section">
             <ul class="right">
-              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="index.html">Home</a></li>
               <li class="has-dropdown"><a href="available_dogs.html">Adopt</a>
                 <ul class="dropdown">
                   <!-- <li><a href="#">Adoption Requirements</a></li> -->
                   <li><a href="available_dogs.html">Adoptable Dogs</a></li>
-                  <li><a href="apply_to_adopt.html">Adoption Application</a></li>
+                  <li class="active"><a href="apply_to_adopt.php">Adoption Application</a></li>
                   <li><a href="apply_to_foster.html">Fostering Application</a></li>
                 </ul>
               </li>
@@ -55,14 +55,17 @@
             <?php
               //SMTP needs accurate times, and the PHP time zone MUST be set
               date_default_timezone_set('America/New_York');
-              require 'phpmailer/PHPMailerAutoload.php';
-              include 'credentials.php';
+              //require_once 'phpmailer/PHPMailerAutoload.php';
+              require_once 'phpmailer/class.phpmailer.php';
+              require_once 'phpmailer/class.smtp.php';
+              include_once 'credentials.php';
 
               $subject = 'SHELTIE ADOPTION';
               $to_email = 'amanda@southcarolinasheltierescue.com';
               $to_name = 'Amanda';
               $from_email = 'webserver@southcarolinasheltierescue.com';
               $from_name = 'Adoption Application';
+              $host = 'mail.southcarolinasheltierescue.com';
 
               $name = $_POST['name'];
               $email = $_POST['email'];
@@ -120,7 +123,7 @@
                   //Ask for HTML-friendly debug output
                   $mail->Debugoutput = 'html';
                   //Set the hostname of the mail server
-                  $mail->Host = "mail.southcarolinasheltierescue.com";
+                  $mail->Host = $host;
                   //Set the SMTP port number - likely to be 25, 465 or 587
                   $mail->Port = 587;
                   //Whether to use SMTP authentication
