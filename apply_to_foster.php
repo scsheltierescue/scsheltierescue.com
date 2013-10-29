@@ -7,7 +7,7 @@
     <title>Fostering Application</title>
     <meta name="description" content="Apply to foster a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.20131026.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/main.20131028.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
@@ -132,7 +132,7 @@
                   //Set the subject line
                   $mail->Subject = $subject;
                   //Construct the message body
-                  $message = "1.  Name: ".$name."\n"
+                  $message_alt = "1.  Name: ".$name."\n"
                     ."2.  Email: ".$email."\n"
                     ."3.  Address: ".$address."\n"
                     ."4.  Phone(H): ".$homephone."\n"
@@ -164,11 +164,12 @@
                     ."30. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
                     ."31. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
                     ."32. Please provide the name and number of any vets used in the past 5 years.: \n".$previous_vets;
-
+                  //Construct the HTML message body
+                  $message_html = str_replace("\n", "<br>", $message_alt);
                   //Set the body text
-                  $mail->Body = $message;
+                  $mail->Body = $message_html;
                   //Set the plain text body backup
-                  $mail->AltBody = $message;
+                  $mail->AltBody = $message_alt;
 
                   //send the message, check for errors
                   if (!$mail->send()) {
@@ -194,115 +195,115 @@
 
               <div class="row">
                 <div class="large-12 medium-12 small-12 columns">
-                  <label>Name</label>
-                  <input name="name" type="text" autofocus>
+                  <label for="name" class="required">Name</label>
+                  <input id="name" name="name" type="text" required autofocus>
 
-                  <label>Email</label>
-                  <input name="email" type="email">
+                   <label for="email" class="required">Email</label>
+                  <input id="email" name="email" type="email" required>
 
-                  <label>Address (city, state, zip)</label>
-                  <input name="address" type="text">
+                  <label for="address" class="required">Address (city, state, zip)</label>
+                  <input id="address" name="address" type="text" required>
 
-                  <label>Home phone</label>
-                  <input name="homephone" type="tel">
+                  <label for="homephone" class="required">Home phone</label>
+                  <input id="homephone" name="homephone" type="tel" pattern="[0-9]{10}" required>
 
-                  <label>Work phone</label>
-                  <input name="workphone" type="tel">
+                  <label for="workphone">Work phone</label>
+                  <input id="workphone" name="workphone" type="tel" pattern="[0-9]{10}">
 
-                  <label>Occupation</label>
-                  <input name="occupation" type="text">
+                  <label for="occupation">Occupation</label>
+                  <input id="occupation" name="occupation" type="text">
 
                   <label>Are you employed full-time?</label>
-                  <input name="fulltime" type="radio" value="Yes">Yes<br>
-                  <input name="fulltime" type="radio" value="No">No
+                  <input id="fulltime_yes" name="fulltime" type="radio" value="Yes"><label for="fulltime_yes">&nbsp;Yes</label><br>
+                  <input id="fulltime_no" name="fulltime" type="radio" value="No"><label for="fulltime_no">&nbsp;No</label>
 
                   <label>Have you ever owned a Sheltie before?</label>
-                  <input name="owned_previously" type="radio" value="Yes">Yes<br>
-                  <input name="owned_previously" type="radio" value="No">No
+                  <input id="owned_previously_yes" name="owned_previously" type="radio" value="Yes"><label for="owned_previously_yes">&nbsp;Yes</label><br>
+                  <input id="owned_previously_no" name="owned_previously" type="radio" value="No"><label for="owned_previously_no">&nbsp;No</label><br>
 
-                  <label>And if so, do you still have that dog?</label>
-                  <input name="still_have_sheltie" type="text">
+                  <label for="still_have_sheltie">And if so, do you still have that dog?</label>
+                  <input id="still_have_sheltie" name="still_have_sheltie" type="text">
 
-                  <label>What happened to your last dog?</label>
-                  <textarea name="last_dog"></textarea>
+                  <label for="last_dog">What happened to your last dog?</label>
+                  <textarea id="last_dog" name="last_dog"></textarea>
 
                   <label>During the last five years, have you lost a pet (not through death)?</label>
-                  <input name="last_five_lost_pet" type="radio" value="Yes">Yes<br>
-                  <input name="last_five_lost_pet" type="radio" value="No">No
+                  <input id="last_five_lost_pet_yes" name="last_five_lost_pet" type="radio" value="Yes"><label for="last_five_lost_pet_yes">&nbsp;Yes</label><br>
+                  <input id="last_five_lost_pet_no" name="last_five_lost_pet" type="radio" value="No"><label for="last_five_lost_pet_no">&nbsp;No</label>
 
                   <label>During the last five years, have you had one poisoned?</label>
-                  <input name="last_five_poison" type="radio" value="Yes">Yes<br>
-                  <input name="last_five_poison" type="radio" value="No">No
+                  <input id="last_five_poison_yes" name="last_five_poison" type="radio" value="Yes"><label for="last_five_poison_yes">&nbsp;Yes</label><br>
+                  <input id="last_five_poison_no" name="last_five_poison" type="radio" value="No"><label for="last_five_poison_no">&nbsp;No</label>
 
                   <label>During the last five years, have you had an animal killed by a vehicle?</label>
-                  <input name="last_five_vehicle" type="radio" value="Yes">Yes<br>
-                  <input name="last_five_vehicle" type="radio" value="No">No
+                  <input id="last_five_vehicle_yes" name="last_five_vehicle" type="radio" value="Yes"><label for="last_five_vehicle_yes">&nbsp;Yes</label><br>
+                  <input id="last_five_vehicle_no" name="last_five_vehicle" type="radio" value="No"><label for="last_five_vehicle_no">&nbsp;No</label>
 
                   <label>During the last five years, have you had an animal die due to disease?</label>
-                  <input name="last_five_disease" type="radio" value="Yes">Yes<br>
-                  <input name="last_five_disease" type="radio" value="No">No
+                  <input id="last_five_disease_yes" name="last_five_disease" type="radio" value="Yes"><label for="last_five_disease_yes">&nbsp;Yes</label><br>
+                  <input id="last_five_disease_no" name="last_five_disease" type="radio" value="No"><label for="last_five_disease_no">&nbsp;No</label>
 
-                  <label>If you answered yes to any of the the previous four questions, please explain.</label>
-                  <textarea name="last_five_explain"></textarea>
+                  <label for="last_five_explain">If you answered yes to any of the the previous four questions, please explain.</label>
+                  <textarea id="last_five_explain" name="last_five_explain"></textarea>
 
-                  <label>Do you have any other animals? (name, type, age, sex, neutered/spayed)</label>
-                  <textarea name="other_animals"></textarea>
+                  <label for="other_animals">Do you have any other animals? (name, type, age, sex, neutered/spayed)</label>
+                  <textarea id="other_animals" name="other_animals"></textarea>
 
-                  <label>Please list <strong>everyone</strong> who lives in your household and their age.</label>
-                  <textarea name="household_members"></textarea>
+                  <label for="household_members">Please list <strong>everyone</strong> who lives in your household and their age.</label>
+                  <textarea id="household_members" name="household_members"></textarea>
 
-                  <label>Do you live in a house, apartment, condo, or trailer?</label>
-                  <input name="home_type" type="text">
+                  <label for="home_type">Do you live in a house, apartment, condo, or trailer?</label>
+                  <input id="home_type" name="home_type" type="text">
 
                   <label>Do you rent or own?</label>
-                  <input name="rent_own" type="radio" value="Rent">Rent<br>
-                  <input name="rent_own" type="radio" value="Own">Own
+                  <input id="rent" name="rent_own" type="radio" value="Rent"><label for="rent">&nbsp;Rent</label><br>
+                  <input id="own" name="rent_own" type="radio" value="Own"><label for="own">&nbsp;Own</label>
 
-                  <label>If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number)</label>
-                  <textarea name="landlord_permission"></textarea>
+                  <label for="landlord_permission">If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number)</label>
+                  <textarea id="landlord_permission" name="landlord_permission"></textarea>
 
-                  <label>Do you have a yard and if so, is it fenced? (list type of fencing)</label>
-                  <textarea name="yard_type"></textarea>
+                  <label for="yard_type">Do you have a yard and if so, is it fenced? (list type of fencing)</label>
+                  <textarea id="yard_type" name="yard_type"></textarea>
 
-                  <label>Do all family adults work and is someone home during the day? (Please explain)</label>
-                  <textarea name="home_during_day"></textarea>
+                  <label for="home_during_day">Do all family adults work and is someone home during the day? (Please explain)</label>
+                  <textarea id="home_during_day" name="home_during_day"></textarea>
 
-                  <label>Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?</label>
-                  <textarea name="indoors_outdoors"></textarea>
+                  <label for="indoors_outdoors">Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?</label>
+                  <textarea id="indoors_outdoors" name="indoors_outdoors"></textarea>
 
                   <label>Do you have a sex preference?</label>
-                  <input name="sex_preference" type="radio" value="No">No<br>
-                  <input name="sex_preference" type="radio" value="Male">Yes, Male<br>
-                  <input name="sex_preference" type="radio" value="Female">Yes, Female
+                  <input id="sex_no" name="sex_preference" type="radio" value="No"><label for="sex_no">&nbsp;No</label><br>
+                  <input id="sex_male" name="sex_preference" type="radio" value="Male"><label for="sex_male">&nbsp;Yes, Male</label><br>
+                  <input id="sex_female" name="sex_preference" type="radio" value="Female"><label for="sex_female">&nbsp;Yes, Female</label>
 
-                  <label>Would you consider an older dog? To what age?</label>
-                  <textarea name="older_dog"></textarea>
+                  <label for="older_dog">Would you consider an older dog? To what age?</label>
+                  <textarea id="older_dog" name="older_dog"></textarea>
 
                   <label>Are other members of your household aware that you are considering fostering a Sheltie?</label>
-                  <input name="family_aware" type="radio" value="Yes">Yes<br>
-                  <input name="family_aware" type="radio" value="No">No
+                  <input id="family_aware_yes" name="family_aware" type="radio" value="Yes"><label for="family_aware_yes">&nbsp;Yes</label><br>
+                  <input id="family_aware_no" name="family_aware" type="radio" value="No"><label for="family_aware_no">&nbsp;No</label>
 
                   <label>Are you planning to move in the near future?</label>
-                  <input name="moving_soon" type="radio" value="Yes">Yes<br>
-                  <input name="moving_soon" type="radio" value="No">No
+                  <input id="moving_soon_yes" name="moving_soon" type="radio" value="Yes"><label for="moving_soon_yes">&nbsp;Yes</label><br>
+                  <input id="moving_soon_no" name="moving_soon" type="radio" value="No"><label for="moving_soon_no">&nbsp;No</label>
 
                   <label>Is anyone in your house allergic to animals?</label>
-                  <input name="allergic" type="radio" value="Yes">Yes<br>
-                  <input name="allergic" type="radio" value="No">No
+                  <input id="allergic_yes" name="allergic" type="radio" value="Yes"><label for="allergic_yes">&nbsp;Yes</label><br>
+                  <input id="allergic_no" name="allergic" type="radio" value="No"><label for="allergic_no">&nbsp;No</label>
 
                   <label>Are you familiar with animal control regulations in your area?</label>
-                  <input name="animal_control_regulations" type="radio" value="Yes">Yes<br>
-                  <input name="animal_control_regulations" type="radio" value="No">No
+                  <input id="acr_yes" name="animal_control_regulations" type="radio" value="Yes"><label for="acr_yes">&nbsp;Yes</label><br>
+                  <input id="acr_no" name="animal_control_regulations" type="radio" value="No"><label for="acr_no">&nbsp;No</label>
 
                   <label>Are you willing to allow a Rescue representative to visit your home by appointment?</label>
-                  <input name="home_visit" type="radio" value="Yes">Yes<br>
-                  <input name="home_visit" type="radio" value="No">No
+                  <input id="home_visit_yes" name="home_visit" type="radio" value="Yes"><label for="home_visit_yes">&nbsp;Yes</label><br>
+                  <input id="home_visit_no" name="home_visit" type="radio" value="No"><label for="home_visit_no">&nbsp;No</label>
 
-                  <label>How did you hear about South Carolina Sheltie Rescue?</label>
-                  <textarea name="hear_about_scsr"></textarea>
+                  <label for="hear_about_scsr">How did you hear about South Carolina Sheltie Rescue?</label>
+                  <textarea id="hear_about_scsr" name="hear_about_scsr"></textarea>
 
-                  <label>Please provide the name and number of any vets used in the past 5 years.</label>
-                  <textarea name="previous_vets"></textarea>
+                  <label for="previous_vets">Please provide the name and number of any vets used in the past 5 years.</label>
+                  <textarea id="previous_vets" name="previous_vets"></textarea>
 
                   <p>By submitting this form, I am attesting to the truthfulness of my answers.</p>
                   <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. If you have any questions, or if we can be of assistance, please do not hesitate to <a href="mailto:amanda@southcarolinasheltierescue.com">email</a> us.</p>
