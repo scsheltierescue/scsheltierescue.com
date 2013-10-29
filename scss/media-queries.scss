@@ -4,23 +4,12 @@
    Modify as content requires.
    ========================================================================== */
 
-// @media only screen and (min-width: $small-screen) {
-//   .main-footer {
-//       overflow: hidden;
-//       height: $footer-height;
-//       line-height: $footer-height;
-//       position: relative;
-//       background: $topbar-bg-color;
-//       font-weight: bold;
-//       color: white;
-//       p {
-//           line-height: $footer-height;
-//           text-align: center;
-//       }
-//       & .name:after,
-//       & .po-box:after,
-//       & .city-state-zip:after {
-//           content: '\00B7\00A0'; // &middot;&nbsp;
-//       }
-//   }
-// }
+@media only screen and (max-width: $extra-small-screen) {
+  .donate-today {
+    display: none;
+  }
+  .x-small-12 {
+    position: relative;
+    width: 100%;
+  }
+}
