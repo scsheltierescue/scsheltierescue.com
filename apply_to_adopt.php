@@ -7,7 +7,7 @@
     <title>Adoption Application</title>
     <meta name="description" content="Apply to adopt a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.20131028.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/main.20131029.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
@@ -69,7 +69,9 @@
 
               $name = $_POST['name'];
               $email = $_POST['email'];
-              $address = $_POST['address'];
+              $city = $_POST['city'];
+              $state = $_POST['state'];
+              $zip = $_POST['zip'];
               $homephone = $_POST['homephone'];
               $workphone = $_POST['workphone'];
               $occupation = $_POST['occupation'];
@@ -110,7 +112,7 @@
               $previous_vets = $_POST['previous_vets'];
 
               if ($_POST['submit']) {
-                if ($name != '' && $email != '') {
+                if ($name != '' && $email != '' && $city != '' && $state != '' && $zip != ''&& $homephone != '') {
                   //Create a new PHPMailer instance
                   $mail = new PHPMailer();
                   //Tell PHPMailer to use SMTP
@@ -143,7 +145,7 @@
                   //Construct the alt message body
                   $message_alt = "1.  Name: ".$name."\n"
                     ."2.  Email: ".$email."\n"
-                    ."3.  Address: ".$address."\n"
+                    ."3.  Address: ".$city.", ".$state." ".$zip."\n"
                     ."4.  Phone(H): ".$homephone."\n"
                     ."5.  Phone(W): ".$workphone."\n"
                     ."6.  Occupation: ".$occupation."\n"
@@ -209,153 +211,287 @@
 
             ?>
 
-            <form action="apply_to_adopt.php" method="POST" autocomplete="off">
+            <form action="apply_to_adopt.php" method="POST">
 
               <div class="row">
                 <div class="large-12 medium-12 small-12 columns">
-                  <label for="name" class="required">Name</label>
-                  <input id="name" name="name" type="text" required autofocus>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <label for="name" class="required">Name</label>
+                      <input id="name" name="name" type="text" placeholder="John Doe" required autofocus>
+                      <!--
+                      <label for="name" class="error">Name</label>
+                      <input id="name" name="name" type="text" required autofocus>
+                      <small class="error">Invalid entry</small>
+                      -->
+                    </div>
+                    <div class="large-6 columns">
+                      <label for="email" class="required">Email</label>
+                      <input id="email" name="email" type="email" placeholder="john.doe@email.com" required>
+                    </div>
+                  </div>
 
-<!--                   <label for="name" class="error">Name</label>
-                  <input id="name" name="name" type="text" required autofocus>
-                  <small class="error">Invalid entry</small> -->
+                  <div class="row">
+                    <div class="large-5 columns">
+                      <label for="city" class="required">City</label>
+                      <input id="city" name="city" type="text" placeholder="Columbia" required>
+                    </div>
+                    <div class="large-1 large-offset-1 columns">
+                      <label for="state" class="required">State</label>
+                      <input id="state" name="state" type="text" placeholder="SC" required>
+                    </div>
+                    <div class="large-2 columns">
+                      <label for="zip" class="required">Zip</label>
+                      <input id="zip" name="zip" type="text" placeholder="29201" required>
+                    </div>
+                  </div>
 
-                  <label for="email" class="required">Email</label>
-                  <input id="email" name="email" type="email" required>
+                  <div class="row">
+                    <div class="large-3 columns">
+                      <label for="homephone" class="required">Home phone</label>
+                      <input id="homephone" name="homephone" type="tel" required>
+                    </div>
+                    <div class="large-3 columns">
+                      <label for="workphone">Work phone</label>
+                      <input id="workphone" name="workphone" type="tel">
+                    </div>
+                    <div class="large-4 columns">
+                      <label for="occupation" class="required">Occupation</label>
+                      <input id="occupation" name="occupation" type="text" required>
+                    </div>
+                  </div>
 
-                  <label for="address" class="required">Address (city, state, zip)</label>
-                  <input id="address" name="address" type="text" required>
+                  <div class="row">
+                    <div class="large-4 columns">
+                      <label class="required">Are you employed full-time?</label>
+                      <input id="fulltime_yes" name="fulltime" type="radio" value="Yes" required><label for="fulltime_yes">&nbsp;Yes</label><br>
+                      <input id="fulltime_no" name="fulltime" type="radio" value="No" required><label for="fulltime_no">&nbsp;No</label>
+                    </div>
+                    <div class="large-4 columns">
+                      <label class="required">Have you ever owned a Sheltie before?</label>
+                      <input id="owned_previously_yes" name="owned_previously" type="radio" value="Yes" required><label for="owned_previously_yes">&nbsp;Yes</label><br>
+                      <input id="owned_previously_no" name="owned_previously" type="radio" value="No" required><label for="owned_previously_no">&nbsp;No</label>
+                    </div>
+                    <div class="large-4 columns">
+                      <label>If so, do you still have that dog?</label>
+                      <input id="still_have_sheltie_yes" name="still_have_sheltie" type="radio" value="Yes"><label for="still_have_sheltie_yes">&nbsp;Yes</label><br>
+                      <input id="still_have_sheltie_no" name="still_have_sheltie" type="radio" value="No"><label for="still_have_sheltie_no">&nbsp;No</label>
+                    </div>
+                  </div>
 
-                  <label for="homephone" class="required">Home phone</label>
-                  <input id="homephone" name="homephone" type="tel" pattern="[0-9]{10}" required>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="why_adopt" class="required">Why do you want a Shetland Sheepdog?</label>
+                      <textarea id="why_adopt" name="why_adopt" required></textarea>
+                    </div>
+                  </div>
 
-                  <label for="workphone">Work phone</label>
-                  <input id="workphone" name="workphone" type="tel" pattern="[0-9]{10}">
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="last_dog" class="required">What happened to your last dog?</label>
+                      <textarea id="last_dog" name="last_dog" required></textarea>
+                    </div>
+                  </div>
 
-                  <label for="occupation">Occupation</label>
-                  <input id="occupation" name="occupation" type="text">
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <label class="required">During the last five years, have you lost a pet (not through death)?</label>
+                      <input id="last_five_lost_pet_yes" name="last_five_lost_pet" type="radio" value="Yes" required><label for="last_five_lost_pet_yes">&nbsp;Yes</label><br>
+                      <input id="last_five_lost_pet_no" name="last_five_lost_pet" type="radio" value="No" required><label for="last_five_lost_pet_no">&nbsp;No</label>
+                    </div>
+                    <div class="large-6 columns">
+                      <label class="required">During the last five years, have you had one poisoned?</label>
+                      <input id="last_five_poison_yes" name="last_five_poison" type="radio" value="Yes" required><label for="last_five_poison_yes">&nbsp;Yes</label><br>
+                      <input id="last_five_poison_no" name="last_five_poison" type="radio" value="No" required><label for="last_five_poison_no">&nbsp;No</label>
+                    </div>
+                  </div>
 
-                  <label>Are you employed full-time?</label>
-                  <input id="fulltime_yes" name="fulltime" type="radio" value="Yes"><label for="fulltime_yes">&nbsp;Yes</label><br>
-                  <input id="fulltime_no" name="fulltime" type="radio" value="No"><label for="fulltime_no">&nbsp;No</label>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <label class="required">During the last five years, have you had an animal killed by a vehicle?</label>
+                      <input id="last_five_vehicle_yes" name="last_five_vehicle" type="radio" value="Yes" required><label for="last_five_vehicle_yes">&nbsp;Yes</label><br>
+                      <input id="last_five_vehicle_no" name="last_five_vehicle" type="radio" value="No" required><label for="last_five_vehicle_no">&nbsp;No</label>
+                    </div>
+                    <div class="large-6 columns">
+                      <label class="required">During the last five years, have you had an animal die due to disease?</label>
+                      <input id="last_five_disease_yes" name="last_five_disease" type="radio" value="Yes" required><label for="last_five_disease_yes">&nbsp;Yes</label><br>
+                      <input id="last_five_disease_no" name="last_five_disease" type="radio" value="No" required><label for="last_five_disease_no">&nbsp;No</label>
+                    </div>
+                  </div>
 
-                  <label for="why_adopt">Why do you want a Shetland Sheepdog?</label>
-                  <textarea id="why_adopt" name="why_adopt"></textarea>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="last_five_explain">If you answered yes to any of the the previous four questions, please explain.</label>
+                      <textarea id="last_five_explain" name="last_five_explain"></textarea>
+                    </div>
+                  </div>
 
-                  <label>Have you ever owned a Sheltie before?</label>
-                  <input id="owned_previously_yes" name="owned_previously" type="radio" value="Yes"><label for="owned_previously_yes">&nbsp;Yes</label><br>
-                  <input id="owned_previously_no" name="owned_previously" type="radio" value="No"><label for="owned_previously_no">&nbsp;No</label>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="purpose" class="required">For what purpose do you want this dog?</label>
+                      <textarea id="purpose" name="purpose" required></textarea>
+                    </div>
+                  </div>
 
-                  <label for="still_have_sheltie">And if so, do you still have that dog?</label>
-                  <input id="still_have_sheltie" name="still_have_sheltie" type="text">
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="other_animals">Do you have any other animals? (name, type, age, sex, neutered/spayed)</label>
+                      <textarea id="other_animals" name="other_animals"></textarea>
+                    </div>
+                  </div>
 
-                  <label for="last_dog">What happened to your last dog?</label>
-                  <textarea id="last_dog" name="last_dog"></textarea>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="household_members" class="required">Please list <strong>everyone</strong> who lives in your household and their age.</label>
+                      <textarea id="household_members" name="household_members" required></textarea>
+                    </div>
+                  </div>
 
-                  <label>During the last five years, have you lost a pet (not through death)?</label>
-                  <input id="last_five_lost_pet_yes" name="last_five_lost_pet" type="radio" value="Yes"><label for="last_five_lost_pet_yes">&nbsp;Yes</label><br>
-                  <input id="last_five_lost_pet_no" name="last_five_lost_pet" type="radio" value="No"><label for="last_five_lost_pet_no">&nbsp;No</label>
+                  <div class="row">
+                    <div class="large-4 columns">
+                      <label for="home_type" class="required">Which best describes your place of residence:</label>
+                      <select id="home_type" name="home_type" required>
+                        <option value="House" selected> House </option>
+                        <option value="Apartment"> Apartment </option>
+                        <option value="Condo"> Condo </option>
+                        <option value="Trailer"> Trailer </option>
+                      </select>
+                    </div>
+                    <div class="large-4 columns">
+                      <label class="required">Do you rent or own?</label>
+                      <input id="rent" name="rent_own" type="radio" value="Rent" required><label for="rent">&nbsp;Rent</label><br>
+                      <input id="own" name="rent_own" type="radio" value="Own" required><label for="own">&nbsp;Own</label>
+                    </div>
+                  </div>
 
-                  <label>During the last five years, have you had one poisoned?</label>
-                  <input id="last_five_poison_yes" name="last_five_poison" type="radio" value="Yes"><label for="last_five_poison_yes">&nbsp;Yes</label><br>
-                  <input id="last_five_poison_no" name="last_five_poison" type="radio" value="No"><label for="last_five_poison_no">&nbsp;No</label>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="landlord_permission">If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number)</label>
+                      <textarea id="landlord_permission" name="landlord_permission"></textarea>
+                    </div>
+                  </div>
 
-                  <label>During the last five years, have you had an animal killed by a vehicle?</label>
-                  <input id="last_five_vehicle_yes" name="last_five_vehicle" type="radio" value="Yes"><label for="last_five_vehicle_yes">&nbsp;Yes</label><br>
-                  <input id="last_five_vehicle_no" name="last_five_vehicle" type="radio" value="No"><label for="last_five_vehicle_no">&nbsp;No</label>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="yard_type" class="required">Do you have a yard and if so, is it fenced? (list type of fencing)</label>
+                      <textarea id="yard_type" name="yard_type" required></textarea>
+                    </div>
+                  </div>
 
-                  <label>During the last five years, have you had an animal die due to disease?</label>
-                  <input id="last_five_disease_yes" name="last_five_disease" type="radio" value="Yes"><label for="last_five_disease_yes">&nbsp;Yes</label><br>
-                  <input id="last_five_disease_no" name="last_five_disease" type="radio" value="No"><label for="last_five_disease_no">&nbsp;No</label>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="home_during_day" class="required">Do all family adults work and is someone home during the day? (Please explain)</label>
+                      <textarea id="home_during_day" name="home_during_day" required></textarea>
+                    </div>
+                  </div>
 
-                  <label for="last_five_explain">If you answered yes to any of the the previous four questions, please explain.</label>
-                  <textarea id="last_five_explain" name="last_five_explain"></textarea>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="indoors_outdoors" class="required">Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?</label>
+                      <textarea id="indoors_outdoors" name="indoors_outdoors" required></textarea>
+                    </div>
+                  </div>
 
-                  <label for="purpose">For what purpose do you want this dog?</label>
-                  <textarea id="purpose" name="purpose"></textarea>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <label>Do you have a sex preference?</label>
+                      <input id="sex_no" name="sex_preference" type="radio" value="No"><label for="sex_no">&nbsp;No</label><br>
+                      <input id="sex_male" name="sex_preference" type="radio" value="Male"><label for="sex_male">&nbsp;Yes, Male</label><br>
+                      <input id="sex_female" name="sex_preference" type="radio" value="Female"><label for="sex_female">&nbsp;Yes, Female</label>
+                    </div>
+                    <div class="large-6 columns">
+                      <label for="color_preference">Do you have a color preference? (If yes, please list first and second choices)</label>
+                      <textarea id="color_preference" name="color_preference"></textarea>
+                    </div>
+                  </div>
 
-                  <label for="other_animals">Do you have any other animals? (name, type, age, sex, neutered/spayed)</label>
-                  <textarea id="other_animals" name="other_animals"></textarea>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <label for="older_dog">Would you consider an older dog? To what age?</label>
+                      <textarea id="older_dog" name="older_dog"></textarea>
+                    </div>
+                    <div class="large-6 columns">
+                      <label for="size_preference">What size Sheltie do you prefer?</label>
+                      <textarea id="size_preference" name="size_preference"></textarea>
+                    </div>
+                  </div>
 
-                  <label for="household_members">Please list <strong>everyone</strong> who lives in your household and their age.</label>
-                  <textarea id="household_members" name="household_members"></textarea>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <label class="required">Are other members of your household aware that you are considering adopting a pet?</label>
+                      <input id="family_aware_yes" name="family_aware" type="radio" value="Yes" required><label for="family_aware_yes">&nbsp;Yes</label><br>
+                      <input id="family_aware_no" name="family_aware" type="radio" value="No" required><label for="family_aware_no">&nbsp;No</label>
+                    </div>
+                    <div class="large-6 columns">
+                      <label class="required">Are you prepared to assume the financial responsibilities of caring for an animal? (inoculations, heartworm preventative, veterinarian care, good quality food, licensing, etc.)</label>
+                      <input id="financial_yes" name="financial_responsibility" type="radio" value="Yes" required><label for="financial_yes">&nbsp;Yes</label><br>
+                      <input id="financial_no" name="financial_responsibility" type="radio" value="No" required><label for="financial_no">&nbsp;No</label>
+                    </div>
+                  </div>
 
-                  <label for="home_type">Do you live in a house, apartment, condo, or trailer?</label>
-                  <input id="home_type" name="home_type" type="text">
+                  <div class="row">
+                    <div class="large-4 columns">
+                      <label class="required">Are you planning to move in the near future?</label>
+                      <input id="moving_soon_yes" name="moving_soon" type="radio" value="Yes" required><label for="moving_soon_yes">&nbsp;Yes</label><br>
+                      <input id="moving_soon_no" name="moving_soon" type="radio" value="No" required><label for="moving_soon_no">&nbsp;No</label>
+                    </div>
+                    <div class="large-4 columns">
+                      <label class="required">Is anyone in your house allergic to animals?</label>
+                      <input id="allergic_yes" name="allergic" type="radio" value="Yes" required><label for="allergic_yes">&nbsp;Yes</label><br>
+                      <input id="allergic_no" name="allergic" type="radio" value="No" required><label for="allergic_no">&nbsp;No</label>
+                    </div>
+                    <div class="large-4 columns">
+                      <label class="required">Are you familiar with animal control regulations in your area?</label>
+                      <input id="acr_yes" name="animal_control_regulations" type="radio" value="Yes" required><label for="acr_yes">&nbsp;Yes</label><br>
+                      <input id="acr_no" name="animal_control_regulations" type="radio" value="No" required><label for="acr_no">&nbsp;No</label>
+                    </div>
+                  </div>
 
-                  <label>Do you rent or own?</label>
-                  <input id="rent" name="rent_own" type="radio" value="Rent"><label for="rent">&nbsp;Rent</label><br>
-                  <input id="own" name="rent_own" type="radio" value="Own"><label for="own">&nbsp;Own</label>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <label for="gift" class="required">Is this Sheltie going to be a gift? (If yes, for whom and do they know)</label>
+                      <textarea id="gift" name="gift" required></textarea>
+                    </div>
+                    <div class="large-6 columns">
+                      <label class="required">Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?</label>
+                      <input id="spayed_neutered_yes" name="spayed_neutered" type="radio" value="Yes" required><label for="spayed_neutered_yes">&nbsp;Yes</label><br>
+                      <input id="spayed_neutered_no" name="spayed_neutered" type="radio" value="No" required><label for="spayed_neutered_no">&nbsp;No</label>
+                    </div>
+                  </div>
 
-                  <label for="landlord_permission">If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number)</label>
-                  <textarea id="landlord_permission" name="landlord_permission"></textarea>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="getting_rid_of_dog" class="required">What circumstances, in your mind, justify getting rid of a dog?</label>
+                      <textarea id="getting_rid_of_dog" name="getting_rid_of_dog" required></textarea>
+                    </div>
+                  </div>
 
-                  <label for="yard_type">Do you have a yard and if so, is it fenced? (list type of fencing)</label>
-                  <textarea id="yard_type" name="yard_type"></textarea>
+                  <div class="row">
+                    <div class="large-6 columns">
+                      <label class="required">Are you willing to allow a Rescue representative to visit your home by appointment?</label>
+                      <input id="home_visit_yes" name="home_visit" type="radio" value="Yes" required><label for="home_visit_yes">&nbsp;Yes</label><br>
+                      <input id="home_visit_no" name="home_visit" type="radio" value="No" required><label for="home_visit_no">&nbsp;No</label>
+                    </div>
+                    <div class="large-6 columns">
+                      <label class="required">Do you accept that there will be an adoption fee for the adopted dog?</label>
+                      <input id="accept_fee_yes" name="accept_fee" type="radio" value="Yes" required><label for="accept_fee_yes">&nbsp;Yes</label><br>
+                      <input id="accept_fee_no" name="accept_fee" type="radio" value="No" required><label for="accept_fee_no">&nbsp;No</label>
+                    </div>
+                  </div>
 
-                  <label for="home_during_day">Do all family adults work and is someone home during the day? (Please explain)</label>
-                  <textarea id="home_during_day" name="home_during_day"></textarea>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="previous_vets" class="required">Please provide the name and number of any vets used in the past 5 years.</label>
+                      <textarea id="previous_vets" name="previous_vets" required></textarea>
+                    </div>
+                  </div>
 
-                  <label for="indoors_outdoors">Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?</label>
-                  <textarea id="indoors_outdoors" name="indoors_outdoors"></textarea>
-
-                  <label>Do you have a sex preference?</label>
-                  <input id="sex_no" name="sex_preference" type="radio" value="No"><label for="sex_no">&nbsp;No</label><br>
-                  <input id="sex_male" name="sex_preference" type="radio" value="Male"><label for="sex_male">&nbsp;Yes, Male</label><br>
-                  <input id="sex_female" name="sex_preference" type="radio" value="Female"><label for="sex_female">&nbsp;Yes, Female</label>
-
-                  <label for="color_preference">Do you have a color preference? (If yes, please list first and second choices)</label>
-                  <textarea id="color_preference" name="color_preference"></textarea>
-
-                  <label for="older_dog">Would you consider an older dog? To what age?</label>
-                  <textarea id="older_dog" name="older_dog"></textarea>
-
-                  <label for="size_preference">What size Sheltie do you prefer?</label>
-                  <textarea id="size_preference" name="size_preference"></textarea>
-
-                  <label>Are other members of your household aware that you are considering adopting a pet?</label>
-                  <input id="family_aware_yes" name="family_aware" type="radio" value="Yes"><label for="family_aware_yes">&nbsp;Yes</label><br>
-                  <input id="family_aware_no" name="family_aware" type="radio" value="No"><label for="family_aware_no">&nbsp;No</label>
-
-                  <label>Are you prepared to assume the financial responsibilities of caring for an animal? (inoculations, heartworm preventative, veterinarian care, good quality food, licensing, etc.)</label>
-                  <input id="financial_yes" name="financial_responsibility" type="radio" value="Yes"><label for="financial_yes">&nbsp;Yes</label><br>
-                  <input id="financial_no" name="financial_responsibility" type="radio" value="No"><label for="financial_no">&nbsp;No</label>
-
-                  <label>Are you planning to move in the near future?</label>
-                  <input id="moving_soon_yes" name="moving_soon" type="radio" value="Yes"><label for="moving_soon_yes">&nbsp;Yes</label><br>
-                  <input id="moving_soon_no" name="moving_soon" type="radio" value="No"><label for="moving_soon_no">&nbsp;No</label>
-
-                  <label>Is anyone in your house allergic to animals?</label>
-                  <input id="allergic_yes" name="allergic" type="radio" value="Yes"><label for="allergic_yes">&nbsp;Yes</label><br>
-                  <input id="allergic_no" name="allergic" type="radio" value="No"><label for="allergic_no">&nbsp;No</label>
-
-                  <label>Are you familiar with animal control regulations in your area?</label>
-                  <input id="acr_yes" name="animal_control_regulations" type="radio" value="Yes"><label for="acr_yes">&nbsp;Yes</label><br>
-                  <input id="acr_no" name="animal_control_regulations" type="radio" value="No"><label for="acr_no">&nbsp;No</label>
-
-                  <label for="gift">Is this Sheltie going to be a gift? (If yes, for whom and do they know)</label>
-                  <textarea id="gift" name="gift"></textarea>
-
-                  <label>Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?</label>
-                  <input id="spayed_neutered_yes" name="spayed_neutered" type="radio" value="Yes"><label for="spayed_neutered_yes">&nbsp;Yes</label><br>
-                  <input id="spayed_neutered_no" name="spayed_neutered" type="radio" value="No"><label for="spayed_neutered_no">&nbsp;No</label>
-
-                  <label for="getting_rid_of_dog">What circumstances, in your mind, justify getting rid of a dog?</label>
-                  <textarea id="getting_rid_of_dog" name="getting_rid_of_dog"></textarea>
-
-                  <label>Are you willing to allow a Rescue representative to visit your home by appointment?</label>
-                  <input id="home_visit_yes" name="home_visit" type="radio" value="Yes"><label for="home_visit_yes">&nbsp;Yes</label><br>
-                  <input id="home_visit_no" name="home_visit" type="radio" value="No"><label for="home_visit_no">&nbsp;No</label>
-
-                  <label for="hear_about_scsr">How did you hear about South Carolina Sheltie Rescue?</label>
-                  <textarea id="hear_about_scsr" name="hear_about_scsr"></textarea>
-
-                  <label>Do you accept that there will be an adoption fee for the adopted dog?</label>
-                  <input id="accept_fee_yes" name="accept_fee" type="radio" value="Yes"><label for="accept_fee_yes">&nbsp;Yes</label><br>
-                  <input id="accept_fee_no" name="accept_fee" type="radio" value="No"><label for="accept_fee_no">&nbsp;No</label>
-
-                  <label for="previous_vets">Please provide the name and number of any vets used in the past 5 years.</label>
-                  <textarea id="previous_vets" name="previous_vets"></textarea>
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="hear_about_scsr">How did you hear about South Carolina Sheltie Rescue?</label>
+                      <textarea id="hear_about_scsr" name="hear_about_scsr"></textarea>
+                    </div>
+                  </div>
 
                   <p>By submitting this form, I am attesting to the truthfulness of my answers. I understand that falsification of any of the above information will be grounds to disallow the adoption of a rescue Sheltie.</p>
                   <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. Thank you for considering a dog from South Carolina Sheltie Rescue. If you have any questions, or if we can be of assistance, please do not hesitate to <a href="mailto:amanda@southcarolinasheltierescue.com">email</a> us.</p>
