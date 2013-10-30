@@ -201,11 +201,6 @@
                     <div class="large-6 columns">
                       <label for="name" class="required">Name</label>
                       <input id="name" name="name" type="text" placeholder="John Doe" required autofocus>
-                      <!--
-                      <label for="name" class="error">Name</label>
-                      <input id="name" name="name" type="text" required autofocus>
-                      <small class="error">Invalid entry</small>
-                      -->
                     </div>
                     <div class="large-6 columns">
                       <label for="email" class="required">Email</label>

@@ -113,3 +113,14 @@ input[type=radio] {
   display: inline;
   }
 }
+
+ul.clearing-thumbs.clearing-feature {
+  float: left;
+}
+
+.pet-name {
+  text-transform: uppercase;
+  > span {
+    box-shadow: 1px 2px 4px;
+  }
+}

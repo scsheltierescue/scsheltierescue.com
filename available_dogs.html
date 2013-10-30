@@ -95,6 +95,7 @@
     <script src="js/foundation.min.js"></script>
     <script>
       var currentOffset = 0;
+      var maxOffset = 25;
       var opts = {
         lines: 13, // The number of lines to draw
         length: 20, // The length of each line
@@ -155,10 +156,15 @@
 
           $spinner.hide();
           spin_stop();
-          if(pets.length === 25) { // Pulled the maximum amount of pets
+          if(pets && pets.length === maxOffset) { // Pulled the maximum amount of pets
             $btnMore.removeClass("invisible");
           }
-        }, "json");
+
+          return true;
+        }, "json").then(function() {
+          $("#pets").addClass('panel');
+          $(document).foundation('clearing');
+        });
       }
 
       /*
@@ -170,24 +176,30 @@
         if(name === "Application") {
           return null;
         }
-        $(div).append("<h3>"+name+"</h3>");
+        $(div).append("<h2 class='pet-name'><span class='radius secondary label'>"+name+"</span></h2>");
         var desc = $("<div class='clearfix'>"+pet.description.$t+"</div>");
         if(pet.media.photos && pet.media.photos.photo.length > 0)
         {
-          var img = $("<img />")
-          .attr("src", pet.media.photos.photo[0].$t)
-          .attr("alt", name)
-          .attr("align", "left")
-          .css({
-            border:"solid 2px gainsboro",
-            padding:"3px",
-            margin:"5px",
-            width:"200px"
+          var photos = pet.media.photos.photo,
+            ul = $('<ul/>', {class: 'clearing-thumbs clearing-feature', 'data-clearing': ''}),
+            li, anchor, img;
+
+          $(photos).each(function(i, photo) {
+            if(photo['@size'] == "x") {
+              li = (photo['@id'] == "1") ? $('<li/>', {class: 'clearing-featured-img'}) : $('<li/>');
+              anchor = $('<a/>', {href: photo.$t});
+              img = $('<img/>', {src: photo.$t}).attr('alt', name + photo['@id']).css({
+                  border:"solid 2px gainsboro",
+                  padding:"3px",
+                  margin:"5px",
+                  width:"200px"
+                });
+              ul.append(li.append(anchor.append(img)));
+            }
           });
-          $(desc).prepend(img);
+          $(desc).prepend(ul);
         }
-        $("a", desc).attr("target", "_blank");
-        $(div).append(desc).append("<hr />").css({padding: "4px", margin:"3px"});
+        $(div).append(desc).css({padding: "4px", margin:"3px"});
         return div;
       }
 
@@ -202,38 +214,7 @@
       });
     </script>
     <script>
-      $(document)
-        .foundation('dropdown topbar')
-        .foundation('orbit', {
-          animation: 'fade',
-          timer_speed: 5000,
-          pause_on_hover: true,
-          resume_on_mouseout: true,
-          animation_speed: 500,
-          stack_on_small: true,
-          navigation_arrows: true,
-          slide_number: true,
-          container_class: 'orbit-container',
-          stack_on_small_class: 'orbit-stack-on-small',
-          next_class: 'orbit-next',
-          prev_class: 'orbit-prev',
-          timer_container_class: 'orbit-timer',
-          timer_paused_class: 'paused',
-          timer_progress_class: 'orbit-progress',
-          slides_container_class: 'orbit-slides-container',
-          bullets_container_class: 'orbit-bullets',
-          bullets_active_class: 'active',
-          slide_number_class: 'orbit-slide-number',
-          caption_class: 'orbit-caption',
-          active_slide_class: 'active',
-          orbit_transition_class: 'orbit-transitioning',
-          bullets: true,
-          timer: true,
-          next_on_click: false,
-          variable_height: false,
-          before_slide_change: function(){},
-          after_slide_change: function(){}
-        });
+      $(document).foundation('dropdown topbar');
     </script>
   </body>
 </html>
