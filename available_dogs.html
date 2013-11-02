@@ -173,17 +173,18 @@
       function formatPet(pet) {
         var div = $("<div class='clearfix'></div>"),
           name = pet.name.$t,
-          desc = pet.description.$t;
+          desc = pet.description.$t.trim();
 
         if(name === "Application") {
           return null;
         }
         $(div).append("<h2 class='pet-name'><span class='radius secondary label'>"+name+"</span></h2>");
 
-        if (desc.match("^<div>") && desc.match("^</div>")) {
-           desc = $("<div class='clearfix'>"+pet.description.$t+"</div>");
+        if (desc.match("^<div>") && desc.match("</div>$")) {
+          desc = desc.replace(/^<div>/,"<p>");
+          desc = desc.replace(/<\/div>$/,"</p>");
         }
-        desc = $("<div class='clearfix'>"+pet.description.$t+"</div>");
+        desc = $("<div class='clearfix'>"+desc+"</div>");
 
         if(pet.media.photos && pet.media.photos.photo.length > 0)
         {
