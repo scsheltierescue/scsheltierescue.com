@@ -69,6 +69,7 @@
 
               $name = $_POST['name'];
               $email = $_POST['email'];
+              $street = $_POST['street'];
               $city = $_POST['city'];
               $state = $_POST['state'];
               $zip = $_POST['zip'];
@@ -136,7 +137,7 @@
                   //Construct the message body
                   $message_alt = "1.  Name: ".$name."\n"
                     ."2.  Email: ".$email."\n"
-                    ."3.  Address: ".$city.", ".$state." ".$zip."\n"
+                    ."3.  Address: ".$street." ".$city.", ".$state." ".$zip."\n"
                     ."4.  Phone(H): ".$homephone."\n"
                     ."5.  Phone(W): ".$workphone."\n"
                     ."6.  Occupation: ".$occupation."\n"
@@ -205,6 +206,13 @@
                     <div class="large-6 columns">
                       <label for="email" class="required">Email</label>
                       <input id="email" name="email" type="email" placeholder="john.doe@email.com" required>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="street" class="required">Street Address</label>
+                      <input id="street" name="street" type="text" placeholder="123 Main St" required>
                     </div>
                   </div>
 
