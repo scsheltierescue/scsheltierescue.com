@@ -81,7 +81,6 @@
               $still_have_sheltie = $_POST['still_have_sheltie'];
               $last_dog = $_POST['last_dog'];
               $last_five_lost_pet = $_POST['last_five_lost_pet'];
-              $last_five_poison = $_POST['last_five_poison'];
               $last_five_vehicle = $_POST['last_five_vehicle'];
               $last_five_disease = $_POST['last_five_disease'];
               $last_five_explain = $_POST['last_five_explain'];
@@ -145,28 +144,27 @@
                     ."8.  Have you ever owned a Sheltie before?: ".$owned_previously."\n"
                     ."9.  And if so, do you still have that dog?: \n".$still_have_sheltie."\n"
                     ."10. What happened to your last dog?: \n".$last_dog."\n"
-                    ."11. During the last five years, have you lost a pet (not through death)?: ".$last_five_lost_pet."\n"
-                    ."12. During the last five years, have you had one poisoned?: ".$last_five_poison."\n"
-                    ."13. During the last five years, have you had an animal killed by a vehicle?: ".$last_five_vehicle."\n"
-                    ."14. During the last five years, have you had an animal die due to disease?: ".$last_five_disease."\n"
-                    ."15. If you answered yes to any of the the previous four questions, please explain: \n".$last_five_explain."\n"
-                    ."16. Do you have any other animals? (name, type, age, sex, neutered/spayed): \n".$other_animals."\n"
-                    ."17. Please list everyone who lives in your household and their age.: \n".$household_members."\n"
-                    ."18. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
-                    ."19. Do you rent or own?: ".$rent_own."\n"
-                    ."20. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
-                    ."21. Do you have a yard and if so, is it fenced? (list type of fencing): \n".$yard_type."\n"
-                    ."22. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
-                    ."23. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
-                    ."24. Do you have a sex preference?: ".$sex_preference."\n"
-                    ."25. Would you consider an older dog? To what age?: \n".$older_dog."\n"
-                    ."26. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
-                    ."27. Are you planning to move in the near future?: ".$moving_soon."\n"
-                    ."28. Is anyone in your house allergic to animals?: ".$allergic."\n"
-                    ."29. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
-                    ."30. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
-                    ."31. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
-                    ."32. Please provide the name and number of any vets used in the past 5 years.: \n".$previous_vets;
+                    ."11. During the last five years, have you had a pet become lost or stolen?: ".$last_five_lost_pet."\n"
+                    ."12. During the last five years, have you had an animal killed by a vehicle?: ".$last_five_vehicle."\n"
+                    ."13. During the last five years, have you had an animal die due to disease?: ".$last_five_disease."\n"
+                    ."14. If you answered yes to any of the the previous three questions, please explain: \n".$last_five_explain."\n"
+                    ."15. Do you have any other animals? (name, type, age, sex, neutered/spayed): \n".$other_animals."\n"
+                    ."16. Please list everyone (including yourself) who lives in your household and their age.: \n".$household_members."\n"
+                    ."17. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
+                    ."18. Do you rent or own?: ".$rent_own."\n"
+                    ."19. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
+                    ."20. Do you have a yard and if so, is it fenced? (list type of fencing): \n".$yard_type."\n"
+                    ."21. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
+                    ."22. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
+                    ."23. Do you have a sex preference?: ".$sex_preference."\n"
+                    ."24. Would you consider an older dog? To what age?: \n".$older_dog."\n"
+                    ."25. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
+                    ."26. Are you planning to move in the near future?: ".$moving_soon."\n"
+                    ."27. Is anyone in your house allergic to animals?: ".$allergic."\n"
+                    ."28. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
+                    ."29. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
+                    ."30. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
+                    ."31. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets;
                   //Construct the HTML message body
                   $message_html = str_replace("\n", "<br>", $message_alt);
                   //Set the body text
@@ -272,25 +270,17 @@
                   </div>
 
                   <div class="row">
-                    <div class="large-6 columns">
-                      <label class="required">During the last five years, have you lost a pet (not through death)?</label>
+                    <div class="large-4 columns">
+                      <label class="required">During the last five years, have you had a pet become lost or stolen?</label>
                       <input id="last_five_lost_pet_yes" name="last_five_lost_pet" type="radio" value="Yes" required><label for="last_five_lost_pet_yes">&nbsp;Yes</label><br>
                       <input id="last_five_lost_pet_no" name="last_five_lost_pet" type="radio" value="No" required><label for="last_five_lost_pet_no">&nbsp;No</label>
                     </div>
-                    <div class="large-6 columns">
-                      <label class="required">During the last five years, have you had one poisoned?</label>
-                      <input id="last_five_poison_yes" name="last_five_poison" type="radio" value="Yes" required><label for="last_five_poison_yes">&nbsp;Yes</label><br>
-                      <input id="last_five_poison_no" name="last_five_poison" type="radio" value="No" required><label for="last_five_poison_no">&nbsp;No</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="large-6 columns">
+                    <div class="large-4 columns">
                       <label class="required">During the last five years, have you had an animal killed by a vehicle?</label>
                       <input id="last_five_vehicle_yes" name="last_five_vehicle" type="radio" value="Yes" required><label for="last_five_vehicle_yes">&nbsp;Yes</label><br>
                       <input id="last_five_vehicle_no" name="last_five_vehicle" type="radio" value="No" required><label for="last_five_vehicle_no">&nbsp;No</label>
                     </div>
-                    <div class="large-6 columns">
+                    <div class="large-4 columns">
                       <label class="required">During the last five years, have you had an animal die due to disease?</label>
                       <input id="last_five_disease_yes" name="last_five_disease" type="radio" value="Yes" required><label for="last_five_disease_yes">&nbsp;Yes</label><br>
                       <input id="last_five_disease_no" name="last_five_disease" type="radio" value="No" required><label for="last_five_disease_no">&nbsp;No</label>
@@ -299,7 +289,7 @@
 
                   <div class="row">
                     <div class="large-12 columns">
-                      <label for="last_five_explain">If you answered yes to any of the the previous four questions, please explain.</label>
+                      <label for="last_five_explain">If you answered yes to any of the the previous three questions, please explain.</label>
                       <textarea id="last_five_explain" name="last_five_explain"></textarea>
                     </div>
                   </div>
@@ -320,7 +310,7 @@
 
                   <div class="row">
                     <div class="large-12 columns">
-                      <label for="household_members" class="required">Please list <strong>everyone</strong> who lives in your household and their age.</label>
+                      <label for="household_members" class="required">Please list <strong>everyone (including yourself)</strong> who lives in your household and their age:</label>
                       <textarea id="household_members" name="household_members" required></textarea>
                     </div>
                   </div>

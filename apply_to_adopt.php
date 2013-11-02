@@ -77,12 +77,12 @@
               $workphone = $_POST['workphone'];
               $occupation = $_POST['occupation'];
               $fulltime = $_POST['fulltime'];
+              $specific_dog_name = $_POST['specific_dog_name'];
               $why_adopt = $_POST['why_adopt'];
               $owned_previously = $_POST['owned_previously'];
               $still_have_sheltie = $_POST['still_have_sheltie'];
               $last_dog = $_POST['last_dog'];
               $last_five_lost_pet = $_POST['last_five_lost_pet'];
-              $last_five_poison = $_POST['last_five_poison'];
               $last_five_vehicle = $_POST['last_five_vehicle'];
               $last_five_disease = $_POST['last_five_disease'];
               $last_five_explain = $_POST['last_five_explain'];
@@ -151,18 +151,18 @@
                     ."5.  Phone(W): ".$workphone."\n"
                     ."6.  Occupation: ".$occupation."\n"
                     ."7.  Full-Time: ".$fulltime."\n"
-                    ."8.  Why do you want a Shetland Sheepdog?: \n".$why_adopt."\n"
-                    ."9.  Have you ever owned a Sheltie before?: ".$owned_previously."\n"
-                    ."10. And if so, do you still have that dog?: \n".$still_have_sheltie."\n"
-                    ."11. What happened to your last dog?: \n".$last_dog."\n"
-                    ."12. During the last five years, have you lost a pet (not through death)?: ".$last_five_lost_pet."\n"
-                    ."13. During the last five years, have you had one poisoned?: ".$last_five_poison."\n"
+                    ."8.  If you are applying to adopt a specific dog, please list the dog's name: ".$specific_dog_name."\n"
+                    ."9.  Why do you want a Shetland Sheepdog?: \n".$why_adopt."\n"
+                    ."10. Have you ever owned a Sheltie before?: ".$owned_previously."\n"
+                    ."11. And if so, do you still have that dog?: \n".$still_have_sheltie."\n"
+                    ."12. What happened to your last dog?: \n".$last_dog."\n"
+                    ."13. During the last five years, have you had a pet become lost or stolen?: ".$last_five_lost_pet."\n"
                     ."14. During the last five years, have you had an animal killed by a vehicle?: ".$last_five_vehicle."\n"
                     ."15. During the last five years, have you had an animal die due to disease?: ".$last_five_disease."\n"
-                    ."16. If you answered yes to any of the the previous four questions, please explain: \n".$last_five_explain."\n"
+                    ."16. If you answered yes to any of the the previous three questions, please explain: \n".$last_five_explain."\n"
                     ."17. For what purpose do you want this dog?: \n".$purpose."\n"
                     ."18. Do you have any other animals? (name, type, age, sex, neutered/spayed): \n".$other_animals."\n"
-                    ."19. Please list everyone who lives in your household and their age.: \n".$household_members."\n"
+                    ."19. Please list everyone (including yourself) who lives in your household and their age.: \n".$household_members."\n"
                     ."20. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
                     ."21. Do you rent or own?: ".$rent_own."\n"
                     ."22. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
@@ -174,17 +174,17 @@
                     ."28. Would you consider an older dog? To what age?: \n".$older_dog."\n"
                     ."29. What size Sheltie do you prefer?: \n".$size_preference."\n"
                     ."30. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
-                    ."31. Are you prepared to assume the financial responsibilities of caring for an animal? (inoculations, heartworm preventative, veterinarian care, good quality food, licensing, etc.): ".$financial_responsibility."\n"
+                    ."31. Are you prepared to assume the financial responsibilities of caring for an animal? (vaccines, heartworm preventative, veterinarian care, good quality food, licensing, etc.): ".$financial_responsibility."\n"
                     ."32. Are you planning to move in the near future?: ".$moving_soon."\n"
                     ."33. Is anyone in your house allergic to animals?: ".$allergic."\n"
                     ."34. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
-                    ."35. Is this Sheltie going to be a gift? (If yes, for whom and do they know): \n".$gift."\n"
+                    ."35. Is this Sheltie going to be a gift? For whom and do they know?: \n".$gift."\n"
                     ."36. Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?: ".$spayed_neutered."\n"
                     ."37. What circumstances, in your mind, justify getting rid of a dog?: \n".$getting_rid_of_dog."\n"
                     ."38. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
                     ."39. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
                     ."40. Do you accept that there will be an adoption fee for the adopted dog?: ".$accept_fee."\n"
-                    ."41. Please provide the name and number of any vets used in the past 5 years.: \n".$previous_vets;
+                    ."41. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets;
                   //Construct the HTML message body
                   $message_html = str_replace("\n", "<br>", $message_alt);
                   //Set the body text
@@ -216,6 +216,9 @@
 
               <div class="row">
                 <div class="large-12 medium-12 small-12 columns">
+
+                  <p><strong>Please read through the <a href="adoption_requirements.html">Adoption Requirements</a> completely before filling out the application!</strong></p>
+
                   <div class="row">
                     <div class="large-6 columns">
                       <label for="name" class="required">Name</label>
@@ -284,6 +287,13 @@
 
                   <div class="row">
                     <div class="large-12 columns">
+                      <label for="specific_dog_name">If you are applying to adopt a specific dog, please list the dog's name:</label>
+                      <input id="specific_dog_name" name="specific_dog_name" type="text"></input>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
                       <label for="why_adopt" class="required">Why do you want a Shetland Sheepdog?</label>
                       <textarea id="why_adopt" name="why_adopt" required></textarea>
                     </div>
@@ -297,25 +307,17 @@
                   </div>
 
                   <div class="row">
-                    <div class="large-6 columns">
-                      <label class="required">During the last five years, have you lost a pet (not through death)?</label>
+                    <div class="large-4 columns">
+                      <label class="required">During the last five years, have you had a pet become lost or stolen?</label>
                       <input id="last_five_lost_pet_yes" name="last_five_lost_pet" type="radio" value="Yes" required><label for="last_five_lost_pet_yes">&nbsp;Yes</label><br>
                       <input id="last_five_lost_pet_no" name="last_five_lost_pet" type="radio" value="No" required><label for="last_five_lost_pet_no">&nbsp;No</label>
                     </div>
-                    <div class="large-6 columns">
-                      <label class="required">During the last five years, have you had one poisoned?</label>
-                      <input id="last_five_poison_yes" name="last_five_poison" type="radio" value="Yes" required><label for="last_five_poison_yes">&nbsp;Yes</label><br>
-                      <input id="last_five_poison_no" name="last_five_poison" type="radio" value="No" required><label for="last_five_poison_no">&nbsp;No</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="large-6 columns">
+                    <div class="large-4 columns">
                       <label class="required">During the last five years, have you had an animal killed by a vehicle?</label>
                       <input id="last_five_vehicle_yes" name="last_five_vehicle" type="radio" value="Yes" required><label for="last_five_vehicle_yes">&nbsp;Yes</label><br>
                       <input id="last_five_vehicle_no" name="last_five_vehicle" type="radio" value="No" required><label for="last_five_vehicle_no">&nbsp;No</label>
                     </div>
-                    <div class="large-6 columns">
+                    <div class="large-4 columns">
                       <label class="required">During the last five years, have you had an animal die due to disease?</label>
                       <input id="last_five_disease_yes" name="last_five_disease" type="radio" value="Yes" required><label for="last_five_disease_yes">&nbsp;Yes</label><br>
                       <input id="last_five_disease_no" name="last_five_disease" type="radio" value="No" required><label for="last_five_disease_no">&nbsp;No</label>
@@ -324,7 +326,7 @@
 
                   <div class="row">
                     <div class="large-12 columns">
-                      <label for="last_five_explain">If you answered yes to any of the the previous four questions, please explain.</label>
+                      <label for="last_five_explain">If you answered yes to any of the the previous three questions, please explain.</label>
                       <textarea id="last_five_explain" name="last_five_explain"></textarea>
                     </div>
                   </div>
@@ -345,7 +347,7 @@
 
                   <div class="row">
                     <div class="large-12 columns">
-                      <label for="household_members" class="required">Please list <strong>everyone</strong> who lives in your household and their age.</label>
+                      <label for="household_members" class="required">Please list <strong>everyone (including yourself)</strong> who lives in your household and their age.</label>
                       <textarea id="household_members" name="household_members" required></textarea>
                     </div>
                   </div>
@@ -426,7 +428,7 @@
                       <input id="family_aware_no" name="family_aware" type="radio" value="No" required><label for="family_aware_no">&nbsp;No</label>
                     </div>
                     <div class="large-6 columns">
-                      <label class="required">Are you prepared to assume the financial responsibilities of caring for an animal? (inoculations, heartworm preventative, veterinarian care, good quality food, licensing, etc.)</label>
+                      <label class="required">Are you prepared to assume the financial responsibilities of caring for an animal? (vaccines, heartworm preventative, veterinarian care, good quality food, licensing, etc.)</label>
                       <input id="financial_yes" name="financial_responsibility" type="radio" value="Yes" required><label for="financial_yes">&nbsp;Yes</label><br>
                       <input id="financial_no" name="financial_responsibility" type="radio" value="No" required><label for="financial_no">&nbsp;No</label>
                     </div>
@@ -452,7 +454,7 @@
 
                   <div class="row">
                     <div class="large-6 columns">
-                      <label for="gift" class="required">Is this Sheltie going to be a gift? (If yes, for whom and do they know)</label>
+                      <label for="gift" class="required">Is this Sheltie going to be a gift? For whom and do they know?</label>
                       <textarea id="gift" name="gift" required></textarea>
                     </div>
                     <div class="large-6 columns">
@@ -484,7 +486,7 @@
 
                   <div class="row">
                     <div class="large-12 columns">
-                      <label for="previous_vets" class="required">Please provide the name and number of any vets used in the past 5 years.</label>
+                      <label for="previous_vets" class="required">Please provide the name and phone number of any vets used in the past 5 years.</label>
                       <textarea id="previous_vets" name="previous_vets" required></textarea>
                     </div>
                   </div>
