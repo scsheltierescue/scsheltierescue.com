@@ -7,7 +7,7 @@
     <title>Available Dogs</title>
     <meta name="description" content="List of SC Sheltie Rescue dogs available for adoption.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/main.20131029.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/main.20131103.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
@@ -79,7 +79,7 @@
           <span class="name">SC Sheltie Rescue</span><br/>
           <span class="po-box">P.O. Box 11414</span><br/>
           <span class="city-state-zip">Columbia, SC 29211</span><br/>
-          <span class="tel">803.920.0644</span>
+          <span class="tel"><a href="tel:+18039200644">803.920.0644</a></span>
         </p>
       </section>
       <section id="copyright" class="copyright">
@@ -162,7 +162,6 @@
 
           return true;
         }, "json").then(function() {
-          $("#pets").addClass('panel');
           $(document).foundation('clearing');
         });
       }
@@ -171,14 +170,50 @@
        * Format each pet HTML block.
        */
       function formatPet(pet) {
-        var div = $("<div class='clearfix'></div>"),
+        var div = $("<div class='clearfix panel'></div>"),
+          headerDiv = $("<div class='clearfix'></div>"),
           name = pet.name.$t,
-          desc = pet.description.$t.trim();
+          desc = pet.description.$t.trim(),
+          first = true;
 
         if(name === "Application") {
           return null;
         }
-        $(div).append("<h2 class='pet-name'><span class='radius secondary label'>"+name+"</span></h2>");
+
+        $(headerDiv).append("<h2 class='pet-name'><span class='radius label'>"+name+"</span></h2>");
+        ul = $('<ul/>', {class: 'options'});
+        $(pet.options.option).each(function(i, option) {
+          var listchild;
+          li = $('<li/>');
+          switch (option.$t) {
+            case "altered":
+              if(pet.sex.$t === "M") {
+                listchild = $('<span/>', {text: "Neutered: "});
+              } else if(pet.sex.$t === "F") {
+                listchild = $('<span/>', {text: "Spayed: "});
+              } else {
+                listchild = $('<span/>', {text: "Spayed/Neutered: "});
+              }
+              listchild.append($('<span/>', {class: "icon-checkmark"}));
+              break;
+            case "hasShots":
+              listchild = $('<span/>', {text: "Shots Current: "});
+              listchild.append($('<span/>', {class: "icon-checkmark"}));
+              break;
+            case "housebroken":
+              listchild = $('<span/>', {text: "Housebroken: "});
+              listchild.append($('<span/>', {class: "icon-checkmark"}));
+              break;
+            case "noKids":
+              listchild = $('<strong/>', {text: "No Kids"});
+              break;
+            case "noCats":
+              listchild = $('<strong/>', {text: "No Cats"});
+              break;
+          }
+          ul.append(li.append(listchild));
+        });
+        $(div).append(headerDiv.append(ul));
 
         if (desc.match("^<div>") && desc.match("</div>$")) {
           desc = desc.replace(/^<div>/,"<p>");
@@ -194,7 +229,8 @@
 
           $(photos).each(function(i, photo) {
             if(photo['@size'] == "x") {
-              li = (photo['@id'] == "1") ? $('<li/>', {class: 'clearing-featured-img'}) : $('<li/>');
+              li = (first) ? $('<li/>', {class: 'clearing-featured-img'}) : $('<li/>');
+              first = false;
               anchor = $('<a/>', {href: photo.$t});
               img = $('<img/>', {src: photo.$t}).attr('alt', name + photo['@id']).css({
                   border:"solid 2px gainsboro",
@@ -205,9 +241,11 @@
               ul.append(li.append(anchor.append(img)));
             }
           });
+          first = true;
           $(desc).prepend(ul);
         }
-        $(div).append(desc).css({padding: "4px", margin:"3px"});
+        $(div).append(desc).css({padding: "4px", margin: "3px 3px 20px 3px"});
+
         return div;
       }
 

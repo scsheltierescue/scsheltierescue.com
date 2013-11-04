@@ -42,6 +42,16 @@ body {
   margin: 0 auto;
 }
 
+.events.main-content > .event-header {
+  &:before {
+    display: block;
+    content: " ";
+    margin-top: -$topbar-height;
+    height: $topbar-height;
+    visibility: hidden;
+  }
+}
+
 .main-footer {
   overflow: hidden;
   height: $footer-height;
@@ -121,6 +131,14 @@ ul.clearing-thumbs.clearing-feature {
 .pet-name {
   text-transform: uppercase;
   > span {
-    box-shadow: 1px 2px 4px;
+    box-shadow: inset 0px 0px 10px $topbar-bg-color;
   }
+}
+
+.options {
+  list-style: none;
+}
+
+.upcoming-events-list > li {
+  list-style: none;
 }

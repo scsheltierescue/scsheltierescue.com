@@ -127,9 +127,9 @@ $alert-color: #c60f13;
 // Media Queries
 
 $extra-small-screen: 475px;
-// $small-screen: 768px;
-// $medium-screen: 1280px;
-// $large-screen: 1440px;
+$small-screen: 768px;
+$medium-screen: 1280px;
+$large-screen: 1440px;
 
 // $screen: "only screen";
 // $small: "only screen and (min-width: #{$small-screen})";
@@ -186,7 +186,7 @@ $extra-small-screen: 475px;
 // Control header font sizes
 
 // $h1-font-size: em-calc(44);
-// $h2-font-size: em-calc(37);
+$h2-font-size: em-calc(37);
 // $h3-font-size: em-calc(27);
 // $h4-font-size: em-calc(23);
 // $h5-font-size: em-calc(18);
@@ -1262,7 +1262,7 @@ $topbar-bg-color: #111;
 
 // Height and margin
 
-// $topbar-height: 45px;
+$topbar-height: 45px;
 // $topbar-margin-bottom: 0;
 
 // Control Input height for top bar
