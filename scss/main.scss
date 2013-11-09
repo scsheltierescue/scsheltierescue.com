@@ -91,15 +91,19 @@ body {
 }
 
 .pad-left {
-  padding-left: 40px;
+  padding-left: em-calc(40);
 }
 
 .no-margin-bottom {
   margin-bottom: 0;
 }
 
+.margin-bottom {
+  margin-bottom: em-calc(20);
+}
+
 .margin-top {
-  margin-top: 1em;
+  margin-top: em-calc(20);
 }
 
 .text-center {
