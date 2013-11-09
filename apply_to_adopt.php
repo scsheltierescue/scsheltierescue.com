@@ -24,9 +24,10 @@
     <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
     <meta name="msapplication-square70x70logo" content="/mstile-70x70.png" />
     <meta name="msapplication-square150x150logo" content="/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
 
-    <link rel="stylesheet" href="css/main.20131104.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/main.20131109.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
