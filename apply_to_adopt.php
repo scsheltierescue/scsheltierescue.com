@@ -113,6 +113,7 @@
               $rent_own = $_POST['rent_own'];
               $landlord_permission = $_POST['landlord_permission'];
               $yard_type = $_POST['yard_type'];
+              $not_fenced_desc = $_POST['not_fenced_desc'];
               $home_during_day = $_POST['home_during_day'];
               $indoors_outdoors = $_POST['indoors_outdoors'];
               $sex_preference = $_POST['sex_preference'];
@@ -187,24 +188,25 @@
                     ."21. Do you rent or own?: ".$rent_own."\n"
                     ."22. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
                     ."23. Do you have a yard and if so, is it fenced? (list type of fencing): \n".$yard_type."\n"
-                    ."24. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
-                    ."25. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
-                    ."26. Do you have a sex preference?: ".$sex_preference."\n"
-                    ."27. Do you have a color preference? (If yes, please list first and second choices): \n".$color_preference."\n"
-                    ."28. Would you consider an older dog? To what age?: \n".$older_dog."\n"
-                    ."29. What size Sheltie do you prefer?: \n".$size_preference."\n"
-                    ."30. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
-                    ."31. Are you prepared to assume the financial responsibilities of caring for an animal? (vaccines, heartworm preventative, veterinarian care, good quality food, licensing, etc.): ".$financial_responsibility."\n"
-                    ."32. Are you planning to move in the near future?: ".$moving_soon."\n"
-                    ."33. Is anyone in your house allergic to animals?: ".$allergic."\n"
-                    ."34. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
-                    ."35. Is this Sheltie going to be a gift? For whom and do they know?: \n".$gift."\n"
-                    ."36. Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?: ".$spayed_neutered."\n"
-                    ."37. What circumstances, in your mind, justify getting rid of a dog?: \n".$getting_rid_of_dog."\n"
-                    ."38. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
-                    ."39. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
-                    ."40. Do you accept that there will be an adoption fee for the adopted dog?: ".$accept_fee."\n"
-                    ."41. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets;
+                    ."24. If your yard is not fenced, please describe how you will address an adopted dog's bathroom/exercise needs. \n".$not_fenced_desc."\n"
+                    ."25. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
+                    ."26. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
+                    ."27. Do you have a sex preference?: ".$sex_preference."\n"
+                    ."28. Do you have a color preference? (If yes, please list first and second choices): \n".$color_preference."\n"
+                    ."29. Would you consider an older dog? To what age?: \n".$older_dog."\n"
+                    ."30. What size Sheltie do you prefer?: \n".$size_preference."\n"
+                    ."31. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
+                    ."32. Are you prepared to assume the financial responsibilities of caring for an animal? (vaccines, heartworm preventative, veterinarian care, good quality food, licensing, etc.): ".$financial_responsibility."\n"
+                    ."33. Are you planning to move in the near future?: ".$moving_soon."\n"
+                    ."34. Is anyone in your house allergic to animals?: ".$allergic."\n"
+                    ."35. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
+                    ."36. Is this Sheltie going to be a gift? For whom and do they know?: \n".$gift."\n"
+                    ."37. Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?: ".$spayed_neutered."\n"
+                    ."38. What circumstances, in your mind, justify getting rid of a dog?: \n".$getting_rid_of_dog."\n"
+                    ."39. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
+                    ."40. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
+                    ."41. Do you accept that there will be an adoption fee for the adopted dog?: ".$accept_fee."\n"
+                    ."42. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets;
                   //Construct the HTML message body
                   $message_html = str_replace("\n", "<br>", $message_alt);
                   //Set the body text
@@ -400,6 +402,13 @@
                     <div class="large-12 columns">
                       <label for="yard_type" class="required">Do you have a yard and if so, is it fenced? (list type of fencing)</label>
                       <textarea id="yard_type" name="yard_type" required></textarea>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="not_fenced_desc">If your yard is not fenced, please describe how you will address an adopted dog's bathroom/exercise needs.</label>
+                      <textarea id="not_fenced_desc" name="not_fenced_desc"></textarea>
                     </div>
                   </div>
 

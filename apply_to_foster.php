@@ -110,6 +110,7 @@
               $rent_own = $_POST['rent_own'];
               $landlord_permission = $_POST['landlord_permission'];
               $yard_type = $_POST['yard_type'];
+              $not_fenced_desc = $_POST['not_fenced_desc'];
               $home_during_day = $_POST['home_during_day'];
               $indoors_outdoors = $_POST['indoors_outdoors'];
               $sex_preference = $_POST['sex_preference'];
@@ -174,17 +175,18 @@
                     ."18. Do you rent or own?: ".$rent_own."\n"
                     ."19. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
                     ."20. Do you have a yard and if so, is it fenced? (list type of fencing): \n".$yard_type."\n"
-                    ."21. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
-                    ."22. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
-                    ."23. Do you have a sex preference?: ".$sex_preference."\n"
-                    ."24. Would you consider an older dog? To what age?: \n".$older_dog."\n"
-                    ."25. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
-                    ."26. Are you planning to move in the near future?: ".$moving_soon."\n"
-                    ."27. Is anyone in your house allergic to animals?: ".$allergic."\n"
-                    ."28. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
-                    ."29. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
-                    ."30. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
-                    ."31. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets;
+                    ."21. If your yard is not fenced, please describe how you will address an adopted dog's bathroom/exercise needs. \n".$not_fenced_desc."\n"
+                    ."22. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
+                    ."23. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
+                    ."24. Do you have a sex preference?: ".$sex_preference."\n"
+                    ."25. Would you consider an older dog? To what age?: \n".$older_dog."\n"
+                    ."26. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
+                    ."27. Are you planning to move in the near future?: ".$moving_soon."\n"
+                    ."28. Is anyone in your house allergic to animals?: ".$allergic."\n"
+                    ."29. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
+                    ."30. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
+                    ."31. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
+                    ."32. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets;
                   //Construct the HTML message body
                   $message_html = str_replace("\n", "<br>", $message_alt);
                   //Set the body text
@@ -363,6 +365,13 @@
                     <div class="large-12 columns">
                       <label for="yard_type" class="required">Do you have a yard and if so, is it fenced? (list type of fencing)</label>
                       <textarea id="yard_type" name="yard_type" required></textarea>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="not_fenced_desc">If your yard is not fenced, please describe how you will address an adopted dog's bathroom/exercise needs.</label>
+                      <textarea id="not_fenced_desc" name="not_fenced_desc"></textarea>
                     </div>
                   </div>
 
