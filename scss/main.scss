@@ -42,7 +42,7 @@ body {
   margin: 0 auto;
 }
 
-.events.main-content > .event-header {
+.events.main-content .event-header {
   &:before {
     display: block;
     content: " ";
