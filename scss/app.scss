@@ -1,21 +1,47 @@
+@import "settings";
+@import "foundation";
+
 @import "normalize";
 
 @import "icon-fonts";
 
-@import "vendor/boilerplate-defaults";
-@import "vendor/boilerplate-helpers";
-@import "vendor/foundation";
+@import "helpers";
 
-@import "media-queries";
+// @import "media-queries";
 
 
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
+
 html,
 body {
   height: 100%;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.browsehappy-alert {
+  margin: rem-calc(16 0 0);
+  text-align: center;
 }
 
 .page-wrap {
@@ -91,7 +117,7 @@ body {
 }
 
 .pad-left {
-  padding-left: em-calc(40);
+  padding-left: rem-calc(40);
 }
 
 .no-margin-bottom {
@@ -99,11 +125,11 @@ body {
 }
 
 .margin-bottom {
-  margin-bottom: em-calc(20);
+  margin-bottom: rem-calc(20);
 }
 
 .margin-top {
-  margin-top: em-calc(20);
+  margin-top: rem-calc(20);
 }
 
 .text-center {

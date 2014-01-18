@@ -27,22 +27,25 @@
     <meta name="msapplication-wide310x150logo" content="/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
 
-    <link rel="stylesheet" href="css/main.20131217.css"> <!-- Cache Busting: Update the # when you update main.css -->
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="css/app.20140105.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
     <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <div data-alert class="alert-box warning browsehappy-alert">
+      You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      <a href="#" class="close">&times;</a>
+    </div>
     <![endif]-->
 
     <div class="page-wrap">
-      <div class="contain-to-grid sticky">
-        <nav class="top-bar">
+      <div class="contain-to-grid fixed">
+        <nav class="top-bar" data-topbar>
           <ul class="title-area">
             <!-- Title Area -->
             <li class="name">
-              <h1 class="show-for-medium-up"><a href="index.html">South Carolina Sheltie Rescue</a></h1>
-              <h1 class="show-for-small"><a href="index.html">SCSR</a></h1>
+              <h1 class="show-for-large-up"><a href="index.html">South Carolina Sheltie Rescue</a></h1>
+              <h1 class="show-for-medium-down"><a href="index.html">SCSR</a></h1>
             </li>
             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
             <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -79,22 +82,22 @@
             <div class="large-8 columns show-for-medium-up">
               <ul data-orbit>
                 <li>
-                  <img src="img/tara_667x500.jpg" />
+                  <img src="img/tara_667x500.jpg" alt="Slide 1" />
                 </li>
                 <li>
-                  <img src="img/moxie_667x500.jpg"  />
+                  <img src="img/moxie_667x500.jpg" alt="Slide 2" />
                 </li>
                 <li>
-                  <img src="img/copper_667x500.jpg" />
+                  <img src="img/copper_667x500.jpg" alt="Slide 3" />
                 </li>
                 <li>
-                  <img src="img/dixie_rose_667x500.jpg" />
+                  <img src="img/dixie_rose_667x500.jpg" alt="Slide 4" />
                 </li>
                 <li>
-                  <img src="img/spencer_667x500.jpg" />
+                  <img src="img/spencer_667x500.jpg" alt="Slide 5" />
                 </li>
                 <li>
-                  <img src="img/penney_667x500.jpg" />
+                  <img src="img/penney_667x500.jpg" alt="Slide 6" />
                 </li>
               </ul>
             </div>
@@ -109,7 +112,7 @@
               <div class="panel radius callout upcoming-events">
                 <p><strong>Upcoming Events:</strong></p>
                 <ul class="upcoming-events-list no-margin-bottom">
-                  <li><a href="events.html">Spring Fundraiser</a> - Sat. Feb. 18, 2014</li>
+                  <li><a href="events.html">Spring Fundraiser</a> - Sat. Apr. 12, 2014</li>
                 </ul>
               </div>
             </div>
@@ -131,7 +134,7 @@
                 <p>Also, please check out our <a class="icon-new-tab" href="http://www.amazon.com/gp/registry/giftlist/3UK24WGE6GM8D" target="_blank">Wishlist</a> for other great ways to help make a difference!</p>
               </div>
               <div class="panel callout clearfix">
-                <div class="large-6 medium-6 small-6 columns">
+                <div class="large-6 medium-6 small-12 columns">
                   <p class="text-center no-margin-bottom">Please donate <strong>today</strong> and help make a <strong><u>difference</u></strong>!</p>
                 </div>
                 <div class="large-6 medium-6 small-6 columns">
@@ -172,49 +175,46 @@
         </p>
       </section>
       <section id="copyright" class="copyright">
-        <small>&copy; <script>document.write(new Date().getFullYear())</script><noscript>2013</noscript> South Carolina Sheltie Rescue</small>
+        <small>&copy; <script>document.write(new Date().getFullYear())</script><noscript>2014</noscript> South Carolina Sheltie Rescue</small>
       </section>
     </footer>
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/foundation.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script>
-      $(document)
-        .foundation('dropdown topbar')
-        .foundation('orbit', {
-          animation: 'fade',
-          timer_speed: 5000,
-          pause_on_hover: true,
-          resume_on_mouseout: true,
-          animation_speed: 500,
+      $(document).foundation({
+        orbit: {
+          animation: 'fade', // Sets the type of animation used for transitioning between slides, can also be 'fade'
+          timer_speed: 5000, // Sets the amount of time in milliseconds before transitioning a slide
+          pause_on_hover: true, // Pauses on the current slide while hovering
+          resume_on_mouseout: true, // If pause on hover is set to true, this setting resumes playback after mousing out of slide
+          animation_speed: 500, // Sets the amount of time in milliseconds the transition between slides will last
           stack_on_small: true,
           navigation_arrows: true,
           slide_number: true,
+          slide_number_text: 'of',
           container_class: 'orbit-container',
           stack_on_small_class: 'orbit-stack-on-small',
-          next_class: 'orbit-next',
-          prev_class: 'orbit-prev',
-          timer_container_class: 'orbit-timer',
-          timer_paused_class: 'paused',
-          timer_progress_class: 'orbit-progress',
-          slides_container_class: 'orbit-slides-container',
+          next_class: 'orbit-next', // Class name given to the next button
+          prev_class: 'orbit-prev', // Class name given to the previous button
+          timer_container_class: 'orbit-timer', // Class name given to the timer
+          timer_paused_class: 'paused', // Class name given to the paused button
+          timer_progress_class: 'orbit-progress', // Class name given to the progress bar
+          slides_container_class: 'orbit-slides-container', // Class name given to the slides container
           bullets_container_class: 'orbit-bullets',
-          bullets_active_class: 'active',
-          slide_number_class: 'orbit-slide-number',
-          caption_class: 'orbit-caption',
-          active_slide_class: 'active',
+          bullets_active_class: 'active', // Class name given to the active bullet
+          slide_number_class: 'orbit-slide-number', // Class name given to the slide number
+          caption_class: 'orbit-caption', // Class name given to the caption
+          active_slide_class: 'active', // Class name given to the active slide
           orbit_transition_class: 'orbit-transitioning',
-          bullets: true,
-          timer: true,
-          next_on_click: false,
-          variable_height: false,
-          before_slide_change: function(){},
-          after_slide_change: function(){}
-        });
+          bullets: false, // Does the slider have bullets visible?
+          timer: true, // Does the slider have a timer visible?
+          variable_height: false, // Does the slider have variable height content?
+          swipe: true
+        }
+      });
     </script>
   </body>
 </html>

@@ -1,10 +1,21 @@
 {
-  "name": "scsheltierescue.com",
+  "name": "scsheltierescue",
+  "title": "scsheltierescue",
+  "description": "This is the SC Sheltie Rescue website.",
   "version": "0.0.1",
+  "homepage": "http://scsheltierescue.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexdiliberto/scsheltierescue.com"
+  },
+  "bugs": {
+    "url": "https://github.com/alexdiliberto/scsheltierescue.com/issues"
+  },
+  "license": "MIT",
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "node-sass": "~0.7.0",
+    "grunt": "~0.4.2",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-sass": "~0.5.0",
-    "grunt-contrib-cssmin": "~0.6.2"
+    "grunt-sass": "~0.9.0"
   }
 }

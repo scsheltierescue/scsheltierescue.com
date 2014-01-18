@@ -1,40 +1,34 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    watch: {
-      sass: {
-        files: ['scss/**/*.{scss,sass}','scss/_partials/**/*.{scss,sass}'],
-        tasks: ['sass:dist','cssmin:minify']
-      }
-    },
+
     sass: {
+      options: {
+        includePaths: ['bower_components/foundation/scss']
+      },
       dist: {
+        options: {
+          outputStyle: 'expanded' /*'compressed'*/
+        },
         files: {
-          'css/main.css': 'scss/main.scss'
+          'css/app.css': 'scss/app.scss'
         }
       }
     },
-    cssmin: {
-      minify: {
-        expand: true,
-        cwd: 'css/',
-        src: ['*.css', '!*.min.css'],
-        dest: 'css/',
-        ext: '.css'
+
+    watch: {
+      grunt: { files: ['Gruntfile.js'] },
+
+      sass: {
+        files: 'scss/**/*.scss',
+        tasks: ['sass']
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.registerTask('build', [
-      'cssmin:minify'
-  ]);
-
-  grunt.registerTask('default', [
-      'watch',
-      'build'
-  ]);
+  grunt.registerTask('build', ['sass']);
+  grunt.registerTask('default', ['build','watch']);
 };

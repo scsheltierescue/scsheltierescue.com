@@ -4,43 +4,43 @@
    Modify as content requires.
    ========================================================================== */
 
-@media only screen and (max-width: $extra-small-screen) {
-  .donate-today {
-    display: none;
-  }
-  .x-small-12 {
-    position: relative;
-    width: 100%;
-  }
-}
+// @media only screen and (max-width: $extra-small-screen) {
+//   .donate-today {
+//     display: none;
+//   }
+//   .x-small-12 {
+//     position: relative;
+//     width: 100%;
+//   }
+// }
 
-@media only screen and (min-width: 0px) {
-  .pet-name {
-    float: left;
-  }
-  .options {
-    float: right;
-    > li {
-      font-size: 0.7em;
-    }
-  }
-}
+// @media only screen and (min-width: 0px) {
+//   .pet-name {
+//     float: left;
+//   }
+//   .options {
+//     float: right;
+//     > li {
+//       font-size: 0.7em;
+//     }
+//   }
+// }
 
-@media only screen and (min-width: $small-screen) {
-  .pet-name {
-    float: none;
-  }
-  .options {
-    float: none;
-    border-top: 1px dashed $topbar-bg-color;
-    border-bottom: 1px dashed $topbar-bg-color;
-    > li {
-      display: inline;
-      padding-left: 20px;
-      font-size: inherit;
-      &:first-child {
-        padding: 0;
-      }
-    }
-  }
-}
+// @media only screen and (min-width: $small-screen) {
+//   .pet-name {
+//     float: none;
+//   }
+//   .options {
+//     float: none;
+//     border-top: 1px dashed $topbar-bg-color;
+//     border-bottom: 1px dashed $topbar-bg-color;
+//     > li {
+//       display: inline;
+//       padding-left: 20px;
+//       font-size: inherit;
+//       &:first-child {
+//         padding: 0;
+//       }
+//     }
+//   }
+// }

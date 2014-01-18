@@ -27,22 +27,25 @@
     <meta name="msapplication-wide310x150logo" content="/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
 
-    <link rel="stylesheet" href="css/main.20131217.css"> <!-- Cache Busting: Update the # when you update main.css -->
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="css/app.20140105.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
     <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <div data-alert class="alert-box warning browsehappy-alert">
+      You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      <a href="#" class="close">&times;</a>
+    </div>
     <![endif]-->
 
     <div class="page-wrap">
-      <div class="contain-to-grid sticky">
-        <nav class="top-bar">
+      <div class="contain-to-grid fixed">
+        <nav class="top-bar" data-topbar>
           <ul class="title-area">
             <!-- Title Area -->
             <li class="name">
-              <h1 class="show-for-medium-up"><a href="index.html">South Carolina Sheltie Rescue</a></h1>
-              <h1 class="show-for-small"><a href="index.html">SCSR</a></h1>
+              <h1 class="show-for-large-up"><a href="index.html">South Carolina Sheltie Rescue</a></h1>
+              <h1 class="show-for-medium-down"><a href="index.html">SCSR</a></h1>
             </li>
             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
             <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -567,13 +570,11 @@
     </footer>
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/foundation.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script>
-      $(document).foundation('dropdown topbar');
+      $(document).foundation();
     </script>
   </body>
 </html>
