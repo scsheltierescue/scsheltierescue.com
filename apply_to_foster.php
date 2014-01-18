@@ -485,7 +485,7 @@
         </p>
       </section>
       <section id="copyright" class="copyright">
-        <small>&copy; <script>document.write(new Date().getFullYear())</script><noscript>2013</noscript> South Carolina Sheltie Rescue</small>
+        <small>&copy; <script>document.write(new Date().getFullYear())</script><noscript>2014</noscript> South Carolina Sheltie Rescue</small>
       </section>
     </footer>
 

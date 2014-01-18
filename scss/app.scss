@@ -159,14 +159,23 @@ ul.clearing-thumbs.clearing-feature {
 }
 
 .pet-name {
+  text-align: center;
   text-transform: uppercase;
   > span {
-    box-shadow: inset 0px 0px 10px $topbar-bg-color;
+    font-size: rem-calc(48);
+    box-shadow: inset 0px 0px 3px $topbar-bg-color;
+    text-shadow: 1px 1px 1px $topbar-bg-color;
+  }
+  @media #{$large-up} {
+    float: left;
   }
 }
 
 .options {
+  float: right;
   list-style: none;
+  margin-bottom: 0;
+  font-size: rem-calc(12);
 }
 
 .upcoming-events-list > li {

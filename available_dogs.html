@@ -108,7 +108,7 @@
         </p>
       </section>
       <section id="copyright" class="copyright">
-        <small>&copy; <script>document.write(new Date().getFullYear())</script><noscript>2013</noscript> South Carolina Sheltie Rescue</small>
+        <small>&copy; <script>document.write(new Date().getFullYear())</script><noscript>2014</noscript> South Carolina Sheltie Rescue</small>
       </section>
     </footer>
 
@@ -118,7 +118,7 @@
     <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script>
       var currentOffset = 0;
-      var maxOffset = 25;
+      var maxOffset = 25; //equals 'count' value from petfinder.php
       var opts = {
         lines: 13, // The number of lines to draw
         length: 20, // The length of each line
@@ -179,7 +179,7 @@
 
           $spinner.hide();
           spin_stop();
-          if(pets && pets.length === maxOffset) { // Pulled the maximum amount of pets
+          if(pets && (pets.length == null || pets.length === maxOffset)) { // Pulled the maximum amount of pets
             $btnMore.removeClass("invisible");
           }
 
@@ -203,8 +203,8 @@
           return null;
         }
 
-        $(headerDiv).append("<h2 class='pet-name'><span class='radius label'>"+name+"</span></h2>");
-        ul = $('<ul/>', {class: 'options'});
+        $(headerDiv).append("<h2 class='pet-name'><span class='label'>"+name+"</span></h2>");
+        ul = $('<ul/>', {class: 'options hide-for-medium-down'});
         $(pet.options.option).each(function(i, option) {
           var listchild;
           li = $('<li/>');
