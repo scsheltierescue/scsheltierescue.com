@@ -192,7 +192,8 @@ ul.clearing-thumbs.clearing-feature {
   }
 }
 
-.upcoming-events-list > li {
+.upcoming-events-list > li,
+.recent-donations > li {
   list-style: none;
 }
 
@@ -204,20 +205,24 @@ li[data-orbit-slide] {
   cursor: pointer;
 }
 
-.main-content-slider li div {
-  color: white;
+.main-content-slider {
   background: $main-content-slider-bg;
-  padding: rem-calc(30 40);
-  height: rem-calc(200);
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  li div {
     color: white;
-  }
-  a {
-    color: darken($primary-color, 10%);
+    padding: rem-calc(30 40);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: white;
+    }
+    small {
+      color: white;
+    }
+    a {
+      color: darken($primary-color, 10%);
+    }
   }
 }
