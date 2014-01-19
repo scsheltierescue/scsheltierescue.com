@@ -27,7 +27,7 @@
     <meta name="msapplication-wide310x150logo" content="/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
 
-    <link rel="stylesheet" href="css/app.20140105.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/app.20140118.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
@@ -115,7 +115,7 @@
 
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.js"></script>
     <script>
       var currentOffset = 0;
       var maxOffset = 25; //equals 'count' value from petfinder.php
@@ -182,10 +182,8 @@
           if(pets && (pets.length == null || pets.length === maxOffset)) { // Pulled the maximum amount of pets
             $btnMore.removeClass("invisible");
           }
-
-          return true;
-        }, "json").then(function() {
-          $(document).foundation('clearing');
+        }).then(function() {
+          $(document).foundation();
         });
       }
 
@@ -254,13 +252,11 @@
             if(photo['@size'] == "x") {
               li = (first) ? $('<li/>', {class: 'clearing-featured-img'}) : $('<li/>');
               first = false;
-              anchor = $('<a/>', {href: photo.$t});
-              img = $('<img/>', {src: photo.$t}).attr('alt', name + photo['@id']).css({
-                  border:"solid 2px gainsboro",
-                  padding:"3px",
-                  margin:"5px",
-                  width:"200px"
-                });
+              anchor = $('<a/>', {
+                href: photo.$t,
+                class: 'th'
+              });
+              img = $('<img/>', {src: photo.$t}).attr('alt', name + photo['@id']);
               ul.append(li.append(anchor.append(img)));
             }
           });
@@ -281,9 +277,6 @@
           getPets();
         });
       });
-    </script>
-    <script>
-      $(document).foundation();
     </script>
   </body>
 </html>
