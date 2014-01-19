@@ -7,13 +7,10 @@
 
 @import "helpers";
 
-// @import "media-queries";
-
 
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
 
 html,
 body {
@@ -40,7 +37,7 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid #ddd;
-  margin: 1em 0;
+  margin: rem-calc(16 0);
   padding: 0;
 }
 
@@ -59,13 +56,8 @@ hr {
   }
 }
 
-.main-header .sc,
-.main-header .sr {
-  text-align: center;
-}
-
 .head_panel {
-  margin-top: 1em;
+  margin-top: rem-calc(16);
 }
 
 .center {
@@ -99,7 +91,7 @@ hr {
   .social-media {
     line-height: $footer-height/4;
     & a {
-      margin: 0 .5em;
+      margin: rem-calc(0 8);
     }
   }
   .address {
@@ -116,8 +108,8 @@ hr {
 }
 
 .loading_spinner {
-  width: 100px;
-  height: 100px;
+  width: rem-calc(100);
+  height: rem-calc(100);
   margin: 0 auto;
 }
 
@@ -206,4 +198,26 @@ ul.clearing-thumbs.clearing-feature {
 
 a.th {
   max-width: rem-calc(200);
+}
+
+li[data-orbit-slide] {
+  cursor: pointer;
+}
+
+.main-content-slider li div {
+  color: white;
+  background: $main-content-slider-bg;
+  padding: rem-calc(30 40);
+  height: rem-calc(200);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: white;
+  }
+  a {
+    color: darken($primary-color, 10%);
+  }
 }

@@ -39,7 +39,7 @@
     <![endif]-->
 
     <div class="page-wrap">
-      <div class="contain-to-grid fixed">
+      <div class="contain-to-grid sticky">
         <nav class="top-bar" data-topbar>
           <ul class="title-area">
             <!-- Title Area -->
@@ -48,7 +48,7 @@
               <h1 class="show-for-medium-down"><a href="index.html">SCSR</a></h1>
             </li>
             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
           </ul>
 
           <section class="top-bar-section">
