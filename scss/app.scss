@@ -206,7 +206,7 @@ li[data-orbit-slide] {
 }
 
 /* Fix orbit flash of unstyled content */
-.main-header-picture-slider {
+ul[data-orbit]  {
   margin: 0;
   padding-left: 0;
   list-style-type: none;
@@ -220,8 +220,8 @@ li[data-orbit-slide] {
 }
 
 /* Show slides once .orbit-container is loaded */
-.orbit-container .main-header-picture-slider li,
-.orbit-container .main-header-picture-slider .orbit-caption {
+.orbit-container ul[data-orbit] li,
+.orbit-container ul[data-orbit] .orbit-caption {
   display: block;
 }
 

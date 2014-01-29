@@ -41,6 +41,6 @@
 }
 .icon-new-tab:after {
   content: "\e605";
-  font-size: 10px;
+  font-size: rem-calc(10);
   vertical-align: text-top;
 }
