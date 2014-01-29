@@ -205,6 +205,26 @@ li[data-orbit-slide] {
   cursor: pointer;
 }
 
+/* Fix orbit flash of unstyled content */
+.main-header-picture-slider {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+  li,
+  .orbit-caption {
+    display: none; /* Initially, hide all slides... */
+  }
+  li:first-child {
+    display: block; /* ...Except for the first one */
+  }
+}
+
+/* Show slides once .orbit-container is loaded */
+.orbit-container .main-header-picture-slider li,
+.orbit-container .main-header-picture-slider .orbit-caption {
+  display: block;
+}
+
 .main-content-slider {
   background: $main-content-slider-bg;
   li div {
