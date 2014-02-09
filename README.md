@@ -1,4 +1,5 @@
-# scsheltierescue.com
+
+# scsheltierescue.com [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 <img src="https://raw.github.com/alexdiliberto/scsheltierescue.com/master/img/SCSR-Logo-New-Transparent_500x606.png" alt="SCSR" title="SCSR" width="250" height="303">
 
@@ -18,4 +19,3 @@ To update foundation:
 foundation update
 ```
 
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
