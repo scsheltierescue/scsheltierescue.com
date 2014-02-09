@@ -1,4 +1,3 @@
-
 # scsheltierescue.com [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 <img src="https://raw.github.com/alexdiliberto/scsheltierescue.com/master/img/SCSR-Logo-New-Transparent_500x606.png" alt="SCSR" title="SCSR" width="250" height="303">
@@ -14,8 +13,14 @@ npm install
 grunt
 ```
 
-To update foundation:
+Update foundation to latest stable:
 ```sh
 foundation update
 ```
+
+Update foundation to specified tag:
+```sh
+bower update foundation#<tag>
+```
+
 
