@@ -151,8 +151,22 @@ input[type=radio] {
   }
 }
 
+.clearing-assembled {
+  text-align: center;
+  @media #{$medium-up} {
+    text-align: start;
+  }
+}
+
 ul.clearing-thumbs.clearing-feature {
-  float: left;
+  display: inline-block;
+  float: none;
+  margin-bottom: rem-calc(16);
+  @media #{$medium-up} {
+    display: block;
+    float: left;
+    margin-bottom: 0;
+  }
 }
 
 .pet-name {

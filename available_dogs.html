@@ -114,100 +114,51 @@
     <script src="js/plugins.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script>
-      var currentOffset = 0;
-      var maxOffset = 25; //equals 'count' value from petfinder.php
-      var opts = {
-        lines: 13, // The number of lines to draw
-        length: 20, // The length of each line
-        width: 10, // The line thickness
-        radius: 30, // The radius of the inner circle
-        corners: 1, // Corner roundness (0..1)
-        rotate: 0, // The rotation offset
-        direction: 1, // 1: clockwise, -1: counterclockwise
-        color: '#000', // #rgb or #rrggbb or array of colors
-        speed: 0.7, // Rounds per second
-        trail: 25, // Afterglow percentage
-        shadow: false, // Whether to render a shadow
-        hwaccel: false, // Whether to use hardware acceleration
-        className: 'spinner', // The CSS class to assign to the spinner
-        zIndex: 2e9, // The z-index (defaults to 2000000000)
-        top: 'auto', // Top position relative to parent in px
-        left: 'auto' // Left position relative to parent in px
-      };
-      var spinner_target = document.getElementById('spinner');
-      var spinner = null;
+      (function() {
+        var currentOffset = 0,
+          maxOffset = 25, //equals 'count' value from petfinder.php
+          opts = {
+            lines: 13, // The number of lines to draw
+            length: 20, // The length of each line
+            width: 10, // The line thickness
+            radius: 30, // The radius of the inner circle
+            corners: 1, // Corner roundness (0..1)
+            rotate: 0, // The rotation offset
+            direction: 1, // 1: clockwise, -1: counterclockwise
+            color: '#000', // #rgb or #rrggbb or array of colors
+            speed: 0.7, // Rounds per second
+            trail: 25, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: false, // Whether to use hardware acceleration
+            className: 'spinner', // The CSS class to assign to the spinner
+            zIndex: 2e9, // The z-index (defaults to 2000000000)
+            top: 'auto', // Top position relative to parent in px
+            left: 'auto' // Left position relative to parent in px
+          },
+        spinner_target = document.getElementById('spinner'),
+        spinner = undefined;
 
-      function spin_start() {
-        spinner.spin(spinner_target);
-      }
-
-      function spin_stop() {
-        spinner.stop();
-      }
-
-      /*
-       * Call petfinder.php to get a list of available dogs. Then append to the HTML document.
-       */
-      function getPets() {
-        var $btnMore = $("#btnMore");
-        var $spinner = $("#spinner");
-        var url = "petfinder.php";
-        var data = {
-          offset: currentOffset
-        };
-
-        if(!$btnMore.hasClass("invisible")) {
+        function spinnerStart($btnMore) {
           $btnMore.addClass("invisible");
-        }
-        $spinner.show();
-        if(!spinner) {
-          spinner = new Spinner(opts).spin(spinner_target);
-        } else {
-          spin_start();
-        }
-
-        $.getJSON(url, data, function(resp) {
-          currentOffset = parseInt(resp.petfinder.lastOffset.$t, 10);
-          var pets = resp.petfinder.pets.pet;
-
-          $(pets).each(function(i, item) {
-            $("#pets").append(formatPet(item));
-          });
-
-          $spinner.hide();
-          spin_stop();
-          if(pets && (pets.length == null || pets.length === maxOffset)) { // Pulled the maximum amount of pets
-            $btnMore.removeClass("invisible");
+          if(!spinner) {
+            spinner = new Spinner(opts).spin(spinner_target);
+          } else {
+            spinner.spin(spinner_target);
           }
-        }).then(function() {
-          $(document).foundation();
-        });
-      }
-
-      /*
-       * Format each pet HTML block.
-       */
-      function formatPet(pet) {
-        var div = $("<div class='clearfix panel'></div>"),
-          headerDiv = $("<div class='clearfix'></div>"),
-          name = pet.name.$t,
-          desc = pet.description.$t.trim(),
-          first = true;
-
-        if(name === "Application") {
-          return null;
         }
 
-        $(headerDiv).append("<h2 class='pet-name'><span class='label'>"+name+"</span></h2>");
-        ul = $('<ul/>', {class: 'options '});
-        $(pet.options.option).each(function(i, option) {
+        function spinnerStop() {
+          $("#spinner").hide();
+          spinner.stop();
+        }
+
+        function optionListItem(option, sex) {
           var listchild;
-          li = $('<li/>');
           switch (option.$t) {
             case "altered":
-              if(pet.sex.$t === "M") {
+              if(sex === "M") {
                 listchild = $('<span/>', {text: "Neutered: "});
-              } else if(pet.sex.$t === "F") {
+              } else if(sex === "F") {
                 listchild = $('<span/>', {text: "Spayed: "});
               } else {
                 listchild = $('<span/>', {text: "Spayed/Neutered: "});
@@ -228,52 +179,103 @@
             case "noCats":
               listchild = $('<strong/>', {text: "No Cats"});
               break;
-          }
-          ul.append(li.append(listchild));
-        });
-        $(div).append(headerDiv.append(ul));
-
-        if (desc.match("^<div>") && desc.match("</div>$")) {
-          desc = desc.replace(/^<div>/,"<p>");
-          desc = desc.replace(/<\/div>$/,"</p>");
+          };
+          return listchild;
         }
-        desc = $("<div class='clearfix'>"+desc+"</div>");
 
-        if(pet.media.photos && pet.media.photos.photo.length > 0)
-        {
-          var photos = pet.media.photos.photo,
-            ul = $('<ul/>', {class: 'clearing-thumbs clearing-feature', 'data-clearing': ''}),
-            li, anchor, img;
+        /**
+          Call petfinder.php to get a list of available dogs.
+          Next, append the data to the HTML document.
+         */
+        function getPets() {
+          var $btnMore = $("#btnMore"),
+            url = "petfinder.php",
+            data = {
+              offset: currentOffset
+            };
 
-          $(photos).each(function(i, photo) {
-            if(photo['@size'] == "x") {
-              li = (first) ? $('<li/>', {class: 'clearing-featured-img'}) : $('<li/>');
-              first = false;
-              anchor = $('<a/>', {
-                href: photo.$t,
-                class: 'th'
-              });
-              img = $('<img/>', {src: photo.$t}).attr('alt', name + photo['@id']);
-              ul.append(li.append(anchor.append(img)));
+          // Retrieve the data
+          spinnerStart($btnMore);
+          $.getJSON(url, data, function(resp) {
+            currentOffset = parseInt(resp.petfinder.lastOffset.$t, 10);
+            var pets = resp.petfinder.pets.pet;
+
+            pets.forEach(function(pet) {
+              $("#pets").append(formatPet(pet));
+            });
+
+            spinnerStop();
+
+             // Check if we pulled the maximum amount of pets
+            if(pets && (pets.length == null || pets.length === maxOffset)) {
+              $btnMore.removeClass("invisible");
             }
+          }).then(function() {
+            $(document).foundation();
           });
-          first = true;
-          $(desc).prepend(ul);
         }
-        $(div).append(desc).css({padding: "4px", margin: "3px 3px 20px 3px"});
 
-        return div;
-      }
+        /*
+         * Format each pet HTML block.
+         */
+        function formatPet(pet) {
+          var div = $("<div class='pet-box clearfix panel'></div>"),
+            headerDiv = $("<div class='clearfix'></div>"),
+            name = pet.name.$t,
+            sex = pet.sex.$t,
+            desc = pet.description.$t.trim(),
+            options = pet.options.option,
+            ul = $('<ul/>', {class: 'options '}),
+            first = true;
 
-      /*
-       * Retrieve data on document ready.
-       */
-      $(document).ready(function() {
-        getPets();
-        $("#btnMore").click(function() {
+          $(headerDiv).append("<h2 class='pet-name'><span class='label'>"+name+"</span></h2>");
+
+          options.forEach(function(option) {
+            ul.append($('<li/>').append(optionListItem(option, sex)));
+          });
+          $(div).append(headerDiv.append(ul));
+
+          if(desc.match("^<div>") && desc.match("</div>$")) {
+            desc = desc.replace(/^<div>/,"<p>").replace(/<\/div>$/,"</p>");
+          } else if(!desc.match("^<") && !desc.match(">$")) {
+            desc = "<p>" + desc + "</p>";
+          }
+          desc = $("<div class='clearfix'>"+desc+"</div>");
+
+          if(pet.media.photos && pet.media.photos.photo.length) {
+            var photos = pet.media.photos.photo,
+              ul = $('<ul/>', {class: 'clearing-thumbs clearing-feature', 'data-clearing': ''}),
+              li, anchor, img;
+
+            photos.forEach(function(photo) {
+              if(photo['@size'] == "x") {
+                li = (first) ? $('<li/>', {class: 'clearing-featured-img'}) : $('<li/>');
+                first = false;
+                anchor = $('<a/>', {
+                  href: photo.$t,
+                  class: 'th'
+                });
+                img = $('<img/>', {src: photo.$t}).attr('alt', name + photo['@id']);
+                ul.append(li.append(anchor.append(img)));
+              }
+            });
+            $(desc).prepend(ul);
+          }
+          $(div).append(desc).css({padding: "4px", margin: "3px 3px 20px 3px"});
+
+          return div;
+        }
+
+        /**
+          Start here
+         */
+        $(document).ready(function() {
           getPets();
+          $("#btnMore").click(function() {
+            getPets();
+          });
         });
-      });
+      })();
     </script>
   </body>
 </html>
