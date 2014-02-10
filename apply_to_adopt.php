@@ -26,7 +26,7 @@
     <meta name="msapplication-wide310x150logo" content="/mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="/mstile-310x310.png" />
 
-    <link rel="stylesheet" href="css/app.20140208.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/app.20140209.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
@@ -233,10 +233,9 @@
                     echo '</div>';
                 }
               }
-
             ?>
 
-            <form action="apply_to_adopt.php" method="POST">
+            <form action="apply_to_adopt.php" method="POST" data-abide>
 
               <div class="row">
                 <div class="large-12 medium-12 small-12 columns">
@@ -246,11 +245,13 @@
                   <div class="row">
                     <div class="large-6 columns">
                       <label for="name" class="required">Name</label>
-                      <input id="name" name="name" type="text" placeholder="John Doe" required autofocus>
+                      <input id="name" name="name" type="text" placeholder="John Doe" required>
+                      <small class="error">A name is required.</small>
                     </div>
                     <div class="large-6 columns">
                       <label for="email" class="required">Email</label>
                       <input id="email" name="email" type="email" placeholder="john.doe@email.com" required>
+                      <small class="error">A valid email address is required.</small>
                     </div>
                   </div>
 
@@ -258,6 +259,7 @@
                     <div class="large-12 columns">
                       <label for="street" class="required">Street Address</label>
                       <input id="street" name="street" type="text" placeholder="123 Main St" required>
+                      <small class="error">A street address is required.</small>
                     </div>
                   </div>
 
@@ -265,14 +267,17 @@
                     <div class="large-5 columns">
                       <label for="city" class="required">City</label>
                       <input id="city" name="city" type="text" placeholder="Columbia" required>
+                      <small class="error">A city is required.</small>
                     </div>
                     <div class="large-1 large-offset-1 columns">
                       <label for="state" class="required">State</label>
                       <input id="state" name="state" type="text" placeholder="SC" required>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-2 columns">
                       <label for="zip" class="required">Zip</label>
                       <input id="zip" name="zip" type="text" placeholder="29201" required>
+                      <small class="error">A zip code is required.</small>
                     </div>
                   </div>
 
@@ -280,6 +285,7 @@
                     <div class="large-3 columns">
                       <label for="homephone" class="required">Home phone</label>
                       <input id="homephone" name="homephone" type="tel" required>
+                      <small class="error">A home phone is required.</small>
                     </div>
                     <div class="large-3 columns">
                       <label for="workphone">Work phone</label>
@@ -288,6 +294,7 @@
                     <div class="large-4 columns">
                       <label for="occupation" class="required">Occupation</label>
                       <input id="occupation" name="occupation" type="text" required>
+                      <small class="error">An occupation is required.</small>
                     </div>
                   </div>
 
@@ -296,11 +303,13 @@
                       <label class="required">Are you employed full-time?</label>
                       <input id="fulltime_yes" name="fulltime" type="radio" value="Yes" required><label for="fulltime_yes">&nbsp;Yes</label><br>
                       <input id="fulltime_no" name="fulltime" type="radio" value="No" required><label for="fulltime_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-4 columns">
                       <label class="required">Have you ever owned a Sheltie before?</label>
                       <input id="owned_previously_yes" name="owned_previously" type="radio" value="Yes" required><label for="owned_previously_yes">&nbsp;Yes</label><br>
                       <input id="owned_previously_no" name="owned_previously" type="radio" value="No" required><label for="owned_previously_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-4 columns">
                       <label>If so, do you still have that dog?</label>
@@ -320,6 +329,7 @@
                     <div class="large-12 columns">
                       <label for="why_adopt" class="required">Why do you want a Shetland Sheepdog?</label>
                       <textarea id="why_adopt" name="why_adopt" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -327,6 +337,7 @@
                     <div class="large-12 columns">
                       <label for="last_dog" class="required">What happened to your last dog?</label>
                       <textarea id="last_dog" name="last_dog" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -335,16 +346,19 @@
                       <label class="required">During the last five years, have you had a pet become lost or stolen?</label>
                       <input id="last_five_lost_pet_yes" name="last_five_lost_pet" type="radio" value="Yes" required><label for="last_five_lost_pet_yes">&nbsp;Yes</label><br>
                       <input id="last_five_lost_pet_no" name="last_five_lost_pet" type="radio" value="No" required><label for="last_five_lost_pet_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-4 columns">
                       <label class="required">During the last five years, have you had an animal killed by a vehicle?</label>
                       <input id="last_five_vehicle_yes" name="last_five_vehicle" type="radio" value="Yes" required><label for="last_five_vehicle_yes">&nbsp;Yes</label><br>
                       <input id="last_five_vehicle_no" name="last_five_vehicle" type="radio" value="No" required><label for="last_five_vehicle_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-4 columns">
                       <label class="required">During the last five years, have you had an animal die due to disease?</label>
                       <input id="last_five_disease_yes" name="last_five_disease" type="radio" value="Yes" required><label for="last_five_disease_yes">&nbsp;Yes</label><br>
                       <input id="last_five_disease_no" name="last_five_disease" type="radio" value="No" required><label for="last_five_disease_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -359,6 +373,7 @@
                     <div class="large-12 columns">
                       <label for="purpose" class="required">For what purpose do you want this dog?</label>
                       <textarea id="purpose" name="purpose" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -373,13 +388,14 @@
                     <div class="large-12 columns">
                       <label for="household_members" class="required">Please list <strong>everyone (including yourself)</strong> who lives in your household and their age.</label>
                       <textarea id="household_members" name="household_members" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="large-4 columns">
-                      <label for="home_type" class="required">Which best describes your place of residence:</label>
-                      <select id="home_type" name="home_type" required>
+                      <label for="home_type">Which best describes your place of residence:</label>
+                      <select id="home_type" name="home_type">
                         <option value="House" selected> House </option>
                         <option value="Apartment"> Apartment </option>
                         <option value="Condo"> Condo </option>
@@ -390,6 +406,7 @@
                       <label class="required">Do you rent or own?</label>
                       <input id="rent" name="rent_own" type="radio" value="Rent" required><label for="rent">&nbsp;Rent</label><br>
                       <input id="own" name="rent_own" type="radio" value="Own" required><label for="own">&nbsp;Own</label>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -404,6 +421,7 @@
                     <div class="large-12 columns">
                       <label for="yard_type" class="required">Do you have a yard and if so, is it fenced? (list type of fencing)</label>
                       <textarea id="yard_type" name="yard_type" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -418,6 +436,7 @@
                     <div class="large-12 columns">
                       <label for="home_during_day" class="required">Do all family adults work and is someone home during the day? (Please explain)</label>
                       <textarea id="home_during_day" name="home_during_day" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -425,6 +444,7 @@
                     <div class="large-12 columns">
                       <label for="indoors_outdoors" class="required">Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?</label>
                       <textarea id="indoors_outdoors" name="indoors_outdoors" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -457,11 +477,13 @@
                       <label class="required">Are other members of your household aware that you are considering adopting a pet?</label>
                       <input id="family_aware_yes" name="family_aware" type="radio" value="Yes" required><label for="family_aware_yes">&nbsp;Yes</label><br>
                       <input id="family_aware_no" name="family_aware" type="radio" value="No" required><label for="family_aware_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-6 columns">
                       <label class="required">Are you prepared to assume the financial responsibilities of caring for an animal? (vaccines, heartworm preventative, veterinarian care, good quality food, licensing, etc.)</label>
                       <input id="financial_yes" name="financial_responsibility" type="radio" value="Yes" required><label for="financial_yes">&nbsp;Yes</label><br>
                       <input id="financial_no" name="financial_responsibility" type="radio" value="No" required><label for="financial_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -470,16 +492,19 @@
                       <label class="required">Are you planning to move in the near future?</label>
                       <input id="moving_soon_yes" name="moving_soon" type="radio" value="Yes" required><label for="moving_soon_yes">&nbsp;Yes</label><br>
                       <input id="moving_soon_no" name="moving_soon" type="radio" value="No" required><label for="moving_soon_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-4 columns">
                       <label class="required">Is anyone in your house allergic to animals?</label>
                       <input id="allergic_yes" name="allergic" type="radio" value="Yes" required><label for="allergic_yes">&nbsp;Yes</label><br>
                       <input id="allergic_no" name="allergic" type="radio" value="No" required><label for="allergic_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-4 columns">
                       <label class="required">Are you familiar with animal control regulations in your area?</label>
                       <input id="acr_yes" name="animal_control_regulations" type="radio" value="Yes" required><label for="acr_yes">&nbsp;Yes</label><br>
                       <input id="acr_no" name="animal_control_regulations" type="radio" value="No" required><label for="acr_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -487,11 +512,13 @@
                     <div class="large-6 columns">
                       <label for="gift" class="required">Is this Sheltie going to be a gift? For whom and do they know?</label>
                       <textarea id="gift" name="gift" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-6 columns">
                       <label class="required">Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?</label>
                       <input id="spayed_neutered_yes" name="spayed_neutered" type="radio" value="Yes" required><label for="spayed_neutered_yes">&nbsp;Yes</label><br>
                       <input id="spayed_neutered_no" name="spayed_neutered" type="radio" value="No" required><label for="spayed_neutered_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -499,6 +526,7 @@
                     <div class="large-12 columns">
                       <label for="getting_rid_of_dog" class="required">What circumstances, in your mind, justify getting rid of a dog?</label>
                       <textarea id="getting_rid_of_dog" name="getting_rid_of_dog" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -507,11 +535,13 @@
                       <label class="required">Are you willing to allow a Rescue representative to visit your home by appointment?</label>
                       <input id="home_visit_yes" name="home_visit" type="radio" value="Yes" required><label for="home_visit_yes">&nbsp;Yes</label><br>
                       <input id="home_visit_no" name="home_visit" type="radio" value="No" required><label for="home_visit_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                     <div class="large-6 columns">
                       <label class="required">Do you accept that there will be an adoption fee for the adopted dog?</label>
                       <input id="accept_fee_yes" name="accept_fee" type="radio" value="Yes" required><label for="accept_fee_yes">&nbsp;Yes</label><br>
                       <input id="accept_fee_no" name="accept_fee" type="radio" value="No" required><label for="accept_fee_no">&nbsp;No</label>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -519,6 +549,7 @@
                     <div class="large-12 columns">
                       <label for="previous_vets" class="required">Please provide the name and phone number of any vets used in the past 5 years.</label>
                       <textarea id="previous_vets" name="previous_vets" required></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
