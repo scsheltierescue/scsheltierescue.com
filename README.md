@@ -4,6 +4,7 @@
 
 SC Sheltie Rescue is a non-profit volunteer group dedicated to helping Shetland Sheepdogs in Columbia, SC and the surrounding areas.
 
+##Contributing
 Instructions to get started with development:
 ```sh
 git clone git@github.com:scsheltierescue/scsheltierescue.com.git
@@ -13,14 +14,15 @@ npm install
 grunt
 ```
 
-Update foundation to latest stable:
+Update foundation to the latest stable release:
 ```sh
 foundation update
 ```
 
-Update foundation to specified tag:
+Update foundation to a specified tag:
 ```sh
 bower update foundation#<tag>
 ```
 
-
+##Deployment
+Automatic deploy using [dploy.io](dploy.io) via [https://sc-sheltie-rescue.dploy.io](https://sc-sheltie-rescue.dploy.io)
