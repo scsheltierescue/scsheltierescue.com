@@ -170,6 +170,7 @@
               listchild.append($('<span/>', {class: "icon-checkmark"}));
               break;
             case "housebroken":
+            case "housetrained":
               listchild = $('<span/>', {text: "Housebroken: "});
               listchild.append($('<span/>', {class: "icon-checkmark"}));
               break;
@@ -179,6 +180,8 @@
             case "noCats":
               listchild = $('<strong/>', {text: "No Cats"});
               break;
+            default:
+              listchild = null;
           };
           return listchild;
         }
@@ -226,12 +229,16 @@
             desc = pet.description.$t.trim(),
             options = pet.options.option,
             ul = $('<ul/>', {class: 'options '}),
-            first = true;
+            first = true,
+            optListItem;
 
           $(headerDiv).append("<h2 class='pet-name'><span class='label'>"+name+"</span></h2>");
 
           options.forEach(function(option) {
-            ul.append($('<li/>').append(optionListItem(option, sex)));
+            optListItem = optionListItem(option, sex);
+            if(optListItem) {
+              ul.append($('<li/>').append(optListItem));
+            }
           });
           $(div).append(headerDiv.append(ul));
 
