@@ -9,7 +9,7 @@
 
     <link rel="icon" sizes="192x192" href="favicon-192x192.png">
 
-    <link rel="stylesheet" href="css/app.20140209.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/app.20141002.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
