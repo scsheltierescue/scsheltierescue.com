@@ -2,7 +2,7 @@
   "name": "scsheltierescue",
   "title": "scsheltierescue",
   "description": "This is the SC Sheltie Rescue website.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "http://scsheltierescue.com",
   "repository": {
     "type": "git",
@@ -14,8 +14,8 @@
   "license": "MIT",
   "devDependencies": {
     "node-sass": "~0.7.0",
-    "grunt": "~0.4.2",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-sass": "~0.9.0"
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^0.14.2"
   }
 }
