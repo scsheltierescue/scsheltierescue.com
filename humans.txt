@@ -12,4 +12,4 @@
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    Normalize.css, jQuery, Modernizr, H5BP, Sublime Text 2, Grunt, Foundation 5
+    Apache Server Configs, Normalize.css, jQuery, Modernizr, H5BP, Sublime Text 2, Grunt, Foundation 5
