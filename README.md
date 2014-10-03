@@ -11,6 +11,7 @@ git clone git@github.com:scsheltierescue/scsheltierescue.com.git
 cd scsheltierescue.com
 bower install
 npm install
+npm install -g grunt-cli
 grunt
 ```
 

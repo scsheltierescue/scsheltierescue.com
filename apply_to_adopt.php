@@ -134,6 +134,8 @@
               $hear_about_scsr = $_POST['hear_about_scsr'];
               $accept_fee = $_POST['accept_fee'];
               $previous_vets = $_POST['previous_vets'];
+              $applied_other_rescues = $_POST['applied_other_rescues'];
+              $additional_info = $_POST['additional_info'];
 
               if ($_POST['submit']) {
                 if ($name != '' && $email != '' && $city != '' && $state != '' && $zip != ''&& $homephone != '') {
@@ -208,7 +210,10 @@
                     ."39. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
                     ."40. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
                     ."41. Do you accept that there will be an adoption fee for the adopted dog?: ".$accept_fee."\n"
-                    ."42. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets;
+                    ."42. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets."\n"
+                    ."43. Have you applied with any other rescues? If so, what is the status of those applications?: \n".$applied_other_rescues."\n"
+                    ."44. Is there any additional information you would like to share?: \n".$additional_info;
+
                   //Construct the HTML message body
                   $message_html = str_replace("\n", "<br>", $message_alt);
                   //Set the body text
@@ -555,8 +560,23 @@
 
                   <div class="row">
                     <div class="large-12 columns">
+                      <label for="applied_other_rescues" class="required">Have you applied with any other rescues? If so, what is the status of those applications?</label>
+                      <textarea id="applied_other_rescues" name="applied_other_rescues" required></textarea>
+                      <small class="error">Required</small>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
                       <label for="hear_about_scsr">How did you hear about South Carolina Sheltie Rescue?</label>
                       <textarea id="hear_about_scsr" name="hear_about_scsr"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label for="additional_info">Is there any additional information you would like to share?</label>
+                      <textarea id="additional_info" name="additional_info"></textarea>
                     </div>
                   </div>
 
