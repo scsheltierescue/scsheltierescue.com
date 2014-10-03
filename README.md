@@ -9,9 +9,13 @@ Instructions to get started with development:
 ```sh
 git clone git@github.com:scsheltierescue/scsheltierescue.com.git
 cd scsheltierescue.com
+
+npm install -g bower
+npm install -g grunt-cli
+
 bower install
 npm install
-npm install -g grunt-cli
+
 grunt
 ```
 
