@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Adoption Application</title>
     <meta name="description" content="Apply to adopt a sheltie today with the SC Sheltie Rescue.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
     <link rel="icon" sizes="192x192" href="favicon-192x192.png">
 
