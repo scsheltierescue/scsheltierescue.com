@@ -214,7 +214,7 @@
             name = pet.name.$t,
             sex = pet.sex.$t,
             desc = pet.description.$t.trim(),
-            options = pet.options.option,
+            options = pet.options.option || [],
             ul = $('<ul/>', {class: 'options '}),
             first = true,
             optListItem;
