@@ -221,12 +221,19 @@
 
           $(headerDiv).append("<h2 class='pet-name'><span class='label'>"+name+"</span></h2>");
 
-          options.forEach(function(option) {
-            optListItem = optionListItem(option, sex);
+          if($.isArray(options)) {
+            options.forEach(function(option) {
+              optListItem = optionListItem(option, sex);
+              if(optListItem) {
+                ul.append($('<li/>').append(optListItem));
+              }
+            });
+          } else {
+            optListItem = optionListItem(options, sex);
             if(optListItem) {
               ul.append($('<li/>').append(optListItem));
             }
-          });
+          }
           $(div).append(headerDiv.append(ul));
 
           if(desc.match("^<div>") && desc.match("</div>$")) {
