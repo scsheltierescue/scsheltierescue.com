@@ -95,11 +95,12 @@
 
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/handlebars/handlebars.runtime.min.js"></script>
     <script src="js/plugins.js"></script>
+    <script src="js/templates.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script>
-      (function() {
-        var currentOffset = 0,
+      var currentOffset = 0,
           maxOffset = 25, //equals 'count' value from petfinder.php
           opts = {
             lines: 13, // The number of lines to draw
@@ -119,164 +120,162 @@
             top: 'auto', // Top position relative to parent in px
             left: 'auto' // Left position relative to parent in px
           },
-        spinner_target = document.getElementById('spinner'),
-        spinner = undefined;
+          context = { pets: [] },
+          spinner_target = document.getElementById('spinner'),
+          spinner;
 
-        function spinnerStart($btnMore) {
-          $btnMore.addClass("invisible");
-          if(!spinner) {
-            spinner = new Spinner(opts).spin(spinner_target);
-          } else {
-            spinner.spin(spinner_target);
-          }
-        }
+      /**
+        Start Here
+       */
+      getPets();
+      $("#btnMore").on('click', function() { getPets(); });
 
-        function spinnerStop() {
-          $("#spinner").hide();
-          spinner.stop();
-        }
-
-        function optionListItem(option, sex) {
-          var listchild;
-          switch (option.$t) {
-            case "altered":
-              if(sex === "M") {
-                listchild = $('<span/>', {text: "Neutered: "});
-              } else if(sex === "F") {
-                listchild = $('<span/>', {text: "Spayed: "});
-              } else {
-                listchild = $('<span/>', {text: "Spayed/Neutered: "});
-              }
-              listchild.append($('<span/>', {class: "icon-checkmark"}));
-              break;
-            case "hasShots":
-              listchild = $('<span/>', {text: "Shots Current: "});
-              listchild.append($('<span/>', {class: "icon-checkmark"}));
-              break;
-            case "housebroken":
-            case "housetrained":
-              listchild = $('<span/>', {text: "Housebroken: "});
-              listchild.append($('<span/>', {class: "icon-checkmark"}));
-              break;
-            case "noKids":
-              listchild = $('<strong/>', {text: "No Kids"});
-              break;
-            case "noCats":
-              listchild = $('<strong/>', {text: "No Cats"});
-              break;
-            case "noDogs":
-              listchild = $('<strong/>', {text: "No Dogs"});
-              break;
-            default:
-              listchild = null;
-          };
-          return listchild;
-        }
-
-        /**
-          Call petfinder.php to get a list of available dogs.
-          Next, append the data to the HTML document.
-         */
-        function getPets() {
-          var $btnMore = $("#btnMore"),
+      /**
+        Call petfinder.php to get a list of available dogs.
+        Next, append the data to the HTML document.
+       */
+      function getPets() {
+        var $btnMore = $("#btnMore"),
             url = "petfinder.php",
             data = {
               offset: currentOffset
             };
 
-          // Retrieve the data
-          spinnerStart($btnMore);
-          $.getJSON(url, data, function(resp) {
-            currentOffset = parseInt(resp.petfinder.lastOffset.$t, 10);
-            var pets = resp.petfinder.pets.pet;
+        // Retrieve the data
+        spinnerStart($btnMore);
+        $.getJSON(url, data, function(resp) {
+          currentOffset = parseInt(resp.petfinder.lastOffset.$t, 10);
+          var pets = resp.petfinder.pets.pet;
 
-            pets.forEach(function(pet) {
-              $("#pets").append(formatPet(pet));
-            });
-
-            spinnerStop();
-
-             // Check if we pulled the maximum amount of pets
-            if(pets && (pets.length == null || pets.length === maxOffset)) {
-              $btnMore.removeClass("invisible");
+          if(pets) {
+            if($.isArray(pets)) {
+              pets.forEach(function(pet) {
+                context.pets.push(formatPet(pet));
+              });
+            } else {
+              context.pets.push(formatPet(pets));
             }
-          }).then(function() {
-            $(document).foundation();
-          });
-        }
+          }
 
-        /*
-         * Format each pet HTML block.
-         */
-        function formatPet(pet) {
-          var div = $("<div class='pet-box clearfix panel'></div>"),
-            headerDiv = $("<div class='clearfix'></div>"),
+          $("#pets").html(Handlebars.templates.pet(context));
+
+          spinnerStop();
+
+           // Check if we pulled the maximum amount of pets
+          if(pets && (pets.length == null || pets.length === maxOffset)) {
+            $btnMore.removeClass("invisible");
+          }
+        }).then(function() {
+          $(document).foundation();
+        });
+      }
+
+      function formatPet(pet) {
+        var petContext = {},
             name = pet.name.$t,
             sex = pet.sex.$t,
             desc = pet.description.$t.trim(),
             options = pet.options.option || [],
-            ul = $('<ul/>', {class: 'options '}),
-            first = true,
+            isFirst = true,
             optListItem;
 
-          $(headerDiv).append("<h2 class='pet-name'><span class='label'>"+name+"</span></h2>");
-
-          if($.isArray(options)) {
-            options.forEach(function(option) {
-              optListItem = optionListItem(option, sex);
-              if(optListItem) {
-                ul.append($('<li/>').append(optListItem));
-              }
-            });
-          } else {
-            optListItem = optionListItem(options, sex);
+        if($.isArray(options)) {
+          petContext.options = [];
+          options.forEach(function(option) {
+            optListItem = formatOptionListItem(option, sex);
             if(optListItem) {
-              ul.append($('<li/>').append(optListItem));
+              petContext.options.push(optListItem);
             }
+          });
+        } else {
+          optListItem = formatOptionListItem(options, sex);
+          if(optListItem) {
+            petContext.options = optListItem
           }
-          $(div).append(headerDiv.append(ul));
-
-          if(desc.match("^<div>") && desc.match("</div>$")) {
-            desc = desc.replace(/^<div>/,"<p>").replace(/<\/div>$/,"</p>");
-          } else if(!desc.match("^<") && !desc.match(">$")) {
-            desc = "<p>" + desc + "</p>";
-          }
-          desc = $("<div class='clearfix'>"+desc+"</div>");
-
-          if(pet.media.photos && pet.media.photos.photo.length) {
-            var photos = pet.media.photos.photo,
-              ul = $('<ul/>', {class: 'clearing-thumbs clearing-feature', 'data-clearing': ''}),
-              li, anchor, img;
-
-            photos.forEach(function(photo) {
-              if(photo['@size'] == "x") {
-                li = (first) ? $('<li/>', {class: 'clearing-featured-img'}) : $('<li/>');
-                first = false;
-                anchor = $('<a/>', {
-                  href: photo.$t,
-                  class: 'th'
-                });
-                img = $('<img/>', {src: photo.$t}).attr('alt', name + photo['@id']);
-                ul.append(li.append(anchor.append(img)));
-              }
-            });
-            $(desc).prepend(ul);
-          }
-          $(div).append(desc).css({padding: "4px", margin: "3px 3px 20px 3px"});
-
-          return div;
         }
 
-        /**
-          Start here
-         */
-        $(document).ready(function() {
-          getPets();
-          $("#btnMore").click(function() {
-            getPets();
+        petContext.photos = [];
+        if(pet.media.photos && pet.media.photos.photo.length) {
+          var photos = pet.media.photos.photo;
+
+          photos.forEach(function(photo) {
+            if(photo['@size'] == "x") {
+              petContext.photos.push({
+                first: isFirst,
+                src: photo.$t,
+                alt: name + photo['@id']
+              });
+              isFirst = false;
+            }
           });
-        });
-      })();
+        }
+
+        petContext.name = name;
+        petContext.sex = sex;
+        petContext.desc = sanitizePetDesc(desc);
+
+        return petContext;
+      }
+
+     function formatOptionListItem(option, sex) {
+        var listchild = {};
+        switch (option.$t) {
+          case "altered":
+            if(sex === "M") {
+              listchild.text = "Neutered: ";
+            } else if(sex === "F") {
+              listchild.text = "Spayed: ";
+            } else {
+              listchild.text = "Spayed/Neutered: ";
+            }
+            listchild.icon = true;
+            break;
+          case "hasShots":
+            listchild.text = "Shots Current: ";
+            listchild.icon = true;
+            break;
+          case "housebroken":
+          case "housetrained":
+            listchild.text = "Housebroken: ";
+            listchild.icon = true;
+            break;
+          case "noKids":
+            listchild.text = "No Kids";
+            break;
+          case "noCats":
+            listchild.text = "No Cats";
+            break;
+          case "noDogs":
+            listchild.text = "No Dogs";
+            break;
+          default:
+            listchild = null;
+        };
+        return listchild;
+      }
+
+      function sanitizePetDesc(desc) {
+        if(desc.match("^<div>") && desc.match("</div>$")) {
+          desc = desc.replace(/^<div>/,"<p>").replace(/<\/div>$/,"</p>");
+        } else if(!desc.match("^<") && !desc.match(">$")) {
+          desc = "<p>" + desc + "</p>";
+        }
+        return desc;
+      }
+
+      function spinnerStart($btnMore) {
+        $btnMore.addClass("invisible");
+        if(!spinner) {
+          spinner = new Spinner(opts).spin(spinner_target);
+        } else {
+          spinner.spin(spinner_target);
+        }
+      }
+
+      function spinnerStop() {
+        $("#spinner").hide();
+        spinner.stop();
+      }
     </script>
   </body>
 </html>

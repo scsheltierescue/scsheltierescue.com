@@ -10,8 +10,7 @@ Instructions to get started with development:
 git clone git@github.com:scsheltierescue/scsheltierescue.com.git
 cd scsheltierescue.com
 
-npm install -g bower
-npm install -g grunt-cli
+npm install -g bower grunt-cli handlebars
 
 bower install
 npm install

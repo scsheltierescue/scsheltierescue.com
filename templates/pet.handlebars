@@ -1,0 +1,35 @@
+{{! handlebars templates/pet.handlebars -f js/templates.js -k each -k if }}
+{{#each pets}}
+  <div class="pet-box clearfix panel">
+    <div class="clearfix pet-header">
+      <h2 class="pet-name"><span class="label">{{name}}</span></h2>
+      <ul class="options">
+        {{#each options}}
+          <li>
+            {{#if icon}}
+              <span>{{text}} <span class="icon-checkmark"></span></span>
+            {{else}}
+              <strong>{{text}}</strong>
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="clearfix pet-body">
+      <ul class="clearing-thumbs clearing-feature" data-clearing>
+        {{#each photos}}
+          <li {{#if first}}class="clearing-featured-img"{{/if}}>
+            <a href={{src}} class="th">
+              <img src={{src}} alt={{alt}}>
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+      {{{desc}}}
+    </div>
+  </div>
+{{else}}
+  <div class="alert-box" data-alert>
+    <p>There are currently no available dogs</p>
+  </div>
+{{/each}}
