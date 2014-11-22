@@ -18,6 +18,12 @@ npm install
 grunt
 ```
 
+When making template changes don't forget to precompile again:
+```sh
+handlebars templates/pet.handlebars -f js/templates.js -k each -k if
+```
+
+##Foundation Dependency Updates
 Update foundation to the latest stable release:
 ```sh
 foundation update
