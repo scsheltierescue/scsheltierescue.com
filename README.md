@@ -30,3 +30,5 @@ bower update foundation#<tag>
 
 ##Deployment
 Automatic deploy using [dploy.io](dploy.io) via [https://sc-sheltie-rescue.dploy.io](https://sc-sheltie-rescue.dploy.io)
+
+*Note: If you make CSS updates, you will still need to manually deploy the generated `app.css` file*
