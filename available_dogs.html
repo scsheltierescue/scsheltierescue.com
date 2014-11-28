@@ -141,33 +141,46 @@
               offset: currentOffset
             };
 
-        // Retrieve the data
+
         spinnerStart($btnMore);
-        $.getJSON(url, data, function(resp) {
-          currentOffset = parseInt(resp.petfinder.lastOffset.$t, 10);
-          var pets = resp.petfinder.pets.pet;
 
-          if(pets) {
-            if($.isArray(pets)) {
-              pets.forEach(function(pet) {
-                context.pets.push(formatPet(pet));
-              });
-            } else {
-              context.pets.push(formatPet(pets));
-            }
+        // Retrieve the Petfinder API pet data
+        $.getJSON(url, data)
+          .done(petfinderDone)
+          .fail(petfinderFail)
+          .always(petfinderAlways);
+      }
+
+      function petfinderDone(data, textStatus, jqXHR) {
+        currentOffset = parseInt(data.petfinder.lastOffset.$t, 10);
+        var pets = data.petfinder.pets.pet;
+
+        if(pets) {
+          if($.isArray(pets)) {
+            pets.forEach(function(pet) {
+              context.pets.push(formatPet(pet));
+            });
+          } else {
+            context.pets.push(formatPet(pets));
           }
+        }
 
-          $("#pets").html(Handlebars.templates.pet(context));
+        spinnerStop();
+        $("#pets").html(Handlebars.templates['pet'](context));
 
-          spinnerStop();
+         // Check if we pulled the maximum amount of pets
+        if(pets && (pets.length == null || pets.length === maxOffset)) {
+          $btnMore.removeClass("invisible");
+        }
+      }
 
-           // Check if we pulled the maximum amount of pets
-          if(pets && (pets.length == null || pets.length === maxOffset)) {
-            $btnMore.removeClass("invisible");
-          }
-        }).then(function() {
-          $(document).foundation();
-        });
+      function petfinderFail(jqXHR, textStatus, errorThrown) {
+        spinnerStop();
+        $("#pets").html(Handlebars.templates['pet-error-alert']);
+      }
+
+      function petfinderAlways() {
+        $(document).foundation();
       }
 
       function formatPet(pet) {

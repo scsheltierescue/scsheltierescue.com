@@ -20,7 +20,7 @@ grunt
 
 When making template changes don't forget to precompile again:
 ```sh
-handlebars templates/pet.handlebars -f js/templates.js -k each -k if
+handlebars templates/ -f js/templates.js
 ```
 
 ##Foundation Dependency Updates

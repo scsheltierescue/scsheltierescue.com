@@ -137,6 +137,10 @@ hr {
   margin-bottom: 0;
 }
 
+.alert-box.alert a {
+  color: indigo;
+}
+
 label.required:after {
   content: " *";
   color: $alert-color;
