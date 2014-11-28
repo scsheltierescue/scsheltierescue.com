@@ -20,7 +20,6 @@ demo/
 webftp/
 node_modules/
 bower_components/
-css/
 
 # OS or Editor folders
 .DS_Store
