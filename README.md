@@ -12,6 +12,8 @@ cd scsheltierescue.com
 
 npm install -g bower grunt-cli handlebars
 
+gem install foundation
+
 bower install
 npm install
 
