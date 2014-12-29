@@ -1,4 +1,4 @@
-# scsheltierescue.com [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# scsheltierescue.com [![Built with Gulp](http://img.shields.io/badge/built%20with-gulp.js-red.svg)](http://gulpjs.com/)
 
 <img src="https://raw.github.com/alexdiliberto/scsheltierescue.com/master/img/SCSR-Logo-New-Transparent_500x606.png" alt="SCSR" title="SCSR" width="250" height="303">
 
