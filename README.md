@@ -10,14 +10,14 @@ Instructions to get started with development:
 git clone git@github.com:scsheltierescue/scsheltierescue.com.git
 cd scsheltierescue.com
 
-npm install -g bower grunt-cli handlebars
+npm install -g bower gulp handlebars
 
 gem install foundation
 
 bower install
 npm install
 
-grunt
+gulp watch
 ```
 
 When making template changes don't forget to precompile again:
