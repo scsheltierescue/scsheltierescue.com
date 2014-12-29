@@ -6,10 +6,10 @@
   "homepage": "http://scsheltierescue.com",
   "repository": {
     "type": "git",
-    "url": "git://github.com/alexdiliberto/scsheltierescue.com"
+    "url": "git://github.com/scsheltierescue/scsheltierescue.com"
   },
   "bugs": {
-    "url": "https://github.com/alexdiliberto/scsheltierescue.com/issues"
+    "url": "https://github.com/scsheltierescue/scsheltierescue.com/issues"
   },
   "license": "MIT",
   "devDependencies": {
