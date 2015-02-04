@@ -96,6 +96,7 @@
               $rent_own = $_POST['rent_own'];
               $landlord_permission = $_POST['landlord_permission'];
               $yard_type = $_POST['yard_type'];
+              $fenced_desc = $_POST['fenced_desc'];
               $not_fenced_desc = $_POST['not_fenced_desc'];
               $home_during_day = $_POST['home_during_day'];
               $indoors_outdoors = $_POST['indoors_outdoors'];
@@ -160,7 +161,8 @@
                     ."17. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
                     ."18. Do you rent or own?: ".$rent_own."\n"
                     ."19. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
-                    ."20. Do you have a yard and if so, is it fenced? (list type of fencing): \n".$yard_type."\n"
+                    ."20a. Is your yard fenced?: ".$yard_type."\n"
+                    ."20b. If so, describe the type and height of fencing: \n".$fenced_desc."\n"
                     ."21. If your yard is not fenced, please describe how you will address an adopted dog's bathroom/exercise needs. \n".$not_fenced_desc."\n"
                     ."22. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
                     ."23. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
@@ -364,10 +366,15 @@
                   </div>
 
                   <div class="row">
-                    <div class="large-12 columns">
-                      <label for="yard_type" class="required">Do you have a yard and if so, is it fenced? (list type of fencing)</label>
-                      <textarea id="yard_type" name="yard_type" required></textarea>
+                    <div class="large-6 columns">
+                      <label class="required">Is your yard fenced?</label>
+                      <input id="yes_fence" name="yard_type" type="radio" value="Yes" required><label for="yes_fence">&nbsp;Yes</label><br>
+                      <input id="no_fence" name="yard_type" type="radio" value="No" required><label for="no_fence">&nbsp;No</label>
                       <small class="error">Required</small>
+                    </div>
+                    <div class="large-6 columns">
+                      <label for="fenced_desc">If so, describe the type and height of fencing.</label>
+                      <textarea id="fenced_desc" name="fenced_desc"></textarea>
                     </div>
                   </div>
 
@@ -458,7 +465,7 @@
                     </div>
                   </div>
 
-                  <p>By submitting this form, I am attesting to the truthfulness of my answers.</p>
+                  <p>By submitting this form, I am attesting to the truthfulness of my answers and granting SC Sheltie Rescue permission to contact my veterinarian for a reference.</p>
                   <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. If you have any questions, or if we can be of assistance, please do not hesitate to <a href="mailto:amanda@southcarolinasheltierescue.com">email</a> us.</p>
                   <p><strong>We reserve the right to refuse any applicant.</strong></p>
 
