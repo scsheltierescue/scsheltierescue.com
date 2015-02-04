@@ -94,7 +94,16 @@
               $last_five_explain = $_POST['last_five_explain'];
               $purpose = $_POST['purpose'];
               $other_animals = $_POST['other_animals'];
-              $household_members = $_POST['household_members'];
+              $family_member_1_name = $_POST['family_member_1_name'];
+              $family_member_1_age = $_POST['family_member_1_age'];
+              $family_member_2_name = $_POST['family_member_2_name'];
+              $family_member_2_age = $_POST['family_member_2_age'];
+              $family_member_3_name = $_POST['family_member_3_name'];
+              $family_member_3_age = $_POST['family_member_3_age'];
+              $family_member_4_name = $_POST['family_member_4_name'];
+              $family_member_4_age = $_POST['family_member_4_age'];
+              $family_member_5_name = $_POST['family_member_5_name'];
+              $family_member_5_age = $_POST['family_member_5_age'];
               $home_type = $_POST['home_type'];
               $rent_own = $_POST['rent_own'];
               $landlord_permission = $_POST['landlord_permission'];
@@ -172,7 +181,12 @@
                     ."16. If you answered yes to any of the the previous three questions, please explain: \n".$last_five_explain."\n"
                     ."17. For what purpose do you want this dog?: \n".$purpose."\n"
                     ."18. Do you have any other animals? (name, type, age, sex, neutered/spayed): \n".$other_animals."\n"
-                    ."19. Please list everyone (including yourself) who lives in your household and their age.: \n".$household_members."\n"
+                    ."19. Please list everyone who lives in your household and their age.: \n"
+                    ."19.a  Name: ".$family_member_1_name."  -  Age: ".$family_member_1_age."\n"
+                    ."19.b  Name: ".$family_member_2_name."  -  Age: ".$family_member_2_age."\n"
+                    ."19.c  Name: ".$family_member_3_name."  -  Age: ".$family_member_3_age."\n"
+                    ."19.d  Name: ".$family_member_4_name."  -  Age: ".$family_member_4_age."\n"
+                    ."19.e  Name: ".$family_member_5_name."  -  Age: ".$family_member_5_age."\n"
                     ."20. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
                     ."21. Do you rent or own?: ".$rent_own."\n"
                     ."22. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
@@ -375,13 +389,141 @@
                     </div>
                   </div>
 
-                  <div class="row">
+                  <div class="row family-members"> <!-- Familiy Members - START -->
                     <div class="large-12 columns">
-                      <label for="household_members" class="required">Please list <strong>everyone (including yourself)</strong> who lives in your household and their age.</label>
-                      <textarea id="household_members" name="household_members" required></textarea>
-                      <small class="error">Required</small>
+                      <label for="family_member_1_name" class="required">Please list <strong>everyone</strong> who lives in your household and their age.</label>
+
+                      <fieldset>
+                        <legend>Family Member #1</legend>
+                        <div class="large-9 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_1_name" class="prefix required">Name</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_1_name" name="family_member_1_name" type="text" placeholder="Name" required>
+                              <small class="error">Required</small>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="large-3 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_1_age" class="prefix required">Age</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_1_age" name="family_member_1_age" type="text" placeholder="Number" required>
+                              <small class="error">Required</small>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
                     </div>
-                  </div>
+
+                    <div class="large-12 columns">
+                      <fieldset>
+                        <legend>Family Member #2</legend>
+                        <div class="large-9 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_2_name" class="prefix">Name</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_2_name" name="family_member_2_name" type="text" placeholder="Name">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="large-3 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_2_age" class="prefix">Age</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_2_age" name="family_member_2_age" type="text" placeholder="Number">
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="large-12 columns">
+                      <fieldset>
+                        <legend>Family Member #3</legend>
+                        <div class="large-9 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_3_name" class="prefix">Name</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_3_name" name="family_member_3_name" type="text" placeholder="Name">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="large-3 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_3_age" class="prefix">Age</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_3_age" name="family_member_3_age" type="text" placeholder="Number">
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="large-12 columns">
+                      <fieldset>
+                        <legend>Family Member #4</legend>
+                        <div class="large-9 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_4_name" class="prefix">Name</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_4_name" name="family_member_4_name" type="text" placeholder="Name">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="large-3 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_4_age" class="prefix">Age</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_4_age" name="family_member_4_age" type="text" placeholder="Number">
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+
+                    <div class="large-12 columns">
+                      <fieldset>
+                        <legend>Family Member #5</legend>
+                        <div class="large-9 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_5_name" class="prefix">Name</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_5_name" name="family_member_5_name" type="text" placeholder="Name">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="large-3 columns">
+                          <div class="row collapse">
+                            <div class="small-3 columns">
+                              <label for="family_member_5_age" class="prefix">Age</label>
+                            </div>
+                            <div class="small-9 columns">
+                              <input id="family_member_5_age" name="family_member_5_age" type="text" placeholder="Number">
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div> <!-- Familiy Members - END -->
 
                   <div class="row">
                     <div class="large-4 columns">
@@ -616,6 +758,10 @@
     <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script>
       $(document).foundation();
+
+      $('#name').keyup(function() {
+        $('#family_member_1_name').val(this.value);
+      });
     </script>
   </body>
 </html>
