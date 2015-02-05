@@ -552,7 +552,7 @@
                     </div>
                     <div class="large-9 columns">
                       <label for="fenced_desc" class="required">If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will address an adopted dog's bathroom/exercise needs.</label>
-                      <textarea id="fenced_desc" name="fenced_desc"></textarea>
+                      <textarea id="fenced_desc" name="fenced_desc" required></textarea>
                       <small class="error">Required</small>
                     </div>
                   </div>
