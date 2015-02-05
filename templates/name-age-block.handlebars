@@ -1,0 +1,28 @@
+{{#times num}}
+  <div class="large-12 columns">
+    <fieldset>
+      <div class="large-9 columns">
+        <div class="row collapse">
+          <div class="small-3 columns">
+            <label for="family_member_{{this}}_name" class="prefix required">Name</label>
+          </div>
+          <div class="small-9 columns">
+            <input id="family_member_{{this}}_name" name="family_member_{{this}}_name" type="text" required>
+            <small class="error">Required</small>
+          </div>
+        </div>
+      </div>
+      <div class="large-3 columns">
+        <div class="row collapse">
+          <div class="small-3 columns">
+            <label for="family_member_{{this}}_age" class="prefix required">Age</label>
+          </div>
+          <div class="small-9 columns">
+            <input id="family_member_{{this}}_age" name="family_member_{{this}}_age" type="text" required>
+            <small class="error">Required</small>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+{{/times}}

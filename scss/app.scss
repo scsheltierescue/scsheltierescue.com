@@ -274,15 +274,31 @@ ul[data-orbit]  {
   }
 }
 
+div.family-members > div > label[for="family_member_1_name"] > strong {
+  font-size: 1.25rem;
+  text-decoration: underline;
+}
+
 div.row.family-members {
   margin-bottom: 1rem;
   > div {
     margin-bottom: 1rem;
+    &:first-of-type,
     &:last-of-type {
       margin-bottom: 0;
     }
     fieldset {
       padding: 1rem .625rem 0;
     }
+  }
+}
+
+div.row.family-members > .num_of_people > div {
+  margin-bottom: 1rem;
+  &:first-of-type {
+    margin-top: 1rem;
+  }
+  &:last-of-type {
+    margin-bottom: 0;
   }
 }

@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" sizes="192x192" href="favicon-192x192.png">
 
-    <link rel="stylesheet" href="css/app.20150204.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/app.20150205.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
@@ -94,6 +94,7 @@
               $last_five_explain = $_POST['last_five_explain'];
               $purpose = $_POST['purpose'];
               $other_animals = $_POST['other_animals'];
+              $people_at_residence = $_POST['people_at_residence'];
               $family_member_1_name = $_POST['family_member_1_name'];
               $family_member_1_age = $_POST['family_member_1_age'];
               $family_member_2_name = $_POST['family_member_2_name'];
@@ -104,6 +105,8 @@
               $family_member_4_age = $_POST['family_member_4_age'];
               $family_member_5_name = $_POST['family_member_5_name'];
               $family_member_5_age = $_POST['family_member_5_age'];
+              $family_member_6_name = $_POST['family_member_6_name'];
+              $family_member_6_age = $_POST['family_member_6_age'];
               $home_type = $_POST['home_type'];
               $rent_own = $_POST['rent_own'];
               $landlord_permission = $_POST['landlord_permission'];
@@ -180,12 +183,13 @@
                     ."16. If you answered yes to any of the the previous three questions, please explain: \n".$last_five_explain."\n"
                     ."17. For what purpose do you want this dog?: \n".$purpose."\n"
                     ."18. Do you have any other animals? (name, type, age, sex, neutered/spayed): \n".$other_animals."\n"
-                    ."19. Please list everyone who lives in your household and their age.: \n"
+                    ."19. How many people live at your place of residence?: ".$people_at_residence."\n"
                     ."19.a  Name: ".$family_member_1_name."  -  Age: ".$family_member_1_age."\n"
                     ."19.b  Name: ".$family_member_2_name."  -  Age: ".$family_member_2_age."\n"
                     ."19.c  Name: ".$family_member_3_name."  -  Age: ".$family_member_3_age."\n"
                     ."19.d  Name: ".$family_member_4_name."  -  Age: ".$family_member_4_age."\n"
                     ."19.e  Name: ".$family_member_5_name."  -  Age: ".$family_member_5_age."\n"
+                    ."19.f  Name: ".$family_member_6_name."  -  Age: ".$family_member_6_age."\n"
                     ."20. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
                     ."21. Do you rent or own?: ".$rent_own."\n"
                     ."22. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
@@ -387,6 +391,20 @@
                     </div>
                   </div>
 
+                  <div class="row">
+                    <div class="large-4 columns">
+                      <label for="people_at_residence">How many people live at your place of residence?</label>
+                      <select id="people_at_residence" name="people_at_residence">
+                        <option value="1" selected> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                        <option value="4"> 4 </option>
+                        <option value="5"> 5 </option>
+                        <option value="6"> 6 </option>
+                      </select>
+                    </div>
+                  </div>
+
                   <div class="row family-members"> <!-- Familiy Members - START -->
                     <div class="large-12 columns">
                       <label for="family_member_1_name" class="required">Please list <strong>everyone</strong> who lives in your household and their age.</label>
@@ -417,105 +435,7 @@
                       </fieldset>
                     </div>
 
-                    <div class="large-12 columns">
-                      <fieldset>
-                        <div class="large-9 columns">
-                          <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_2_name" class="prefix">Name</label>
-                            </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_2_name" name="family_member_2_name" type="text">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="large-3 columns">
-                          <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_2_age" class="prefix">Age</label>
-                            </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_2_age" name="family_member_2_age" type="text">
-                            </div>
-                          </div>
-                        </div>
-                      </fieldset>
-                    </div>
-
-                    <div class="large-12 columns">
-                      <fieldset>
-                        <div class="large-9 columns">
-                          <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_3_name" class="prefix">Name</label>
-                            </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_3_name" name="family_member_3_name" type="text">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="large-3 columns">
-                          <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_3_age" class="prefix">Age</label>
-                            </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_3_age" name="family_member_3_age" type="text">
-                            </div>
-                          </div>
-                        </div>
-                      </fieldset>
-                    </div>
-
-                    <div class="large-12 columns">
-                      <fieldset>
-                        <div class="large-9 columns">
-                          <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_4_name" class="prefix">Name</label>
-                            </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_4_name" name="family_member_4_name" type="text">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="large-3 columns">
-                          <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_4_age" class="prefix">Age</label>
-                            </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_4_age" name="family_member_4_age" type="text">
-                            </div>
-                          </div>
-                        </div>
-                      </fieldset>
-                    </div>
-
-                    <div class="large-12 columns">
-                      <fieldset>
-                        <div class="large-9 columns">
-                          <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_5_name" class="prefix">Name</label>
-                            </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_5_name" name="family_member_5_name" type="text">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="large-3 columns">
-                          <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_5_age" class="prefix">Age</label>
-                            </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_5_age" name="family_member_5_age" type="text">
-                            </div>
-                          </div>
-                        </div>
-                      </fieldset>
-                    </div>
+                    <div id="num_of_people" class="num_of_people clearfix"></div>
                   </div> <!-- Familiy Members - END -->
 
                   <div class="row">
@@ -741,14 +661,31 @@
 
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/handlebars/handlebars.runtime.min.js"></script>
     <script src="js/plugins.js"></script>
+    <script src="js/templates.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script>
       $(document).foundation();
 
-      $('#name').keyup(function() {
+      $('#name').on('keyup', function() {
         $('#family_member_1_name').val(this.value);
       });
+      $('#people_at_residence').on('change', function() {
+        updatePeopleBlock($('#people_at_residence').val());
+      });
+
+      Handlebars.registerHelper('times', function(n, block) {
+        var accum = '';
+        for(var i = 2; i <= (n); ++i)
+          accum += block.fn(i);
+        return accum;
+      });
+
+      function updatePeopleBlock(numPeople) {
+        var context = { num: numPeople };
+        $("#num_of_people").html(Handlebars.templates['name-age-block'](context));
+      }
     </script>
   </body>
 </html>

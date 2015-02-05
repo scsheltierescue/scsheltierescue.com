@@ -1,5 +1,26 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['name-age-block'] = template({"1":function(depth0,helpers,partials,data) {
+  var lambda=this.lambda, escapeExpression=this.escapeExpression;
+  return "  <div class=\"large-12 columns\">\n    <fieldset>\n      <div class=\"large-9 columns\">\n        <div class=\"row collapse\">\n          <div class=\"small-3 columns\">\n            <label for=\"family_member_"
+    + escapeExpression(lambda(depth0, depth0))
+    + "_name\" class=\"prefix required\">Name</label>\n          </div>\n          <div class=\"small-9 columns\">\n            <input id=\"family_member_"
+    + escapeExpression(lambda(depth0, depth0))
+    + "_name\" name=\"family_member_"
+    + escapeExpression(lambda(depth0, depth0))
+    + "_name\" type=\"text\" required>\n            <small class=\"error\">Required</small>\n          </div>\n        </div>\n      </div>\n      <div class=\"large-3 columns\">\n        <div class=\"row collapse\">\n          <div class=\"small-3 columns\">\n            <label for=\"family_member_"
+    + escapeExpression(lambda(depth0, depth0))
+    + "_age\" class=\"prefix required\">Age</label>\n          </div>\n          <div class=\"small-9 columns\">\n            <input id=\"family_member_"
+    + escapeExpression(lambda(depth0, depth0))
+    + "_age\" name=\"family_member_"
+    + escapeExpression(lambda(depth0, depth0))
+    + "_age\" type=\"text\" required>\n            <small class=\"error\">Required</small>\n          </div>\n        </div>\n      </div>\n    </fieldset>\n  </div>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, helperMissing=helpers.helperMissing, buffer = "";
+  stack1 = ((helpers.times || (depth0 && depth0.times) || helperMissing).call(depth0, (depth0 != null ? depth0.num : depth0), {"name":"times","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data}));
+  if (stack1 != null) { buffer += stack1; }
+  return buffer;
+},"useData":true});
 templates['pet-error-alert'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   return "<div id=\"petfinder-api-error\" data-alert class=\"alert-box alert\">\n  <p>\n    Oops, something went wrong! Please try again later or go directly to our <a href=\"http://www.petfinder.com/pet-search?shelterid=SC92\">Petfinder site</a>.\n    <a href=\"#\" class=\"close\">&times;</a>\n  </p>\n</div>\n";
   },"useData":true});
