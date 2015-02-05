@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" sizes="192x192" href="favicon-192x192.png">
 
-    <link rel="stylesheet" href="css/app.20150203.css"> <!-- Cache Busting: Update the # when you update main.css -->
+    <link rel="stylesheet" href="css/app.20150204.css"> <!-- Cache Busting: Update the # when you update main.css -->
     <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
@@ -109,7 +109,6 @@
               $landlord_permission = $_POST['landlord_permission'];
               $yard_type = $_POST['yard_type'];
               $fenced_desc = $_POST['fenced_desc'];
-              $not_fenced_desc = $_POST['not_fenced_desc'];
               $home_during_day = $_POST['home_during_day'];
               $indoors_outdoors = $_POST['indoors_outdoors'];
               $sex_preference = $_POST['sex_preference'];
@@ -190,9 +189,8 @@
                     ."20. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
                     ."21. Do you rent or own?: ".$rent_own."\n"
                     ."22. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
-                    ."23a. Is your yard fenced?: ".$yard_type."\n"
-                    ."23b. If so, describe the type and height of fencing: \n".$fenced_desc."\n"
-                    ."24. If your yard is not fenced, please describe how you will address an adopted dog's bathroom/exercise needs. \n".$not_fenced_desc."\n"
+                    ."23. Is your yard fenced?: ".$yard_type."\n"
+                    ."24. If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will address an adopted dog's bathroom/exercise needs: \n".$fenced_desc."\n"
                     ."25. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
                     ."26. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
                     ."27. Do you have a sex preference?: ".$sex_preference."\n"
@@ -394,14 +392,13 @@
                       <label for="family_member_1_name" class="required">Please list <strong>everyone</strong> who lives in your household and their age.</label>
 
                       <fieldset>
-                        <legend>Family Member #1</legend>
                         <div class="large-9 columns">
                           <div class="row collapse">
                             <div class="small-3 columns">
-                              <label for="family_member_1_name" class="prefix required">Name</label>
+                              <label for="family_member_1_name" class="prefix required">Self</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_1_name" name="family_member_1_name" type="text" placeholder="Name" required>
+                              <input id="family_member_1_name" name="family_member_1_name" type="text" required>
                               <small class="error">Required</small>
                             </div>
                           </div>
@@ -412,7 +409,7 @@
                               <label for="family_member_1_age" class="prefix required">Age</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_1_age" name="family_member_1_age" type="text" placeholder="Number" required>
+                              <input id="family_member_1_age" name="family_member_1_age" type="text" required>
                               <small class="error">Required</small>
                             </div>
                           </div>
@@ -422,14 +419,13 @@
 
                     <div class="large-12 columns">
                       <fieldset>
-                        <legend>Family Member #2</legend>
                         <div class="large-9 columns">
                           <div class="row collapse">
                             <div class="small-3 columns">
                               <label for="family_member_2_name" class="prefix">Name</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_2_name" name="family_member_2_name" type="text" placeholder="Name">
+                              <input id="family_member_2_name" name="family_member_2_name" type="text">
                             </div>
                           </div>
                         </div>
@@ -439,7 +435,7 @@
                               <label for="family_member_2_age" class="prefix">Age</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_2_age" name="family_member_2_age" type="text" placeholder="Number">
+                              <input id="family_member_2_age" name="family_member_2_age" type="text">
                             </div>
                           </div>
                         </div>
@@ -448,14 +444,13 @@
 
                     <div class="large-12 columns">
                       <fieldset>
-                        <legend>Family Member #3</legend>
                         <div class="large-9 columns">
                           <div class="row collapse">
                             <div class="small-3 columns">
                               <label for="family_member_3_name" class="prefix">Name</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_3_name" name="family_member_3_name" type="text" placeholder="Name">
+                              <input id="family_member_3_name" name="family_member_3_name" type="text">
                             </div>
                           </div>
                         </div>
@@ -465,7 +460,7 @@
                               <label for="family_member_3_age" class="prefix">Age</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_3_age" name="family_member_3_age" type="text" placeholder="Number">
+                              <input id="family_member_3_age" name="family_member_3_age" type="text">
                             </div>
                           </div>
                         </div>
@@ -474,14 +469,13 @@
 
                     <div class="large-12 columns">
                       <fieldset>
-                        <legend>Family Member #4</legend>
                         <div class="large-9 columns">
                           <div class="row collapse">
                             <div class="small-3 columns">
                               <label for="family_member_4_name" class="prefix">Name</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_4_name" name="family_member_4_name" type="text" placeholder="Name">
+                              <input id="family_member_4_name" name="family_member_4_name" type="text">
                             </div>
                           </div>
                         </div>
@@ -491,7 +485,7 @@
                               <label for="family_member_4_age" class="prefix">Age</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_4_age" name="family_member_4_age" type="text" placeholder="Number">
+                              <input id="family_member_4_age" name="family_member_4_age" type="text">
                             </div>
                           </div>
                         </div>
@@ -500,14 +494,13 @@
 
                     <div class="large-12 columns">
                       <fieldset>
-                        <legend>Family Member #5</legend>
                         <div class="large-9 columns">
                           <div class="row collapse">
                             <div class="small-3 columns">
                               <label for="family_member_5_name" class="prefix">Name</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_5_name" name="family_member_5_name" type="text" placeholder="Name">
+                              <input id="family_member_5_name" name="family_member_5_name" type="text">
                             </div>
                           </div>
                         </div>
@@ -517,7 +510,7 @@
                               <label for="family_member_5_age" class="prefix">Age</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_5_age" name="family_member_5_age" type="text" placeholder="Number">
+                              <input id="family_member_5_age" name="family_member_5_age" type="text">
                             </div>
                           </div>
                         </div>
@@ -551,22 +544,16 @@
                   </div>
 
                   <div class="row">
-                    <div class="large-6 columns">
+                    <div class="large-3 columns">
                       <label class="required">Is your yard fenced?</label>
                       <input id="yes_fence" name="yard_type" type="radio" value="Yes" required><label for="yes_fence">&nbsp;Yes</label><br>
                       <input id="no_fence" name="yard_type" type="radio" value="No" required><label for="no_fence">&nbsp;No</label>
                       <small class="error">Required</small>
                     </div>
-                    <div class="large-6 columns">
-                      <label for="fenced_desc">If so, describe the type and height of fencing.</label>
+                    <div class="large-9 columns">
+                      <label for="fenced_desc" class="required">If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will address an adopted dog's bathroom/exercise needs.</label>
                       <textarea id="fenced_desc" name="fenced_desc"></textarea>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="large-12 columns">
-                      <label for="not_fenced_desc">If your yard is not fenced, please describe how you will address an adopted dog's bathroom/exercise needs.</label>
-                      <textarea id="not_fenced_desc" name="not_fenced_desc"></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 

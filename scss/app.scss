@@ -276,7 +276,13 @@ ul[data-orbit]  {
 
 div.row.family-members {
   margin-bottom: 1rem;
-  fieldset {
-    padding: .35em .625em 0;
+  > div {
+    margin-bottom: 1rem;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    fieldset {
+      padding: 1rem .625rem 0;
+    }
   }
 }
