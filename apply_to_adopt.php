@@ -7,11 +7,11 @@
     <meta name="description" content="Apply to adopt a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="icon" sizes="192x192" href="favicon-192x192.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.20150205.png"> <!-- Cache Busting -->
+    <link rel="icon" sizes="192x192" href="favicon-192x192.20150205.png"> <!-- Cache Busting -->
 
-    <link rel="stylesheet" href="css/app.20150205.css"> <!-- Cache Busting: Update the # when you update main.css -->
-    <script src="bower_components/modernizr/modernizr.js"></script>
+    <link rel="stylesheet" href="css/app.20150205.css"> <!-- Cache Busting -->
+    <script src="bower_components/modernizr/modernizr.20150205.js"></script> <!-- Cache Busting -->
   </head>
   <body>
     <!--[if lte IE 8]>
@@ -660,11 +660,11 @@
     </footer>
 
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/handlebars/handlebars.runtime.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/templates.js"></script>
-    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.20150205.js"></script> <!-- Cache Busting -->
+    <script src="bower_components/handlebars/handlebars.runtime.min.20150205.js"></script> <!-- Cache Busting -->
+    <script src="js/plugins.20150205.js"></script> <!-- Cache Busting -->
+    <script src="js/templates.20150205.js"></script> <!-- Cache Busting -->
+    <script src="bower_components/foundation/js/foundation.min.20150205.js"></script> <!-- Cache Busting -->
     <script>
       $(document).foundation();
 
