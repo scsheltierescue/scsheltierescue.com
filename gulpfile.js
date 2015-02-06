@@ -1,11 +1,12 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+var gulp      = require('gulp');
+var sass      = require('gulp-sass');
 var minifycss = require('gulp-minify-css');
-var del = require('del');
+var uglify    = require('gulp-uglify');
+var del       = require('del');
 
 // Clean
 gulp.task('clean', function(cb) {
-  del(['css'], cb);
+  del(['css', 'js/vendor'], cb);
 });
 
 // Styles
@@ -18,8 +19,15 @@ gulp.task('styles', ['clean'], function() {
     .pipe(gulp.dest('css'));
 });
 
+// Uglify
+gulp.task('uglify', ['clean'], function() {
+  return gulp.src('bower_components/modernizr/modernizr.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('js/vendor'))
+});
+
 // Default
-gulp.task('default', ['styles']);
+gulp.task('default', ['styles', 'uglify']);
 
 // Watch
 gulp.task('watch', ['clean'], function() {

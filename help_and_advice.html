@@ -11,7 +11,7 @@
     <link rel="icon" sizes="192x192" href="favicon-192x192.20150205.png"> <!-- Cache Busting -->
 
     <link rel="stylesheet" href="css/app.20150205.css"> <!-- Cache Busting -->
-    <script src="bower_components/modernizr/modernizr.20150205.js"></script> <!-- Cache Busting -->
+    <script src="js/vendor/modernizr.20150205.js"></script> <!-- Cache Busting -->
   </head>
   <body>
     <!--[if lte IE 8]>
