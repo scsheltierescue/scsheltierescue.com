@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Fostering Application</title>
     <meta name="description" content="Apply to foster a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
