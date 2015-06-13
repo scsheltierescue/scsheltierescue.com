@@ -32,23 +32,27 @@ function getPets() {
 }
 
 function petfinderDone(data, textStatus, jqXHR) {
-  currentOffset = parseInt(data.petfinder.lastOffset.$t, 10);
-  var pets = normalizeToArray(data.petfinder.pets.pet),
-      context = { pets: [] },
-      maxOffset = 25; //equals 'count' value from petfinder.php
+  if (data.petfinder.lastOffset && data.petfinder.pets) {
+    currentOffset = parseInt(data.petfinder.lastOffset.$t, 10);
+    var pets = normalizeToArray(data.petfinder.pets.pet),
+        context = { pets: [] },
+        maxOffset = 25; //equals 'count' value from petfinder.php
 
-  pets.forEach(function(pet) {
-    context.pets.push(formatPet(pet));
-  });
+    pets.forEach(function(pet) {
+      context.pets.push(formatPet(pet));
+    });
 
-  spinnerStop();
-  if(isFirstGetPetsAPICall || (pets && pets.length)) {
-    $("#pets").append(Handlebars.templates['pet'](context));
-  }
+    spinnerStop();
+    if(isFirstGetPetsAPICall || (pets && pets.length)) {
+      $("#pets").append(Handlebars.templates['pet'](context));
+    }
 
-   // Check if we pulled the maximum amount of pets
-  if(pets && (pets.length == null || pets.length === maxOffset)) {
-    $("#btnMore").removeClass("invisible");
+     // Check if we pulled the maximum amount of pets
+    if(pets && (pets.length == null || pets.length === maxOffset)) {
+      $("#btnMore").removeClass("invisible");
+    }
+  } else {
+    petfinderFail();
   }
 }
 
