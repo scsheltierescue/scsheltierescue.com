@@ -83,22 +83,26 @@ hr {
   background: $topbar-bg-color;
   font-weight: bold;
   color: white;
+  a {
+    transition: color 200ms;
+  }
   .social-media,
   .address,
   .copyright {
     text-align: center;
   }
   .social-media {
-    line-height: $footer-height/4;
+    line-height: $footer-height*0.4;
+    font-size: ($footer-height*0.4)*0.45;
     & a {
       margin: rem-calc(0 8);
     }
   }
   .address {
-    line-height: $footer-height/2;
+    line-height: $footer-height*0.4;
   }
   .copyright {
-    line-height: $footer-height/4;
+    line-height: $footer-height*0.2;
   }
 }
 
