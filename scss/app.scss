@@ -112,9 +112,11 @@ hr {
 }
 
 .loading_spinner {
-  width: 65px;
-  height: 65px;
+  position: relative;
   margin: 0 auto;
+  width: $loader-width;
+  height: $loader-width;
+  zoom: 1.7;
 }
 
 .pad-left {
@@ -307,40 +309,55 @@ div.row.family-members > .num_of_people > div {
   }
 }
 
-.spinner {
-  animation: rotator $loader-duration linear infinite;
+.circular {
+ animation: rotate 2s linear infinite;
+ height: $loader-width;
+ position: relative;
+ width: $loader-width;
 }
 
 .path {
-  stroke-dasharray: $loader-offset;
+  stroke-dasharray: 1,200;
   stroke-dashoffset: 0;
-  transform-origin: center;
   animation:
-    dash $loader-duration ease-in-out infinite,
-    colors ($loader-duration*4) ease-in-out infinite;
+   dash 1.5s ease-in-out infinite,
+   color 6s ease-in-out infinite
+  ;
+  stroke-linecap: round;
 }
 
-@keyframes rotator {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(270deg); }
-}
-
-@keyframes colors {
-  0% { stroke: #4285F4; }
-  25% { stroke: #DE3E35; }
-  50% { stroke: #F7C223; }
-  75% { stroke: #1B9A59; }
-  100% { stroke: #4285F4; }
+@keyframes rotate {
+ 100%{
+  transform: rotate(360deg);
+ }
 }
 
 @keyframes dash {
-  0% { stroke-dashoffset: $loader-offset; }
-  50% {
-    stroke-dashoffset: $loader-offset/4;
-    transform: rotate(135deg);
+ 0%{
+  stroke-dasharray: 1,200;
+  stroke-dashoffset: 0;
+ }
+ 50%{
+  stroke-dasharray: 89,200;
+  stroke-dashoffset: -35;
+ }
+ 100%{
+  stroke-dasharray: 89,200;
+  stroke-dashoffset: -124;
+ }
+}
+
+@keyframes color {
+  100%, 0%{
+    stroke: $red;
   }
-  100% {
-    stroke-dashoffset: $loader-offset;
-    transform: rotate(450deg);
+  40%{
+    stroke: $blue;
+  }
+  66%{
+    stroke: $green;
+  }
+  80%, 90%{
+    stroke: $yellow;
   }
 }
