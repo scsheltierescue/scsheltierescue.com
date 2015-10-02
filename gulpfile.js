@@ -1,8 +1,9 @@
-var gulp      = require('gulp');
-var sass      = require('gulp-sass');
-var minifycss = require('gulp-minify-css');
-var uglify    = require('gulp-uglify');
-var del       = require('del');
+var gulp         = require('gulp');
+var sass         = require('gulp-sass');
+var minifycss    = require('gulp-minify-css');
+var uglify       = require('gulp-uglify');
+var del          = require('del');
+var autoprefixer = require('gulp-autoprefixer');
 
 // Clean
 gulp.task('clean', function(cb) {
@@ -14,6 +15,10 @@ gulp.task('styles', ['clean'], function() {
   return gulp.src('scss/app.scss')
     .pipe(sass({
       includePaths: ['bower_components/foundation/scss']
+    }))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
     }))
     .pipe(minifycss())
     .pipe(gulp.dest('css'));
