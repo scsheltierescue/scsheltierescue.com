@@ -549,7 +549,7 @@
         </p>
       </section>
       <section id="copyright" class="copyright">
-        <small>&copy; 2015 South Carolina Sheltie Rescue</small>
+        <small>&copy; 2016 South Carolina Sheltie Rescue</small>
       </section>
     </footer>
 
