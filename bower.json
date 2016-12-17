@@ -1,7 +1,8 @@
 {
   "name": "foundation-libsass-template",
   "dependencies": {
-    "foundation": "zurb/bower-foundation",
-    "handlebars": "~3.0.0"
+    "foundation": "5.5.3",
+    "handlebars": "4.0.5",
+    "jquery": "2.2.4"
   }
 }
