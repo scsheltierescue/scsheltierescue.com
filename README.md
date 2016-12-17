@@ -10,12 +10,12 @@ Instructions to get started with development:
 git clone git@github.com:scsheltierescue/scsheltierescue.com.git
 cd scsheltierescue.com
 
-npm install -g bower gulp handlebars
+npm install -g bower
 
 gem install foundation
 
-bower install
-npm install
+bower i
+npm i
 
 gulp watch
 ```
