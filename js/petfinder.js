@@ -16,7 +16,7 @@ $("#btnMore").on('click', function() {
  */
 function getPets() {
   var $btnMore = $("#btnMore"),
-      url = "petfinder.php",
+      url = "/petfinder.php",
       data = {
         offset: currentOffset
       };

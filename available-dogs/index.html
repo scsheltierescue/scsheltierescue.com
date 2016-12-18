@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Available Dogs</title>
+    <meta name="description" content="List of SC Sheltie Rescue dogs available for adoption.">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.20161216.png"> <!-- Cache Busting -->
+    <link rel="icon" sizes="192x192" href="favicon-192x192.20161216.png"> <!-- Cache Busting -->
+
+    <link rel="stylesheet" href="/css/app.20161216.css"> <!-- Cache Busting -->
+    <script src="/js/vendor/modernizr.20161216.js"></script> <!-- Cache Busting -->
+  </head>
+  <body>
+    <!--[if lte IE 8]>
+    <div data-alert class="alert-box warning browsehappy-alert">
+      You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      <a href="#" class="close">&times;</a>
+    </div>
+    <![endif]-->
+
+    <div class="page-wrap">
+      <div class="contain-to-grid sticky">
+        <nav class="top-bar" data-topbar>
+          <ul class="title-area">
+            <!-- Title Area -->
+            <li class="name">
+              <h1 class="show-for-large-up"><a href="/">South Carolina Sheltie Rescue</a></h1>
+              <h1 class="show-for-medium-down"><a href="/">SCSR</a></h1>
+            </li>
+            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+          </ul>
+
+          <section class="top-bar-section">
+            <ul class="right">
+              <li><a href="/">Home</a></li>
+              <li class="has-dropdown"><a href="/adoptable-dogs/">Adopt</a>
+                <ul class="dropdown">
+                  <li><a href="/adoption-requirements/">Adoption Requirements</a></li>
+                  <li class="active"><a href="/adoptable-dogs/">Adoptable Dogs</a></li>
+                  <li><a href="/adoption-application/">Adoption Application</a></li>
+                  <li><a href="/fostering-application/">Fostering Application</a></li>
+                </ul>
+              </li>
+              <li><a href="/surrender/">Surrender a Sheltie</a></li>
+              <li><a href="/help-and-advice/">Help and Advice</a></li>
+              <li><a href="/events/">Rescue Events</a></li>
+            </ul>
+          </section>
+        </nav>
+      </div>
+
+      <div class="row">
+        <div class="large-12 medium-12 small-12 columns">
+          <main role="main" class="main-content">
+            <h2 class="headline first">Available for Adoption</h2>
+            <p>You can view our available dogs below or on our <a href="http://www.petfinder.com/pet-search?animal_type=&pet_breed=&pet_age=&pet_size=&specialNeeds=&declawedPets=&children=&status=&shelter_pet_id=&internal=&contact=&name=&shelter_id=SC92&sort=" target="_blank">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please complete and submit our <a href="/adoption-application/">Adoption Application</a> form. If you have any questions feel free to <a href="mailto:amanda@southcarolinasheltierescue.com">email</a> us.</p>
+
+            <div id="pets" class="clearfix"></div>
+            <div id="spinner" class="loading_spinner">
+              <svg class="circular">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+              </svg>
+            </div>
+
+            <input id="btnMore" type="button" class="large button expand invisible" value="View More" />
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <section id="social-media" class="social-media">
+        <a href="http://www.petfinder.com/pet-search?shelterid=SC92" target="_blank">
+          <span class="icon-bone"></span><span class="visuallyhidden">Petfinder</span>
+        </a>
+        <a href="https://www.facebook.com/SouthCarolinaSheltieRescue" target="_blank">
+          <span class="icon-facebook"></span><span class="visuallyhidden">Facebook</span>
+        </a>
+        <a href="https://twitter.com/scsheltierescue" target="_blank">
+          <span class="icon-twitter"></span><span class="visuallyhidden">Twitter</span>
+        </a>
+      </section>
+      <section id="address" class="address">
+        <p class="no-margin-bottom">
+          <span class="name">SC Sheltie Rescue</span><br/>
+          <span class="po-box">P.O. Box 11414</span><br/>
+          <span class="city-state-zip">Columbia, SC 29211</span><br/>
+          <span class="tel"><a href="tel:+18039200644">803.920.0644</a></span>
+        </p>
+      </section>
+      <section id="copyright" class="copyright">
+        <small>&copy; 2016 South Carolina Sheltie Rescue</small>
+      </section>
+    </footer>
+
+
+    <script src="/bower_components/jquery/dist/jquery.min.20161216.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/handlebars/handlebars.runtime.min.20161216.js"></script> <!-- Cache Busting -->
+    <script src="/js/plugins.20161216.js"></script> <!-- Cache Busting -->
+    <script src="/js/templates.20161216.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/foundation/js/foundation.min.20161216.js"></script> <!-- Cache Busting -->
+    <script src="/js/petfinder.20161216.js"></script> <!-- Cache Busting -->
+  </body>
+</html>
