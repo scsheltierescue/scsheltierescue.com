@@ -27,8 +27,8 @@
           <ul class="title-area">
             <!-- Title Area -->
             <li class="name">
-              <h1 class="show-for-large-up"><a href="index.html">South Carolina Sheltie Rescue</a></h1>
-              <h1 class="show-for-medium-down"><a href="index.html">SCSR</a></h1>
+              <h1 class="show-for-large-up"><a href="/">South Carolina Sheltie Rescue</a></h1>
+              <h1 class="show-for-medium-down"><a href="/">SCSR</a></h1>
             </li>
             <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
             <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
@@ -36,7 +36,7 @@
 
           <section class="top-bar-section">
             <ul class="right">
-              <li><a href="index.html">Home</a></li>
+              <li><a href="/">Home</a></li>
               <li class="has-dropdown"><a href="available_dogs.html">Adopt</a>
                 <ul class="dropdown">
                   <li><a href="adoption_requirements.html">Adoption Requirements</a></li>
