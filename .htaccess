@@ -982,3 +982,23 @@ FileETag None
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.+)\.(\d+)\.(bmp|css|cur|gif|ico|jpe?g|js|png|svgz?|webp|webmanifest)$ $1.$3 [L]
 </IfModule>
+
+# ----------------------------------------------------------------------
+# | SCSR Custom Redirects                                              |
+# ----------------------------------------------------------------------
+
+<IfModule mod_alias.c>
+    Redirect permanent "/help_and_advice.html" "/help-and-advice/"
+    Redirect permanent "/housetraining_tips.html" "/help-and-advice/housetraining/"
+    Redirect permanent "/bringing_your_sheltie_home.html" "/help-and-advice/bringing-your-sheltie-home/"
+    Redirect permanent "/communicating_with_your_sheltie.html" "/help-and-advice/communicating/"
+    Redirect permanent "/my_sheltie_barks.html" "/help-and-advice/barking/"
+    Redirect permanent "/grooming_your_pet_sheltie.html" "/help-and-advice/grooming/"
+    Redirect permanent "/fosterhomes.html" "/help-and-advice/fostering/"
+    Redirect permanent "/available_dogs.html" "/adoptable-dogs/"
+    Redirect permanent "/apply_to_adopt.php" "/adoption-application/"
+    Redirect permanent "/apply_to_foster.php" "/fostering-application/"
+    Redirect permanent "/events.html" "/events/"
+    Redirect permanent "/adoption_requirements.html" "/adoption-requirements/"
+    Redirect permanent "/surrender.html" "/surrender/"
+</IfModule>
