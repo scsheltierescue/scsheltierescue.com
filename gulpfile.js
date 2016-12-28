@@ -6,8 +6,8 @@ var del          = require('del');
 var autoprefixer = require('gulp-autoprefixer');
 
 // Clean
-gulp.task('clean', function(cb) {
-  del(['css', 'js/vendor'], cb);
+gulp.task('clean', function() {
+  return del(['css', 'js/vendor']);
 });
 
 // Styles
