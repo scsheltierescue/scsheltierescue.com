@@ -1,4 +1,4 @@
-# scsheltierescue.com [![Built with Gulp](http://img.shields.io/badge/built%20with-gulp.js-red.svg)](http://gulpjs.com/)
+# scsheltierescue.com [![Built with Gulp](http://img.shields.io/badge/built%20with-gulp.js-red.svg)](http://gulpjs.com/) [![Deployment status from DeployBot](https://sc-sheltie-rescue.deploybot.com/badge/56046447850656/2877.svg)](http://deploybot.com)
 
 <img src="https://raw.github.com/alexdiliberto/scsheltierescue.com/master/img/SCSR-Logo-New-Transparent_500x606.png" alt="SCSR" title="SCSR" width="250" height="303">
 
