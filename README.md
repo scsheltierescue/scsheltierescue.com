@@ -4,7 +4,7 @@
 
 SC Sheltie Rescue is a non-profit volunteer group dedicated to helping Shetland Sheepdogs in Columbia, SC and the surrounding areas.
 
-##Contributing
+## Contributing
 Instructions to get started with development:
 ```sh
 git clone git@github.com:scsheltierescue/scsheltierescue.com.git
@@ -25,7 +25,7 @@ When making template changes don't forget to precompile again:
 handlebars templates/ -f js/templates.js
 ```
 
-##Foundation Dependency Updates
+## Foundation Dependency Updates
 Update foundation to the latest stable release:
 ```sh
 foundation update
@@ -36,7 +36,7 @@ Update foundation to a specified tag:
 bower update foundation#<tag>
 ```
 
-##Deployment
+## Deployment
 Automatic deploy using [DeployBot](https://deploybot.com/) via [sc-sheltie-rescue.deploybot.com](https://sc-sheltie-rescue.deploybot.com/)
 
 *Note: If you make CSS updates, you will still need to manually deploy the generated `app.css` file*
