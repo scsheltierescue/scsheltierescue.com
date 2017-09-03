@@ -97,7 +97,7 @@
         </p>
       </section>
       <section id="copyright" class="copyright">
-        <small>&copy; 2016 South Carolina Sheltie Rescue</small>
+        <small>&copy; <span id="currentYear"></span> South Carolina Sheltie Rescue</small>
       </section>
     </footer>
 
@@ -106,5 +106,7 @@
     <script src="/js/plugins.20161216.js"></script> <!-- Cache Busting -->
     <script src="/bower_components/foundation/js/foundation.min.20161216.js"></script> <!-- Cache Busting -->
     <script src="/js/foundation-init.20161216.js"></script> <!-- Cache Busting -->
+    <!-- Added sha256 CSP script-src hash to `.htaccess`- https://report-uri.io/home/hash -->
+    <script type="text/javascript">function getYear() {var today = new Date();var year = today.getFullYear();document.getElementById('currentYear').innerHTML = year;}getYear();</script>
   </body>
 </html>
