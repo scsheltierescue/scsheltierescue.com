@@ -1,38 +1,54 @@
-# scsheltierescue.com [![Built with Gulp](http://img.shields.io/badge/built%20with-gulp.js-red.svg)](http://gulpjs.com/) [![Deployment status from DeployBot](https://sc-sheltie-rescue.deploybot.com/badge/56046447850656/2877.svg)](http://deploybot.com)
+<h1 align="center">
+  <img src="https://cdn.rawgit.com/scsheltierescue/scsheltierescue.com/master/img/SCSR-Logo-New-Transparent_500x606.png" alt="SCSR Logo" width="250" height="303">
+  <br>
+  <a href="https://scsheltierescue.com/">scsheltierescue.com</a>
+</h1>
 
-<img src="https://raw.github.com/alexdiliberto/scsheltierescue.com/master/img/SCSR-Logo-New-Transparent_500x606.png" alt="SCSR" title="SCSR" width="250" height="303">
+[![Deployment status from DeployBot](https://sc-sheltie-rescue.deploybot.com/badge/02267417943996/2877.svg)](http://deploybot.com)
 
 SC Sheltie Rescue is a non-profit volunteer group dedicated to helping Shetland Sheepdogs in Columbia, SC and the surrounding areas.
 
 ## Contributing
-Instructions to get started with development:
-```sh
+Instructions to begin local development:
+
+```bash
+# 1. Configure MAMP - https://gist.github.com/jfloff/5138826
+# 2. Configure /etc/hosts - https://scsheltierescue.dev
+# 3. Install Bower globally
+yarn global add bower
+
+# 4. install foundation gem
+gem install foundation
+
+# 5. Clone repository
 git clone git@github.com:scsheltierescue/scsheltierescue.com.git
 cd scsheltierescue.com
 
-npm install -g bower
+# 6. Install the repo's dependencies
+bower i && yarn
 
-gem install foundation
-
-bower i
-npm i
-
+# 7. Setup the build pipeline for development
 gulp watch
+
+# 8. Open https://scsheltierescue.dev/
 ```
 
 When making template changes don't forget to precompile again:
-```sh
+
+```bash
 handlebars templates/ -f js/templates.js
 ```
 
 ## Foundation Dependency Updates
 Update foundation to the latest stable release:
-```sh
+
+```bash
 foundation update
 ```
 
 Update foundation to a specified tag:
-```sh
+
+```bash
 bower update foundation#<tag>
 ```
 
