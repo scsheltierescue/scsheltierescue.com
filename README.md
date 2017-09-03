@@ -29,9 +29,9 @@ bower i && yarn
 
 # 7. Setup the build pipeline for development
 gulp watch
-
-# 8. Open https://scsheltierescue.dev/
 ```
+
+Now open [https://scsheltierescue.dev](https://scsheltierescue.dev) in your browser
 
 When making template changes don't forget to precompile again:
 
