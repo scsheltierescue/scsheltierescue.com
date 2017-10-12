@@ -72,11 +72,11 @@
               include_once dirname(__FILE__).'/../credentials.php';
 
               $subject = 'SHELTIE ADOPTION';
-              $to_email = 'amanda@southcarolinasheltierescue.com';
-              $to_name = 'Amanda';
-              $from_email = 'webserver@southcarolinasheltierescue.com';
+              $to_email = 'adopt@scsheltierescue.com';
+              $to_name = 'SCSR Adoptions Team';
+              $from_email = 'webserver@scsheltierescue.com';
               $from_name = 'Adoption Application';
-              $host = 'mail.southcarolinasheltierescue.com';
+              $host = 'mail.scsheltierescue.com';
 
               $name = $_POST['name'];
               $email = $_POST['email'];
@@ -158,9 +158,9 @@
                   //Whether to use SMTP authentication
                   $mail->SMTPAuth = true;
                   //Username to use for SMTP authentication
-                  $mail->Username = $amanda_username;
+                  $mail->Username = $adopt_email_username;
                   //Password to use for SMTP authentication
-                  $mail->Password = $amanda_password;
+                  $mail->Password = $adopt_email_password;
                   //Set who the message is to be sent from
                   $mail->setFrom($from_email, $from_name);
                   //Set an alternative reply-to address
@@ -626,7 +626,7 @@
                   </div>
 
                   <p>By submitting this form, I am attesting to the truthfulness of my answers and granting SC Sheltie Rescue permission to contact my veterinarian for a reference. I understand that falsification of any of the above information will be grounds to disallow the adoption of a rescue Sheltie.</p>
-                  <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. Thank you for considering a dog from South Carolina Sheltie Rescue. If you have any questions, or if we can be of assistance, please do not hesitate to <a href="mailto:amanda@southcarolinasheltierescue.com">email</a> us.</p>
+                  <p>NOTE: If you are under 18 years of age, a parent or guardian must also sign the application. Thank you for considering a dog from South Carolina Sheltie Rescue. If you have any questions, or if we can be of assistance, please do not hesitate to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
                   <p><strong>We reserve the right to refuse any applicant.</strong></p>
 
                   <input id="submit" name="submit" type="submit" class="large button expand" value="Submit">
