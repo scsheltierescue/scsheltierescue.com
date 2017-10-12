@@ -7,16 +7,16 @@
     <meta name="description" content="Apply to foster a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.20170902.png"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-192x192.20170902.png" sizes="192x192"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-32x32.20170902.png" sizes="32x32"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-16x16.20170902.png" sizes="16x16"> <!-- Cache Busting -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.20171012.png"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-192x192.20171012.png" sizes="192x192"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-32x32.20171012.png" sizes="32x32"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-16x16.20171012.png" sizes="16x16"> <!-- Cache Busting -->
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="/css/app.20170902.css"> <!-- Cache Busting -->
-    <script src="/js/vendor/modernizr.20170902.js"></script> <!-- Cache Busting -->
+    <link rel="stylesheet" href="/css/app.20171012.css"> <!-- Cache Busting -->
+    <script src="/js/vendor/modernizr.20171012.js"></script> <!-- Cache Busting -->
   </head>
   <body>
     <!--[if lte IE 8]>
@@ -123,8 +123,18 @@
               $allergic = $_POST['allergic'];
               $animal_control_regulations = $_POST['animal_control_regulations'];
               $home_visit = $_POST['home_visit'];
+              $how_many_vets = $_POST['how_many_vets'];
+              $vet_1_clinic_name = $_POST['vet_1_clinic_name'];
+              $vet_1_phone = $_POST['vet_1_phone'];
+              $vet_2_clinic_name = $_POST['vet_2_clinic_name'];
+              $vet_2_phone = $_POST['vet_2_phone'];
+              $vet_3_clinic_name = $_POST['vet_3_clinic_name'];
+              $vet_3_phone = $_POST['vet_3_phone'];
+              $vet_4_clinic_name = $_POST['vet_4_clinic_name'];
+              $vet_4_phone = $_POST['vet_4_phone'];
+              $vet_5_clinic_name = $_POST['vet_5_clinic_name'];
+              $vet_5_phone = $_POST['vet_5_phone'];
               $hear_about_scsr = $_POST['hear_about_scsr'];
-              $previous_vets = $_POST['previous_vets'];
 
               if ($_POST['submit']) {
                 if ($name != '' && $email != '' && $city != '' && $state != '' && $zip != ''&& $homephone != '') {
@@ -194,8 +204,14 @@
                     ."28. Is anyone in your house allergic to animals?: ".$allergic."\n"
                     ."29. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
                     ."30. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
-                    ."31. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
-                    ."32. Please provide the name and phone number of any vets used in the past 5 years.: \n".$previous_vets;
+                    ."31. How many vets have you used for your pets in the last 5 years?: ".$how_many_vets."\n"
+                    ."31.a  Clinic Name: ".$vet_1_clinic_name."  -  Phone Number: ".$vet_1_phone."\n"
+                    ."31.b  Clinic Name: ".$vet_2_clinic_name."  -  Phone Number: ".$vet_2_phone."\n"
+                    ."31.c  Clinic Name: ".$vet_3_clinic_name."  -  Phone Number: ".$vet_3_phone."\n"
+                    ."31.d  Clinic Name: ".$vet_4_clinic_name."  -  Phone Number: ".$vet_4_phone."\n"
+                    ."31.e  Clinic Name: ".$vet_5_clinic_name."  -  Phone Number: ".$vet_5_phone."\n"
+                    ."32. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr;
+
                   //Construct the HTML message body
                   $message_html = str_replace("\n", "<br>", $message_alt);
                   //Set the body text
@@ -505,12 +521,24 @@
                   </div>
 
                   <div class="row">
-                    <div class="large-12 columns">
-                      <label for="previous_vets" class="required">Please provide the name and number of any vets used in the past 5 years.</label>
-                      <textarea id="previous_vets" name="previous_vets" required></textarea>
+                    <div class="large-4 columns">
+                      <label for="how_many_vets" class="required">How many vets have you used for your pets in the last 5 years?</label>
+                      <select id="how_many_vets" name="how_many_vets" required>
+                        <option value selected> Please Select </option>
+                        <option value="0"> None </option>
+                        <option value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                        <option value="4"> 4 </option>
+                        <option value="5"> 5 </option>
+                      </select>
                       <small class="error">Required</small>
                     </div>
                   </div>
+
+                  <div class="row num-of-vets"> <!-- How Many Vets - START -->
+                    <div id="num_of_vets" class="num-of-vets-block clearfix"></div>
+                  </div> <!-- How Many Vets - END -->
 
                   <div class="row">
                     <div class="large-12 columns">
@@ -559,12 +587,12 @@
     </footer>
 
 
-    <script src="/bower_components/jquery/dist/jquery.min.20170902.js"></script> <!-- Cache Busting -->
-    <script src="/bower_components/handlebars/handlebars.runtime.min.20170902.js"></script> <!-- Cache Busting -->
-    <script src="/js/plugins.20170902.js"></script> <!-- Cache Busting -->
-    <script src="/js/templates.20170902.js"></script> <!-- Cache Busting -->
-    <script src="/bower_components/foundation/js/foundation.min.20170902.js"></script> <!-- Cache Busting -->
-    <script src="/js/apply-form.20170902.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/jquery/dist/jquery.min.20171012.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/handlebars/handlebars.runtime.min.20171012.js"></script> <!-- Cache Busting -->
+    <script src="/js/plugins.20171012.js"></script> <!-- Cache Busting -->
+    <script src="/js/templates.20171012.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/foundation/js/foundation.min.20171012.js"></script> <!-- Cache Busting -->
+    <script src="/js/apply-form.20171012.js"></script> <!-- Cache Busting -->
     <!-- Added sha256 CSP script-src hash to `.htaccess`- https://report-uri.io/home/hash -->
     <script type="text/javascript">function getYear() {var today = new Date();var year = today.getFullYear();document.getElementById('currentYear').innerHTML = year;}getYear();</script>
   </body>

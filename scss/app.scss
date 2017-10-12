@@ -309,6 +309,13 @@ div.row.family-members > .num_of_people > div {
   }
 }
 
+.num-of-vets-block > .num-of-vets-block-fieldset {
+  margin-bottom: 1rem;
+  fieldset {
+    padding: 1rem .625rem 0;
+  }
+}
+
 .circular {
  animation: rotate 2s linear infinite;
  height: $loader-width;
