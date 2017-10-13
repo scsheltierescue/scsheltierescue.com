@@ -209,7 +209,7 @@
                     ."21. Do you rent or own?: ".$rent_own."\n"
                     ."22. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
                     ."23. Is your yard fenced?: ".$yard_type."\n"
-                    ."24. If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will address an adopted dog's bathroom/exercise needs: \n".$fenced_desc."\n"
+                    ."24. If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will handle an adopted dog's bathroom/exercise needs: \n".$fenced_desc."\n"
                     ."25. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
                     ."26. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
                     ."27. Do you have a sex preference?: ".$sex_preference."\n"
@@ -491,7 +491,7 @@
                       <small class="error">Required</small>
                     </div>
                     <div class="large-9 columns">
-                      <label for="fenced_desc" class="required">If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will address an adopted dog's bathroom/exercise needs.</label>
+                      <label for="fenced_desc" class="required">If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will handle an adopted dog's bathroom/exercise needs.</label>
                       <textarea id="fenced_desc" name="fenced_desc" required></textarea>
                       <small class="error">Required</small>
                     </div>
