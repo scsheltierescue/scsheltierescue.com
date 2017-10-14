@@ -530,7 +530,7 @@
                               <label for="family_member_1_age" class="prefix required">Age</label>
                             </div>
                             <div class="small-9 columns">
-                              <input id="family_member_1_age" name="family_member_1_age" type="text" pattern="number" required>
+                              <input id="family_member_1_age" name="family_member_1_age" type="number" pattern="number" required>
                               <small class="error">Number Required</small>
                             </div>
                           </div>

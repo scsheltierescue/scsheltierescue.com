@@ -15,7 +15,7 @@ templates['name-age-block'] = template({"1":function(container,depth0,helpers,pa
     + alias2(alias1(depth0, depth0))
     + "_age\" name=\"family_member_"
     + alias2(alias1(depth0, depth0))
-    + "_age\" type=\"text\" pattern=\"number\" required>\n            <small class=\"error\">Number Required</small>\n          </div>\n        </div>\n      </div>\n    </fieldset>\n  </div>\n";
+    + "_age\" type=\"number\" pattern=\"number\" required>\n            <small class=\"error\">Number Required</small>\n          </div>\n        </div>\n      </div>\n    </fieldset>\n  </div>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing;
 
@@ -44,17 +44,17 @@ templates['num-cats-dogs-block'] = template({"1":function(container,depth0,helpe
     + alias2(alias1(depth0, depth0))
     + "\" type=\"number\" required>\n              <small class=\"error\">Required</small>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"large-6 columns\">\n          <div class=\"row collapse mb1\">\n            <div class=\"small-4 columns\">\n              <label for=\"cats_dogs_sex_"
     + alias2(alias1(depth0, depth0))
-    + "\" class=\"prefix required\">Sex</label>\n            </div>\n            <div class=\"small-8 columns text-center\">\n\n              <select id=\"cats_dogs_sex_"
+    + "\" class=\"prefix required\">Sex</label>\n            </div>\n            <div class=\"small-8 columns text-center\">\n              <select id=\"cats_dogs_sex_"
     + alias2(alias1(depth0, depth0))
     + "\" name=\"cats_dogs_sex_"
     + alias2(alias1(depth0, depth0))
-    + "\" required>\n                <option value selected> Please Select </option>\n                <option value=\"male\"> Male </option>\n                <option value=\"female\"> Female </option>\n              </select>\n              <small class=\"error\">Required</small>\n\n            </div>\n          </div>\n        </div>\n\n        <div class=\"large-6 columns\">\n          <div class=\"row collapse mb1\">\n            <div class=\"small-6 columns\">\n              <label for=\"cats_dogs_fixed_"
+    + "\" required>\n                <option value selected> Please Select </option>\n                <option value=\"male\"> Male </option>\n                <option value=\"female\"> Female </option>\n              </select>\n              <small class=\"error\">Required</small>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"large-6 columns\">\n          <div class=\"row collapse mb1\">\n            <div class=\"small-6 columns\">\n              <label for=\"cats_dogs_fixed_"
     + alias2(alias1(depth0, depth0))
     + "\" class=\"prefix required\">Spayed or Neutered?</label>\n            </div>\n            <div class=\"small-6 columns text-center\">\n              <select id=\"cats_dogs_fixed_"
     + alias2(alias1(depth0, depth0))
     + "\" name=\"cats_dogs_fixed_"
     + alias2(alias1(depth0, depth0))
-    + "\" required>\n                <option value selected> Please Select </option>\n                <option value=\"male\"> Yes </option>\n                <option value=\"female\"> No </option>\n              </select>\n              <small class=\"error\">Required</small>\n\n            </div>\n          </div>\n        </div>\n      </div>\n    </fieldset>\n  </div>\n";
+    + "\" required>\n                <option value selected> Please Select </option>\n                <option value=\"male\"> Yes </option>\n                <option value=\"female\"> No </option>\n              </select>\n              <small class=\"error\">Required</small>\n            </div>\n          </div>\n        </div>\n      </div>\n    </fieldset>\n  </div>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
