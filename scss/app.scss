@@ -309,6 +309,7 @@ div.row.family-members > .num_of_people > div {
   }
 }
 
+.num-of-cats-and-dogs-block > .num-of-cats-and-dogs-block-fieldset,
 .num-of-vets-block > .num-of-vets-block-fieldset {
   margin-bottom: 1rem;
   fieldset {
@@ -331,6 +332,10 @@ div.row.family-members > .num_of_people > div {
    color 6s ease-in-out infinite
   ;
   stroke-linecap: round;
+}
+
+.mb1 {
+  margin-bottom: 1rem !important;
 }
 
 @keyframes rotate {

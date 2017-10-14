@@ -7,16 +7,16 @@
     <meta name="description" content="Apply to foster a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.20171012.png"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-192x192.20171012.png" sizes="192x192"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-32x32.20171012.png" sizes="32x32"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-16x16.20171012.png" sizes="16x16"> <!-- Cache Busting -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.20171013.png"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-192x192.20171013.png" sizes="192x192"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-32x32.20171013.png" sizes="32x32"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-16x16.20171013.png" sizes="16x16"> <!-- Cache Busting -->
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="/css/app.20171012.css"> <!-- Cache Busting -->
-    <script src="/js/vendor/modernizr.20171012.js"></script> <!-- Cache Busting -->
+    <link rel="stylesheet" href="/css/app.20171013.css"> <!-- Cache Busting -->
+    <script src="/js/vendor/modernizr.20171013.js"></script> <!-- Cache Busting -->
   </head>
   <body>
     <!--[if lte IE 8]>
@@ -95,7 +95,37 @@
               $last_five_vehicle = $_POST['last_five_vehicle'];
               $last_five_disease = $_POST['last_five_disease'];
               $last_five_explain = $_POST['last_five_explain'];
-              $other_animals = $_POST['other_animals'];
+              $how_many_cats_dogs = $_POST['how_many_cats_dogs'];
+              $cats_dogs_name_1 = $_POST['cats_dogs_name_1'];
+              $cats_dogs_type_1 = $_POST['cats_dogs_type_1'];
+              $cats_dogs_age_1 = $_POST['cats_dogs_age_1'];
+              $cats_dogs_sex_1 = $_POST['cats_dogs_sex_1'];
+              $cats_dogs_fixed_1 = $_POST['cats_dogs_fixed_1'];
+              $cats_dogs_name_2 = $_POST['cats_dogs_name_2'];
+              $cats_dogs_type_2 = $_POST['cats_dogs_type_2'];
+              $cats_dogs_age_2 = $_POST['cats_dogs_age_2'];
+              $cats_dogs_sex_2 = $_POST['cats_dogs_sex_2'];
+              $cats_dogs_fixed_2 = $_POST['cats_dogs_fixed_2'];
+              $cats_dogs_name_3 = $_POST['cats_dogs_name_3'];
+              $cats_dogs_type_3 = $_POST['cats_dogs_type_3'];
+              $cats_dogs_age_3 = $_POST['cats_dogs_age_3'];
+              $cats_dogs_sex_3 = $_POST['cats_dogs_sex_3'];
+              $cats_dogs_fixed_3 = $_POST['cats_dogs_fixed_3'];
+              $cats_dogs_name_4 = $_POST['cats_dogs_name_4'];
+              $cats_dogs_type_4 = $_POST['cats_dogs_type_4'];
+              $cats_dogs_age_4 = $_POST['cats_dogs_age_4'];
+              $cats_dogs_sex_4 = $_POST['cats_dogs_sex_4'];
+              $cats_dogs_fixed_4 = $_POST['cats_dogs_fixed_4'];
+              $cats_dogs_name_5 = $_POST['cats_dogs_name_5'];
+              $cats_dogs_type_5 = $_POST['cats_dogs_type_5'];
+              $cats_dogs_age_5 = $_POST['cats_dogs_age_5'];
+              $cats_dogs_sex_5 = $_POST['cats_dogs_sex_5'];
+              $cats_dogs_fixed_5 = $_POST['cats_dogs_fixed_5'];
+              $cats_dogs_name_6 = $_POST['cats_dogs_name_6'];
+              $cats_dogs_type_6 = $_POST['cats_dogs_type_6'];
+              $cats_dogs_age_6 = $_POST['cats_dogs_age_6'];
+              $cats_dogs_sex_6 = $_POST['cats_dogs_sex_6'];
+              $cats_dogs_fixed_6 = $_POST['cats_dogs_fixed_6'];
               $people_at_residence = $_POST['people_at_residence'];
               $family_member_1_name = $_POST['family_member_1_name'];
               $family_member_1_age = $_POST['family_member_1_age'];
@@ -182,7 +212,38 @@
                     ."12. During the last five years, have you had an animal killed by a vehicle?: ".$last_five_vehicle."\n"
                     ."13. During the last five years, have you had an animal die due to disease?: ".$last_five_disease."\n"
                     ."14. If you answered yes to any of the the previous three questions, please explain: \n".$last_five_explain."\n"
-                    ."15. Do you have any other animals? (name, type, age, sex, neutered/spayed): \n".$other_animals."\n"
+                    ."15. How many cats and dogs do you currently own?: ".$how_many_cats_dogs."\n"
+                    ."15.a  Name: ".$cats_dogs_name_1."\n"
+                    ."      Type: ".$cats_dogs_type_1."\n"
+                    ."      Age: ".$cats_dogs_age_1."\n"
+                    ."      Sex: ".$cats_dogs_sex_1."\n"
+                    ."      Spayed/Neutered: ".$cats_dogs_fixed_1."\n"
+                    ."15.b  Name: ".$cats_dogs_name_2."\n"
+                    ."      Type: ".$cats_dogs_type_2."\n"
+                    ."      Age: ".$cats_dogs_age_2."\n"
+                    ."      Sex: ".$cats_dogs_sex_2."\n"
+                    ."      Spayed/Neutered: ".$cats_dogs_fixed_2."\n"
+                    ."15.c  Name: ".$cats_dogs_name_3."\n"
+                    ."      Type: ".$cats_dogs_type_3."\n"
+                    ."      Age: ".$cats_dogs_age_3."\n"
+                    ."      Sex: ".$cats_dogs_sex_3."\n"
+                    ."      Spayed/Neutered: ".$cats_dogs_fixed_3."\n"
+                    ."15.d  Name: ".$cats_dogs_name_4."\n"
+                    ."      Type: ".$cats_dogs_type_4."\n"
+                    ."      Age: ".$cats_dogs_age_4."\n"
+                    ."      Sex: ".$cats_dogs_sex_4."\n"
+                    ."      Spayed/Neutered: ".$cats_dogs_fixed_4."\n"
+                    ."15.e  Name: ".$cats_dogs_name_5."\n"
+                    ."      Type: ".$cats_dogs_type_5."\n"
+                    ."      Age: ".$cats_dogs_age_5."\n"
+                    ."      Sex: ".$cats_dogs_sex_5."\n"
+                    ."      Spayed/Neutered: ".$cats_dogs_fixed_5."\n"
+                    ."15.f  Name: ".$cats_dogs_name_6."\n"
+                    ."      Type: ".$cats_dogs_type_6."\n"
+                    ."      Age: ".$cats_dogs_age_6."\n"
+                    ."      Sex: ".$cats_dogs_sex_6."\n"
+                    ."      Spayed/Neutered: ".$other_cats_dogs_fixed_6."\n"
+                    ."15.g  Please list any additional animals that you own (name, type, age, sex): \n".$any_additional_animals."\n"
                     ."16. How many people live at your place of residence?: ".$people_at_residence."\n"
                     ."16.a  Name: ".$family_member_1_name."  -  Age: ".$family_member_1_age."\n"
                     ."16.b  Name: ".$family_member_2_name."  -  Age: ".$family_member_2_age."\n"
@@ -194,7 +255,7 @@
                     ."18. Do you rent or own?: ".$rent_own."\n"
                     ."19. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
                     ."20. Is your yard fenced?: ".$yard_type."\n"
-                    ."21. If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will address an adopted dog's bathroom/exercise needs: \n".$fenced_desc."\n"
+                    ."21. If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will handle an adopted dog's bathroom/exercise needs: \n".$fenced_desc."\n"
                     ."22. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
                     ."23. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
                     ."24. Do you have a sex preference?: ".$sex_preference."\n"
@@ -363,9 +424,31 @@
                   </div>
 
                   <div class="row">
+                    <div class="large-4 columns">
+                      <label for="how_many_cats_dogs" class="required">How many cats and dogs do you currently own?</label>
+                      <select id="how_many_cats_dogs" name="how_many_cats_dogs" required>
+                        <option value selected> Please Select </option>
+                        <option value="0"> None </option>
+                        <option value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                        <option value="4"> 4 </option>
+                        <option value="5"> 5 </option>
+                        <option value="6"> 6 </option>
+                      </select>
+                      <small class="error">Required</small>
+                    </div>
+                  </div>
+
+                  <div class="row num-of-cats-and-dogs"> <!-- How Many Cats and Dogs - START -->
+                    <div id="num_of_cats_and_dogs" class="num-of-cats-and-dogs-block clearfix"></div>
+                  </div> <!-- How Many Cats and Dogs - END -->
+
+                  <div class="row">
                     <div class="large-12 columns">
-                      <label for="other_animals">Do you have any other animals? (name, type, age, sex, neutered/spayed)</label>
-                      <textarea id="other_animals" name="other_animals"></textarea>
+                      <label for="any_additional_animals">Please list any additional animals that you own (name, type, age, sex).</label>
+                      <textarea id="any_additional_animals" name="any_additional_animals"></textarea>
+                      <small class="error">Required</small>
                     </div>
                   </div>
 
@@ -449,7 +532,7 @@
                       <small class="error">Required</small>
                     </div>
                     <div class="large-9 columns">
-                      <label for="fenced_desc" class="required">If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will address an adopted dog's bathroom/exercise needs.</label>
+                      <label for="fenced_desc" class="required">If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will handle an adopted dog's bathroom/exercise needs.</label>
                       <textarea id="fenced_desc" name="fenced_desc" required></textarea>
                       <small class="error">Required</small>
                     </div>
@@ -587,12 +670,12 @@
     </footer>
 
 
-    <script src="/bower_components/jquery/dist/jquery.min.20171012.js"></script> <!-- Cache Busting -->
-    <script src="/bower_components/handlebars/handlebars.runtime.min.20171012.js"></script> <!-- Cache Busting -->
-    <script src="/js/plugins.20171012.js"></script> <!-- Cache Busting -->
-    <script src="/js/templates.20171012.js"></script> <!-- Cache Busting -->
-    <script src="/bower_components/foundation/js/foundation.min.20171012.js"></script> <!-- Cache Busting -->
-    <script src="/js/apply-form.20171012.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/jquery/dist/jquery.min.20171013.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/handlebars/handlebars.runtime.min.20171013.js"></script> <!-- Cache Busting -->
+    <script src="/js/plugins.20171013.js"></script> <!-- Cache Busting -->
+    <script src="/js/templates.20171013.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/foundation/js/foundation.min.20171013.js"></script> <!-- Cache Busting -->
+    <script src="/js/apply-form.20171013.js"></script> <!-- Cache Busting -->
     <!-- Added sha256 CSP script-src hash to `.htaccess`- https://report-uri.io/home/hash -->
     <script type="text/javascript">function getYear() {var today = new Date();var year = today.getFullYear();document.getElementById('currentYear').innerHTML = year;}getYear();</script>
   </body>
