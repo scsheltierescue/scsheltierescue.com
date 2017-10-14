@@ -47,7 +47,7 @@ gulp.task('uglify', ['clean'], (cb) => {
 gulp.task('default', ['styles', 'uglify']);
 
 // Watch
-gulp.task('watch', ['clean'], () => {
+gulp.task('watch', ['clean', 'styles'], () => {
   // Watch .scss files
   gulp.watch([
     'bower_components/foundation/scss/**/*.scss',
