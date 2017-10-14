@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cleancss = require('gulp-clean-css');
+const shell = require('gulp-shell');
 const uglify = require('gulp-uglify');
 const del = require('del');
 const autoprefixer = require('gulp-autoprefixer');
@@ -43,14 +44,21 @@ gulp.task('uglify', ['clean'], (cb) => {
   )
 });
 
+// Templates
+gulp.task('templates', shell.task('handlebars templates/ -f js/templates.js'));
+
 // Default
-gulp.task('default', ['styles', 'uglify']);
+gulp.task('default', ['styles', 'templates', 'uglify']);
 
 // Watch
-gulp.task('watch', ['clean', 'styles'], () => {
+gulp.task('watch', ['clean', 'templates', 'uglify', 'styles'], () => {
   // Watch .scss files
   gulp.watch([
     'bower_components/foundation/scss/**/*.scss',
     'scss/**/*.scss'
   ], ['styles']);
+  // Watch .handlebars files
+  gulp.watch([
+    'templates/**/*.handlebars'
+  ], ['templates', 'uglify']);
 });

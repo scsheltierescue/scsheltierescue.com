@@ -33,12 +33,6 @@ gulp watch
 
 Now open [https://scsheltierescue.dev](https://scsheltierescue.dev) in your browser
 
-When making template changes don't forget to precompile again:
-
-```bash
-handlebars templates/ -f js/templates.js
-```
-
 ## Foundation Dependency Updates
 Update foundation to the latest stable release:
 
