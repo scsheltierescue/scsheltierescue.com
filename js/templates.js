@@ -42,13 +42,13 @@ templates['num-cats-dogs-block'] = template({"1":function(container,depth0,helpe
     + alias2(alias1(depth0, depth0))
     + "\" name=\"cats_dogs_age_"
     + alias2(alias1(depth0, depth0))
-    + "\" type=\"number\" required>\n              <small class=\"error\">Required</small>\n            </div>\n            <div class=\"small-3 columns\">\n              <span class=\"postfix\">years</span>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"large-6 columns\">\n          <div class=\"row collapse mb1\">\n            <div class=\"small-4 columns\">\n              <label for=\"cats_dogs_sex_"
+    + "\" type=\"number\" required>\n              <small class=\"error\">Required</small>\n            </div>\n            <div class=\"small-3 columns\">\n              <span class=\"postfix\">years</span>\n            </div>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"row\">\n        <div class=\"large-6 columns\">\n          <div class=\"row collapse\">\n            <div class=\"small-4 columns\">\n              <label for=\"cats_dogs_sex_"
     + alias2(alias1(depth0, depth0))
     + "\" class=\"prefix required\">Sex</label>\n            </div>\n            <div class=\"small-8 columns text-center\">\n              <select id=\"cats_dogs_sex_"
     + alias2(alias1(depth0, depth0))
     + "\" name=\"cats_dogs_sex_"
     + alias2(alias1(depth0, depth0))
-    + "\" required>\n                <option value selected> Please Select </option>\n                <option value=\"male\"> Male </option>\n                <option value=\"female\"> Female </option>\n              </select>\n              <small class=\"error\">Required</small>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"large-6 columns\">\n          <div class=\"row collapse mb1\">\n            <div class=\"small-4 medium-4 large-6 columns\">\n              <label for=\"cats_dogs_fixed_"
+    + "\" required>\n                <option value selected> Please Select </option>\n                <option value=\"male\"> Male </option>\n                <option value=\"female\"> Female </option>\n              </select>\n              <small class=\"error\">Required</small>\n            </div>\n          </div>\n        </div>\n\n        <div class=\"large-6 columns\">\n          <div class=\"row collapse\">\n            <div class=\"small-4 medium-4 large-6 columns\">\n              <label for=\"cats_dogs_fixed_"
     + alias2(alias1(depth0, depth0))
     + "\" class=\"visible-for-medium-up prefix required\">Spayed/Neutered?</label>\n              <label for=\"cats_dogs_fixed_"
     + alias2(alias1(depth0, depth0))
