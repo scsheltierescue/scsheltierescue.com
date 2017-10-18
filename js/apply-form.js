@@ -1,7 +1,7 @@
 $(document).foundation();
 
 $('#name').on('keyup', function() {
-  $('#family_member_1_name').val(this.value);
+  $('#family_member_0_name').val(this.value);
 });
 $('#how_many_cats_dogs').on('change', function() {
   updateCatsDogsBlock($('#how_many_cats_dogs').val());

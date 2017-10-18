@@ -130,6 +130,8 @@
               $cats_dogs_sex_6 = $_POST['cats_dogs_sex_6'];
               $cats_dogs_fixed_6 = $_POST['cats_dogs_fixed_6'];
               $people_at_residence = $_POST['people_at_residence'];
+              $family_member_0_name = $_POST['family_member_0_name'];
+              $family_member_0_age = $_POST['family_member_0_age'];
               $family_member_1_name = $_POST['family_member_1_name'];
               $family_member_1_age = $_POST['family_member_1_age'];
               $family_member_2_name = $_POST['family_member_2_name'];
@@ -140,8 +142,6 @@
               $family_member_4_age = $_POST['family_member_4_age'];
               $family_member_5_name = $_POST['family_member_5_name'];
               $family_member_5_age = $_POST['family_member_5_age'];
-              $family_member_6_name = $_POST['family_member_6_name'];
-              $family_member_6_age = $_POST['family_member_6_age'];
               $home_type = $_POST['home_type'];
               $rent_own = $_POST['rent_own'];
               $landlord_permission = $_POST['landlord_permission'];
@@ -260,12 +260,12 @@
                     ."      Spayed/Neutered: ".$other_cats_dogs_fixed_6."\n"
                     ."18.g  Please list any additional animals that you own (name, type, age, sex): \n".$any_additional_animals."\n"
                     ."19. How many people live at your place of residence?: ".$people_at_residence."\n"
-                    ."19.a  Name: ".$family_member_1_name."  -  Age: ".$family_member_1_age."\n"
-                    ."19.b  Name: ".$family_member_2_name."  -  Age: ".$family_member_2_age."\n"
-                    ."19.c  Name: ".$family_member_3_name."  -  Age: ".$family_member_3_age."\n"
-                    ."19.d  Name: ".$family_member_4_name."  -  Age: ".$family_member_4_age."\n"
-                    ."19.e  Name: ".$family_member_5_name."  -  Age: ".$family_member_5_age."\n"
-                    ."19.f  Name: ".$family_member_6_name."  -  Age: ".$family_member_6_age."\n"
+                    ."19.a  Name: ".$family_member_0_name."  -  Age: ".$family_member_0_age."\n"
+                    ."19.b  Name: ".$family_member_1_name."  -  Age: ".$family_member_1_age."\n"
+                    ."19.c  Name: ".$family_member_2_name."  -  Age: ".$family_member_2_age."\n"
+                    ."19.d  Name: ".$family_member_3_name."  -  Age: ".$family_member_3_age."\n"
+                    ."19.e  Name: ".$family_member_4_name."  -  Age: ".$family_member_4_age."\n"
+                    ."19.f  Name: ".$family_member_5_name."  -  Age: ".$family_member_5_age."\n"
                     ."20. Do you live in a house, apartment, condo, or trailer?: ".$home_type."\n"
                     ."21. Do you rent or own?: ".$rent_own."\n"
                     ."22. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
@@ -510,28 +510,31 @@
 
                   <div class="row family-members"> <!-- Familiy Members - START -->
                     <div class="large-12 columns">
-                      <label for="family_member_1_name" class="required">Please list <strong>everyone</strong> who lives in your household and their age.</label>
+                      <label for="family_member_0_name" class="required">Please list <strong>everyone</strong> who lives in your household and their age.</label>
 
                       <fieldset>
                         <div class="large-9 columns">
                           <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_1_name" class="prefix required">Self</label>
+                            <div class="small-4 medium-3 columns">
+                              <label for="family_member_0_name" class="prefix required">Self</label>
                             </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_1_name" name="family_member_1_name" type="text" required>
+                            <div class="small-8 medium-9 columns">
+                              <input id="family_member_0_name" name="family_member_0_name" type="text" required>
                               <small class="error">Required</small>
                             </div>
                           </div>
                         </div>
                         <div class="large-3 columns">
                           <div class="row collapse">
-                            <div class="small-3 columns">
-                              <label for="family_member_1_age" class="prefix required">Age</label>
+                            <div class="small-4 medium-3 columns">
+                              <label for="family_member_0_age" class="prefix required">Age</label>
                             </div>
-                            <div class="small-9 columns">
-                              <input id="family_member_1_age" name="family_member_1_age" type="number" pattern="number" required>
-                              <small class="error">Number Required</small>
+                            <div class="small-5 medium-6 columns">
+                              <input id="family_member_0_age" name="family_member_0_age" type="number" pattern="number" required>
+                              <small class="error">Required</small>
+                            </div>
+                            <div class="small-3 columns">
+                              <span class="postfix">years</span>
                             </div>
                           </div>
                         </div>
