@@ -473,10 +473,10 @@
                       <fieldset>
                         <div class="large-9 columns">
                           <div class="row collapse">
-                            <div class="small-3 columns">
+                            <div class="small-4 medium-3 columns">
                               <label for="family_member_0_name" class="prefix required">Self</label>
                             </div>
-                            <div class="small-9 columns">
+                            <div class="small-8 medium-9 columns">
                               <input id="family_member_0_name" name="family_member_0_name" type="text" required>
                               <small class="error">Required</small>
                             </div>
@@ -484,12 +484,15 @@
                         </div>
                         <div class="large-3 columns">
                           <div class="row collapse">
-                            <div class="small-3 columns">
+                            <div class="small-4 medium-3 columns">
                               <label for="family_member_0_age" class="prefix required">Age</label>
                             </div>
-                            <div class="small-9 columns">
+                            <div class="small-5 medium-6 columns">
                               <input id="family_member_0_age" name="family_member_0_age" type="number" pattern="number" required>
                               <small class="error">Number Required</small>
+                            </div>
+                            <div class="small-3 columns">
+                              <span class="postfix">years</span>
                             </div>
                           </div>
                         </div>
