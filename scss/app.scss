@@ -1,10 +1,7 @@
 @import "settings";
 @import "foundation";
-
 @import "normalize";
-
-@import "icon-fonts";
-
+@import "font-awesome/font-awesome";
 @import "helpers";
 
 
@@ -100,6 +97,11 @@ hr {
     font-size: ($footer-height*0.4)*0.45;
     & a {
       margin: rem-calc(0 8);
+      // Petfinder Logo
+      &:hover svg .a {
+        fill: #0078a0;
+        transition: fill 200ms;
+      }
     }
   }
   .address {
@@ -340,6 +342,12 @@ div.row.family-members > .num_of_people > div {
 
 .mb1 {
   margin-bottom: 1rem !important;
+}
+
+// Font Awesome External Link
+.fa-external-link {
+  font-size: .625rem;
+  vertical-align: text-top;
 }
 
 @keyframes rotate {

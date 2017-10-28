@@ -111,7 +111,7 @@ templates['pet'] = template({"1":function(container,depth0,helpers,partials,data
 
   return "              <span>"
     + container.escapeExpression(((helper = (helper = helpers.text || (depth0 != null ? depth0.text : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"text","hash":{},"data":data}) : helper)))
-    + " <span class=\"icon-checkmark\"></span></span>\n";
+    + " <i class=\"fa fa-check\" aria-hidden=\"true\"></i></span>\n";
 },"5":function(container,depth0,helpers,partials,data) {
     var helper;
 
