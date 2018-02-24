@@ -103,32 +103,32 @@
               $cats_dogs_type_1 = $_POST['cats_dogs_type_1'];
               $cats_dogs_age_1 = $_POST['cats_dogs_age_1'];
               $cats_dogs_sex_1 = $_POST['cats_dogs_sex_1'];
-              $cats_dogs_fixed_1 = $_POST['cats_dogs_fixed_1'];
+              $cats_dogs_breed_1 = $_POST['cats_dogs_breed_1'];
               $cats_dogs_name_2 = $_POST['cats_dogs_name_2'];
               $cats_dogs_type_2 = $_POST['cats_dogs_type_2'];
               $cats_dogs_age_2 = $_POST['cats_dogs_age_2'];
               $cats_dogs_sex_2 = $_POST['cats_dogs_sex_2'];
-              $cats_dogs_fixed_2 = $_POST['cats_dogs_fixed_2'];
+              $cats_dogs_breed_2 = $_POST['cats_dogs_breed_2'];
               $cats_dogs_name_3 = $_POST['cats_dogs_name_3'];
               $cats_dogs_type_3 = $_POST['cats_dogs_type_3'];
               $cats_dogs_age_3 = $_POST['cats_dogs_age_3'];
               $cats_dogs_sex_3 = $_POST['cats_dogs_sex_3'];
-              $cats_dogs_fixed_3 = $_POST['cats_dogs_fixed_3'];
+              $cats_dogs_breed_3 = $_POST['cats_dogs_breed_3'];
               $cats_dogs_name_4 = $_POST['cats_dogs_name_4'];
               $cats_dogs_type_4 = $_POST['cats_dogs_type_4'];
               $cats_dogs_age_4 = $_POST['cats_dogs_age_4'];
               $cats_dogs_sex_4 = $_POST['cats_dogs_sex_4'];
-              $cats_dogs_fixed_4 = $_POST['cats_dogs_fixed_4'];
+              $cats_dogs_breed_4 = $_POST['cats_dogs_breed_4'];
               $cats_dogs_name_5 = $_POST['cats_dogs_name_5'];
               $cats_dogs_type_5 = $_POST['cats_dogs_type_5'];
               $cats_dogs_age_5 = $_POST['cats_dogs_age_5'];
               $cats_dogs_sex_5 = $_POST['cats_dogs_sex_5'];
-              $cats_dogs_fixed_5 = $_POST['cats_dogs_fixed_5'];
+              $cats_dogs_breed_5 = $_POST['cats_dogs_breed_5'];
               $cats_dogs_name_6 = $_POST['cats_dogs_name_6'];
               $cats_dogs_type_6 = $_POST['cats_dogs_type_6'];
               $cats_dogs_age_6 = $_POST['cats_dogs_age_6'];
               $cats_dogs_sex_6 = $_POST['cats_dogs_sex_6'];
-              $cats_dogs_fixed_6 = $_POST['cats_dogs_fixed_6'];
+              $cats_dogs_breed_6 = $_POST['cats_dogs_breed_6'];
               $people_at_residence = $_POST['people_at_residence'];
               $family_member_0_name = $_POST['family_member_0_name'];
               $family_member_0_age = $_POST['family_member_0_age'];
@@ -232,32 +232,32 @@
                     ."      Type: ".$cats_dogs_type_1."\n"
                     ."      Age: ".$cats_dogs_age_1."\n"
                     ."      Sex: ".$cats_dogs_sex_1."\n"
-                    ."      Spayed/Neutered: ".$cats_dogs_fixed_1."\n"
+                    ."      Breed: ".$cats_dogs_breed_1."\n"
                     ."18.b  Name: ".$cats_dogs_name_2."\n"
                     ."      Type: ".$cats_dogs_type_2."\n"
                     ."      Age: ".$cats_dogs_age_2."\n"
                     ."      Sex: ".$cats_dogs_sex_2."\n"
-                    ."      Spayed/Neutered: ".$cats_dogs_fixed_2."\n"
+                    ."      Breed: ".$cats_dogs_breed_2."\n"
                     ."18.c  Name: ".$cats_dogs_name_3."\n"
                     ."      Type: ".$cats_dogs_type_3."\n"
                     ."      Age: ".$cats_dogs_age_3."\n"
                     ."      Sex: ".$cats_dogs_sex_3."\n"
-                    ."      Spayed/Neutered: ".$cats_dogs_fixed_3."\n"
+                    ."      Breed: ".$cats_dogs_breed_3."\n"
                     ."18.d  Name: ".$cats_dogs_name_4."\n"
                     ."      Type: ".$cats_dogs_type_4."\n"
                     ."      Age: ".$cats_dogs_age_4."\n"
                     ."      Sex: ".$cats_dogs_sex_4."\n"
-                    ."      Spayed/Neutered: ".$cats_dogs_fixed_4."\n"
+                    ."      Breed: ".$cats_dogs_breed_4."\n"
                     ."18.e  Name: ".$cats_dogs_name_5."\n"
                     ."      Type: ".$cats_dogs_type_5."\n"
                     ."      Age: ".$cats_dogs_age_5."\n"
                     ."      Sex: ".$cats_dogs_sex_5."\n"
-                    ."      Spayed/Neutered: ".$cats_dogs_fixed_5."\n"
+                    ."      Breed: ".$cats_dogs_breed_5."\n"
                     ."18.f  Name: ".$cats_dogs_name_6."\n"
                     ."      Type: ".$cats_dogs_type_6."\n"
                     ."      Age: ".$cats_dogs_age_6."\n"
                     ."      Sex: ".$cats_dogs_sex_6."\n"
-                    ."      Spayed/Neutered: ".$other_cats_dogs_fixed_6."\n"
+                    ."      Breed: ".$cats_dogs_breed_6."\n"
                     ."18.g  Please list any additional animals that you own (name, type, age, sex): \n".$any_additional_animals."\n"
                     ."19. How many people live at your place of residence?: ".$people_at_residence."\n"
                     ."19.a  Name: ".$family_member_0_name."  -  Age: ".$family_member_0_age."\n"
