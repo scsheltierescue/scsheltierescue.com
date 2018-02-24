@@ -14,6 +14,15 @@ Instructions to begin local development:
 ```bash
 # 1. Configure MAMP - https://gist.github.com/jfloff/5138826
 # 2. Configure /etc/hosts - https://scsheltierescue.dev
+
+  ##
+  # Host Database
+  #
+  # localhost is used to configure the loopback interface
+  # when the system is booting.  Do not change this entry.
+  ##
+  127.0.0.1 scsheltierescue.dev
+
 # 3. Install Bower globally
 yarn global add bower
 
