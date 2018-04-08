@@ -7,16 +7,16 @@
     <meta name="description" content="Apply to adopt a sheltie today with the SC Sheltie Rescue.">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.20171028.png"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-192x192.20171028.png" sizes="192x192"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-32x32.20171028.png" sizes="32x32"> <!-- Cache Busting -->
-    <link rel="icon" type="image/png" href="/favicon-16x16.20171028.png" sizes="16x16"> <!-- Cache Busting -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.20180408.png"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-192x192.20180408.png" sizes="192x192"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-32x32.20180408.png" sizes="32x32"> <!-- Cache Busting -->
+    <link rel="icon" type="image/png" href="/favicon-16x16.20180408.png" sizes="16x16"> <!-- Cache Busting -->
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="/css/app.20171028.css"> <!-- Cache Busting -->
-    <script src="/js/vendor/modernizr.20171028.js"></script> <!-- Cache Busting -->
+    <link rel="stylesheet" href="/css/app.20180408.css"> <!-- Cache Busting -->
+    <script src="/js/vendor/modernizr.20180408.js"></script> <!-- Cache Busting -->
   </head>
   <body>
     <!--[if lte IE 8]>
@@ -153,6 +153,8 @@
               $color_preference = $_POST['color_preference'];
               $older_dog = $_POST['older_dog'];
               $size_preference = $_POST['size_preference'];
+              $food_type = $_POST['food_type'];
+              $food_change = $_POST['food_change'];
               $family_aware = $_POST['family_aware'];
               $financial_responsibility = $_POST['financial_responsibility'];
               $moving_soon = $_POST['moving_soon'];
@@ -277,25 +279,27 @@
                     ."28. Do you have a color preference? (If yes, please list first and second choices): \n".$color_preference."\n"
                     ."29. Would you consider an older dog? To what age?: \n".$older_dog."\n"
                     ."30. What size Sheltie do you prefer?: \n".$size_preference."\n"
-                    ."31. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
-                    ."32. Are you prepared to assume the financial responsibilities of caring for an animal? (vaccines, heartworm preventative, veterinarian care, good quality food, licensing, etc.): ".$financial_responsibility."\n"
-                    ."33. Are you planning to move in the near future?: ".$moving_soon."\n"
-                    ."34. Is anyone in your house allergic to animals?: ".$allergic."\n"
-                    ."35. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
-                    ."36. Is this Sheltie going to be a gift? For whom and do they know?: \n".$gift."\n"
-                    ."37. Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?: ".$spayed_neutered."\n"
-                    ."38. What circumstances, in your mind, justify getting rid of a dog?: \n".$getting_rid_of_dog."\n"
-                    ."39. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
-                    ."40. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
-                    ."41. Do you accept that there will be an adoption fee for the adopted dog?: ".$accept_fee."\n"
-                    ."42. How many vets have you used for your pets in the last 5 years?: ".$how_many_vets."\n"
-                    ."42.a  Clinic Name: ".$vet_1_clinic_name."  -  Phone Number: ".$vet_1_phone."\n"
-                    ."42.b  Clinic Name: ".$vet_2_clinic_name."  -  Phone Number: ".$vet_2_phone."\n"
-                    ."42.c  Clinic Name: ".$vet_3_clinic_name."  -  Phone Number: ".$vet_3_phone."\n"
-                    ."42.d  Clinic Name: ".$vet_4_clinic_name."  -  Phone Number: ".$vet_4_phone."\n"
-                    ."42.e  Clinic Name: ".$vet_5_clinic_name."  -  Phone Number: ".$vet_5_phone."\n"
-                    ."43. Have you applied with any other rescues? If so, what is the status of those applications?: \n".$applied_other_rescues."\n"
-                    ."44. Is there any additional information you would like to share?: \n".$additional_info;
+                    ."31. What brand of food do you currently feed your dog (or plan to feed an adopted dog)?: \n".$food_type."\n"
+                    ."32. Are you open to changing the brand of food currently used?: \n".$food_change."\n"
+                    ."33. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
+                    ."34. Are you prepared to assume the financial responsibilities of caring for an animal? (vaccines, heartworm preventative, veterinarian care, good quality food, licensing, etc.): ".$financial_responsibility."\n"
+                    ."35. Are you planning to move in the near future?: ".$moving_soon."\n"
+                    ."36. Is anyone in your house allergic to animals?: ".$allergic."\n"
+                    ."37. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
+                    ."38. Is this Sheltie going to be a gift? For whom and do they know?: \n".$gift."\n"
+                    ."39. Do you understand that any rescue Sheltie you may adopt through SC Sheltie Rescue will be spayed/neutered?: ".$spayed_neutered."\n"
+                    ."40. What circumstances, in your mind, justify getting rid of a dog?: \n".$getting_rid_of_dog."\n"
+                    ."41. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
+                    ."42. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr."\n"
+                    ."43. Do you accept that there will be an adoption fee for the adopted dog?: ".$accept_fee."\n"
+                    ."44. How many vets have you used for your pets in the last 5 years?: ".$how_many_vets."\n"
+                    ."44.a  Clinic Name: ".$vet_1_clinic_name."  -  Phone Number: ".$vet_1_phone."\n"
+                    ."44.b  Clinic Name: ".$vet_2_clinic_name."  -  Phone Number: ".$vet_2_phone."\n"
+                    ."44.c  Clinic Name: ".$vet_3_clinic_name."  -  Phone Number: ".$vet_3_phone."\n"
+                    ."44.d  Clinic Name: ".$vet_4_clinic_name."  -  Phone Number: ".$vet_4_phone."\n"
+                    ."44.e  Clinic Name: ".$vet_5_clinic_name."  -  Phone Number: ".$vet_5_phone."\n"
+                    ."45. Have you applied with any other rescues? If so, what is the status of those applications?: \n".$applied_other_rescues."\n"
+                    ."46. Is there any additional information you would like to share?: \n".$additional_info;
 
                   //Construct the HTML message body
                   $message_html = str_replace("\n", "<br>", $message_alt);
@@ -625,6 +629,20 @@
 
                   <div class="row">
                     <div class="large-6 columns">
+                      <label for="food_type" class="required">What brand of food do you currently feed your dog (or plan to feed an adopted dog)?</label>
+                      <input id="food_type" name="food_type" type="text" required>
+                      <small class="error">Required</small>
+                    </div>
+                    <div class="large-6 columns">
+                      <label class="required">Are you open to changing the brand of food currently used?</label>
+                      <input id="food_change_yes" name="food_change" type="radio" value="Yes" required><label for="food_change_yes">&nbsp;Yes</label><br>
+                      <input id="food_change_no" name="food_change" type="radio" value="No" required><label for="food_change_no">&nbsp;No</label>
+                      <small class="error">Required</small>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-6 columns">
                       <label class="required">Are other members of your household aware that you are considering adopting a pet?</label>
                       <input id="family_aware_yes" name="family_aware" type="radio" value="Yes" required><label for="family_aware_yes">&nbsp;Yes</label><br>
                       <input id="family_aware_no" name="family_aware" type="radio" value="No" required><label for="family_aware_no">&nbsp;No</label>
@@ -778,12 +796,12 @@
     </footer>
 
 
-    <script src="/bower_components/jquery/dist/jquery.min.20171028.js"></script> <!-- Cache Busting -->
-    <script src="/bower_components/handlebars/handlebars.runtime.min.20171028.js"></script> <!-- Cache Busting -->
-    <script src="/js/plugins.20171028.js"></script> <!-- Cache Busting -->
-    <script src="/js/templates.20171028.js"></script> <!-- Cache Busting -->
-    <script src="/bower_components/foundation/js/foundation.min.20171028.js"></script> <!-- Cache Busting -->
-    <script src="/js/apply-form.20171028.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/jquery/dist/jquery.min.20180408.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/handlebars/handlebars.runtime.min.20180408.js"></script> <!-- Cache Busting -->
+    <script src="/js/plugins.20180408.js"></script> <!-- Cache Busting -->
+    <script src="/js/templates.20180408.js"></script> <!-- Cache Busting -->
+    <script src="/bower_components/foundation/js/foundation.min.20180408.js"></script> <!-- Cache Busting -->
+    <script src="/js/apply-form.20180408.js"></script> <!-- Cache Busting -->
     <!-- Added sha256 CSP script-src hash to `.htaccess`- https://report-uri.io/home/hash -->
     <script type="text/javascript">function getYear() {var today = new Date();var year = today.getFullYear();document.getElementById('currentYear').innerHTML = year;}getYear();</script>
   </body>
