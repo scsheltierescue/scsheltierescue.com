@@ -12,6 +12,9 @@
     "url": "https://github.com/scsheltierescue/scsheltierescue.com/issues"
   },
   "license": "MIT",
+  "scripts": {
+    "watch": "gulp watch"
+  },
   "devDependencies": {
     "del": "^3.0.0",
     "gulp": "^3.9.1",
