@@ -169,7 +169,7 @@
               $hear_about_scsr = $_POST['hear_about_scsr'];
 
               if ($_POST['submit']) {
-                if ($name != '' && $email != '' && $city != '' && $state != '' && $zip != ''&& $homephone != '') {
+                if ($name != '' && $email != '' && $city != '' && $state != '' && $zip != '' && $homephone != '') {
                   //Create a new PHPMailer instance
                   $mail = new PHPMailer();
                   //Tell PHPMailer to use SMTP
@@ -310,12 +310,12 @@
                   <div class="row">
                     <div class="large-6 columns">
                       <label for="name" class="required">Name</label>
-                      <input id="name" name="name" type="text" placeholder="John Doe" required>
+                      <input id="name" name="name" type="text" placeholder="John Doe" autocomplete="name" required>
                       <small class="error">A name is required.</small>
                     </div>
                     <div class="large-6 columns">
                       <label for="email" class="required">Email</label>
-                      <input id="email" name="email" type="email" placeholder="john.doe@email.com" required>
+                      <input id="email" name="email" type="email" placeholder="john.doe@email.com" autocomplete="email" required>
                       <small class="error">A valid email address is required.</small>
                     </div>
                   </div>
@@ -323,7 +323,7 @@
                   <div class="row">
                     <div class="large-12 columns">
                       <label for="street" class="required">Street Address</label>
-                      <input id="street" name="street" type="text" placeholder="123 Main St" required>
+                      <input id="street" name="street" type="text" placeholder="123 Main St" autocomplete="address-line1" required>
                       <small class="error">A street address is required.</small>
                     </div>
                   </div>
@@ -331,17 +331,17 @@
                   <div class="row">
                     <div class="large-5 columns">
                       <label for="city" class="required">City</label>
-                      <input id="city" name="city" type="text" placeholder="Columbia" required>
+                      <input id="city" name="city" type="text" placeholder="Columbia" autocomplete="address-level2" required>
                       <small class="error">A city is required.</small>
                     </div>
                     <div class="large-1 large-offset-1 columns">
                       <label for="state" class="required">State</label>
-                      <input id="state" name="state" type="text" placeholder="SC" required>
+                      <input id="state" name="state" type="text" placeholder="SC" autocomplete="address-level1" required>
                       <small class="error">Required</small>
                     </div>
                     <div class="large-2 columns">
                       <label for="zip" class="required">Zip</label>
-                      <input id="zip" name="zip" type="text" placeholder="29201" required>
+                      <input id="zip" name="zip" type="text" placeholder="29201" autocomplete="postal-code" required>
                       <small class="error">A zip code is required.</small>
                     </div>
                   </div>
@@ -349,12 +349,12 @@
                   <div class="row">
                     <div class="large-3 columns">
                       <label for="homephone" class="required">Home phone</label>
-                      <input id="homephone" name="homephone" type="tel" required>
+                      <input id="homephone" name="homephone" type="tel" autocomplete="tel" required>
                       <small class="error">A home phone is required.</small>
                     </div>
                     <div class="large-3 columns">
                       <label for="cellphone">Cell phone</label>
-                      <input id="cellphone" name="cellphone" type="tel">
+                      <input id="cellphone" name="cellphone" type="tel" autocomplete="tel">
                     </div>
                     <div class="large-4 columns">
                       <label for="occupation" class="required">Occupation</label>
