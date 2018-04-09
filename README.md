@@ -14,14 +14,13 @@ Instructions to begin local development:
 
 ```bash
 # 1. Configure MAMP
-#     https://gist.github.com/alexdiliberto/67d0680be184396f83a686a80990eafd
-#     https://gist.github.com/jfloff/5138826
+
+https://gist.github.com/alexdiliberto/67d0680be184396f83a686a80990eafd
+https://gist.github.com/jfloff/5138826
 
 # 2. Configure `/etc/hosts`
 
-```sh
-  127.0.0.1 scsheltierescue.dev
-```
+127.0.0.1 scsheltierescue.dev
 
 # 3. Install Bower globally
 
@@ -43,7 +42,7 @@ bower i && yarn
 # 7. Setup the build pipeline for development
 
 yarn watch
-````
+```
 
 Now open [https://scsheltierescue.dev](https://scsheltierescue.dev) in your browser
 
