@@ -85,7 +85,7 @@
               $state = $_POST['state'];
               $zip = $_POST['zip'];
               $homephone = $_POST['homephone'];
-              $workphone = $_POST['workphone'];
+              $cellphone = $_POST['cellphone'];
               $occupation = $_POST['occupation'];
               $fulltime = $_POST['fulltime'];
               $specific_dog_name = $_POST['specific_dog_name'];
@@ -216,7 +216,7 @@
                     ."2.  Email: ".$email."\n"
                     ."3.  Address: ".$street." ".$city.", ".$state." ".$zip."\n"
                     ."4.  Phone(H): ".$homephone."\n"
-                    ."5.  Phone(W): ".$workphone."\n"
+                    ."5.  Phone(C): ".$cellphone."\n"
                     ."6.  Occupation: ".$occupation."\n"
                     ."7.  Full-Time: ".$fulltime."\n"
                     ."8.  If you are applying to adopt a specific dog, please list the dog's name: ".$specific_dog_name."\n"
@@ -380,8 +380,8 @@
                       <small class="error">A home phone is required.</small>
                     </div>
                     <div class="large-3 columns">
-                      <label for="workphone">Work phone</label>
-                      <input id="workphone" name="workphone" type="tel">
+                      <label for="cellphone">Cell phone</label>
+                      <input id="cellphone" name="cellphone" type="tel">
                     </div>
                     <div class="large-4 columns">
                       <label for="occupation" class="required">Occupation</label>
