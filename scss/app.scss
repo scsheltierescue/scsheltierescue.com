@@ -198,10 +198,14 @@ ul.clearing-thumbs.clearing-feature {
   text-align: center;
   text-transform: uppercase;
   > span {
-    font-size: rem-calc(48);
+    @media #{$medium-up} {
+      font-size: rem-calc(48);
+    }
+    font-size: rem-calc(36);
     box-shadow: inset 0px 0px 3px $topbar-bg-color;
     text-shadow: 1px 1px 1px $topbar-bg-color;
     margin-bottom: 0;
+    white-space: normal;
   }
 }
 
