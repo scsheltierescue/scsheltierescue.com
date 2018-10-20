@@ -20,7 +20,7 @@ https://gist.github.com/jfloff/5138826
 
 # 2. Configure `/etc/hosts`
 
-127.0.0.1 scsheltierescue.dev
+127.0.0.1 scsr.localhost
 
 # 3. Install Bower globally
 
@@ -44,7 +44,7 @@ bower i && yarn
 yarn watch
 ```
 
-Now open [https://scsheltierescue.dev](https://scsheltierescue.dev) in your browser
+Now open [https://scsr.localhost](https://scsr.localhost) in your browser
 
 ## Foundation Dependency Updates
 Update foundation to the latest stable release:
