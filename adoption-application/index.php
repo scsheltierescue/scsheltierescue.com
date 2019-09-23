@@ -331,7 +331,11 @@
 
               <div class="row">
                 <div class="large-12 medium-12 small-12 columns">
-                                         
+                    
+                  <div data-alert class="alert-box info">
+                    <p>Please fill out this form using a computer browser as we are currently experiencing intermittent issues with submissions via phone browsers.</p>
+                  </div>
+                  
                   <p><strong>Please read through the <a href="/adoption-requirements/">Adoption Requirements</a> completely before filling out the application!</strong></p>
 
                   <div class="row">
