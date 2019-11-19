@@ -6,14 +6,15 @@ const uglify = require('gulp-uglify');
 const del = require('del');
 const autoprefixer = require('gulp-autoprefixer');
 const pump = require('pump');
+const cp = require('child_process');
 
 // Clean
-gulp.task('clean', () => {
+function clean() {
   return del(['css', 'js/vendor']);
-});
+}
 
 // Styles
-gulp.task('styles', ['clean'], () => {
+function styles() {
   return gulp.src('scss/app.scss')
     .pipe(sass({
         includePaths: ['bower_components/foundation/scss']
@@ -29,12 +30,12 @@ gulp.task('styles', ['clean'], () => {
       console.log(`Minified - ${details.name}: ${details.stats.minifiedSize}`);
     }))
     .pipe(gulp.dest('css'));
-});
+}
 
-// Uglify
-gulp.task('uglify', ['clean'], (cb) => {
+// Scripts + Uglify
+function scripts(cb) {
   // Pump will pipe streams together and close all of them if one of them closes
-  pump(
+  return pump(
     [
       gulp.src('bower_components/modernizr/modernizr.js'),
       uglify(),
@@ -42,23 +43,51 @@ gulp.task('uglify', ['clean'], (cb) => {
     ],
     cb
   )
-});
+}
 
 // Templates
-gulp.task('templates', shell.task('handlebars templates/ -f js/templates.js'));
-
-// Default
-gulp.task('default', ['styles', 'templates', 'uglify']);
+function templates() {
+  return gulp
+    .src('*.js', { read: false })
+    .pipe(shell(['handlebars templates/ -f js/templates.js']));
+}
 
 // Watch
-gulp.task('watch', ['clean', 'templates', 'uglify', 'styles'], () => {
+function watch() {
   // Watch .scss files
   gulp.watch([
     'bower_components/foundation/scss/**/*.scss',
     'scss/**/*.scss'
-  ], ['styles']);
+  ], styles);
   // Watch .handlebars files
   gulp.watch([
     'templates/**/*.handlebars'
-  ], ['templates', 'uglify']);
-});
+  ], gulp.parallel(templates, scripts));
+}
+
+/*
+ * Specify if tasks run in series or parallel using `gulp.series` and `gulp.parallel`
+ */
+var build = gulp.series(
+  clean,
+  gulp.parallel(
+    templates, 
+    styles,
+    scripts
+  )
+);
+
+/*
+ * You can use CommonJS `exports` module notation to declare tasks
+ */
+exports.clean = clean;
+exports.styles = styles;
+exports.scripts = scripts;
+exports.templates = templates;
+exports.watch = watch;
+exports.build = build;
+
+/*
+ * Define default task that can be called by just running `gulp` from cli
+ */
+exports.default = build;

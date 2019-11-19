@@ -13,15 +13,16 @@
   },
   "license": "MIT",
   "scripts": {
-    "watch": "gulp watch"
+    "build": "gulp",
+    "build:watch": "yarn build watch"
   },
   "devDependencies": {
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-clean-css": "^3.9.0",
     "gulp-sass": "^3.1.0",
-    "gulp-shell": "^0.6.3",
+    "gulp-shell": "^0.7.1",
     "gulp-uglify": "^3.0.0",
     "handlebars": "^4.5.3",
     "pump": "^1.0.2"
