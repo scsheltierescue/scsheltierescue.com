@@ -37,11 +37,12 @@ cd scsheltierescue.com
 
 # 6. Install the repo's dependencies
 
-bower i && yarn
+npx bower i && yarn
 
 # 7. Setup the build pipeline for development
 
-yarn watch
+yarn build
+yarn build:watch
 ```
 
 Now open [https://scsr.localhost](https://scsr.localhost) in your browser
