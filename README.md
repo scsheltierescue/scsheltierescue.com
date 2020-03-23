@@ -41,7 +41,7 @@ bower i && yarn
 
 # 7. Setup the build pipeline for development
 
-yarn watch
+yarn build:watch
 ```
 
 Now open [https://scsr.localhost](https://scsr.localhost) in your browser
