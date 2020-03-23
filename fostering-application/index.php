@@ -322,9 +322,9 @@
 
                   <div class="row">
                     <div class="large-12 columns">
-                      <label for="street" class="required">Street Address</label>
+                      <label for="street" class="required">Street Address <strong>(No P.O. Box)</strong></label>
                       <input id="street" name="street" type="text" placeholder="123 Main St" autocomplete="address-line1" required>
-                      <small class="error">A street address is required.</small>
+                      <small class="error">A street address (No P.O. Box) is required.</small>
                     </div>
                   </div>
 
