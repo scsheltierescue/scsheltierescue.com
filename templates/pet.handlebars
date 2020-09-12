@@ -24,7 +24,10 @@
           </li>
         {{/each}}
       </ul>
-      {{{desc}}}
+      {{!-- {{{desc}}} --}}
+      <div class="petfinder-link">
+        <a class="external-link" href={{petfinderUrl}} target="_blank">{{name}}'s Petfinder page<i class="fa fa-external-link" aria-hidden="true"></i></a>
+      </div>
     </div>
   </div>
 {{else}}

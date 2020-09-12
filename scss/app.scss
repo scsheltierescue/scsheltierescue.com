@@ -178,20 +178,25 @@ div.error > input[type=radio] {
 
 .clearing-assembled {
   text-align: center;
-  @media #{$medium-up} {
-    text-align: start;
-  }
+  // @media #{$medium-up} {
+  //   text-align: start;
+  // }
 }
 
 ul.clearing-thumbs.clearing-feature {
   display: inline-block;
   float: none;
-  margin-bottom: rem-calc(16);
+  // margin-bottom: rem-calc(16);
   @media #{$medium-up} {
-    display: block;
-    float: left;
+    // display: block;
+    // float: none;
     margin-bottom: 0;
   }
+}
+
+.petfinder-link {
+  text-align: center;
+  margin: rem-calc(10) 0;
 }
 
 .pet-name {

@@ -37,10 +37,11 @@ cd scsheltierescue.com
 
 # 6. Install the repo's dependencies
 
-bower i && yarn
+npx bower i && yarn
 
 # 7. Setup the build pipeline for development
 
+yarn build
 yarn build:watch
 ```
 
