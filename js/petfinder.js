@@ -1,5 +1,5 @@
-var currentOffset = 0,
-    isFirstGetPetsAPICall = true;
+var currentPage = 0;
+var isFirstGetPetsAPICall = true;
 
 /**
   Start Here
@@ -15,11 +15,11 @@ $("#btnMore").on('click', function() {
   Next, append the data to the HTML document.
  */
 function getPets() {
-  var $btnMore = $("#btnMore"),
-      url = "/petfinder.php",
-      data = {
-        offset: currentOffset
-      };
+  var $btnMore = $("#btnMore");
+  var url = "/petfinder.php";
+  var data = {
+    page: currentPage += 1
+  };
 
   spinnerStart($btnMore);
 
@@ -31,23 +31,21 @@ function getPets() {
 }
 
 function petfinderDone(data, textStatus, jqXHR) {
-  if (data.petfinder.lastOffset && data.petfinder.pets) {
-    currentOffset = parseInt(data.petfinder.lastOffset.$t, 10);
-    var pets = normalizeToArray(data.petfinder.pets.pet),
-        context = { pets: [] },
-        maxOffset = 25; //equals 'count' value from petfinder.php
+  if (data && data.animals) {
+    var pets = data.animals; //normalizeToArray(data.animals),
+    var context = { pets: [] };
 
     pets.forEach(function(pet) {
       context.pets.push(formatPet(pet));
     });
 
     spinnerStop();
-    if(isFirstGetPetsAPICall || (pets && pets.length)) {
+    if (isFirstGetPetsAPICall || (pets && pets.length)) {
       $("#pets").append(Handlebars.templates['pet'](context));
     }
 
      // Check if we pulled the maximum amount of pets
-    if(pets && (pets.length == null || pets.length === maxOffset)) {
+    if (data.pagination && data.pagination.current_page < data.pagination.total_pages) {
       $("#btnMore").removeClass("invisible");
     }
   } else {
@@ -65,31 +63,39 @@ function petfinderAlways() {
 }
 
 function formatPet(pet) {
-  var petContext = { options: [] },
-      name = pet.name.$t,
-      sex = pet.sex.$t,
-      desc = pet.description.$t.trim(),
-      options = normalizeToArray(pet.options.option),
-      isFirst = true,
-      optListItem;
+  var petContext = { options: [] };
+  var name = pet.name;
+  var sex = pet.gender;
+  // var desc = pet.description.trim();
+  var options = pet.attributes; //normalizeToArray(pet.options.option),
+  var environment = pet.environment;
+  var isFirst = true;
+  var optListItem;
 
-  options.forEach(function(option) {
-    optListItem = formatOptionListItem(option, sex);
-    if(optListItem) {
+  Object.keys(options).forEach(function(option) {
+    optListItem = formatOptionListItem(option, options[option], sex);
+    if (optListItem && optListItem.text) {
       petContext.options.push(optListItem);
     }
   });
+  Object.keys(environment).forEach(function(option) {
+    optListItem = formatOptionListItem(option, environment[option], sex);
+    if (optListItem && optListItem.text) {
+      petContext.options.push(optListItem);
+    }
+  });
+  petContext.options.sort(function(a, b) {
+    return (a.order > b.order) ? 1 : -1;
+  });
 
   petContext.photos = [];
-  if(pet.media.photos && pet.media.photos.photo.length) {
-    var photos = pet.media.photos.photo;
-
-    photos.forEach(function(photo) {
-      if(photo['@size'] == "x") {
+  if (pet.photos) {
+    pet.photos.forEach(function(photo, idx) {
+      if (photo.large) {
         petContext.photos.push({
           first: isFirst,
-          src: photo.$t,
-          alt: name + photo['@id']
+          src: photo.large,
+          alt: name + idx
         });
         isFirst = false;
       }
@@ -98,44 +104,65 @@ function formatPet(pet) {
 
   petContext.name = name;
   petContext.sex = sex;
-  petContext.desc = sanitizePetDesc(desc);
+  // petContext.desc = sanitizePetDesc(desc);
+  petContext.petfinderUrl = pet.url;
 
   return petContext;
 }
 
-function formatOptionListItem(option, sex) {
+function formatOptionListItem(option, value, sex) {
   var listchild = {};
-  switch (option.$t) {
-    case "altered":
-      if(sex === "M") {
-        listchild.text = "Neutered: ";
-      } else if(sex === "F") {
-        listchild.text = "Spayed: ";
-      } else {
-        listchild.text = "Spayed/Neutered: ";
+  switch (option) {
+    case "spayed_neutered":
+      if (value) {
+        if (sex === "Male") {
+          listchild.text = "Neutered: ";
+        } else if (sex === "Female") {
+          listchild.text = "Spayed: ";
+        } else {
+          listchild.text = "Spayed/Neutered: ";
+        }
+        listchild.icon = true;
+        listchild.order = 2;
       }
-      listchild.icon = true;
       break;
-    case "hasShots":
-      listchild.text = "Shots Current: ";
-      listchild.icon = true;
+    case "shots_current":
+      if (value) {
+        listchild.text = "Shots Current: ";
+        listchild.icon = true;
+        listchild.order = 3;
+      }
       break;
-    case "housebroken":
-    case "housetrained":
-      listchild.text = "Housebroken: ";
-      listchild.icon = true;
+    case "house_trained":
+      if (value) {
+        listchild.text = "Housetrained: ";
+        listchild.icon = true;
+        listchild.order = 4;
+      }
       break;
-    case "specialNeeds":
-      listchild.text = "Special Needs";
+    case "special_needs":
+      if (value) {
+        listchild.text = "Special Needs";
+        listchild.order = 1;
+      }
       break;
-    case "noKids":
-      listchild.text = "No Kids";
+    case "children":
+      if (value === false) {
+        listchild.text = "No Kids";
+        listchild.order = 5;
+      }
       break;
-    case "noCats":
-      listchild.text = "No Cats";
+    case "cats":
+      if (value === false) {
+        listchild.text = "No Cats";
+        listchild.order = 6;
+      }
       break;
-    case "noDogs":
-      listchild.text = "No Dogs";
+    case "dogs":
+      if (value === false) {
+        listchild.text = "No Dogs";
+        listchild.order = 7;
+      }
       break;
     default:
       listchild = null;
@@ -143,14 +170,14 @@ function formatOptionListItem(option, sex) {
   return listchild;
 }
 
-function sanitizePetDesc(desc) {
-  if(desc.match("^<div>") && desc.match("</div>$")) {
-    desc = desc.replace(/^<div>/,"<p>").replace(/<\/div>$/,"</p>");
-  } else if(!desc.match("^<") && !desc.match(">$")) {
-    desc = "<p>" + desc + "</p>";
-  }
-  return desc;
-}
+// function sanitizePetDesc(desc) {
+//   if(desc.match("^<div>") && desc.match("</div>$")) {
+//     desc = desc.replace(/^<div>/,"<p>").replace(/<\/div>$/,"</p>");
+//   } else if(!desc.match("^<") && !desc.match(">$")) {
+//     desc = "<p>" + desc + "</p>";
+//   }
+//   return desc;
+// }
 
 /**
   Normalize a petfinder response (Array/Object) property into an Array
@@ -159,10 +186,10 @@ function sanitizePetDesc(desc) {
     {foo:1}            => [{foo:1}]
     undefined          => []
 */
-function normalizeToArray(prop) {
-  if(prop && $.isPlainObject(prop)) { prop = [prop]; }
-  return prop || [];
-}
+// function normalizeToArray(prop) {
+//   if(prop && $.isPlainObject(prop)) { prop = [prop]; }
+//   return prop || [];
+// }
 
 function spinnerStart($btnMore) {
   $btnMore.addClass("invisible");
