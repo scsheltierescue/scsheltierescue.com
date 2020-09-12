@@ -353,9 +353,9 @@
 
                   <div class="row">
                     <div class="large-12 columns">
-                      <label for="street" class="required">Street Address</label>
+                      <label for="street" class="required">Street Address <strong>(No P.O. Box)</strong></label>
                       <input id="street" name="street" type="text" placeholder="123 Main St" autocomplete="address-line1" required>
-                      <small class="error">A street address is required.</small>
+                      <small class="error">A street address (No P.O. Box) is required.</small>
                     </div>
                   </div>
 
@@ -789,8 +789,8 @@
       <section id="address" class="address">
         <p class="no-margin-bottom">
           <span class="name">SC Sheltie Rescue</span><br/>
-          <span class="po-box">P.O. Box 11414</span><br/>
-          <span class="city-state-zip">Columbia, SC 29211</span><br/>
+          <span class="po-box">P.O. Box 11224</span><br/>
+          <span class="city-state-zip">Rock Hill, SC 29731</span><br/>
           <span class="tel"><a href="tel:+18883992220">+1 (888) 399-2220</a></span>
         </p>
       </section>
