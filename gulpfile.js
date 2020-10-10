@@ -71,7 +71,7 @@ function watch() {
 var build = gulp.series(
   clean,
   gulp.parallel(
-    templates, 
+    templates,
     styles,
     scripts
   )
