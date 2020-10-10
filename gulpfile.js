@@ -22,7 +22,6 @@ function styles() {
       .on('error', sass.logError)
     )
     .pipe(autoprefixer({
-      browsers: ['last 2 versions', 'IE >= 9'],
       cascade: false
     }))
     .pipe(cleancss({ debug: true }, (details) => {
