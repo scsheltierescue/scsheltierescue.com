@@ -24,7 +24,7 @@
     "gulp-sass": "^4.1.0",
     "gulp-shell": "^0.8.0",
     "gulp-uglify": "^3.0.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "pump": "^3.0.0"
   },
   "engines": {
