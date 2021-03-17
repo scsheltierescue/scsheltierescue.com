@@ -44,3 +44,7 @@ Desktop.ini
 /*.sublime-project
 *.sublime-workspace
 sftp-config*.json
+
+# Built files
+css/app.css
+js/vendor/modernizr.js
