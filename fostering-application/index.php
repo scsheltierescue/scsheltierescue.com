@@ -144,6 +144,10 @@
               $landlord_permission = $_POST['landlord_permission'];
               $yard_type = $_POST['yard_type'];
               $fenced_desc = $_POST['fenced_desc'];
+              $home_doggy_door = $_POST['home_doggy_door'];
+              $home_crate = $_POST['home_crate'];
+              $home_outdoor_pen = $_POST['home_outdoor_pen'];
+              $home_tie_out = $_POST['home_tie_out'];
               $home_during_day = $_POST['home_during_day'];
               $indoors_outdoors = $_POST['indoors_outdoors'];
               $sex_preference = $_POST['sex_preference'];
@@ -258,24 +262,29 @@
                     ."19. If you rent, do you have the landlords permission to keep a dog? (If so, list landlord's name and phone number): \n".$landlord_permission."\n"
                     ."20. Is your yard fenced?: ".$yard_type."\n"
                     ."21. If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will handle an adopted dog's bathroom/exercise needs: \n".$fenced_desc."\n"
-                    ."22. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
-                    ."23. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
-                    ."24. Do you have a sex preference?: ".$sex_preference."\n"
-                    ."25. Would you consider an older dog? To what age?: \n".$older_dog."\n"
-                    ."26. What brand of food do you currently feed your dog (or plan to feed an adopted dog)?: \n".$food_type."\n"
-                    ."27. Are you open to changing the brand of food currently used?: \n".$food_change."\n"
-                    ."28. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
-                    ."29. Are you planning to move in the near future?: ".$moving_soon."\n"
-                    ."30. Is anyone in your house allergic to animals?: ".$allergic."\n"
-                    ."31. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
-                    ."32. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
-                    ."33. How many vets have you used for your pets in the last 5 years?: ".$how_many_vets."\n"
-                    ."33.a  Clinic Name: ".$vet_1_clinic_name."  -  Phone Number: ".$vet_1_phone."\n"
-                    ."33.b  Clinic Name: ".$vet_2_clinic_name."  -  Phone Number: ".$vet_2_phone."\n"
-                    ."33.c  Clinic Name: ".$vet_3_clinic_name."  -  Phone Number: ".$vet_3_phone."\n"
-                    ."33.d  Clinic Name: ".$vet_4_clinic_name."  -  Phone Number: ".$vet_4_phone."\n"
-                    ."33.e  Clinic Name: ".$vet_5_clinic_name."  -  Phone Number: ".$vet_5_phone."\n"
-                    ."34. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr;
+                    ."22. Are any of these available in your home for a foster dog?: \n"
+                    ."22.a  Doggy Door: ".$home_doggy_door." \n"
+                    ."22.b  Crate: ".$home_crate." \n"
+                    ."22.c  Outdoor pen or run: ".$home_outdoor_pen." \n"
+                    ."22.d  Tie out or runner: ".$home_tie_out." \n"
+                    ."23. Do all family adults work and is someone home during the day? (Please explain): \n".$home_during_day."\n"
+                    ."24. Do you intend to keep this dog primarily indoors or outdoors? Where will it sleep?: \n".$indoors_outdoors."\n"
+                    ."25. Do you have a sex preference?: ".$sex_preference."\n"
+                    ."26. Would you consider an older dog? To what age?: \n".$older_dog."\n"
+                    ."27. What brand of food do you currently feed your dog (or plan to feed an adopted dog)?: \n".$food_type."\n"
+                    ."28. Are you open to changing the brand of food currently used?: \n".$food_change."\n"
+                    ."29. Are other members of your household aware that you are considering adopting a pet?: ".$family_aware."\n"
+                    ."30. Are you planning to move in the near future?: ".$moving_soon."\n"
+                    ."31. Is anyone in your house allergic to animals?: ".$allergic."\n"
+                    ."32. Are you familiar with animal control regulations in your area?: ".$animal_control_regulations."\n"
+                    ."33. Are you willing to allow a Rescue representative to visit your home by appointment?: ".$home_visit."\n"
+                    ."34. How many vets have you used for your pets in the last 5 years?: ".$how_many_vets."\n"
+                    ."34.a  Clinic Name: ".$vet_1_clinic_name."  -  Phone Number: ".$vet_1_phone."\n"
+                    ."34.b  Clinic Name: ".$vet_2_clinic_name."  -  Phone Number: ".$vet_2_phone."\n"
+                    ."34.c  Clinic Name: ".$vet_3_clinic_name."  -  Phone Number: ".$vet_3_phone."\n"
+                    ."34.d  Clinic Name: ".$vet_4_clinic_name."  -  Phone Number: ".$vet_4_phone."\n"
+                    ."34.e  Clinic Name: ".$vet_5_clinic_name."  -  Phone Number: ".$vet_5_phone."\n"
+                    ."35. How did you hear about South Carolina Sheltie Rescue?: \n".$hear_about_scsr;
 
                   //Construct the HTML message body
                   $message_html = str_replace("\n", "<br>", $message_alt);
@@ -542,6 +551,16 @@
                       <label for="fenced_desc" class="required">If your yard is fenced, describe type and height of fencing. If your yard is not fenced, describe how you will handle an adopted dog's bathroom/exercise needs.</label>
                       <textarea id="fenced_desc" name="fenced_desc" required></textarea>
                       <small class="error">Required</small>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="large-12 columns">
+                      <label>Are any of these available in your home for a foster dog?</label>
+                      <input id="home_doggy_door" name="home_doggy_door" type="checkbox"><label for="home_doggy_door">Doggy Door</label>
+                      <input id="home_crate" name="home_crate" type="checkbox"><label for="home_crate">Crate</label>
+                      <input id="home_outdoor_pen" name="home_outdoor_pen" type="checkbox"><label for="home_outdoor_pen">Outdoor pen or run</label>
+                      <input id="home_tie_out" name="home_tie_out" type="checkbox"><label for="home_tie_out">Tie out or runner</label>
                     </div>
                   </div>
 
