@@ -695,6 +695,9 @@
         <a href="https://twitter.com/scsheltierescue" target="_blank">
           <i class="fa fa-twitter-square" aria-hidden="true"></i><span class="visuallyhidden">Twitter</span>
         </a>
+        <a href="https://www.instagram.com/scsheltierescue/" target="_blank">
+          <i class="fa fa-instagram" aria-hidden="true"></i><span class="visuallyhidden">Instagram</span>
+        </a>
       </section>
       <section id="address" class="address">
         <p class="no-margin-bottom">
