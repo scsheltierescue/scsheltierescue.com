@@ -63,7 +63,13 @@
           <main role="main" class="main-content">
             <h2 class="headline first">Adoption Application</h2>
 
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform?embedded=true" width="640" height="8790" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <div class="row">
+                <div class="large-12 medium-12 small-12 columns">
+                    
+                    <p><strong>Please <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">click here</a> to fill out our adoption application form.</strong></p>
+
+                </div>
+            </div>
           </main>
         </div>
       </div>
