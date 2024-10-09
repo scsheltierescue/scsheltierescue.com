@@ -1,0 +1,244 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+import { Icon } from 'astro-icon/components';
+// import { Debug } from 'astro:components';
+
+// const response = await fetch('petfinder.php')
+// console.log('RESPONSE!!!', response)
+// const data = await response.json();
+// console.log('RESPONSE!!!', data)
+
+---
+<!-- <Debug data={data} /> -->
+
+<!-- <script>
+debugger;
+
+var currentPage = 0;
+var isFirstGetPetsAPICall = true;
+
+/**
+  Start Here
+ */
+getPets();
+$("#btnMore").on('click', function() {
+  isFirstGetPetsAPICall = false;
+  getPets();
+});
+
+/**
+  Call petfinder.php to get a list of available dogs.
+  Next, append the data to the HTML document.
+ */
+function getPets() {
+  debugger;
+  
+  var $btnMore = $("#btnMore");
+  var url = "/petfinder.php";
+  var data = {
+    page: currentPage += 1
+  };
+
+  spinnerStart($btnMore);
+
+  // Retrieve the Petfinder API pet data
+  $.getJSON(url, data)
+    .done(petfinderDone)
+    .fail(petfinderFail)
+    .always(petfinderAlways);
+}
+
+function petfinderDone(data, textStatus, jqXHR) {
+  if (data && data.animals) {
+    var pets = data.animals; //normalizeToArray(data.animals),
+    var context = { pets: [] };
+
+    pets.forEach(function(pet) {
+      context.pets.push(formatPet(pet));
+    });
+
+    spinnerStop();
+    if (isFirstGetPetsAPICall || (pets && pets.length)) {
+      $("#pets").append(Handlebars.templates['pet'](context));
+    }
+
+     // Check if we pulled the maximum amount of pets
+    if (data.pagination && data.pagination.current_page < data.pagination.total_pages) {
+      $("#btnMore").removeClass("invisible");
+    }
+  } else {
+    petfinderFail();
+  }
+}
+
+function petfinderFail(jqXHR, textStatus, errorThrown) {
+  spinnerStop();
+  $("#pets").html(Handlebars.templates['pet-error-alert']);
+}
+
+function petfinderAlways() {
+  $(document).foundation();
+}
+
+function formatPet(pet) {
+  var petContext = { options: [] };
+  var name = pet.name;
+  var sex = pet.gender;
+  // var desc = pet.description.trim();
+  var options = pet.attributes; //normalizeToArray(pet.options.option),
+  var environment = pet.environment;
+  var isFirst = true;
+  var optListItem;
+
+  Object.keys(options).forEach(function(option) {
+    optListItem = formatOptionListItem(option, options[option], sex);
+    if (optListItem && optListItem.text) {
+      petContext.options.push(optListItem);
+    }
+  });
+  Object.keys(environment).forEach(function(option) {
+    optListItem = formatOptionListItem(option, environment[option], sex);
+    if (optListItem && optListItem.text) {
+      petContext.options.push(optListItem);
+    }
+  });
+  petContext.options.sort(function(a, b) {
+    return (a.order > b.order) ? 1 : -1;
+  });
+
+  petContext.photos = [];
+  if (pet.photos) {
+    pet.photos.forEach(function(photo, idx) {
+      if (photo.large) {
+        petContext.photos.push({
+          first: isFirst,
+          src: photo.large,
+          alt: name + idx
+        });
+        isFirst = false;
+      }
+    });
+  }
+
+  petContext.name = name;
+  petContext.sex = sex;
+  // petContext.desc = sanitizePetDesc(desc);
+  petContext.petfinderUrl = pet.url;
+
+  return petContext;
+}
+
+function formatOptionListItem(option, value, sex) {
+  var listchild = {};
+  switch (option) {
+    case "spayed_neutered":
+      if (value) {
+        if (sex === "Male") {
+          listchild.text = "Neutered: ";
+        } else if (sex === "Female") {
+          listchild.text = "Spayed: ";
+        } else {
+          listchild.text = "Spayed/Neutered: ";
+        }
+        listchild.icon = true;
+        listchild.order = 2;
+      }
+      break;
+    case "shots_current":
+      if (value) {
+        listchild.text = "Shots Current: ";
+        listchild.icon = true;
+        listchild.order = 3;
+      }
+      break;
+    case "house_trained":
+      if (value) {
+        listchild.text = "Housetrained: ";
+        listchild.icon = true;
+        listchild.order = 4;
+      }
+      break;
+    case "special_needs":
+      if (value) {
+        listchild.text = "Special Needs";
+        listchild.order = 1;
+      }
+      break;
+    case "children":
+      if (value === false) {
+        listchild.text = "No Kids";
+        listchild.order = 5;
+      }
+      break;
+    case "cats":
+      if (value === false) {
+        listchild.text = "No Cats";
+        listchild.order = 6;
+      }
+      break;
+    case "dogs":
+      if (value === false) {
+        listchild.text = "No Dogs";
+        listchild.order = 7;
+      }
+      break;
+    default:
+      listchild = null;
+  };
+  return listchild;
+}
+
+// function sanitizePetDesc(desc) {
+//   if(desc.match("^<div>") && desc.match("</div>$")) {
+//     desc = desc.replace(/^<div>/,"<p>").replace(/<\/div>$/,"</p>");
+//   } else if(!desc.match("^<") && !desc.match(">$")) {
+//     desc = "<p>" + desc + "</p>";
+//   }
+//   return desc;
+// }
+
+/**
+  Normalize a petfinder response (Array/Object) property into an Array
+
+    [{foo:1}, {bar:2}] => [{foo:1},{bar:2}]
+    {foo:1}            => [{foo:1}]
+    undefined          => []
+*/
+// function normalizeToArray(prop) {
+//   if(prop && $.isPlainObject(prop)) { prop = [prop]; }
+//   return prop || [];
+// }
+
+function spinnerStart($btnMore) {
+  $btnMore.addClass("invisible");
+  $("#spinner").show()
+}
+
+function spinnerStop() {
+  $("#spinner").hide();
+}
+</script> -->
+
+<Layout
+  title="Available Dogs"
+  description="List of SC Sheltie Rescue dogs available for adoption."
+>
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns">
+      <main role="main" class="main-content">
+        <h2 class="headline first">Available for Adoption</h2>
+        <p>You can view our available dogs below or on our <a href="https://www.petfinder.com/pet-search?animal_type=&pet_breed=&pet_age=&pet_size=&specialNeeds=&declawedPets=&children=&status=&shelter_pet_id=&internal=&contact=&name=&shelter_id=SC92&sort=" target="_blank">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please complete and submit our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> form. If you have any questions feel free to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
+
+        <div id="pets" class="clearfix"></div>
+        <div id="spinner" class="loading_spinner">
+          <svg class="circular">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+          </svg>
+        </div>
+
+        <input id="btnMore" type="button" class="large button expand invisible" value="View More" />
+      </main>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,34 @@
+---
+interface BreadcrumbItem {
+  text: string;
+  href?: string;
+}
+interface Props {
+  crumbs: BreadcrumbItem[];
+}
+
+const { crumbs } = Astro.props;
+---
+
+<nav class="breadcrumbs flex border border-solid border-zinc-300 rounded list-none ml-0 overflow-hidden py-2.5 px-3.5 bg-zinc-100" role="menubar" aria-label="breadcrumbs">
+  {
+    crumbs.map((crumb) => (crumb.href) ?
+      <li class="text-primary-c before:text-neutral-400	text-[11px] leading-none uppercase m-0" role="menuitem">
+        <a class="hover:underline focus:underline" href={crumb.href}>{crumb.text}</a>
+      </li> : 
+      <li class="text-zinc-800 before:text-neutral-400 text-[11px] leading-none uppercase m-0 cursor-default before:neutral-400" role="menuitem" class="current" aria-current="page">{crumb.text}</li>
+    )
+  }
+</nav>
+
+<style>
+  [role="menuitem"]:first-child:before {
+    content: " ";
+    margin: 0;
+  }
+
+  [role="menuitem"]:before {
+    content: "/";
+    margin: 0 .75rem;
+  }
+</style>

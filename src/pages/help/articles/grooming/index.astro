@@ -1,0 +1,81 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro'
+
+const crumbs = [
+  {
+    text: 'Help',
+    href: "/help",
+  },
+  {
+    text: 'Grooming Your Pet Sheltie',
+  }
+];
+---
+
+<Layout
+  title="Grooming Your Sheltie"
+  description="Information about how to properly groom your pet Sheltie."
+>
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns">
+      <main role="main" class="main-content">
+        <Breadcrumbs crumbs={crumbs} />
+
+        <h2 class="headline first">Grooming Your Pet Sheltie</h2>
+
+        <p>Yes, You <strong>CAN</strong> Do It Yourself!</p>
+
+        <p><strong>Do NOT shave your Sheltie!</strong> When the hair grows back, it will never be the same texture. Your Sheltie's double coat protects him from heat, cold and moisture and helps him regulate his body temperature. The only time you would ever need to shave your Sheltie is in cases of severe skin infection. Proper, regular grooming will prevent skin infections and matting.</p>
+
+        <p>One of the best investments you can make is to purchase or make a grooming table. This will save your back! You can find grooming tables online. If you make your own table, make sure that it is covered with a non-slick pad. You can use a rubber-backed bath mat.</p>
+
+        <p>If your Sheltie develops mats (particularly behind the ears or on the "skirt"), never cut the mats parallel to the skin, you can easily cut your dog. You can use a mat-breaker or use scissors pointed toward or perpendicular, to the skin. Cut into the mat once, then use a pin brush or comb to brush it out.</p>
+
+        <p>The quality of food that you give your Sheltie will affect his coat condition and the amount that he sheds. A higher priced, premium dog food pays for itself in the health of your dog and will reduce the shedding.</p>
+
+        <div class="panel">
+          <p><strong>Equipment:</strong></p>
+          <ul class="list-disc">
+            <li>Pin brush, with a longer pin length for Sheltie coats</li>
+            <li>Nail clippers or Dremel</li>
+            <li>Round tip scissors for trimming pads</li>
+            <li>Slicker brush</li>
+            <li>Ear cleaner, or wash</li>
+            <li>Dog toothbrush and dog toothpaste</li>
+          </ul>
+
+          <p><strong>Steps:</strong></p>
+          <ul class="list-disc">
+            <li>Shelties should be brushed at least once a week and more often during their twice yearly "coat blowing".</li>
+            <li>Before brushing with a pin brush, mist the coat lightly with water. It will prevent coat breakage.</li>
+            <li>Brush your Sheltie before you bathe them. Baths will make mats worse.</li>
+            <li>Brush in lines, or "layers". From the legs up, lift up your Sheltie's coat with one hand, making a "line". Then brush from the roots out. Continue throughout his coat until brushed. Don't forget to brush his tail.</li>
+            <li>Trim the excess hair from his pads by laying the scissors flat against the bottom of his foot. It is important to keep this hair trimmed to prevent mud and dirt from caking and affecting his movement.</li>
+            <li>Brush his teeth once a week to prevent having to have the vet perform dental cleaning, which would involve having to anesthetize your Sheltie.</li>
+            <li>Clip or Dremel his nails as needed, usually about once a week. Clip only the white parts of his white nails, or not past the bend of the tip on black nails.</li>
+          </ul>
+        </div>
+
+        <p><strong>Teach Your Sheltie to Enjoy Grooming!</strong></p>
+
+        <p>Grooming can be a pleasurable time for both you and your Sheltie if you first teach them to enjoy it! Begin by introducing grooming in short steps with tasty rewards. This works for nail trimming and brushing. Here are the general steps you can take.</p>
+
+        <div class="panel">
+          <ul class="list-disc">
+            <li>First show your Sheltie the brush or nail clippers and offer a treat, or some peanut butter on your finger. Do this for a few days. Your Sheltie will learn to associate the sight of the grooming tools with a reward.</li>
+            <li>Then, just touch your Sheltie with the brush or nail clippers and reward. Do this for a few days.</li>
+            <li>After a few days of just touching, offer the treat or put a bit of peanut butter in his mouth and brush a few strokes or clip ONE nail. There is no rule that says all grooming must be completed in one session. If you are helping your Sheltie learn to enjoy grooming, then you should take your time and go slowly.</li>
+            <li>Gradually, you can increase the amount of brushing or the number of nails that you clip at one time. (As you clip the nails, be careful not to trim past the white tip of the nail. The pink area is the blood vessel. If your Sheltie's nails are black, don't trim past the place where the nail begins to make a downward hook. Keep some styptic powder or cornstarch on hand to pack on the nail if you accidentally clip too closely.)</li>
+          </ul>
+        </div>
+
+        <p>If, in the past, your Sheltie has had bad experiences at the groomers or at the veterinarian's office by being held down or restrained to have his nails clipped or brushed out, then he may have developed a dislike for grooming. Be patient, take your time and help him learn that grooming CAN be a pleasant experience.</p>
+
+        <p><strong>Do a Health Exam While Grooming:</strong></p>
+
+        <p>Grooming time is also an excellent time to check your Sheltie for health problems. Run your hands all along his body, tail and even between his toes. Check for ticks and lumps. If you find a lump, have your veterinarian check it immediately. Many lumps are just "fatty tumors" or "sebatious cysts", but you want to make sure there is no cause for concern. You can also look for skin discoloration that might indicate an allergy or infection.</p>
+      </main>
+    </div>
+  </div>
+</Layout>

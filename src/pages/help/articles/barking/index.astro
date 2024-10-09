@@ -1,0 +1,47 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro'
+
+const crumbs = [
+  {
+    text: 'Help',
+    href: "/help",
+  },
+  {
+    text: 'My Sheltie Barks',
+  }
+];
+---
+
+<Layout
+  title="My Sheltie Barks"
+  description="Information about how to deal with your barking Sheltie."
+>
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns">
+      <main role="main" class="main-content">
+        <Breadcrumbs crumbs={crumbs} />
+
+        <h2 class="headline first">My Sheltie Barks</h2>
+
+        <p>Hopefully you aren't really surprised by this. If you've had Shelties before, you know they are a breed known for barking more than some other breeds. Shelties were bred in the Shetland Islands in the early 1900s to work on farms. They earned their keep by barking to alert for strangers, barking to herd sheep and barking to chase away predatory birds from the lambs. Barking comes naturally to a Sheltie and it can be a very difficult habit for him to change. Even today, in obedience and agility competitions, you will often note that the Sheltie is the dog who likes to express his joy at working with happy barking. If you have multiple Shelties, you will notice that they tend to encourage each other and bark more.</p>
+
+        <p><strong>What can I do to stop the barking?</strong></p>
+
+        <p>Don't count on being able to totally stop the barking. It is a natural, genetically programmed behavior for Shelties. However, it is possible to reduce the barking.</p>
+
+        <p>First, determine why your Sheltie is barking. Is it excitement, boredom, fear, alerting? Then address or manage the cause of the barking. Never yell at your Sheltie to stop barking. He may think you are just joining in the fun and may bark even more!</p>
+
+        <p>If your Sheltie is left alone at home or alone in the yard, there is a good chance he will bark because of a lack of environmental enrichment. Provide mental stimulation in the form of food-stuffed toys or lots of good games of fetch or walking. Provide plenty of exercise. A tired dog is a good dog.</p>
+
+        <p>If your Sheltie is fearful, you will hear a rapid, high-pitched bark. Work with a qualified positive trainer to address your Sheltie's fear issues. You can find trainers on the Trainer Search button at <a href="https://apdt.com/">The Association of Pet Dog Trainer's website</a>. There is also an excellent article on how to choose a quality trainer. If you can reduce your Sheltie's fears, then he will not have the need to bark as much. Your Sheltie should never be punished for barking out of fear.</p>
+
+        <p>If your Sheltie is constantly alert barking at home, you may want to manage the situation by taking actions such as closing the blinds to prevent him from alerting to passing dogs, or installing wooden privacy fences to prevent him from monitoring passers-by on the street. The more you allow your Sheltie to alert bark, the stronger a habit it will become.</p>
+
+        <p>Sometimes Shelties bark because something exciting is happening, such as the preparation of their dinner, or when you pick up their leashes to go for a walk. You can teach them to cease their barking by stopping the action that excites them. For example, if you are headed to get the leash off the hanger by the door and your Sheltie begins barking excitedly, stop your movement toward the leash. Don't yell or scold, just freeze. When your Sheltie is quiet, begin moving toward the leash again. If your Sheltie begins barking again, stop movement. Continue this until your Sheltie figures out that he won't get his leash for the walk until he is quiet. Be patient and consistent and you WILL see a change. If you are in a hurry one day and let him bark at you until you get his leash, the behavior will only get worse.</p>
+
+        <p>Some trainers say to put the bark on cue and then teach them to "hush" on cue. This can be effective and it is certainly easy to teach a Sheltie to bark on cue! To do this, say "speak" and do something that you know will make your Sheltie bark, such as having someone ring the doorbell or clapping your hands and getting excited. Praise him when he barks. Once you've gotten him to bark on cue, then introduce the word "hush" or "quiet" and offer him a treat. He will sniff the treat quietly. As soon as he sniffs it quietly, offer him the treat. Practice asking for "speak" and "hush", slowly lengthening the time between the "hush" cue and offering the treat.</p>
+      </main>
+    </div>
+  </div>
+</Layout>

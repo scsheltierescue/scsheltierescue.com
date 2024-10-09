@@ -1,0 +1,84 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const currentPath = Astro.url.pathname.slice(1);
+---
+
+<div class="contain-to-grid fixed">
+  <nav class="top-bar bg-zinc-800" data-topbar>
+    <!-- Desktop -->
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <h1 class="show-for-large-up"><a href="/">South Carolina Sheltie Rescue</a></h1>
+        <h1 class="show-for-medium-down"><a href="/">SCSR</a></h1>
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><span id="mobile-menu">Menu</span></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class={currentPath === "" ? "active" : ""}><a href="/">Home</a></li>
+        <li class={`has-dropdown not-click ${currentPath === "adoption-requirements" || currentPath === "adoptable-dogs" ? "active" : ""}`}><a href="/adoptable-dogs">Adopt</a>
+          <ul class="dropdown">
+            <li class={currentPath === "adoption-requirements" ? "active" : ""}><a href="/adoption-requirements">Adoption Requirements</a></li>
+            <li class={currentPath === "adoptable-dogs" ? "active" : ""}><a href="/adoptable-dogs">Adoptable Dogs</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Fostering Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
+          </ul>
+        </li>
+        <li class={currentPath === "surrender" ? "active" : ""}><a href="/surrender">Surrender</a></li>
+        <li class={(currentPath === "help" || currentPath.startsWith("help/articles")) ? "active" : ""}><a href="/help">Help</a></li>
+        <li class={currentPath === "events" ? "active" : ""}><a href="/events">Events</a></li>
+      </ul>
+    </section>
+  </nav>
+</div>
+
+<!-- <script>
+  document.querySelector('#mobile-menu')?.addEventListener('click', () => {
+    document.querySelector('[data-topbar]')?.classList.toggle('expanded');
+  });
+
+  document.querySelector('.has-dropdown')?.addEventListener('click', function(e) {
+    let mqListMobile: MediaQueryList = window.matchMedia("(max-width: 940px)");
+    //debugger;
+    if (mqListMobile.matches) {
+      e.preventDefault();
+      this.classList.toggle('moved');
+      document.querySelector('.top-bar-section').style["left"] = "-100%";
+      document.querySelector('[data-topbar]').style['height'] = '300px';
+    }
+  });
+
+  function myFunction(x) {
+    if (!x.matches) { // If media query matches
+      document.querySelector('[data-topbar]')?.classList.remove('expanded');
+    } 
+  }
+
+  // Create a MediaQueryList object (matches on mobile)
+  var x = window.matchMedia("(max-width: 940px)")
+
+  // Call listener function at run time
+  myFunction(x);
+
+  // Attach listener function on state changes
+  x.addEventListener("change", function() {
+    myFunction(x);
+  });
+</script> -->
+
+<style>
+  .contain-to-grid {
+    width: 100%;
+    background: #333
+  }
+
+  .contain-to-grid .top-bar {
+    margin: 0 auto;
+    margin-bottom: 0;
+    max-width: 62.5rem
+  }
+</style>

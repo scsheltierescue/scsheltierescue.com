@@ -1,3 +1,48 @@
+# Special ignore
+**/credentials.php
+
+# Always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+
+# Always-ignore directories
+doc/
+backups/
+demo/
+webftp/
+node_modules/
+bower_components/
+
+# OS or Editor folders
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+#
+# Astro .gitignore below
+#
 # build output
 dist/
 

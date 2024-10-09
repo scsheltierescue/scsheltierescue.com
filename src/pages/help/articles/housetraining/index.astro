@@ -1,0 +1,70 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro'
+
+const crumbs = [
+  {
+    text: 'Help',
+    href: "/help",
+  },
+  {
+    text: 'Housetraining Tips',
+  }
+];
+---
+
+<Layout
+  title="Housetraining Tips"
+  description="Housetraining advice and tips for your new Sheltie."
+>
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns">
+      <main role="main" class="main-content">
+        <Breadcrumbs crumbs={crumbs} />
+
+        <h2 class="headline first">Housetraining Tips</h2>
+
+        <p>When you bring a new dog into your home, you will most likely have to re-housetrain him. Your new Sheltie may have been housetrained in his old environment, but this home is a totally different one. This can also happen when you travel with your dog. He may be housetrained at home, but is not housetrained in your relative's house!</p>
+
+        <p>If a dog that has been previously housetrained begins having accidents there can be several causes. The most common are:</p>
+
+        <dl class="panel">
+          <dt>Urinary tract infection or disease</dt>
+          <dd>Any change in housetraining behavior should first have a physical cause ruled out. Check with your vet. He/she may allow you to just bring in a fresh urine sample for testing. Some vets may insist that you bring the dog in. If this is the cause, medical treatment may be the fix.</dd>
+
+          <dt>Medications</dt>
+          <dd>Sometimes being on certain medications may cause your Sheltie to urinate more frequently.</dd>
+
+          <dt>Stress/anxiety</dt>
+          <dd>Even dogs that are housetrained will have accidents when they are stressed or anxious. Common causes of stress urination are: thunderstorms, separation anxiety, changes in routine, changes in environment, holiday activities.</dd>
+        </dl>
+
+        <p>His signs to go outside may be subtle. Some dogs are obvious about wanting to go outside. They may stand in front of the door, scratch or whine. Other dogs may quickly glance at the door or may have some other sign that is so subtle that it is easy to miss.</p>
+
+        <p><strong>Steps to take to housetrain:</strong></p>
+
+        <div class="panel">
+          <ul class="list-disc">
+            <li>First, rule out a physical cause by taking the dog or a urine sample to the vet.</li>
+            <li>Don't "free feed". Adult dogs should be fed twice a day. Measure out an appropriate amount of food. Put the food down for no longer than 20 minutes. Pick up the remaining food and don't feed again until dinner. If you don't control when "the food goes in" then you won't know when to expect it to come out! Dogs will generally poop about 15 to 20 minutes after they eat.</li>
+            <li>If you cannot supervise your dog to prevent accidents, then confine him in a crate or tether him to your waist or to a piece of furniture. (A note on crating: crating your dog is not cruel, if done properly. An adult dog can safely be crated for seven to eight hours. A puppy should not be crated during the day for longer than one hour for each month of life, plus one hour. That means a three-month-old puppy should not stay in a crate during the day for longer than four hours. Older puppies and dogs can stay in a crate overnight without break, unless they have a urinary infection.</li>
+            <li>Treat the dog as if he were an 8-week-old puppy and completely re-housetrain him.</li>
+            <li>When you are home, take him outside at least every hour and a half. Take him out 15 to 20 minutes after he eats. Take him first thing in the morning. Take him out after he wakes up from a nap. Take him out after active indoor play.</li>
+            <li>Each time you take him out, he should be on lead so that you can control the training.</li>
+            <li>Take him to the spot in the yard that you wish to use as his bathroom. Give him a cue that you will use each time (“go potty,” “do your business,” etc.). Wait. When he goes, reward him with a verbal “yes!” and a soft treat. Don't always take him back inside immediately. Some dogs consider it a punishment to go inside. Once he goes to the potty, you can take the leash off and let him play, but only in a fenced-in area.</li>
+            <li>If he doesn't go within five minutes, take him back inside and put him in his crate. Wait about 15 minutes. Try again. Repeat if needed. Always use your potty cue, always take him out on lead and always reward. (Once he is housetrained, he won't need to be on lead. This is only while you are training him.)</li>
+            <li>If his signals are too subtle, you can teach him to ask to go outside by ringing a bell. Attach a ribbon or string with a big jingle bell on the door handle. It should hang at nose height. (There's even a device called “Poochie Bells” available online or at local pet stores, or you can make your own.) Each time before you let him go outside, say “Want to go out?” and gently pick up his foot and tap the bell with it. Eventually he will figure it out and will nudge the bell with his nose. When he does, you must respond and let him out immediately! (Note: if your Sheltie is sensitive to the noise of the bells, you can muffle the sound by covering the bells with cotton or a cloth or use a quieter sounding bell. You can also ring the bell gently for your noise sensitive Sheltie, while he is further away before opening the door.)</li>
+          </ul>
+        </div>
+
+        <p><strong>Other tips:</strong></p>
+
+        <ul class="list-disc">
+          <li>Be sure you clean up messes in the house with an enzymatic cleaner, such as Simple Solutions® or Nature's Miracle®. Other cleaners mask the smell to our noses, but dogs can still smell the spots. To find and treat old spots, cut off all the lights and go around with a black light. Old urine stains will show up with the black light.</li>
+          <li>If you catch him in the act of peeing, you can say "NO" and immediately take him outside, then praise him when he goes outside. If you can't catch him, you can't correct him — he'll have no idea why you are upset and will just begin peeing in hidden places because he'll be afraid of a reaction. And, of course, you should never spank him or rub his nose in the mess. Dogs have NO idea what that is all about, and this treatment can cause fear and aggression.</li>
+          <li>If he urinates in the house, you can blot it up with an old washrag, then take the washrag outside and put it in the area where you want him to go to the bathroom. You can do the same with poop accidents. If he poops inside, you can pick it up and take it to the designated spot in the yard to encourage him to go there.</li>
+        </ul>
+      </main>
+    </div>
+  </div>
+</Layout>
