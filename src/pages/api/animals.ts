@@ -12,7 +12,7 @@ export const GET: APIRoute = async (ctx) => {
     const headers = {
       'Authorization': `Bearer ${token}`,
     };
-
+    console.log('token data ', data);
     // retrieve relevant search parameters, aka URL query parameters
     const queryParams = ctx.url.searchParams;
     const page = queryParams.get("page") || '1';
@@ -27,7 +27,7 @@ export const GET: APIRoute = async (ctx) => {
       method: 'GET',
       headers: headers,
     });
-
+    console.log('get animals response ', response);
     // Check if the request was successful
     if (!response.ok) {
       throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);

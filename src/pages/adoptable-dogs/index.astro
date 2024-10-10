@@ -86,11 +86,11 @@ try {
   let response = await GET_ANIMALS(Astro);
   const data = await response.json() as SCSRAnimals;
   const pets = data.animals;
-
+  console.log('pets ', pets)
   pets.forEach(function(pet) {
     context.pets.push(formatPet(pet));
   });
-  console.info(context.pets[0].photos)
+  console.log('context ', context)
 } catch (error) {
   console.error('Error making data request:', error);
   isGetAnimalsError = true;
