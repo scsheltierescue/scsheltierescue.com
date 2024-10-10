@@ -10,4 +10,9 @@ export default defineConfig({
   integrations: [react(), tailwind(), icon()],
   output: 'hybrid',
   adapter: cloudflare(),
+  vite: {
+    define: {
+      'process.env.PETFINDER_API_SECRET': JSON.stringify(process.env.PETFINDER_API_SECRET)
+    }
+  },
 });
