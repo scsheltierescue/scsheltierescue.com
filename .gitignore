@@ -1,6 +1,3 @@
-# Special ignore
-**/credentials.php
-
 # Always-ignore extensions
 *.diff
 *.err
@@ -41,7 +38,7 @@ ehthumbs.db
 Desktop.ini
 
 #
-# Astro .gitignore below
+### Astro .gitignore ##
 #
 # build output
 dist/

@@ -1,103 +1,125 @@
 ---
+export const prerender = false
+
 import Layout from '@layouts/Layout.astro';
+import { GET as GET_ANIMALS } from '../api/animals.ts'
 
 import { Icon } from 'astro-icon/components';
-// import { Debug } from 'astro:components';
 
-// const response = await fetch('petfinder.php')
-// console.log('RESPONSE!!!', response)
-// const data = await response.json();
-// console.log('RESPONSE!!!', data)
-
----
-<!-- <Debug data={data} /> -->
-
-<!-- <script>
-debugger;
-
-var currentPage = 0;
-var isFirstGetPetsAPICall = true;
-
-/**
-  Start Here
- */
-getPets();
-$("#btnMore").on('click', function() {
-  isFirstGetPetsAPICall = false;
-  getPets();
-});
-
-/**
-  Call petfinder.php to get a list of available dogs.
-  Next, append the data to the HTML document.
- */
-function getPets() {
-  debugger;
-  
-  var $btnMore = $("#btnMore");
-  var url = "/petfinder.php";
-  var data = {
-    page: currentPage += 1
-  };
-
-  spinnerStart($btnMore);
-
-  // Retrieve the Petfinder API pet data
-  $.getJSON(url, data)
-    .done(petfinderDone)
-    .fail(petfinderFail)
-    .always(petfinderAlways);
+interface Photo {
+  small: string;
+  medium: string;
+  large: string;
+  full: string;
 }
 
-function petfinderDone(data, textStatus, jqXHR) {
-  if (data && data.animals) {
-    var pets = data.animals; //normalizeToArray(data.animals),
-    var context = { pets: [] };
-
-    pets.forEach(function(pet) {
-      context.pets.push(formatPet(pet));
-    });
-
-    spinnerStop();
-    if (isFirstGetPetsAPICall || (pets && pets.length)) {
-      $("#pets").append(Handlebars.templates['pet'](context));
-    }
-
-     // Check if we pulled the maximum amount of pets
-    if (data.pagination && data.pagination.current_page < data.pagination.total_pages) {
-      $("#btnMore").removeClass("invisible");
-    }
-  } else {
-    petfinderFail();
-  }
+interface Video {
+  embed: string;
 }
 
-function petfinderFail(jqXHR, textStatus, errorThrown) {
-  spinnerStop();
-  $("#pets").html(Handlebars.templates['pet-error-alert']);
+interface SCSRAnimal {
+  id: number;
+  organization_id: 'SC92';
+  url: string;
+  type: 'Dog';
+  species: 'Dog';
+  breeds: {};
+  colors: {}
+  age: string;
+  gender: string;
+  size: string;
+  coat: string;
+  name: string;
+  description: string;
+  photos: Photo[];
+  videos: Video[];
+  status: string;
+  attributes: Record<'spayed_neutered' | 'house_trained' | 'declawed' | 'special_needs' | 'shots_current', boolean>;
+  environment: Record<'children' | 'dogs' | 'cats', boolean>;
+  tags: string[];
+  contact: {};
+  published_at: string;
+  distance: number;
+  _links: {};
 }
 
-function petfinderAlways() {
-  $(document).foundation();
+interface Pagination {
+  count_per_page: number;
+  total_count: number;
+  current_page: number;
+  total_pages: number;
+  _links: {};
 }
 
-function formatPet(pet) {
-  var petContext = { options: [] };
+interface SCSRAnimals {
+  animals: SCSRAnimal[];
+  pagination: Pagination;
+}
+
+interface PetUIContextOption {
+  text: string;
+  icon?: boolean;
+  order: number;
+}
+
+interface PetUIContextPhoto {
+  first: boolean;
+  src: string;
+  alt: string;
+}
+
+interface PetUIContext {
+  options: PetUIContextOption[];
+  photos: PetUIContextPhoto[];
+  name: string;
+  sex: string;
+  petfinderUrl: string;
+}
+interface PetsUIContext {
+  pets: PetUIContext[];
+}
+
+let context: PetsUIContext = { pets: [] };
+let isGetAnimalsError = false;
+
+try {
+  let response = await GET_ANIMALS(Astro);
+  const data = await response.json() as SCSRAnimals;
+  const pets = data.animals;
+
+  pets.forEach(function(pet) {
+    context.pets.push(formatPet(pet));
+  });
+  console.info(context.pets[0].photos)
+} catch (error) {
+  console.error('Error making data request:', error);
+  isGetAnimalsError = true;
+}
+
+function formatPet(pet: SCSRAnimal): PetUIContext {
+  var petContext = { 
+    options: [] as PetUIContext['options']
+  } as PetUIContext;
   var name = pet.name;
   var sex = pet.gender;
-  // var desc = pet.description.trim();
-  var options = pet.attributes; //normalizeToArray(pet.options.option),
+  var options = pet.attributes;
   var environment = pet.environment;
   var isFirst = true;
   var optListItem;
 
-  Object.keys(options).forEach(function(option) {
-    optListItem = formatOptionListItem(option, options[option], sex);
+  // @ts-ignore
+  Object.keys(options).forEach(function(option: keyof SCSRAnimal['attributes']) {
+    optListItem = formatOptionListItem(
+      option,
+      options[option],
+      sex
+    );
     if (optListItem && optListItem.text) {
       petContext.options.push(optListItem);
     }
   });
-  Object.keys(environment).forEach(function(option) {
+  // @ts-ignore
+  Object.keys(environment).forEach(function(option: keyof SCSRAnimal['environment']) {
     optListItem = formatOptionListItem(option, environment[option], sex);
     if (optListItem && optListItem.text) {
       petContext.options.push(optListItem);
@@ -123,14 +145,17 @@ function formatPet(pet) {
 
   petContext.name = name;
   petContext.sex = sex;
-  // petContext.desc = sanitizePetDesc(desc);
   petContext.petfinderUrl = pet.url;
 
   return petContext;
 }
 
-function formatOptionListItem(option, value, sex) {
-  var listchild = {};
+function formatOptionListItem(
+  option: keyof SCSRAnimal['attributes'] | keyof SCSRAnimal['environment'],
+  value: boolean,
+  sex: SCSRAnimal['gender']
+): PetUIContextOption {
+  var listchild = {} as PetUIContextOption;
   switch (option) {
     case "spayed_neutered":
       if (value) {
@@ -183,42 +208,10 @@ function formatOptionListItem(option, value, sex) {
         listchild.order = 7;
       }
       break;
-    default:
-      listchild = null;
   };
   return listchild;
 }
-
-// function sanitizePetDesc(desc) {
-//   if(desc.match("^<div>") && desc.match("</div>$")) {
-//     desc = desc.replace(/^<div>/,"<p>").replace(/<\/div>$/,"</p>");
-//   } else if(!desc.match("^<") && !desc.match(">$")) {
-//     desc = "<p>" + desc + "</p>";
-//   }
-//   return desc;
-// }
-
-/**
-  Normalize a petfinder response (Array/Object) property into an Array
-
-    [{foo:1}, {bar:2}] => [{foo:1},{bar:2}]
-    {foo:1}            => [{foo:1}]
-    undefined          => []
-*/
-// function normalizeToArray(prop) {
-//   if(prop && $.isPlainObject(prop)) { prop = [prop]; }
-//   return prop || [];
-// }
-
-function spinnerStart($btnMore) {
-  $btnMore.addClass("invisible");
-  $("#spinner").show()
-}
-
-function spinnerStop() {
-  $("#spinner").hide();
-}
-</script> -->
+---
 
 <Layout
   title="Available Dogs"
@@ -230,14 +223,65 @@ function spinnerStop() {
         <h2 class="headline first">Available for Adoption</h2>
         <p>You can view our available dogs below or on our <a href="https://www.petfinder.com/pet-search?animal_type=&pet_breed=&pet_age=&pet_size=&specialNeeds=&declawedPets=&children=&status=&shelter_pet_id=&internal=&contact=&name=&shelter_id=SC92&sort=" target="_blank">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please complete and submit our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> form. If you have any questions feel free to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
 
-        <div id="pets" class="clearfix"></div>
-        <div id="spinner" class="loading_spinner">
+        <div id="pets" class="clearfix">
+          {
+            (isGetAnimalsError) ?
+              <div id="petfinder-api-error" data-alert class="alert-box alert">
+                <p>
+                  Oops, something went wrong! Please try again later or go directly to our <a href="http://www.petfinder.com/pet-search?shelterid=SC92">Petfinder site</a>.
+                  <a href="#" class="close">&times;</a>
+                </p>
+              </div> :
+              (context.pets && context.pets.length) ?
+                context.pets.map((pet) => {
+                  return (
+                    <div class="pet-box clearfix panel">
+                      <div class="clearfix pet-header">
+                        <h2 class="pet-name"><span class="label">{pet.name}</span></h2>
+                        <ul class="options">
+                          {
+                            pet.options.map((option) => (option.icon) ?
+                              <li>
+                                <span>{option.text} <Icon name="check-bold" title="bold check mark" size=24 class="inline" /></span>
+                              </li> :
+                              <li>
+                                <strong>{option.text}</strong>
+                              </li>
+                            )
+                          }
+                        </ul>
+                      </div>
+                      <div class="clearfix pet-body">
+                        <ul class="clearing-thumbs flex justify-center" data-clearing>
+                          {
+                            pet.photos.map((photo) =>
+                              <li>
+                                <a href={photo.src} class="th">
+                                  <img src={photo.src} alt={photo.alt} />
+                                </a>
+                              </li>
+                            )
+                          }
+                        </ul>
+                        <div class="petfinder-link">
+                          <a href={pet.petfinderUrl} target="_blank">{pet.name}'s Petfinder page <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }) :
+                <div class="alert-box" data-alert>
+                  <p>There are currently no available dogs</p>
+                </div>
+          }
+        </div>
+        <!-- <div id="spinner" class="loading_spinner">
           <svg class="circular">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
           </svg>
-        </div>
+        </div> -->
 
-        <input id="btnMore" type="button" class="large button expand invisible" value="View More" />
+        <!-- <input id="btnMore" type="button" class="large button expand invisible" value="View More" /> -->
       </main>
     </div>
   </div>
