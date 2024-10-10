@@ -1,2 +1,15 @@
+name = "scsheltierescue-com"
+
 compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2024-09-23"
+
+[site]
+bucket = "./dist"
+
+[env.production]
+name = "scsheltierescue-com"
+#route = "https://example.com/docs*"
+
+[env.staging]
+name = "scsheltierescue-com-staging"
+#route = "https://staging.example.com/docs*"
