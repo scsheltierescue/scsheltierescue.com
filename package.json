@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "astro check && astro build",
-    "dev": "astro dev",
-    "preview": "wrangler pages dev ./dist",
-    "start": "astro dev"
+    "build": "wrangler types && astro check && astro build",
+    "dev": "wrangler types && astro dev",
+    "preview": "wrangler types && wrangler pages dev ./dist",
+    "start": "wrangler types && astro dev"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
