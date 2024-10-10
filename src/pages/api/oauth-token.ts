@@ -7,8 +7,10 @@ export interface Token {
 }
 
 export const GET: APIRoute = async () => {
-  let clientId = "g7QNEslnQXv7nwl4kIhaInPuTcWtXwF9oeeptXiEchtg43WSyC";
-  let clientSecret = import.meta.env.PETFINDER_API_SECRET;
+  const clientId = "g7QNEslnQXv7nwl4kIhaInPuTcWtXwF9oeeptXiEchtg43WSyC";
+  const clientSecret = import.meta.env.PETFINDER_API_SECRET;
+  
+  console.log('clientSecret: ', clientSecret);
 
   const authUrl = 'https://api.petfinder.com/v2/oauth2/token';
   const credentials = new URLSearchParams({
