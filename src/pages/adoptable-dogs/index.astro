@@ -1,8 +1,9 @@
 ---
-export const prerender = false
+export const prerender = true
 
 import Layout from '@layouts/Layout.astro';
-import { GET as GET_ANIMALS } from '../api/animals.ts'
+import { GET as GET_ANIMALS } from '../api/animals.ts';
+import { refreshAuthToken } from '../api/oauth-token.ts';
 
 import { Icon } from 'astro-icon/components';
 
@@ -83,6 +84,13 @@ let context: PetsUIContext = { pets: [] };
 let isGetAnimalsError = false;
 
 try {
+  console.log('ADOPTABLE DOGS GET cookie: ',  Astro.cookies.get('petfinder-access-token'));
+  console.log('ADOPTABLE DOGS HAS cookie: ',  Astro.cookies.has('petfinder-access-token'));
+
+  await refreshAuthToken(Astro);
+
+  console.log('ADOPTABLE DOGS TEST accessToken FINAL: ', Astro.cookies.get('petfinder-access-token'));
+
   let response = await GET_ANIMALS(Astro);
   const data = await response.json() as SCSRAnimals;
   const pets = data.animals;

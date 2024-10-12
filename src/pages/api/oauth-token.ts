@@ -1,9 +1,29 @@
-import type { APIRoute } from 'astro'
+import type { APIRoute, APIContext } from 'astro'
 
 export interface Token {
   token_type: string;
   expires_in: number;
   access_token: string;
+}
+
+export const refreshAuthToken = async (ctx: APIContext) => {
+  console.log('refreshAuthToken START');
+
+  let accessTokenCookie = ctx.cookies.get('petfinder-access-token');
+  if (!accessTokenCookie) {
+    console.log('refreshAuthToken accessToken ', accessTokenCookie);
+
+    const oAuthResponse = await GET(ctx);
+    console.log('refreshAuthToken oAuthResponse ', oAuthResponse);
+    const data = await oAuthResponse.json() as Token;
+    console.log('refreshAuthToken data ', data);
+    ctx.cookies.set('petfinder-access-token', data.access_token);
+    accessTokenCookie = ctx.cookies.get('petfinder-access-token')!;
+    console.log('refreshAuthToken accessToken 2 ', accessTokenCookie);
+    //console.log('refreshAuthToken accessToken.json() 2 ', accessTokenCookie.json());
+    //console.log('refreshAuthToken accessToken.number() 2 ', accessTokenCookie.number());
+    console.log('refreshAuthToken accessToken.value 2 ', accessTokenCookie.value);
+  }
 }
 
 export const GET: APIRoute = async () => {
@@ -30,6 +50,8 @@ export const GET: APIRoute = async () => {
       body: credentials,
     });
 
+    console.log('OAUTH RESPONSE: ', response);
+    
     // Check if the request was successful
     if (!response.ok) {
       throw new Error(`Failed to get token: ${response.status} ${response.statusText}`);
