@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 
 export interface Item {
+  id: number;
   src: string;
   width: number;
   height: number;
@@ -28,7 +29,7 @@ export default function ReactSlickSlider({ items }: { items: Item[] }) {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {items.map((item) => <img {...item} />)}
+        {items.map(({ id, ...rest }) => <img key={id} {...rest} />)}
       </Slider>
     </div>
   );
