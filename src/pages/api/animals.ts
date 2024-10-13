@@ -6,6 +6,7 @@ const maxRetries = 1;
 const shelterId = "SC92";
 const status = "adoptable";
 
+// TODO: Cache the get animals network request for a small amount of time
 export const GET: APIRoute = async (ctx) => {
   let retries = 0;
 
@@ -21,6 +22,7 @@ export const GET: APIRoute = async (ctx) => {
       console.log('ANIMALS TEST headers: ', headers);
       // retrieve relevant search parameters, aka URL query parameters
       const queryParams = ctx.url.searchParams;
+      // TODO: Fix the `page` query params
       const page = queryParams.get("page") || '1';
 
       const params = `?organization=${shelterId}&status=${status}&page=${page}&limit=25`;

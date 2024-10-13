@@ -93,6 +93,7 @@ try {
 
   let response = await GET_ANIMALS(Astro);
   const data = await response.json() as SCSRAnimals;
+  // TODO: Clean up this logic to massage the server data
   const pets = data.animals;
   console.log('pets ', pets)
   pets.forEach(function(pet) {
@@ -105,7 +106,7 @@ try {
 }
 
 function formatPet(pet: SCSRAnimal): PetUIContext {
-  var petContext = { 
+  var petContext = {
     options: [] as PetUIContext['options']
   } as PetUIContext;
   var name = pet.name;
@@ -289,6 +290,7 @@ function formatOptionListItem(
           </svg>
         </div> -->
 
+        <!-- TODO: Get the View More logic working again -->
         <!-- <input id="btnMore" type="button" class="large button expand invisible" value="View More" /> -->
       </main>
     </div>

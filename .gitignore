@@ -37,9 +37,10 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
-#
-### Astro .gitignore ##
-#
+
+########################
+### Astro .gitignore ###
+########################
 # build output
 dist/
 
