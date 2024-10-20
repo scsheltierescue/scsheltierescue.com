@@ -2,6 +2,8 @@
 export const prerender = false
 
 import Layout from '@layouts/Layout.astro';
+import PetImageCard from '@components/PetImageCard.astro';
+import PetImageModal from '@components/PetImageModal.astro';
 import { GET as GET_ANIMALS } from '../api/animals.ts';
 import { refreshAuthToken } from '../api/oauth-token.ts';
 
@@ -63,7 +65,7 @@ interface PetUIContextOption {
   order: number;
 }
 
-interface PetUIContextPhoto {
+export interface PetUIContextPhoto {
   first: boolean;
   src: string;
   alt: string;
@@ -72,6 +74,7 @@ interface PetUIContextPhoto {
 interface PetUIContext {
   options: PetUIContextOption[];
   photos: PetUIContextPhoto[];
+  id: number;
   name: string;
   sex: string;
   petfinderUrl: string;
@@ -99,7 +102,7 @@ try {
   pets.forEach(function(pet) {
     context.pets.push(formatPet(pet));
   });
-  console.log('context ', context)
+  console.log('CONTEXT: ', JSON.stringify(context, null, 2));
 } catch (error) {
   console.error('Error making data request:', error);
   isGetAnimalsError = true;
@@ -109,6 +112,7 @@ function formatPet(pet: SCSRAnimal): PetUIContext {
   var petContext = {
     options: [] as PetUIContext['options']
   } as PetUIContext;
+  var petId = pet.id;
   var name = pet.name;
   var sex = pet.gender;
   var options = pet.attributes;
@@ -137,21 +141,23 @@ function formatPet(pet: SCSRAnimal): PetUIContext {
   petContext.options.sort(function(a, b) {
     return (a.order > b.order) ? 1 : -1;
   });
-
+  
   petContext.photos = [];
   if (pet.photos) {
     pet.photos.forEach(function(photo, idx) {
+      console.log('PHOTO: ', photo)
       if (photo.large) {
         petContext.photos.push({
           first: isFirst,
           src: photo.large,
-          alt: name + idx
+          alt: name + ' ' + (idx + 1)
         });
         isFirst = false;
       }
     });
   }
 
+  petContext.id = petId;
   petContext.name = name;
   petContext.sex = sex;
   petContext.petfinderUrl = pet.url;
@@ -222,6 +228,48 @@ function formatOptionListItem(
 }
 ---
 
+<script>
+  document.addEventListener('astro:page-load', () => {
+    //debugger;
+
+    // Get the modal
+    const modal: HTMLElement | null = document.querySelector('#petImageModal');
+
+    // Get the image and insert it inside the modal
+    const images: NodeListOf<HTMLElement> | null = document.querySelectorAll('[data-pet-img]');
+    const modalMainImg: HTMLImageElement | null = document.querySelector('#modalMainImage');
+
+    // Get the <span> element that closes the modal
+    const modalClose = document.querySelector('#modalClose');
+
+    const onClickImgModal = (e: Event) => {
+      if (modal) modal.classList.remove('hidden');
+      if (modalMainImg) modalMainImg.src = (e.target as HTMLImageElement).src;
+    };
+
+    const onClickModalClose = (e: Event) => {
+      if (modal) modal.classList.add('hidden');
+    };
+
+    images.forEach((img) => {
+      img.addEventListener('click', onClickImgModal);
+    });
+
+    if (modalClose) modalClose.addEventListener('click', onClickModalClose);
+
+    // Clean up by destroying instances and removing event listeners
+    document.addEventListener('astro:before-swap', () => {
+      //debugger;
+
+      images.forEach((img) => {
+        img.removeEventListener('click', onClickImgModal);
+      });
+
+      if (modalClose) modalClose.removeEventListener('click', onClickModalClose);
+    }, { once: true });
+  });
+</script>
+
 <Layout
   title="Available Dogs"
   description="List of SC Sheltie Rescue dogs available for adoption."
@@ -261,17 +309,9 @@ function formatOptionListItem(
                         </ul>
                       </div>
                       <div class="clearfix pet-body">
-                        <ul class="clearing-thumbs flex justify-center" data-clearing>
-                          {
-                            pet.photos.map((photo) =>
-                              <li>
-                                <a href={photo.src} class="th">
-                                  <img src={photo.src} alt={photo.alt} />
-                                </a>
-                              </li>
-                            )
-                          }
-                        </ul>
+                        <PetImageCard
+                          photos={pet.photos}
+                        />
                         <div class="petfinder-link">
                           <a href={pet.petfinderUrl} target="_blank">{pet.name}'s Petfinder page <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a>
                         </div>
@@ -295,4 +335,6 @@ function formatOptionListItem(
       </main>
     </div>
   </div>
+
+  <PetImageModal />
 </Layout>
