@@ -2,6 +2,7 @@
 export const prerender = false
 
 import Layout from '@layouts/Layout.astro';
+import AdoptableDogs from '@components/AdoptableDogs';
 import PetImageCard from '@components/PetImageCard.astro';
 import PetImageModal from '@components/PetImageModal.astro';
 import { GET as GET_ANIMALS } from '../api/animals.ts';
@@ -85,6 +86,7 @@ interface PetsUIContext {
 
 let context: PetsUIContext = { pets: [] };
 let isGetAnimalsError = false;
+let showLoadMoreBtn = false;
 
 try {
   console.log('ADOPTABLE DOGS GET cookie: ',  Astro.cookies.get('petfinder-access-token'));
@@ -103,6 +105,28 @@ try {
     context.pets.push(formatPet(pet));
   });
   console.log('CONTEXT: ', JSON.stringify(context, null, 2));
+
+  /*
+  DATA PAGINATION:  {
+    count_per_page: 2,
+    total_count: 11,
+    current_page: 1,
+    total_pages: 6,
+    _links: {
+      next: {
+        href: '/v2/animals?limit=2&organization=SC92&page=2&status=adoptable'
+      }
+    }
+  }
+  */
+  console.log('DATA PAGINATION: ', data.pagination);
+  // Check if we need to load more data
+  if (data.pagination && data.pagination.current_page < data.pagination.total_pages) {
+    console.log('SHOW MORE BUTTON = true')
+    showLoadMoreBtn = true;
+  } else {
+    console.log('SHOW MORE BUTTON = false')
+  }
 } catch (error) {
   console.error('Error making data request:', error);
   isGetAnimalsError = true;
@@ -331,7 +355,23 @@ function formatOptionListItem(
         </div> -->
 
         <!-- TODO: Get the View More logic working again -->
-        <!-- <input id="btnMore" type="button" class="large button expand invisible" value="View More" /> -->
+        {
+          showLoadMoreBtn &&
+          <AdoptableDogs client:only="react" />
+        }
+        <!-- {
+          showLoadMoreBtn &&
+          <LoadMoreBtn
+            GET_ANIMALS={GET_ANIMALS}
+            refreshAuthToken={refreshAuthToken}
+          />
+        } -->
+        <!-- {
+          showLoadMoreBtn &&
+          <view-more-btn>
+            <input id="btnMore" type="button" class="large button expand" value="Load More" />
+          </view-more-btn>
+        } -->
       </main>
     </div>
   </div>
