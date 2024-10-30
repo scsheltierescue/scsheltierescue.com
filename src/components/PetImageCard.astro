@@ -1,82 +1,73 @@
 ---
-import type { PetUIContextPhoto } from 'src/pages/adoptable-dogs/index.astro';
+import type { PetUIContextPhoto } from '@components/AdoptableDogs';
 
 interface Props {
   photos: PetUIContextPhoto[];
 }
 
 const { photos } = Astro.props;
-
-const hasPhotos = !!photos.length;
 const numPhotos = photos.length;
-const firstPhoto = photos.find(photo => photo.first);
-const hasFirstPhoto = !!firstPhoto;
-
-let photoClass;
-if (numPhotos === 1) photoClass = "grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8"
-else if (numPhotos === 2) photoClass = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8"
-else photoClass = "grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-4 lg:gap-8"
 ---
 
 <style>
-.petfinder-photos {
-  display: flex;
-  justify-content: center;
-}
-/* BASIC */
-ul {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-li {
-  height: 45vh;
-  flex-grow: 1;
-}
-
-li:last-child {
-  /* There's no science in using "10" here. In all my testing, this delivered the best results. */
-  flex-grow: 10;
-}
-
-img {
-  max-height: 100%;
-  min-width: 100%;
-  /*object-fit: cover;*/
-  vertical-align: bottom;
-}
-
-/* ADVANCED */
-/* Portrait */
-@media (max-aspect-ratio: 1/1) {
-  li {
-    height: 30vh;
+  .petfinder-photos {
+    display: flex;
+    justify-content: center;
   }
-}
-
-/* Short screens */
-@media (max-height: 480px) {
-  li {
-    height: 80vh;
-  }
-}
-
-/* Smaller screens in portrait */
-@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+  /* BASIC */
   ul {
-    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   li {
-    height: auto;
-    width: 100%;
+    height: 45vh;
+    flex-grow: 1;
   }
+
+  li:last-child {
+    /* There's no science in using "10" here. In all my testing, this delivered the best results. */
+    flex-grow: 10;
+  }
+
   img {
-    width: 100%;
-    max-height: 75vh;
-    min-width: 0;
+    max-height: 100%;
+    min-width: 100%;
+    /*object-fit: cover;*/
+    vertical-align: bottom;
   }
-}
+
+  /* ADVANCED */
+  /* Portrait */
+  @media (max-aspect-ratio: 1/1) {
+    li {
+      height: 30vh;
+    }
+  }
+
+  /* Short screens */
+  @media (max-height: 480px) {
+    li {
+      height: 80vh;
+    }
+  }
+
+  /* Smaller screens in portrait */
+  @media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+    ul {
+      flex-direction: row;
+    }
+
+    li {
+      height: auto;
+      width: 100%;
+    }
+    img {
+      width: 100%;
+      max-height: 75vh;
+      min-width: 0;
+    }
+  }
 </style>
 
 <div class="petfinder-photos px-5">
@@ -93,30 +84,5 @@ img {
         </li>
       )
     }
-    <!-- Adding an empty <li> here so the final photo doesn't stretch like crazy. Try removing it and see what happens! -->
-    <!-- <li></li> -->
   </ul>
 </div>
-
-<!-- <div class="petfinder-photos grid gap-2.5 grid-flow-col auto-cols-max md:auto-cols-fr">
-  {
-    photos.map((photo) =>
-      <img
-        data-pet-img
-        class="h-auto max-w-full rounded cursor-pointer duration-300 hover:opacity-70"
-        src={photo.src}
-        alt={photo.alt}
-      />
-    )
-  }
-  {
-    photos.map((photo) =>
-      <img
-        data-pet-img
-        class="h-auto max-w-full rounded cursor-pointer duration-300 hover:opacity-70"
-        src={photo.src}
-        alt={photo.alt}
-      />
-    )
-  }
-</div> -->

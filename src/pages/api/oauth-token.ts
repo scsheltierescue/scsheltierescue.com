@@ -1,4 +1,4 @@
-import type { APIRoute, APIContext } from 'astro'
+import type { APIRoute, AstroGlobal } from 'astro';
 
 export interface Token {
   token_type: string;
@@ -6,27 +6,34 @@ export interface Token {
   access_token: string;
 }
 
-export const refreshAuthToken = async (ctx: APIContext) => {
+export const refreshAuthToken = async (ctx: AstroGlobal) => {
   console.log('refreshAuthToken START');
 
-  let accessTokenCookie = ctx.cookies.get('petfinder-access-token');
-  if (!accessTokenCookie) {
+  debugger;
+
+  let accessTokenCookie = ctx.cookies.get('petfinder-access-token')?.value;
+  let tokenExpirationCookie = ctx.cookies.get('petfinder-token-expiration')?.value;
+
+  if (!accessTokenCookie || !tokenExpirationCookie || Date.now() >= parseInt(tokenExpirationCookie, 10)) {
+    debugger;
     console.log('refreshAuthToken accessToken ', accessTokenCookie);
+    console.log('refreshAuthToken tokenExpirationCookie ', tokenExpirationCookie);
+    console.log('refreshAuthToken check expire date ', Date.now() >= parseInt(tokenExpirationCookie!, 10));
 
     const oAuthResponse = await GET(ctx);
-    console.log('refreshAuthToken oAuthResponse ', oAuthResponse);
     const data = await oAuthResponse.json() as Token;
+
     console.log('refreshAuthToken data ', data);
     ctx.cookies.set('petfinder-access-token', data.access_token);
-    accessTokenCookie = ctx.cookies.get('petfinder-access-token')!;
-    console.log('refreshAuthToken accessToken 2 ', accessTokenCookie);
-    //console.log('refreshAuthToken accessToken.json() 2 ', accessTokenCookie.json());
-    //console.log('refreshAuthToken accessToken.number() 2 ', accessTokenCookie.number());
-    console.log('refreshAuthToken accessToken.value 2 ', accessTokenCookie.value);
+    ctx.cookies.set('petfinder-token-expiration', String(Date.now() + (data.expires_in * 1000))); // expires_in is in seconds
+
+    console.log('refreshAuthToken FINAL accessToken ', ctx.cookies.get('petfinder-access-token')?.value);
+    console.log('refreshAuthToken FINAL tokenExpirationCookie ', ctx.cookies.get('petfinder-token-expiration')?.value);
   }
 }
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async (_ctx) => {
+  debugger;
   const clientId = "g7QNEslnQXv7nwl4kIhaInPuTcWtXwF9oeeptXiEchtg43WSyC";
   const clientSecret = import.meta.env.PETFINDER_API_SECRET;
   
