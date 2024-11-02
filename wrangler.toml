@@ -6,5 +6,9 @@ compatibility_date = "2024-09-23"
 [env.production]
 name = "scsheltierescue-com"
 
+[env.production.vars]
+NODE_VERSION = "20"
+NPM_CONFIG_USER_AGENT = "pnpm/8.x.x"
+
 [env.preview]
 name = "scsheltierescue-com-preview"
