@@ -1,46 +1,6 @@
-# Always-ignore extensions
-*.diff
-*.err
-*.orig
-*.log
-*.rej
-*.swo
-*.swp
-*.vi
-*~
-*.sass-cache
-
-# Always-ignore directories
-doc/
-backups/
-demo/
-webftp/
-node_modules/
-bower_components/
-
-# OS or Editor folders
-.DS_Store
-.cache
-.project
-.settings
-.tmproj
-*.esproj
-nbproject
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-
-########################
-### Astro .gitignore ###
-########################
+################################
+### Default Astro .gitignore ###
+################################
 # build output
 dist/
 
@@ -59,10 +19,31 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
-.dev.vars
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+
+########################################
+### alexdiliberto Default .gitignore ###
+########################################
+# Folder view configuration files
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+
+###################################
+### Project Specific .gitignore ###
+###################################
+# environment variables
+.dev.vars
