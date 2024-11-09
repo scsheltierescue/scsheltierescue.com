@@ -3,39 +3,23 @@ export const prerender = false;
 
 import Layout from '@layouts/Layout.astro';
 import AdoptableDogs from '@components/AdoptableDogs';
-import { refreshAuthToken } from '../api/oauth-token.ts';
+//import { refreshAuthToken } from '../api/oauth-token.ts';
 
 import { Icon } from 'astro-icon/components';
 
-import type { AstroGlobal } from 'astro';
+//import type { AstroGlobal } from 'astro';
 
-try {
-  // START: TEST
-  let counter = 0
-  console.log('1 TEST COUNTER counter`: ', counter);
-  if (Astro.cookies.has('counter')) {
-    console.log('2 TEST COUNTER has counter === true`: ');
-    const cookie = Astro.cookies.get('counter');
-    console.log('3 TEST COUNTER Astro.cookies.get(counter): ', cookie);
-    const value = cookie?.number();
-    console.log('4 TEST COUNTER cookie?.number(): ', value);
-    if (value !== undefined && !isNaN(value)) counter = value + 1;
-    console.log('5 TEST COUNTER counter: ', counter);
-  }
-  Astro.cookies.set('counter', String(counter));
-  console.log('5 TEST COUNTER Astro.cookies.set(counter): ', String(counter));
-  //END: TEST
+// try {
+//   console.log('ADOPTABLE DOGS GET Astro cookie `petfinder-access-token`: ', Astro.cookies.get('petfinder-access-token'));
+//   console.log('ADOPTABLE DOGS GET Astro cookie `petfinder-token-expiration`: ', Astro.cookies.get('petfinder-token-expiration'));
 
-  console.log('ADOPTABLE DOGS GET Astro cookie `petfinder-access-token`: ', Astro.cookies.get('petfinder-access-token'));
-  console.log('ADOPTABLE DOGS GET Astro cookie `petfinder-token-expiration`: ', Astro.cookies.get('petfinder-token-expiration'));
+//   await refreshAuthToken(Astro as unknown as AstroGlobal);
 
-  await refreshAuthToken(Astro as unknown as AstroGlobal);
-
-  console.log('ADOPTABLE DOGS FINAL Astro cookie `petfinder-access-token`: ', Astro.cookies.get('petfinder-access-token'));
-  console.log('ADOPTABLE DOGS FINAL Astro cookie `petfinder-token-expiration`: ', Astro.cookies.get('petfinder-token-expiration'));
-} catch (error) {
-  console.error('Error making data request:', error);
-}
+//   console.log('ADOPTABLE DOGS FINAL Astro cookie `petfinder-access-token`: ', Astro.cookies.get('petfinder-access-token'));
+//   console.log('ADOPTABLE DOGS FINAL Astro cookie `petfinder-token-expiration`: ', Astro.cookies.get('petfinder-token-expiration'));
+// } catch (error) {
+//   console.error('Error making data request:', error);
+// }
 ---
 
 <Layout

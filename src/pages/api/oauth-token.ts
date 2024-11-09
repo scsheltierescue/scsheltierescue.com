@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import type { APIRoute, AstroGlobal } from 'astro';
 
 export interface Token {
