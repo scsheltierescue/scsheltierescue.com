@@ -9,13 +9,10 @@ export interface Token {
 export const refreshAuthToken = async (ctx: AstroGlobal) => {
   console.log('refreshAuthToken START');
 
-  debugger;
-
   let accessTokenCookie = ctx.cookies.get('petfinder-access-token')?.value;
   let tokenExpirationCookie = ctx.cookies.get('petfinder-token-expiration')?.value;
 
   if (!accessTokenCookie || !tokenExpirationCookie || Date.now() >= parseInt(tokenExpirationCookie, 10)) {
-    debugger;
     console.log('refreshAuthToken accessToken ', accessTokenCookie);
     console.log('refreshAuthToken tokenExpirationCookie ', tokenExpirationCookie);
     console.log('refreshAuthToken check expire date ', Date.now() >= parseInt(tokenExpirationCookie!, 10));
@@ -33,12 +30,8 @@ export const refreshAuthToken = async (ctx: AstroGlobal) => {
 }
 
 export const GET: APIRoute = async (_ctx) => {
-  debugger;
   const clientId = "g7QNEslnQXv7nwl4kIhaInPuTcWtXwF9oeeptXiEchtg43WSyC";
   const clientSecret = import.meta.env.PETFINDER_API_SECRET;
-  
-  console.log('clientSecret: ', clientSecret);
-
   const authUrl = 'https://api.petfinder.com/v2/oauth2/token';
   const credentials = new URLSearchParams({
     'client_id': clientId,
@@ -50,6 +43,8 @@ export const GET: APIRoute = async (_ctx) => {
   };
 
   try {
+    console.log('BEFORE OAUTH RESPONSE: credentials = ', credentials);
+
     // Make the POST request to get the token
     const response = await fetch(authUrl, {
       method: 'POST',
