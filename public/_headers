@@ -1,0 +1,3 @@
+# Set CORS headers for all API responses
+/api/*
+  Access-Control-Allow-Origin: *
