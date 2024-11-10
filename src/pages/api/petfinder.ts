@@ -74,7 +74,8 @@ export const GET: APIRoute = async (context) => {
     debugger;
     // Get URL parameters
     const url = new URL(context.request.url);
-    const page = url.searchParams.get('page') || '1';    console.log('ENDPOINT!!!!! petfinderMiddleware page = ', page)
+    const page = url.searchParams.get('page') || '1';
+    console.log('ENDPOINT!!!!! petfinderMiddleware page = ', page)
 
     const token = await getAccessToken(/*context*/);
     debugger;
@@ -85,7 +86,6 @@ export const GET: APIRoute = async (context) => {
       {
         headers: {
           'Authorization': `Bearer ${token}`,
-          'Accept': 'application/json',
         },
       }
     );
