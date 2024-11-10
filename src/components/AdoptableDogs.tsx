@@ -78,10 +78,6 @@ interface PetUIContext {
   petfinderUrl: string;
 }
 
-interface IComponentProps {
-  token: string | undefined;
-}
-
 const formatPet = (pet: SCSRAnimal): PetUIContext => {
   const { id, name, gender, url, photos, attributes, environment } = pet;
   const options: PetUIContextOption[] = [];
@@ -138,7 +134,7 @@ const formatOptionListItem = (
   return value && config ? { ...config, text: config.icon ? `${config.text}: ` : config.text } : null;
 }
 
-const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
+const AdoptableDogs: React.FC = () => {
   const [pets, setPets] = useState<PetUIContext[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -149,38 +145,13 @@ const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
 
   useEffect(() => {
     const loadPets = async () => {
-      const shelterId = 'SC92';
-      const status = 'adoptable';
-      const limit = 10;
-  
       setIsLoading(true);
       
       console.log('********** UI: loadPets START');
 
       try {
-        // const headers = { Authorization: `Bearer ${token}` };
-        // const params = `?organization=${shelterId}&status=${status}&page=${page}&limit=${limit}`;
-        // const url = `https://api.petfinder.com/v2/animals${params}`;
-  
-        // const response = await fetch(url, { method: 'GET', headers });
-        // console.log('get animals response ', response);
-
         const response = await fetch(`/api/petfinder?page=${page}`);
         console.log('get animals response ', response);
-
-        // const page = 2; // Example: dynamically set page number
-        // const token = 'Bearer YOUR_CUSTOM_TOKEN'; // Replace with your custom Bearer token
-        // const response = await fetch(`/api/petfinder?page=${page}`, { method: 'GET', headers });
-        // console.log('get animals response ', response);
-
-        // fetch(`/api/petfinder?page=${page}`, {
-        //   headers: {
-        //     'Authorization': token,
-        //   },
-        // })
-        // .then(response => response.json())
-        // .then(data => console.log(data))
-        // .catch(error => console.error('Error fetching data:', error));
 
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);

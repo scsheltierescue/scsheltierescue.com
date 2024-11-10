@@ -1,6 +1,6 @@
 export const prerender = false;
 
-import type { APIContext, APIRoute } from 'astro';
+import type { APIRoute } from 'astro';
 
 // Cache for access token
 let tokenCache = {
