@@ -32,7 +32,7 @@ export const refreshAuthToken = async (ctx: AstroGlobal) => {
 }
 
 export const GET: APIRoute = async (_ctx) => {
-  const clientId = "g7QNEslnQXv7nwl4kIhaInPuTcWtXwF9oeeptXiEchtg43WSyC";
+  const clientId = import.meta.env.PETFINDER_API_CLIENT_ID;
   const clientSecret = import.meta.env.PETFINDER_API_SECRET;
   const authUrl = 'https://api.petfinder.com/v2/oauth2/token';
   const credentials = new URLSearchParams({

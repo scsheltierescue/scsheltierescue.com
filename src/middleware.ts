@@ -116,10 +116,11 @@ async function getAccessToken() {
     },
     body: JSON.stringify({
       grant_type: 'client_credentials',
-      client_id: 'g7QNEslnQXv7nwl4kIhaInPuTcWtXwF9oeeptXiEchtg43WSyC',
+      client_id: import.meta.env.PETFINDER_API_CLIENT_ID,
       client_secret: import.meta.env.PETFINDER_API_SECRET,
     }),
   });
+
   console.log('MIDDLEWARE!!!!! getAccessToken response = ', response)
 
   if (!response.ok) {
@@ -168,7 +169,6 @@ const petfinderMiddleware = defineMiddleware(async (context, next) => {
     //   // Get URL parameters
     //   const url = new URL(context.request.url);
     //   const page = url.searchParams.get('page') || '1';
-    //   const limit = url.searchParams.get('limit') || '10';
 
     //   const token = await getAccessToken();
       
@@ -176,7 +176,7 @@ const petfinderMiddleware = defineMiddleware(async (context, next) => {
     //   console.log('MIDDLEWARE!!!!! petfinderMiddleware token = ', token)
 
     //   const petfinderResponse = await fetch(
-    //     `https://api.petfinder.com/v2/animals?organization=SC92&status=adoptable&page=${page}&limit=${limit}`,
+    //     `https://api.petfinder.com/v2/animals?organization=SC92&status=adoptable&page=${page}&limit=10`,
     //     {
     //       headers: {
     //         'Authorization': `Bearer ${token}`,

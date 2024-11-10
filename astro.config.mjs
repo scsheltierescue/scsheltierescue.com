@@ -15,6 +15,7 @@ export default defineConfig({
   },
   vite: {
     define: {
+      'process.env.PETFINDER_API_CLIENT_ID': JSON.stringify(process.env.PETFINDER_API_CLIENT_ID),
       'process.env.PETFINDER_API_SECRET': JSON.stringify(process.env.PETFINDER_API_SECRET)
     }
   },

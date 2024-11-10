@@ -78,107 +78,8 @@ interface PetUIContext {
   petfinderUrl: string;
 }
 
-interface PetsUIContext {
-  pets: PetUIContext[];
-}
-
-/* <Layout
-  title="Available Dogs"
-  description="List of SC Sheltie Rescue dogs available for adoption."
->
-  <div class="row">
-    <div class="large-12 medium-12 small-12 columns">
-      <main role="main" class="main-content">
-        <h2 class="headline first">Available for Adoption</h2>
-        <p>You can view our available dogs below or on our <a href="https://www.petfinder.com/pet-search?animal_type=&pet_breed=&pet_age=&pet_size=&specialNeeds=&declawedPets=&children=&status=&shelter_pet_id=&internal=&contact=&name=&shelter_id=SC92&sort=" target="_blank">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please complete and submit our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> form. If you have any questions feel free to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
-
-        <div id="pets" class="clearfix">
-          {
-            (isGetAnimalsError) ?
-              <div id="petfinder-api-error" data-alert class="alert-box alert">
-                <p>
-                  Oops, something went wrong! Please try again later or go directly to our <a href="http://www.petfinder.com/pet-search?shelterid=SC92">Petfinder site</a>.
-                  <a href="#" class="close">&times;</a>
-                </p>
-              </div> :
-              (context.pets && context.pets.length) ?
-                context.pets.map((pet) => {
-                  return (
-                    <div class="pet-box clearfix panel">
-                      <div class="clearfix pet-header">
-                        <h2 class="pet-name"><span class="label">{pet.name}</span></h2>
-                        <ul class="options">
-                          {
-                            pet.options.map((option) => (option.icon) ?
-                              <li>
-                                <span>{option.text} <Icon name="check-bold" title="bold check mark" size=24 class="inline" /></span>
-                              </li> :
-                              <li>
-                                <strong>{option.text}</strong>
-                              </li>
-                            )
-                          }
-                        </ul>
-                      </div>
-                      <div class="clearfix pet-body">
-                        <PetImageCard
-                          photos={pet.photos}
-                        />
-                        <div class="petfinder-link">
-                          <a href={pet.petfinderUrl} target="_blank">{pet.name}'s Petfinder page <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                }) :
-                <div class="alert-box" data-alert>
-                  <p>There are currently no available dogs</p>
-                </div>
-          }
-        </div>
-        <!-- <div id="spinner" class="loading_spinner">
-          <svg class="circular">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-          </svg>
-        </div> -->
-
-        <!-- TODO: Get the View More logic working again -->
-        {
-          showLoadMoreBtn &&
-          <AdoptableDogs client:only="react" />
-        }
-        <!-- {
-          showLoadMoreBtn &&
-          <LoadMoreBtn
-            GET_ANIMALS={GET_ANIMALS}
-            refreshAuthToken={refreshAuthToken}
-          />
-        } -->
-        <!-- {
-          showLoadMoreBtn &&
-          <view-more-btn>
-            <input id="btnMore" type="button" class="large button expand" value="Load More" />
-          </view-more-btn>
-        } -->
-      </main>
-    </div>
-  </div>
-
-  <PetImageModal />
-</Layout> */
-
 interface IComponentProps {
   token: string | undefined;
-}
-
-interface IState {
-  pets: PetUIContext[];
-  page: number;
-  isLoading: boolean;
-  errorMsg: string;
-  isModalOpen: boolean;
-  selectedImage: string | null;
-  showLoadMoreBtn: boolean;
 }
 
 const formatPet = (pet: SCSRAnimal): PetUIContext => {
@@ -247,26 +148,40 @@ const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(false);
 
   useEffect(() => {
-    debugger;
- 
     const loadPets = async () => {
       const shelterId = 'SC92';
       const status = 'adoptable';
       const limit = 10;
   
       setIsLoading(true);
-  
+      
+      console.log('********** UI: loadPets START');
+
       try {
-        debugger;
+        // const headers = { Authorization: `Bearer ${token}` };
+        // const params = `?organization=${shelterId}&status=${status}&page=${page}&limit=${limit}`;
+        // const url = `https://api.petfinder.com/v2/animals${params}`;
   
-        const headers = { Authorization: `Bearer ${token}` };
-        const params = `?organization=${shelterId}&status=${status}&page=${page}&limit=${limit}`;
-        const url = `https://api.petfinder.com/v2/animals${params}`;
-  
-        const response = await fetch(url, { method: 'GET', headers });
+        // const response = await fetch(url, { method: 'GET', headers });
+        // console.log('get animals response ', response);
+
+        const response = await fetch(`/api/petfinder?page=${page}`);
         console.log('get animals response ', response);
-        debugger;
-  
+
+        // const page = 2; // Example: dynamically set page number
+        // const token = 'Bearer YOUR_CUSTOM_TOKEN'; // Replace with your custom Bearer token
+        // const response = await fetch(`/api/petfinder?page=${page}`, { method: 'GET', headers });
+        // console.log('get animals response ', response);
+
+        // fetch(`/api/petfinder?page=${page}`, {
+        //   headers: {
+        //     'Authorization': token,
+        //   },
+        // })
+        // .then(response => response.json())
+        // .then(data => console.log(data))
+        // .catch(error => console.error('Error fetching data:', error));
+
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
         }
@@ -283,18 +198,16 @@ const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
         setErrorMsg('');
   
         console.log('DATA PAGINATION: ', data.pagination);
-        debugger;
         if (data.pagination?.current_page < data.pagination?.total_pages) {
           setShowLoadMoreBtn(true);
         } else {
           setShowLoadMoreBtn(false);
         }
       } catch (error) {
-        debugger;
+
         console.error('Error making data request:', error);
         setErrorMsg(`Error making data request: ${error}`);
       } finally {
-        debugger;
         setIsLoading(false);
       }
     };
@@ -303,13 +216,11 @@ const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
   }, [page]);
 
   const handleImageClick = (image: string) => {
-    debugger;
     setIsModalOpen(true);
     setSelectedImage(image);
   };
 
   const closeModal = () => {
-    debugger;
     setIsModalOpen(false);
     setSelectedImage(null);
   };
@@ -319,8 +230,8 @@ const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
   return (
     <div className="main-section">
       {pets.map((pet, i) => (
-        <div className="pet-box clearfix panel" key={i}>
-          <div className="clearfix pet-header">
+        <div className="pet-box panel" key={i}>
+          <div className="pet-header">
             <h2 className="pet-name"><span className="label">{pet.name}</span></h2>
             <ul className="options">
               {pet.options.map((option, i) => ((option.icon) ?
@@ -340,7 +251,7 @@ const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
               ))}
             </ul>
           </div>
-          <div className="clearfix pet-body">
+          <div className="pet-body">
             <PetImageCard
               photos={pet.photos}
               onImageClick={handleImageClick}
@@ -362,8 +273,8 @@ const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
       ))}
 
       {!isLoading && !pets.length && !errorMsg && (
-        <div className="alert-box" data-alert>
-          <p>There are currently no available dogs</p>
+        <div className="border border-solid block font-normal mb-5 p-3 relative bg-primary-c border-primary-c-darker text-zinc-100">
+          <p className="mb-0">There are currently no available dogs</p>
         </div>
       )}
 
@@ -376,17 +287,16 @@ const AdoptableDogs: React.FC<IComponentProps> = ({ token }) => {
       )}
 
       {errorMsg && (
-        <div id="petfinder-api-error" data-alert className="alert-box alert">
-          <p>Oops, something went wrong! Please try again later or go directly to our <a href="https://www.petfinder.com/pet-search?shelterid=SC92">Petfinder site</a>.</p>
+        <div className="border border-solid block font-normal mb-5 p-3 relative bg-error-c border-error-c-darker text-zinc-100">
+          <p className="mb-0">Oops, something went wrong! Please try again later or go directly to our <a className="text-purple-950 hover:text-purple-950 focus:text-purple-950" href="https://www.petfinder.com/pet-search?shelterid=SC92">Petfinder site</a>.</p>
         </div>
       )}
 
       {showLoadMoreBtn && (
         <input
-          id="btnMore"
           onClick={loadMore}
           type="button"
-          className={`large button expand ${errorMsg ? 'invisible' : ''}`}
+          className={`text-base p-4 w-full appearance-none rounded-none border-solid border-0 cursor-pointer font-normal leading-5 mb-5 relative text-center no-underline inline-block bg-primary-c hover:bg-primary-c-darker focus:bg-primary-c-darker text-zinc-100 transition-colors ${errorMsg ? 'invisible' : ''}`}
           value={isLoading ? 'Loading...' : 'View More'}
         />
       )}

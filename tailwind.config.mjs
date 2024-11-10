@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -9,8 +11,15 @@ export default {
         },
         'primary-c': {
           DEFAULT: '#008cba',
-          hover: '#0078a0'
+          darker: '#0078a0'
+        },
+        'error-c': {
+          DEFAULT: '#f04124',
+          darker: '#de2d0f'
         }
+      },
+      fontFamily: {
+        sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'Roboto', ...defaultTheme.fontFamily.sans],
       },
     },
   },

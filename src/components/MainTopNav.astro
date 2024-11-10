@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname.replace(/\//g,''); // Remove all slashes
     </ul>
 
     <section class="top-bar-section">
-      <ul class="right">
+      <ul class="float-right">
         <li class={currentPath === "" ? "active" : ""}><a href="/">Home</a></li>
         <li class={`has-dropdown not-click ${currentPath === "adoption-requirements" || currentPath === "adoptable-dogs" ? "active" : ""}`}><a href="/adoptable-dogs">Adopt</a>
           <ul class="dropdown">

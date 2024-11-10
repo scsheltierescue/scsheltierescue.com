@@ -3,9 +3,9 @@
   "name": "South Carolina Sheltie Rescue",
   "icons": [
     {
-    "src": "favicon-16x16.png",
-    "type": "image/png",
-    "sizes": "16x16"
+      "src": "favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
     },
     {
       "src": "favicon-32x32.png",
@@ -24,6 +24,10 @@
     }
   ],
   "start_url": "/?utm_source=homescreen",
-  "background_color": "#2ba6cb",
-  "theme_color": "#fafafa"
+  "background_color": "#fafafa",
+  "theme_color": "#2ba6cb",
+  "display": "standalone",
+  "orientation": "portrait",
+  "description": "Rescue, foster, and adoption services for Shelties in South Carolina.",
+  "scope": "/"
 }
