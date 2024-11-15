@@ -40,8 +40,10 @@ export const GET: APIRoute = async (_ctx) => {
     'client_secret': clientSecret,
     'grant_type': 'client_credentials',
   });
+  // NOTE: `x-petfinder-security` header is a workaround solution from the Petfinder developers to get the API working in a Cloudflare Workers environment
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
+    'x-petfinder-security': '06ba47eb-556d-4c26-b96f-7c33211aba9a'
   };
 
   try {
