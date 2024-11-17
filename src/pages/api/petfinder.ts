@@ -3,6 +3,7 @@ export const prerender = false;
 import type { APIRoute } from 'astro';
 
 // Cache for access token
+// TODO: Fix this request caching. Its not working currently
 let tokenCache = {
   token: null,
   expires: 0
@@ -11,7 +12,7 @@ let tokenCache = {
 // Helper to get token
 async function getAccessToken() {
   debugger;
-  console.log('ENDPOINT!!!!! getAccessToken START')
+  console.log('ENDPOINT!!!!! getAccessToken START: ', tokenCache.token, tokenCache.expires)
   // Check if cached token is still valid
   if (tokenCache.token && Date.now() < tokenCache.expires) {
     console.log('ENDPOINT!!!!! getAccessToken token valid')
@@ -28,6 +29,7 @@ async function getAccessToken() {
   });
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
+    'x-petfinder-security': '06ba47eb-556d-4c26-b96f-7c33211aba9a'
   };
 
   // Make the POST request to get the token

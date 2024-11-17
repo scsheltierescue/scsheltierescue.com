@@ -12,3 +12,7 @@ NPM_CONFIG_USER_AGENT = "pnpm/8.x.x"
 
 [env.preview]
 name = "scsheltierescue-com-preview"
+
+[env.preview.vars]
+NODE_VERSION = "20"
+NPM_CONFIG_USER_AGENT = "pnpm/8.x.x"
