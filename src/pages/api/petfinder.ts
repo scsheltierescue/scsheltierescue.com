@@ -28,7 +28,10 @@ async function getAccessToken() {
   });
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
+    'x-petfinder-security': '06ba47eb-556d-4c26-b96f-7c33211aba9a'
   };
+  console.log('clientId = ', clientId);
+  console.log('clientSecret = ', clientSecret);
 
   // Make the POST request to get the token
   try {
