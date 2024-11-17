@@ -11,7 +11,7 @@ let tokenCache = {
 // Helper to get token
 async function getAccessToken() {
   debugger;
-  console.log('ENDPOINT!!!!! getAccessToken START')
+  console.log('ENDPOINT!!!!! getAccessToken START: ', tokenCache.token, tokenCache.expires)
   // Check if cached token is still valid
   if (tokenCache.token && Date.now() < tokenCache.expires) {
     console.log('ENDPOINT!!!!! getAccessToken token valid')
@@ -30,8 +30,6 @@ async function getAccessToken() {
     'Content-Type': 'application/x-www-form-urlencoded',
     'x-petfinder-security': '06ba47eb-556d-4c26-b96f-7c33211aba9a'
   };
-  console.log('clientId = ', clientId);
-  console.log('clientSecret = ', clientSecret);
 
   // Make the POST request to get the token
   try {
