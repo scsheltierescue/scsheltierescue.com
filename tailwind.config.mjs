@@ -7,15 +7,15 @@ export default {
     extend: {
       colors: {
         'scsr-logo-c': {
-          DEFAULT: '#2ba6cb',
+          DEFAULT: 'var(--scsr-logo-c)',
         },
         'primary-c': {
-          DEFAULT: '#008cba',
-          darker: '#0078a0'
+          DEFAULT: 'var(--scsr-primary-c)',
+          darker: 'var(--scsr-primary-c-darker)',
         },
         'error-c': {
-          DEFAULT: '#f04124',
-          darker: '#de2d0f'
+          DEFAULT: 'var(--scsr-error-c)',
+          darker: 'var(--scsr-error-c-darker)',
         }
       },
       fontFamily: {

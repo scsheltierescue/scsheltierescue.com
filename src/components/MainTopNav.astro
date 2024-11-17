@@ -223,12 +223,12 @@ const currentPath = Astro.url.pathname.replace(/\//g,''); // Remove all slashes
   }
 
   .top-bar-section ul li.active>a {
-    background: #008cba;
+    background: var(--scsr-primary-c);
     color: #eee;
   }
 
   .top-bar-section ul li.active>a:hover {
-    background: #0078a0;
+    background: var(--scsr-primary-c-darker);
     color: #eee;
   }
 
@@ -349,14 +349,14 @@ const currentPath = Astro.url.pathname.replace(/\//g,''); // Remove all slashes
     }
 
     .top-bar-section li.active:not(.has-form) a:not(.button) {
-      background: #008cba;
+      background: var(--scsr-primary-c);
       color: #eee;
       line-height: 2.8125rem;
       padding: 0 .9375rem;
     }
 
     .top-bar-section li.active:not(.has-form) a:not(.button):hover {
-      background: #0078a0;
+      background: var(--scsr-primary-c-darker);
       color: #eee;
     }
 
