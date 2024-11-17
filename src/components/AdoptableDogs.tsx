@@ -158,11 +158,6 @@ const AdoptableDogs: React.FC = () => {
         }
   
         const data = await response.json() as SCSRAnimals;
-
-        // if (data.animals.length === 0) {
-        //   setErrorMsg('There are currently no available dogs.');
-        // }
-
         const formattedPets = data.animals.map((pet) => formatPet(pet));
   
         setPets(prevPets => [...prevPets, ...formattedPets]);
@@ -201,9 +196,9 @@ const AdoptableDogs: React.FC = () => {
   return (
     <div className="main-section">
       {pets.map((pet, i) => (
-        <div className="pet-box panel" key={i}>
+        <div className="pet-box border border-solid border-stone-300 bg-neutral-200 text-zinc-800" key={i}>
           <div className="pet-header">
-            <h2 className="pet-name"><span className="label">{pet.name}</span></h2>
+            <h2 className="pet-name"><span className="inline-block font-normal leading-none mb-auto relative text-center no-underline whitespace-nowrap px-2 py-1 bg-primary-c text-zinc-100">{pet.name}</span></h2>
             <ul className="options">
               {pet.options.map((option, i) => ((option.icon) ?
                 <li key={i}>
