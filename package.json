@@ -13,10 +13,10 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^11.2.0",
-    "@astrojs/react": "^3.6.2",
+    "@astrojs/react": "^3.6.3",
     "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.13",
-    "astro-icon": "^1.1.2",
+    "astro": "^4.16.16",
+    "astro-icon": "^1.1.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-slick": "^0.30.2",
@@ -29,8 +29,8 @@
     "@types/react-dom": "^18.3.1",
     "@types/react-slick": "^0.23.13",
     "pnpm": "8.7.1",
-    "typescript": "^5.6.3",
-    "wrangler": "^3.87.0"
+    "typescript": "^5.7.2",
+    "wrangler": "^3.91.0"
   },
   "packageManager": "pnpm@8.7.1",
   "volta": {
