@@ -84,7 +84,7 @@ export const GET: APIRoute = async (context) => {
     console.log('ENDPOINT!!!!! petfinderMiddleware token = ', token)
 
     const petfinderResponse = await fetch(
-      `https://api.petfinder.com/v2/animals?organization=SC92&status=adoptable&page=${page}&limit=10`,
+      `https://api.petfinder.com/v2/animals?organization=SC92&status=adoptable&sort=-recent&page=${page}&limit=10`,
       {
         headers: {
           'Authorization': `Bearer ${token}`,
