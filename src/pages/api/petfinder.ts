@@ -79,12 +79,12 @@ export const GET: APIRoute = async (context) => {
     const page = url.searchParams.get('page') || '1';
     console.log('ENDPOINT!!!!! petfinderMiddleware page = ', page)
 
-    const token = await getAccessToken(/*context*/);
+    const token = await getAccessToken();
     debugger;
     console.log('ENDPOINT!!!!! petfinderMiddleware token = ', token)
 
     const petfinderResponse = await fetch(
-      `https://api.petfinder.com/v2/animals?organization=SC92&status=adoptable&sort=-recent&page=${page}&limit=10`,
+      `https://api.petfinder.com/v2/animals?organization=SC92&status=adoptable&sort=-recent&page=${page}&limit=100`,
       {
         headers: {
           'Authorization': `Bearer ${token}`,
