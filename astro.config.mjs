@@ -14,6 +14,9 @@ export default defineConfig({
     service: passthroughImageService()
   },
   vite: {
+    build: {
+      sourcemap: true,
+    },
     define: {
       'process.env.PETFINDER_API_CLIENT_ID': JSON.stringify(process.env.PETFINDER_API_CLIENT_ID),
       'process.env.PETFINDER_API_SECRET': JSON.stringify(process.env.PETFINDER_API_SECRET)
