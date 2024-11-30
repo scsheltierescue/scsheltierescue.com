@@ -16,7 +16,10 @@ export default {
         'error-c': {
           DEFAULT: 'var(--scsr-error-c)',
           darker: 'var(--scsr-error-c-darker)',
-        }
+        },
+        'selection-c': {
+          DEFAULT: 'var(--scsr-selection-c)',
+        },
       },
       fontFamily: {
         sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'Roboto', ...defaultTheme.fontFamily.sans],
