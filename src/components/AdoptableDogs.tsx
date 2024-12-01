@@ -1,3 +1,4 @@
+import LoadingSpinner from '@components/LoadingSpinner';
 import PetImageCard from '@components/PetImageCard';
 import PetImageModal from '@components/PetImageModal';
 
@@ -159,7 +160,7 @@ const AdoptableDogs: React.FC = () => {
   
         const data = await response.json() as SCSRAnimals;
         const formattedPets = data.animals.map((pet) => formatPet(pet));
-  
+
         setPets(prevPets => [...prevPets, ...formattedPets]);
         setErrorMsg('');
   
@@ -196,12 +197,12 @@ const AdoptableDogs: React.FC = () => {
   return (
     <div className="main-section">
       {pets.map((pet, i) => (
-        <div className="pet-box border border-solid border-stone-300 bg-neutral-200 text-zinc-800" key={i}>
+        <div className="p-1 mx-0 mt-0 mb-5 border border-solid border-stone-300 bg-neutral-200 text-zinc-800" key={i}>
           <div className="pet-header">
-            <h2 className="pet-name"><span className="inline-block font-normal leading-none mb-auto relative text-center no-underline whitespace-nowrap px-2 py-1 bg-primary-c text-zinc-100">{pet.name}</span></h2>
-            <ul className="options">
+            <h2 className="pet-name w-full flex justify-center items-center text-center uppercase"><span className="max-w-full inline-block text-3xl sm:text-4xl md:text-5xl font-normal leading-none mb-auto relative text-center text-ellipsis no-underline overflow-hidden whitespace-nowrap px-2 py-1 bg-primary-c text-zinc-100 shadow-md">{pet.name}</span></h2>
+            <ul className="options list-none mx-0 mt-0 mb-2.5 text-xs md:text-base text-center">
               {pet.options.map((option, i) => ((option.icon) ?
-                <li key={i}>
+                <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
                   <span>{option.text}</span>
                   {/*
                     `astro-icon` doesn't work in framework components. Manually injecting SVG instead.
@@ -211,7 +212,7 @@ const AdoptableDogs: React.FC = () => {
                     <path fill="currentColor" d="m9 20.42l-6.21-6.21l2.83-2.83L9 14.77l9.88-9.89l2.83 2.83z"/>
                   </svg>
                 </li> :
-                <li key={i}>
+                <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
                   <strong>{option.text}</strong>
                 </li>
               ))}
@@ -222,7 +223,7 @@ const AdoptableDogs: React.FC = () => {
               photos={pet.photos}
               onImageClick={handleImageClick}
             />
-            <div className="petfinder-link">
+            <div className="text-center mx-0 my-2.5">
               {/*
                 `astro-icon` doesn't work in framework components. Manually injecting SVG instead.
                 SEE: https://www.astroicon.dev/guides/components/#usage-with-framework-components
@@ -244,13 +245,7 @@ const AdoptableDogs: React.FC = () => {
         </div>
       )}
 
-      {isLoading && (
-        <div id="spinner" className="loading_spinner">
-          <svg className="circular">
-            <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="2" strokeMiterlimit="10" />
-          </svg>
-        </div>
-      )}
+      {isLoading && <LoadingSpinner />}
 
       {errorMsg && (
         <div className="border border-solid block font-normal mb-5 p-3 relative bg-error-c border-error-c-darker text-zinc-100">
