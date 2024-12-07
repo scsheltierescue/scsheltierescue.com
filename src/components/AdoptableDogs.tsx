@@ -69,8 +69,8 @@ export interface PetUIContextPhoto {
   alt: string;
 }
 
-// TODO: Add `tags` to display on the UI
 interface PetUIContext {
+  tags: string[];
   options: PetUIContextOption[];
   photos: PetUIContextPhoto[];
   id: number;
@@ -108,6 +108,7 @@ const formatPet = (pet: SCSRAnimal): PetUIContext => {
     name,
     sex: gender,
     petfinderUrl: url,
+    tags: pet.tags.filter(str => str.trim() !== ""),
     options,
     photos: petPhotos,
   };
@@ -134,6 +135,39 @@ const formatOptionListItem = (
   const config = optionMapping[option];
   return value && config ? { ...config, text: config.icon ? `${config.text}: ` : config.text } : null;
 }
+
+const TagList = ({ tags }: { tags: string[] }) => {
+  return (
+    tags.map((tag, i) => (
+      <span
+        key={i}
+        className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-indigo-50 text-indigo-700 ring-indigo-700/10"
+      >
+        {tag}
+      </span>
+    ))
+  );
+};
+
+const OptionsList = ({ options }: { options: PetUIContextOption[]}) => {
+  return (
+    options.map((option, i) => ((option.icon) ?
+      <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
+        <span>{option.text}</span>
+        {/*
+          `astro-icon` doesn't work in framework components. Manually injecting SVG instead.
+          SEE: https://www.astroicon.dev/guides/components/#usage-with-framework-components
+        */}
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="inline">
+          <path fill="currentColor" d="m9 20.42l-6.21-6.21l2.83-2.83L9 14.77l9.88-9.89l2.83 2.83z"/>
+        </svg>
+      </li> :
+      <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
+        <strong>{option.text}</strong>
+      </li>
+    ))
+  );
+};
 
 const AdoptableDogs: React.FC = () => {
   const [pets, setPets] = useState<PetUIContext[]>([]);
@@ -200,22 +234,15 @@ const AdoptableDogs: React.FC = () => {
         <div className="p-1 mx-0 mt-0 mb-5 border border-solid border-stone-300 bg-neutral-200 text-zinc-800" key={i}>
           <div className="pet-header">
             <h2 className="pet-name w-full flex justify-center items-center text-center uppercase"><span className="max-w-full inline-block text-3xl sm:text-4xl md:text-5xl font-normal leading-none mb-auto relative text-center text-ellipsis no-underline overflow-hidden whitespace-nowrap px-2 py-1 bg-primary-c text-zinc-100 shadow-md">{pet.name}</span></h2>
+            <div className="flex flex-wrap justify-center items-center mx-0 mt-0 mb-2 space-x-1 sm:space-x-2">
+              <TagList
+                tags={pet.tags}
+              />
+            </div>
             <ul className="options list-none mx-0 mt-0 mb-2.5 text-xs md:text-base text-center">
-              {pet.options.map((option, i) => ((option.icon) ?
-                <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
-                  <span>{option.text}</span>
-                  {/*
-                    `astro-icon` doesn't work in framework components. Manually injecting SVG instead.
-                    SEE: https://www.astroicon.dev/guides/components/#usage-with-framework-components
-                  */}
-                  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="inline">
-                    <path fill="currentColor" d="m9 20.42l-6.21-6.21l2.83-2.83L9 14.77l9.88-9.89l2.83 2.83z"/>
-                  </svg>
-                </li> :
-                <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
-                  <strong>{option.text}</strong>
-                </li>
-              ))}
+              <OptionsList
+                options={pet.options}
+              />
             </ul>
           </div>
           <div className="pet-body">
