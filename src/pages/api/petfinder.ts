@@ -1,22 +1,33 @@
 export const prerender = false;
 
-import type { APIRoute } from 'astro';
+import type { APIContext } from 'astro';
+import type { KVNamespace } from '@cloudflare/workers-types';
 
-// Cache for access token
-// TODO: Fix this request caching. Its not working currently
-let tokenCache = {
-  token: null,
-  expires: 0
-};
+interface EnvBindings {
+  TOKEN_CACHE: KVNamespace;
+}
+
+interface CustomAPIContext extends APIContext {
+  locals: {
+    runtime: {
+      env: EnvBindings;
+    }
+  }
+}
 
 // Helper to get token
-async function getAccessToken() {
-  debugger;
-  console.log('ENDPOINT!!!!! getAccessToken START: ', tokenCache.token, tokenCache.expires)
-  // Check if cached token is still valid
-  if (tokenCache.token && Date.now() < tokenCache.expires) {
-    console.log('ENDPOINT!!!!! getAccessToken token valid')
-    return tokenCache.token;
+async function getAccessToken(context: CustomAPIContext) {
+  const TOKEN_KEY = "petfinder_token";
+  const { TOKEN_CACHE } = context.locals.runtime.env;
+  console.log('getAccessToken!!!!! TOKEN_CACHE=', TOKEN_CACHE);
+
+  // Retrieve the cached token from KV
+  const cachedToken = await TOKEN_CACHE.get(TOKEN_KEY);
+  console.log('getAccessToken!!!!! cachedToken=', cachedToken);
+  if (cachedToken) {
+    console.log('getAccessToken!!!!! RETURN VALID CACHED TOKEN');
+    // If a token exists in KV, it's valid because KV automatically expires the value
+    return cachedToken;
   }
 
   const clientId = import.meta.env.PETFINDER_API_CLIENT_ID;
@@ -39,8 +50,8 @@ async function getAccessToken() {
       headers: headers,
       body: credentials,
     });
-    console.log('ENDPOINT!!!!! getAccessToken response.status = ', response.status);
-    console.log('ENDPOINT!!!!! getAccessToken response = ', response)
+    console.log('getAccessToken!!!!! getAccessToken response.status = ', response.status);
+    console.log('getAccessToken!!!!! getAccessToken response = ', response)
   
     if (!response.ok) {
       console.error(`Failed to get token: ${response.status} ${response.statusText}`);
@@ -54,14 +65,14 @@ async function getAccessToken() {
     }
   
     const data = await response.json();
-    console.log('ENDPOINT!!!!! getAccessToken data = ', data)
+    console.log('getAccessToken!!!!! getAccessToken data = ', data)
   
-    // Cache token
-    tokenCache = {
-      token: data.access_token,
-      expires: Date.now() + (data.expires_in * 1000) - 60000 // Subtract 1 minute for safety
-    };
-  
+    // Store the token in KV with an expiration time
+    // Calculate the expiration TTL in seconds and subtract 1 minute for safety
+    let expires = Math.floor((data.expires_in - 60));
+    console.log('getAccessToken!!!!! expires = ', expires)
+    await TOKEN_CACHE.put(TOKEN_KEY, data.access_token, { expirationTtl: expires });
+    console.log('getAccessToken!!!!! TOKEN_CACHE = ', TOKEN_CACHE);
     return data.access_token;
   } catch (error) {
     console.error('Token fetch error:', error);
@@ -69,19 +80,18 @@ async function getAccessToken() {
   }
 }
 
-export const GET: APIRoute = async (context) => {
+export const GET = async (context: CustomAPIContext) => {
   try {
     console.log('ENDPOINT!!!!! /apt/petfinder start')
 
-    debugger;
     // Get URL parameters
     const url = new URL(context.request.url);
     const page = url.searchParams.get('page') || '1';
-    console.log('ENDPOINT!!!!! petfinderMiddleware page = ', page)
+    console.log('ENDPOINT!!!!! page = ', page)
 
-    const token = await getAccessToken();
+    const token = await getAccessToken(context);
     debugger;
-    console.log('ENDPOINT!!!!! petfinderMiddleware token = ', token)
+    console.log('ENDPOINT!!!!! token = ', token)
 
     const petfinderResponse = await fetch(
       `https://api.petfinder.com/v2/animals?organization=SC92&status=adoptable&sort=-recent&page=${page}&limit=100`,
@@ -91,7 +101,6 @@ export const GET: APIRoute = async (context) => {
         },
       }
     );
-    console.log('ENDPOINT!!!!! petfinderMiddleware petfinderResponse = ', petfinderResponse)
 
     if (!petfinderResponse.ok) {
       const errorText = await petfinderResponse.text();
@@ -99,7 +108,6 @@ export const GET: APIRoute = async (context) => {
     }
 
     const data = await petfinderResponse.json();
-    console.log('ENDPOINT!!!!! petfinderMiddleware data = ', data)
 
     return new Response(JSON.stringify(data), {
       headers: {
