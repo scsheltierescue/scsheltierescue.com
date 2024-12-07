@@ -15,7 +15,7 @@ export default defineConfig({
   },
   vite: {
     build: {
-      sourcemap: true,
+      sourcemap: false, // NOTE: Temporarily Disabling (Issues with Astro 5.0/Vite 6.0)
     },
     define: {
       'process.env.PETFINDER_API_CLIENT_ID': JSON.stringify(process.env.PETFINDER_API_CLIENT_ID),
