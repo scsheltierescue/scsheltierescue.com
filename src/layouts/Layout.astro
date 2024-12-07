@@ -2,7 +2,7 @@
 import MainTopNav from '@components/MainTopNav.astro';
 import MainFooter from '@components/MainFooter.astro';
 
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -20,7 +20,7 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description}>
 
-    <ViewTransitions />
+    <ClientRouter />
 
     <meta property="og:title" content={title}>
     <meta property="og:type" content="website">
