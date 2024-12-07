@@ -3,13 +3,15 @@ pages_build_output_dir = "./dist"
 compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2024-09-23"
 upload_source_maps = true
-
 kv_namespaces = [
-  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
+  { binding = "TOKEN_CACHE", id = "default-kv-namespace-id" }
 ]
 
 [env.production]
 name = "scsheltierescue-com"
+kv_namespaces = [
+  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
+]
 
 [env.production.vars]
 NODE_VERSION = "20"
@@ -17,6 +19,9 @@ NPM_CONFIG_USER_AGENT = "pnpm/8.x.x"
 
 [env.preview]
 name = "scsheltierescue-com-preview"
+kv_namespaces = [
+  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
+]
 
 [env.preview.vars]
 NODE_VERSION = "20"
