@@ -182,8 +182,6 @@ const AdoptableDogs: React.FC = () => {
     const loadPets = async () => {
       setIsLoading(true);
       
-      console.log('********** UI: loadPets START');
-
       try {
         const response = await fetch(`/api/petfinder?page=${page}`);
         console.log('get animals response ', response);
