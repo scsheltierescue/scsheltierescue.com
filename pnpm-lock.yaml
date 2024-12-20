@@ -10,19 +10,19 @@ dependencies:
     version: 0.9.4(typescript@5.7.2)
   '@astrojs/cloudflare':
     specifier: ^11.2.0
-    version: 11.2.0(astro@4.16.17)
+    version: 11.2.0(astro@4.16.18)
   '@astrojs/react':
     specifier: ^3.6.3
     version: 3.6.3(@types/react-dom@18.3.2)(@types/react@18.3.14)(react-dom@18.3.1)(react@18.3.1)
   '@astrojs/tailwind':
     specifier: ^5.1.2
-    version: 5.1.3(astro@4.16.17)(tailwindcss@3.4.16)
+    version: 5.1.3(astro@4.16.18)(tailwindcss@3.4.16)
   '@cloudflare/workers-types':
     specifier: ^4.20241205.0
     version: 4.20241205.0
   astro:
-    specifier: ^4.16.16
-    version: 4.16.17(typescript@5.7.2)
+    specifier: ^4.16.18
+    version: 4.16.18(typescript@5.7.2)
   astro-icon:
     specifier: ^1.1.4
     version: 1.1.4
@@ -107,7 +107,7 @@ packages:
       - prettier-plugin-astro
     dev: false
 
-  /@astrojs/cloudflare@11.2.0(astro@4.16.17):
+  /@astrojs/cloudflare@11.2.0(astro@4.16.18):
     resolution: {integrity: sha512-XSDAYg2NJVo88GLD8kC20sG3ftQb446/+Jvqzd/wTxyLseMIioExdDNYCS51LmxG4De6YHphAF/f0AyyKItSjg==}
     peerDependencies:
       astro: ^4.10.3
@@ -115,8 +115,8 @@ packages:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
       '@cloudflare/workers-types': 4.20241205.0
-      '@inox-tools/astro-when': 0.2.4(astro@4.16.17)
-      astro: 4.16.17(typescript@5.7.2)
+      '@inox-tools/astro-when': 0.2.4(astro@4.16.18)
+      astro: 4.16.18(typescript@5.7.2)
       esbuild: 0.21.5
       estree-walker: 3.0.3
       magic-string: 0.30.14
@@ -231,13 +231,13 @@ packages:
       - terser
     dev: false
 
-  /@astrojs/tailwind@5.1.3(astro@4.16.17)(tailwindcss@3.4.16):
+  /@astrojs/tailwind@5.1.3(astro@4.16.18)(tailwindcss@3.4.16):
     resolution: {integrity: sha512-XF7WhXRhqEHGvADqc0kDtF7Yv/g4wAWTaj91jBBTBaYnc4+MQLH94duFfFa4NlTkRG40VQd012eF3MhO3Kk+bg==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0 || ^5.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 4.16.17(typescript@5.7.2)
+      astro: 4.16.18(typescript@5.7.2)
       autoprefixer: 10.4.20(postcss@8.4.49)
       postcss: 8.4.49
       postcss-load-config: 4.0.2(postcss@8.4.49)
@@ -1202,13 +1202,13 @@ packages:
     dev: false
     optional: true
 
-  /@inox-tools/astro-when@0.2.4(astro@4.16.17):
+  /@inox-tools/astro-when@0.2.4(astro@4.16.18):
     resolution: {integrity: sha512-A1urUbru+Ni7UnsWui0Cq3rGXE75XsiVmU3vmJXhA9duQ4JyIYxLZALDSsqsT0pAzBrUWokZ09fALJ5eJUPtZQ==}
     peerDependencies:
       astro: ^4
     dependencies:
-      astro: 4.16.17(typescript@5.7.2)
-      astro-integration-kit: 0.16.1(astro@4.16.17)
+      astro: 4.16.18(typescript@5.7.2)
+      astro-integration-kit: 0.16.1(astro@4.16.18)
       debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
@@ -1808,18 +1808,18 @@ packages:
       - supports-color
     dev: false
 
-  /astro-integration-kit@0.16.1(astro@4.16.17):
+  /astro-integration-kit@0.16.1(astro@4.16.18):
     resolution: {integrity: sha512-N/iam0PAFrRT9azYZqscP1HowQhC77Dwlp912P0/72k+kwUVgO3m73F26XXukHYoZBsrHgrUrfsWBxuCH3kEUg==}
     peerDependencies:
       astro: ^4.12.0
     dependencies:
-      astro: 4.16.17(typescript@5.7.2)
+      astro: 4.16.18(typescript@5.7.2)
       pathe: 1.1.2
       recast: 0.23.9
     dev: false
 
-  /astro@4.16.17(typescript@5.7.2):
-    resolution: {integrity: sha512-OuD+BP7U6OqQLKtZ/FJkU2S+TOlifxS/OKUbZOb5p6y+LLBa1J3zHRJrIl7DUSq6eXY+9wSWwbJpD9JS+lqhxA==}
+  /astro@4.16.18(typescript@5.7.2):
+    resolution: {integrity: sha512-G7zfwJt9BDHEZwlaLNvjbInIw2hPryyD654314KV/XT34pJU6SfN1S+mWa8RAkALcZNJnJXCJmT3JXLQStD3Lw==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
     dependencies:
