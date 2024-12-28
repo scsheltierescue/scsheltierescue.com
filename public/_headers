@@ -6,7 +6,6 @@
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  Referrer-Policy: no-referrer
 
 # Prevent pages.dev deployments from showing in search results
 https://:project.pages.dev/*
