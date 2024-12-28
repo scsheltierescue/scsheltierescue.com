@@ -82,7 +82,7 @@ async function getAccessToken(context: CustomAPIContext) {
 
 export const GET = async (context: CustomAPIContext) => {
   try {
-    console.log('ENDPOINT!!!!! /apt/petfinder start')
+    console.log('ENDPOINT!!!!! /api/petfinder start')
 
     // Get URL parameters
     const url = new URL(context.request.url);
@@ -90,7 +90,6 @@ export const GET = async (context: CustomAPIContext) => {
     console.log('ENDPOINT!!!!! page = ', page)
 
     const token = await getAccessToken(context);
-    debugger;
     console.log('ENDPOINT!!!!! token = ', token)
 
     const petfinderResponse = await fetch(
