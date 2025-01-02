@@ -1,6 +1,5 @@
 import LoadingSpinner from '@components/LoadingSpinner';
-import PetImageCard from '@components/PetImageCard';
-import PetImageModal from '@components/PetImageModal';
+import ImageGallery from '@components/ImageGallery';
 
 import React, { useState, useEffect } from 'react';
 
@@ -63,16 +62,10 @@ interface PetUIContextOption {
   order: number;
 }
 
-export interface PetUIContextPhoto {
-  first: boolean;
-  src: string;
-  alt: string;
-}
-
 interface PetUIContext {
   tags: string[];
   options: PetUIContextOption[];
-  photos: PetUIContextPhoto[];
+  photos: string[];
   id: number;
   name: string;
   sex: string;
@@ -97,12 +90,6 @@ const formatPet = (pet: SCSRAnimal): PetUIContext => {
 
   options.sort((a, b) => a.order - b.order);
 
-  const petPhotos = photos.map((photo, idx) => ({
-    first: idx === 0,
-    src: photo.large,
-    alt: `${name} ${idx + 1}`,
-  }));
-
   return {
     id,
     name,
@@ -110,7 +97,7 @@ const formatPet = (pet: SCSRAnimal): PetUIContext => {
     petfinderUrl: url,
     tags: pet.tags.filter(str => str.trim() !== ""),
     options,
-    photos: petPhotos,
+    photos: photos.map((photo) => photo.large),
   };
 }
 
@@ -174,8 +161,6 @@ const AdoptableDogs: React.FC = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(false);
 
   useEffect(() => {
@@ -214,15 +199,6 @@ const AdoptableDogs: React.FC = () => {
     loadPets();
   }, [page]);
 
-  const handleImageClick = (image: string) => {
-    setIsModalOpen(true);
-    setSelectedImage(image);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedImage(null);
-  };
 
   const loadMore = () => setPage(prevPage => prevPage + 1);
 
@@ -244,9 +220,9 @@ const AdoptableDogs: React.FC = () => {
             </ul>
           </div>
           <div className="pet-body">
-            <PetImageCard
-              photos={pet.photos}
-              onImageClick={handleImageClick}
+            <ImageGallery
+              thumbnail={pet.photos[0]}
+              images={pet.photos}
             />
             <div className="text-center mx-0 my-2.5">
               {/*
@@ -284,14 +260,6 @@ const AdoptableDogs: React.FC = () => {
           type="button"
           className={`text-base p-4 w-full appearance-none rounded-none border-solid border-0 cursor-pointer font-normal leading-5 mb-5 relative text-center no-underline inline-block bg-primary-c hover:bg-primary-c-darker focus:bg-primary-c-darker text-zinc-100 transition-colors ${errorMsg ? 'invisible' : ''}`}
           value={isLoading ? 'Loading...' : 'View More'}
-        />
-      )}
-
-      {selectedImage && (
-        <PetImageModal
-          image={selectedImage}
-          isOpen={isModalOpen}
-          onClose={closeModal}
         />
       )}
     </div>

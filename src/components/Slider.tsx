@@ -6,8 +6,8 @@ import Slider from 'react-slick';
 export interface Item {
   id: number;
   src: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   alt?: string;
 }
 

@@ -21,8 +21,8 @@ dependencies:
     specifier: ^5.1.4
     version: 5.1.4(astro@4.16.18)(tailwindcss@3.4.17)
   '@cloudflare/workers-types':
-    specifier: ^4.20241224.0
-    version: 4.20241224.0
+    specifier: ^4.20241230.0
+    version: 4.20241230.0
   astro:
     specifier: ^4.16.18
     version: 4.16.18(typescript@5.7.2)
@@ -47,6 +47,9 @@ dependencies:
   tailwindcss:
     specifier: ^3.4.17
     version: 3.4.17
+  yet-another-react-lightbox:
+    specifier: ^3.21.7
+    version: 3.21.7(react-dom@18.3.1)(react@18.3.1)
 
 devDependencies:
   '@types/react':
@@ -66,7 +69,7 @@ devDependencies:
     version: 5.7.2
   wrangler:
     specifier: ^3.99.0
-    version: 3.99.0(@cloudflare/workers-types@4.20241224.0)
+    version: 3.99.0(@cloudflare/workers-types@4.20241230.0)
 
 packages:
 
@@ -117,7 +120,7 @@ packages:
     dependencies:
       '@astrojs/internal-helpers': 0.4.1
       '@astrojs/underscore-redirects': 0.3.4
-      '@cloudflare/workers-types': 4.20241224.0
+      '@cloudflare/workers-types': 4.20241230.0
       '@inox-tools/astro-when': 0.2.4(astro@4.16.18)
       astro: 4.16.18(typescript@5.7.2)
       esbuild: 0.21.5
@@ -125,7 +128,7 @@ packages:
       magic-string: 0.30.14
       miniflare: 3.20241205.0
       tiny-glob: 0.2.9
-      wrangler: 3.99.0(@cloudflare/workers-types@4.20241224.0)
+      wrangler: 3.99.0(@cloudflare/workers-types@4.20241230.0)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -577,8 +580,8 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@cloudflare/workers-types@4.20241224.0:
-    resolution: {integrity: sha512-1ZmFc8qqM7S/HUGmLplc4P8n8DoMqiJmc47r9Lr7VbuaotoqCXVljz09w1V1mc4K3pbFPgvqSy4XYStZ08HrlQ==}
+  /@cloudflare/workers-types@4.20241230.0:
+    resolution: {integrity: sha512-dtLD4jY35Lb750cCVyO1i/eIfdZJg2Z0i+B1RYX6BVeRPlgaHx/H18ImKAkYmy0g09Ow8R2jZy3hIxMgXun0WQ==}
 
   /@cspotcode/source-map-support@0.8.1:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -5271,7 +5274,7 @@ packages:
       '@cloudflare/workerd-linux-arm64': 1.20241218.0
       '@cloudflare/workerd-windows-64': 1.20241218.0
 
-  /wrangler@3.99.0(@cloudflare/workers-types@4.20241224.0):
+  /wrangler@3.99.0(@cloudflare/workers-types@4.20241230.0):
     resolution: {integrity: sha512-k0x4rT3G/QCbxcoZY7CHRVlAIS8WMmKdga6lf4d2c3gXFqssh44vwlTDuARA9QANBxKJTcA7JPTJRfUDhd9QBA==}
     engines: {node: '>=16.17.0'}
     hasBin: true
@@ -5282,7 +5285,7 @@ packages:
         optional: true
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.4
-      '@cloudflare/workers-types': 4.20241224.0
+      '@cloudflare/workers-types': 4.20241230.0
       '@esbuild-plugins/node-globals-polyfill': 0.2.3(esbuild@0.17.19)
       '@esbuild-plugins/node-modules-polyfill': 0.2.2(esbuild@0.17.19)
       blake3-wasm: 2.1.5
@@ -5417,6 +5420,17 @@ packages:
     dependencies:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
+    dev: false
+
+  /yet-another-react-lightbox@3.21.7(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-dcdokNuCIl92f0Vl+uzeKULnQhztIGpoZFUMvtVNUPmtwsQWpqWufeieDPeg9JtFyVCcbj4vYw3V00DS0QNoWA==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /yocto-queue@1.1.1:
