@@ -25,4 +25,4 @@ kv_namespaces = [
 
 [env.preview.vars]
 NODE_VERSION = "20"
-NPM_CONFIG_USER_AGENT = "pnpm/8.x.x"
+NPM_CONFIG_USER_AGENT = "pnpm/9.x.x"
