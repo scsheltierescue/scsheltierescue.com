@@ -32,13 +32,13 @@
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@types/react-slick": "^0.23.13",
-    "pnpm": "9.15.2",
+    "pnpm": "9.15.3",
     "typescript": "^5.7.2",
     "wrangler": "^3.99.0"
   },
-  "packageManager": "pnpm@9.15.2",
+  "packageManager": "pnpm@9.15.3",
   "volta": {
     "node": "22.8.0",
-    "pnpm": "9.15.2"
+    "pnpm": "9.15.3"
   }
 }
