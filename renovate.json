@@ -11,5 +11,6 @@
       "matchPackageNames": ["node"],
       "enabled": false
     }
-  ]
+  ],
+  "rangeStrategy": "bump"
 }
