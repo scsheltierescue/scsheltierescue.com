@@ -55,7 +55,7 @@ importers:
         version: 3.21.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
       '@types/react':
-        specifier: ^19.0.2
+        specifier: ^19.0.3
         version: 19.0.3
       '@types/react-dom':
         specifier: ^19.0.2
@@ -67,7 +67,7 @@ importers:
         specifier: 9.15.3
         version: 9.15.3
       typescript:
-        specifier: ^5.7.2
+        specifier: ^5.7.3
         version: 5.7.3
       wrangler:
         specifier: ^3.99.0
