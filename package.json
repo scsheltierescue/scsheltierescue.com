@@ -11,6 +11,7 @@
     "preinstall": "npx only-allow pnpm",
     "preview": "wrangler types && wrangler pages dev ./dist",
     "start": "wrangler types && astro dev",
+    "type-check": "tsc --noEmit",
     "upgrade": "npx @astrojs/upgrade"
   },
   "dependencies": {
