@@ -1,7 +1,7 @@
+import React from 'react';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-import Slider from 'react-slick';
 
 export interface Item {
   id: number;
@@ -11,8 +11,12 @@ export interface Item {
   alt?: string;
 }
 
-export default function ReactSlickSlider({ items }: { items: Item[] }) {
-  let settings = {
+interface ReactSlickSliderProps {
+  items: Item[];
+}
+
+const ReactSlickSlider: React.FC<ReactSlickSliderProps> = ({ items }) => {
+  const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
     dots: true,
@@ -29,8 +33,12 @@ export default function ReactSlickSlider({ items }: { items: Item[] }) {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {items.map(({ id, ...rest }) => <img key={id} {...rest} />)}
+        {items.map(({ id, ...rest }) => (
+          <img key={id} {...rest} />
+        ))}
       </Slider>
     </div>
   );
-}
+};
+
+export default ReactSlickSlider;

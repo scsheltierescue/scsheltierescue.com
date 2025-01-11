@@ -1,4 +1,4 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -32,9 +32,9 @@ export default {
         md: '769px', // 48.063em
         lg: '940px', // 58.75em
         xl: '1281px', // 80.063em
-        '2xl': '1441px', //90.063em
+        '2xl': '1441px', // 90.063em
       },
     },
   },
   plugins: [],
-}
+};

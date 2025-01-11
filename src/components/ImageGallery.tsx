@@ -5,7 +5,7 @@ import 'yet-another-react-lightbox/plugins/counter.css';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 
 // Plugins
-import Counter from "yet-another-react-lightbox/plugins/counter";
+import Counter from 'yet-another-react-lightbox/plugins/counter';
 import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 
@@ -18,7 +18,9 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ thumbnail, images }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Transform images into Lightbox-compatible format
-  const slides = images.map((src) => ({ src }));
+  const slides = images.map((src) => {
+    return { src };
+  });
 
   return (
     <div className="flex justify-center items-center m-2 sm:mx-6 md:mx-16 md:my-4 lg:mx-32">

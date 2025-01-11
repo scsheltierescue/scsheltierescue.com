@@ -21,7 +21,7 @@ interface SCSRAnimal {
   url: string;
   type: 'Dog';
   species: 'Dog';
-  breeds: Record<string, any>;
+  breeds: Record<string, unknown>;
   colors: Record<'primary' | 'secondary' | 'tertiary', string | null>;
   age: string;
   gender: string;
@@ -37,10 +37,10 @@ interface SCSRAnimal {
   attributes: Record<'spayed_neutered' | 'house_trained' | 'declawed' | 'special_needs' | 'shots_current', boolean | null>;
   environment: Record<'children' | 'dogs' | 'cats', boolean | null>;
   tags: string[];
-  contact: Record<'address' | 'email' | 'phone', any>;
+  contact: Record<'address' | 'email' | 'phone', unknown>;
   published_at: string;
   distance: number | null;
-  _links: Record<string, any>;
+  _links: Record<string, unknown>;
 }
 
 interface Pagination {
@@ -48,7 +48,7 @@ interface Pagination {
   total_count: number;
   current_page: number;
   total_pages: number;
-  _links: Record<string, any>;
+  _links: Record<string, unknown>;
 }
 
 interface SCSRAnimals {
@@ -78,13 +78,19 @@ const formatPet = (pet: SCSRAnimal): PetUIContext => {
 
   Object.entries(attributes).forEach(([key, value]) => {
     const option = formatOptionListItem(key as keyof SCSRAnimal['attributes'], value, gender);
-    if (option) options.push(option);
+
+    if (option) {
+      options.push(option);
+    }
   });
 
   Object.entries(environment).forEach(([key, value]) => {
     if (value === false) {
       const option = formatOptionListItem(key as keyof SCSRAnimal['environment'], true, gender);
-      if (option) options.push(option);
+
+      if (option) {
+        options.push(option);
+      }
     }
   });
 
@@ -95,16 +101,17 @@ const formatPet = (pet: SCSRAnimal): PetUIContext => {
     name,
     sex: gender,
     petfinderUrl: url,
-    tags: pet.tags.filter(str => str.trim() !== ""),
+    tags: pet.tags.filter((str) => str.trim() !== ''),
     options,
     photos: photos.map((photo) => photo.large),
   };
-}
+};
 
+/* eslint-disable camelcase */
 const formatOptionListItem = (
   option: keyof SCSRAnimal['attributes'] | keyof SCSRAnimal['environment'],
   value: boolean | null,
-  gender: SCSRAnimal['gender']
+  gender: SCSRAnimal['gender'],
 ): PetUIContextOption | null => {
   const optionMapping: Record<string, { text: string; icon?: boolean; order: number }> = {
     spayed_neutered: {
@@ -120,41 +127,46 @@ const formatOptionListItem = (
     dogs: { text: 'No Dogs', order: 7 },
   };
   const config = optionMapping[option];
+
   return value && config ? { ...config, text: config.icon ? `${config.text}: ` : config.text } : null;
-}
-
-const TagList = ({ tags }: { tags: string[] }) => {
-  return (
-    tags.map((tag, i) => (
-      <span
-        key={i}
-        className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-indigo-50 text-indigo-700 ring-indigo-700/10"
-      >
-        {tag}
-      </span>
-    ))
-  );
 };
+/* eslint-enable camelcase */
 
-const OptionsList = ({ options }: { options: PetUIContextOption[]}) => {
-  return (
-    options.map((option, i) => ((option.icon) ?
-      <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
-        <span>{option.text}</span>
-        {/*
-          `astro-icon` doesn't work in framework components. Manually injecting SVG instead.
-          SEE: https://www.astroicon.dev/guides/components/#usage-with-framework-components
-        */}
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="inline">
-          <path fill="currentColor" d="m9 20.42l-6.21-6.21l2.83-2.83L9 14.77l9.88-9.89l2.83 2.83z"/>
-        </svg>
-      </li> :
+const TagList = ({ tags }: { tags: string[] }) => (
+  tags.map((tag, i) => (
+    <span
+      key={i}
+      className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-indigo-50 text-indigo-700 ring-indigo-700/10"
+    >
+      {tag}
+    </span>
+  ))
+);
+
+const OptionsList = ({ options }: { options: PetUIContextOption[] }) => (
+  options.map((option, i) => {
+    if (option.icon) {
+      return (
+        <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
+          <span>{option.text}</span>
+          {/*
+            `astro-icon` doesn't work in framework components. Manually injecting SVG instead.
+            SEE: https://www.astroicon.dev/guides/components/#usage-with-framework-components
+          */}
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="inline">
+            <path fill="currentColor" d="m9 20.42l-6.21-6.21l2.83-2.83L9 14.77l9.88-9.89l2.83 2.83z"/>
+          </svg>
+        </li>
+      );
+    }
+
+    return (
       <li key={i} className="sm:inline sm:after:content-['|'] sm:after:mx-1 sm:last:after:content-none">
         <strong>{option.text}</strong>
       </li>
-    ))
-  );
-};
+    );
+  })
+);
 
 const AdoptableDogs: React.FC = () => {
   const [pets, setPets] = useState<PetUIContext[]>([]);
@@ -166,41 +178,41 @@ const AdoptableDogs: React.FC = () => {
   useEffect(() => {
     const loadPets = async () => {
       setIsLoading(true);
-      
+
       try {
         const response = await fetch(`/api/petfinder?page=${page}`);
+
         console.log('get animals response ', response);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
         }
-  
+
         const data = await response.json() as SCSRAnimals;
         const formattedPets = data.animals.map((pet) => formatPet(pet));
 
-        setPets(prevPets => [...prevPets, ...formattedPets]);
+        setPets((prevPets) => [...prevPets, ...formattedPets]);
         setErrorMsg('');
-  
+
         console.log('DATA PAGINATION: ', data.pagination);
+
         if (data.pagination?.current_page < data.pagination?.total_pages) {
           setShowLoadMoreBtn(true);
         } else {
           setShowLoadMoreBtn(false);
         }
       } catch (error) {
-
         console.error('Error making data request:', error);
         setErrorMsg(`Error making data request: ${error}`);
       } finally {
         setIsLoading(false);
       }
     };
-    
+
     loadPets();
   }, [page]);
 
-
-  const loadMore = () => setPage(prevPage => prevPage + 1);
+  const loadMore = () => setPage((prevPage) => prevPage + 1);
 
   return (
     <div className="main-section">
@@ -230,7 +242,7 @@ const AdoptableDogs: React.FC = () => {
                 SEE: https://www.astroicon.dev/guides/components/#usage-with-framework-components
               */}
               <a href={pet.petfinderUrl} target="_blank" rel="noopener noreferrer">
-                {pet.name}'s Petfinder page
+                {pet.name}&apos;s Petfinder page
                 <svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="inline align-text-top">
                   <path fill="currentColor" d="M14 3v2h3.59l-9.83 9.83l1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2z"/>
                 </svg>
