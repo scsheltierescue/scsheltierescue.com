@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-const currentPath = Astro.url.pathname.replace(/\//g,''); // Remove all slashes
+const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
 ---
 
 <div class="contain-to-grid fixed w-full top-0 left-0 z-[99]">
@@ -24,18 +24,18 @@ const currentPath = Astro.url.pathname.replace(/\//g,''); // Remove all slashes
 
     <section class="top-bar-section">
       <ul class="float-right">
-        <li class={currentPath === "" ? "active" : ""}><a href="/">Home</a></li>
-        <li class={`has-dropdown not-click ${currentPath === "adoption-requirements" || currentPath === "adoptable-dogs" ? "active" : ""}`}><a href="/adoptable-dogs">Adopt</a>
+        <li class={currentPath === '' ? 'active' : ''}><a href="/">Home</a></li>
+        <li class={`has-dropdown not-click ${currentPath === 'adoption-requirements' || currentPath === 'adoptable-dogs' ? 'active' : ''}`}><a href="/adoptable-dogs">Adopt</a>
           <ul class="dropdown">
-            <li class={currentPath === "adoption-requirements" ? "active" : ""}><a href="/adoption-requirements">Adoption Requirements</a></li>
-            <li class={currentPath === "adoptable-dogs" ? "active" : ""}><a href="/adoptable-dogs">Adoptable Dogs</a></li>
+            <li class={currentPath === 'adoption-requirements' ? 'active' : ''}><a href="/adoption-requirements">Adoption Requirements</a></li>
+            <li class={currentPath === 'adoptable-dogs' ? 'active' : ''}><a href="/adoptable-dogs">Adoptable Dogs</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Fostering Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
           </ul>
         </li>
-        <li class={currentPath === "surrender" ? "active" : ""}><a href="/surrender">Surrender</a></li>
-        <li class={(currentPath === "help" || currentPath.startsWith("help/articles")) ? "active" : ""}><a href="/help">Help</a></li>
-        <li class={currentPath === "events" ? "active" : ""}><a href="/events">Events</a></li>
+        <li class={currentPath === 'surrender' ? 'active' : ''}><a href="/surrender">Surrender</a></li>
+        <li class={(currentPath === 'help' || currentPath.startsWith('help/articles')) ? 'active' : ''}><a href="/help">Help</a></li>
+        <li class={currentPath === 'events' ? 'active' : ''}><a href="/events">Events</a></li>
       </ul>
     </section>
   </nav>
@@ -44,6 +44,7 @@ const currentPath = Astro.url.pathname.replace(/\//g,''); // Remove all slashes
 <script is:inline data-astro-rerun>
   document.getElementById('menu-button')?.addEventListener('click', (e) => {
     const isExpanded = e.currentTarget.ariaExpanded === 'true';
+
     e.currentTarget.setAttribute('aria-expanded', !isExpanded);
     document.querySelector('[data-topbar]')?.classList.toggle('expanded');
   });

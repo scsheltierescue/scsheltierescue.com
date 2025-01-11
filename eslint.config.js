@@ -1,31 +1,78 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import tsEslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import pluginAstro from 'eslint-plugin-astro';
 import pluginReact from 'eslint-plugin-react';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  {
-    settings: {
-      react: {
-        version: 'detect', // Automatically detect the React version
-      },
-    },
-  },
   {
     ignores: [
       '.astro/',
       'node_modules/',
       'dist/',
       'build/',
+      'worker-configuration.d.ts',
     ],
   },
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
-  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
+
+  // JavaScript rules
   pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+
+  // TypeScript rules
   {
+    files: ['**/*.ts', '**/*.tsx'], // Apply TypeScript rules only to .ts and .tsx files
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true, // Enable JSX
+        },
+        project: './tsconfig.json', // Point to your TypeScript config
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tsEslint,
+    },
+    rules: {
+      ...tsEslint.configs.recommended.rules,
+    },
+  },
+
+  // React-specific rules
+  {
+    files: ['**/*.jsx', '**/*.tsx'], // Apply React rules only to React files
+    settings: {
+      react: {
+        version: 'detect', // Automatically detect React version
+      },
+    },
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      react: pluginReact,
+    },
+    rules: {
+      ...pluginReact.configs.recommended.rules,
+    },
+  },
+
+  // Astro-specific rules
+  ...pluginAstro.configs.recommended,
+
+  // Global rules applied to all files
+  {
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
+    },
     rules: {
       // Enforces getter/setter pairs in objects
       'accessor-pairs': 'error',
