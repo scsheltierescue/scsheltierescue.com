@@ -1,4 +1,4 @@
-name: ESLint
+name: CI
 
 on:
   pull_request:
@@ -11,8 +11,8 @@ env:
   CI: true
 
 jobs:
-  lint:
-    name: Lint
+  eslint:
+    name: ESLint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
