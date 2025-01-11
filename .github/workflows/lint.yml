@@ -1,0 +1,39 @@
+name: ESLint
+
+on:
+  pull_request:
+  push:
+    # filtering branches here prevents duplicate builds from pull_request and push
+    branches:
+      - main
+
+env:
+  CI: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.3
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: |
+          pnpm install
+
+      - name: Run ESLint
+        run: |
+          pnpm lint
