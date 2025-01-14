@@ -12,5 +12,17 @@
       "enabled": false
     }
   ],
-  "rangeStrategy": "bump"
+  "rangeStrategy": "bump",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^\\.github/workflows/.*\\.yml$"],
+      "matchStrings": [
+        "version:\\s*(?<currentValue>[\\d\\.]+)"
+      ],
+      "depNameTemplate": "pnpm",
+      "datasourceTemplate": "npm",
+      "versioningTemplate": "semver"
+    }
+  ]
 }
