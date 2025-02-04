@@ -19,7 +19,7 @@
     "@astrojs/cloudflare": "^12.2.1",
     "@astrojs/react": "^4.2.0",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^5.1.5",
+    "@astrojs/tailwind": "^6.0.0",
     "@cloudflare/workers-types": "^4.20250129.0",
     "astro": "^5.2.4",
     "astro-icon": "^1.1.5",
