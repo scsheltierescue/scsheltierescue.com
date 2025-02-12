@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-scsr-logo-c: var(--scsr-logo-c);
+  --color-primary-c: var(--scsr-primary-c);
+  --color-primary-c-darker: var(--scsr-primary-c-darker);
+  --color-error-c: var(--scsr-error-c);
+  --color-error-c-darker: var(--scsr-error-c-darker);
+  --color-selection-c: var(--scsr-selection-c);
+
+  --font-sans: 'Helvetica Neue', 'Helvetica', 'Arial', 'Roboto', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --breakpoint-sm: '476px'; /* 29.75em */
+  --breakpoint-md: '769px'; /* 48.063em */
+  --breakpoint-lg: '940px'; /* 58.75em */
+  --breakpoint-xl: '1281px'; /* 80.063em */
+  --breakpoint-2xl: '1441px'; /* 90.063em */
+}

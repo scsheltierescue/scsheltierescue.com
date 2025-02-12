@@ -1,3 +1,5 @@
+import 'src/styles/global.css';
+
 import LoadingSpinner from '@components/LoadingSpinner';
 import ImageGallery from '@components/ImageGallery';
 
