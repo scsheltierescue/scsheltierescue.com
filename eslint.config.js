@@ -74,7 +74,7 @@ export default [
     plugins: {
       '@stylistic': stylistic,
     },
-    // extends: ['plugin:@stylistic/js/recommended'], // Extend recommended rules from the stylistic plugin
+    // extends: ['plugin:@stylistic/recommended'], // Extend recommended rules from the stylistic plugin
     rules: {
       // Enforces consistent spacing inside array brackets
       'array-bracket-spacing': ['error', 'never'],
