@@ -60,6 +60,9 @@ importers:
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.20.0
+      '@stylistic/eslint-plugin':
+        specifier: ^3.1.0
+        version: 3.1.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
       '@types/react':
         specifier: ^19.0.8
         version: 19.0.8
@@ -991,6 +994,12 @@ packages:
 
   '@shikijs/vscode-textmate@10.0.1':
     resolution: {integrity: sha512-fTIQwLF+Qhuws31iw7Ncl1R3HUDtGwIipiJ9iU+UsDUwMhegFcQKQHd51nZjb7CArq0MvON8rbgCGQYWHUKAdg==}
+
+  '@stylistic/eslint-plugin@3.1.0':
+    resolution: {integrity: sha512-pA6VOrOqk0+S8toJYhQGv2MWpQQR0QpeUo9AhNkC49Y26nxBQ/nH1rta9bUU1rPw2fJ1zZEMV5oCX5AazT7J2g==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: '>=8.40.0'
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -4660,6 +4669,18 @@ snapshots:
       '@types/hast': 3.0.4
 
   '@shikijs/vscode-textmate@10.0.1': {}
+
+  '@stylistic/eslint-plugin@3.1.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      eslint: 9.20.1(jiti@1.21.7)
+      eslint-visitor-keys: 4.2.0
+      espree: 10.3.0
+      estraverse: 5.3.0
+      picomatch: 4.0.2
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   '@trysound/sax@0.2.0': {}
 
