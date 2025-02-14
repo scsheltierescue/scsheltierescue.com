@@ -2,6 +2,8 @@
 
 interface Env {
 	TOKEN_CACHE: KVNamespace;
+	NODE_VERSION: "22";
+	NPM_CONFIG_USER_AGENT: "pnpm/9.x.x";
 	PETFINDER_API_CLIENT_ID: string;
 	PETFINDER_API_SECRET: string;
 }

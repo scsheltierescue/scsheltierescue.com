@@ -1,21 +1,22 @@
 // @ts-check
 import { defineConfig, passthroughImageService } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://scsheltierescue.com',
-  integrations: [react(), tailwind(), icon(), sitemap()],
+  integrations: [react(), icon(), sitemap()],
   output: 'static',
   adapter: cloudflare(),
   image: {
     service: passthroughImageService(),
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
       sourcemap: true,
     },
