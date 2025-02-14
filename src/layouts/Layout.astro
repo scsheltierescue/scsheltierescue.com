@@ -56,57 +56,6 @@ const { title, description } = Astro.props;
   color: black !important;
 }
 /* END: Slick Theme Override */
-
-.clearfix:after,.clearfix:before {
-  content: " ";
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.row {
-  margin: 0 auto;
-  max-width: 62.5rem;
-  width: 100%;
-}
-
-.row:after,.row:before {
-  content: " ";
-  display: table;
-}
-
-.row:after {
-  clear: both;
-}
-
-.column,.columns {
-  padding-left: .9375rem;
-  padding-right: .9375rem;
-  width: 100%;
-  float: left;
-}
-
-.column+.column:last-child,.column+.columns:last-child,.columns+.column:last-child,.columns+.columns:last-child {
-  float: right;
-}
-
-.column+.column.end,.column+.columns.end,.columns+.column.end,.columns+.columns.end {
-  float: left;
-}
-
-.hide-for-portrait,.show-for-landscape {
-  display: inherit!important;
-}
-
-.hide-for-landscape,.show-for-portrait {
-  display: none!important;
-}
-
-.print-only,.show-for-print {
-  display: none!important;
-}
 </style>
 
 <style>
