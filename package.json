@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "wrangler types && astro check && astro build",
+    "build": "wrangler types && astro check && echo 'building...' && pnpm install -g corepack@latest && corepack enable && pnpm --version && astro build",
     "dev": "wrangler types && astro dev",
-    "preinstall": "echo 'preinstall test' && npx only-allow pnpm && pnpm install -g corepack@latest && corepack enable && pnpm --version",
+    "preinstall": "npx only-allow pnpm",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "wrangler types && wrangler pages dev ./dist",
