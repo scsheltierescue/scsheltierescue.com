@@ -6,7 +6,7 @@
     "astro": "astro",
     "build": "wrangler types && astro check && astro build",
     "dev": "wrangler types && astro dev",
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "echo 'preinstall test' && npx only-allow pnpm && pnpm install -g corepack@latest && corepack enable && pnpm --version",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "wrangler types && wrangler pages dev ./dist",
