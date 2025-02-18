@@ -15,7 +15,7 @@ kv_namespaces = [
 
 [env.production.vars]
 NODE_VERSION = "22"
-NPM_CONFIG_USER_AGENT = "pnpm/9.x.x"
+NPM_CONFIG_USER_AGENT = "pnpm/10.x.x"
 
 [env.preview]
 name = "scsheltierescue-com-preview"
@@ -25,4 +25,4 @@ kv_namespaces = [
 
 [env.preview.vars]
 NODE_VERSION = "22"
-NPM_CONFIG_USER_AGENT = "pnpm/9.x.x"
+NPM_CONFIG_USER_AGENT = "pnpm/10.x.x"
