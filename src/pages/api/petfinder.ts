@@ -70,7 +70,11 @@ async function getAccessToken(context: CustomAPIContext) {
       throw new Error(`Failed to get token: ${response.status} ${response.statusText} - ${errorText}`);
     }
 
-    const data = await response.json();
+    const data = await response.json() as {
+      token_type: 'Bearer';
+      expires_in: number;
+      access_token: string;
+    };
 
     console.log('getAccessToken!!!!! getAccessToken data = ', data);
 
