@@ -6,10 +6,25 @@
   "ignoreDeps": [
     "node"
   ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  }
   "packageRules": [
     {
       "matchPackageNames": ["node"],
       "enabled": false
+    },
+    {
+      "matchDepTypes": ["dependencies"],
+      "matchPackageNames": ["@cloudflare/workers-types"],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "matchPackageNames": ["!pnpm"],
+      "automerge": true
     }
   ],
   "rangeStrategy": "bump",
