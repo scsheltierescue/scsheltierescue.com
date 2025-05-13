@@ -16,7 +16,7 @@ importers:
         version: 12.5.2(@types/node@22.15.17)(astro@5.7.12(@types/node@22.15.17)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.2)(typescript@5.8.3)(yaml@2.7.1))(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1)
       '@astrojs/react':
         specifier: ^4.2.7
-        version: 4.2.7(@types/node@22.15.17)(@types/react-dom@19.1.4(@types/react@19.1.4))(@types/react@19.1.4)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(yaml@2.7.1)
+        version: 4.2.7(@types/node@22.15.17)(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(yaml@2.7.1)
       '@astrojs/sitemap':
         specifier: ^3.4.0
         version: 3.4.0
@@ -55,7 +55,7 @@ importers:
         version: 4.1.6
       yet-another-react-lightbox:
         specifier: ^3.23.1
-        version: 3.23.1(@types/react-dom@19.1.4(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 3.23.1(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@eslint/js':
         specifier: ^9.26.0
@@ -70,8 +70,8 @@ importers:
         specifier: ^19.1.4
         version: 19.1.4
       '@types/react-dom':
-        specifier: ^19.1.4
-        version: 19.1.4(@types/react@19.1.4)
+        specifier: ^19.1.5
+        version: 19.1.5(@types/react@19.1.4)
       '@types/react-slick':
         specifier: ^0.23.13
         version: 0.23.13
@@ -1085,8 +1085,8 @@ packages:
   '@types/node@22.15.17':
     resolution: {integrity: sha512-wIX2aSZL5FE+MR0JlvF87BNVrtFWf6AE6rxSE9X7OwnVvoyCQjpzSRJ+M87se/4QCkCiebQAqrJ0y6fwIyi7nw==}
 
-  '@types/react-dom@19.1.4':
-    resolution: {integrity: sha512-WxYAszDYgsMV31OVyoG4jbAgJI1Gw0Xq9V19zwhy6+hUUJlJIdZ3r/cbdmTqFv++SktQkZ/X+46yGFxp5XJBEg==}
+  '@types/react-dom@19.1.5':
+    resolution: {integrity: sha512-CMCjrWucUBZvohgZxkjd6S9h0nZxXjzus6yDfUb+xLxYM7VvjKNH1tQrE9GWLql1XoOP4/Ds3bwFqShHUYraGg==}
     peerDependencies:
       '@types/react': ^19.0.0
 
@@ -4040,10 +4040,10 @@ snapshots:
     dependencies:
       prismjs: 1.30.0
 
-  '@astrojs/react@4.2.7(@types/node@22.15.17)(@types/react-dom@19.1.4(@types/react@19.1.4))(@types/react@19.1.4)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(yaml@2.7.1)':
+  '@astrojs/react@4.2.7(@types/node@22.15.17)(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(jiti@2.4.2)(lightningcss@1.29.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(yaml@2.7.1)':
     dependencies:
       '@types/react': 19.1.4
-      '@types/react-dom': 19.1.4(@types/react@19.1.4)
+      '@types/react-dom': 19.1.5(@types/react@19.1.4)
       '@vitejs/plugin-react': 4.4.1(vite@6.3.5(@types/node@22.15.17)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.1))
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
@@ -4883,7 +4883,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/react-dom@19.1.4(@types/react@19.1.4)':
+  '@types/react-dom@19.1.5(@types/react@19.1.4)':
     dependencies:
       '@types/react': 19.1.4
 
@@ -8406,13 +8406,13 @@ snapshots:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
 
-  yet-another-react-lightbox@3.23.1(@types/react-dom@19.1.4(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  yet-another-react-lightbox@3.23.1(@types/react-dom@19.1.5(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
     optionalDependencies:
       '@types/react': 19.1.4
-      '@types/react-dom': 19.1.4(@types/react@19.1.4)
+      '@types/react-dom': 19.1.5(@types/react@19.1.4)
 
   yocto-queue@0.1.0: {}
 
