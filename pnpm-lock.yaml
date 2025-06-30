@@ -54,7 +54,7 @@ importers:
         specifier: ^4.1.10
         version: 4.1.11
       yet-another-react-lightbox:
-        specifier: ^3.23.3
+        specifier: ^3.23.4
         version: 3.23.4(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@eslint/js':
