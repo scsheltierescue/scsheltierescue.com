@@ -24,7 +24,7 @@ importers:
         specifier: ^4.20250702.0
         version: 4.20250702.0
       '@tailwindcss/vite':
-        specifier: ^4.1.10
+        specifier: ^4.1.11
         version: 4.1.11(vite@6.3.5(@types/node@22.16.0)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
       astro:
         specifier: ^5.10.1
@@ -51,7 +51,7 @@ importers:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
       tailwindcss:
-        specifier: ^4.1.10
+        specifier: ^4.1.11
         version: 4.1.11
       yet-another-react-lightbox:
         specifier: ^3.23.3
