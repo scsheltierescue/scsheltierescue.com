@@ -54,8 +54,8 @@ importers:
         specifier: ^4.1.11
         version: 4.1.11
       yet-another-react-lightbox:
-        specifier: ^3.23.3
-        version: 3.23.4(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^3.24.0
+        version: 3.24.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@eslint/js':
         specifier: ^9.30.1
@@ -3867,8 +3867,8 @@ packages:
   yauzl@2.10.0:
     resolution: {integrity: sha512-p4a9I6X6nu6IhoGmBqAcbJy1mlC4j27vEPZX9F4L4/vZT3Lyq1VkFHw/V/PUcB9Buo+DG3iHkT0x3Qya58zc3g==}
 
-  yet-another-react-lightbox@3.23.4:
-    resolution: {integrity: sha512-q9nlMyCGsizvaPnZ6gFDu3qyMcDpr+3jpQPCBMZyQr62M+xp+TfvypLZJ/UA+3VisNJrd0uDPnGzP4Ugue8DXQ==}
+  yet-another-react-lightbox@3.24.0:
+    resolution: {integrity: sha512-j3YtwDT+fdBBhxbaxfthHMehXkUj388rpn7knc934H86bJJDBEL/m9WFGdKq2ivT3GaUPF+41GplKFbAv8bOmg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@types/react': ^16 || ^17 || ^18 || ^19
@@ -8279,7 +8279,7 @@ snapshots:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
 
-  yet-another-react-lightbox@3.23.4(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  yet-another-react-lightbox@3.24.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
