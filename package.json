@@ -33,7 +33,7 @@
     "yet-another-react-lightbox": "^3.25.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.34.0",
+    "@eslint/js": "^9.35.0",
     "@stylistic/eslint-plugin": "^5.3.1",
     "@types/node": "^22.18.1",
     "@types/react": "^19.1.12",
@@ -41,7 +41,7 @@
     "@types/react-slick": "^0.23.13",
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
-    "eslint": "^9.34.0",
+    "eslint": "^9.35.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
     "pnpm": "10.15.1",
