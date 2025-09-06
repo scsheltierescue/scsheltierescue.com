@@ -49,6 +49,9 @@
     "wrangler": "^4.34.0"
   },
   "packageManager": "pnpm@10.15.1",
+  "pnpm": {
+    "trustedDependencies": ["@tailwindcss/oxide"]
+  },
   "volta": {
     "node": "22.14.0",
     "pnpm": "10.15.1"
