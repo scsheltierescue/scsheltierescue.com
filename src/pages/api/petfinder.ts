@@ -1,24 +1,16 @@
 export const prerender = false;
 
 import type { APIContext } from 'astro';
-import type { KVNamespace } from '@cloudflare/workers-types';
 
-interface EnvBindings {
-  TOKEN_CACHE: KVNamespace;
-}
-
-interface CustomAPIContext extends APIContext {
-  locals: {
-    runtime: {
-      env: EnvBindings;
-    }
-  }
-}
+// Minimal bindings we actually use, typed via Wrangler's global `KVNamespace`
+// eslint-disable-next-line no-undef
+type Bindings = { TOKEN_CACHE: KVNamespace };
+type LocalsWithBindings = { runtime: { env: Bindings } };
 
 // Helper to get token
-async function getAccessToken(context: CustomAPIContext) {
+async function getAccessToken(locals: LocalsWithBindings) {
   const TOKEN_KEY = 'petfinder_token';
-  const { TOKEN_CACHE } = context.locals.runtime.env;
+  const { TOKEN_CACHE } = locals.runtime.env;
 
   console.log('getAccessToken!!!!! TOKEN_CACHE=', TOKEN_CACHE);
 
@@ -93,7 +85,7 @@ async function getAccessToken(context: CustomAPIContext) {
   }
 }
 
-export const GET = async (context: CustomAPIContext) => {
+export const GET = async (context: APIContext) => {
   try {
     console.log('ENDPOINT!!!!! /api/petfinder start');
 
@@ -103,7 +95,7 @@ export const GET = async (context: CustomAPIContext) => {
 
     console.log('ENDPOINT!!!!! page = ', page);
 
-    const token = await getAccessToken(context);
+    const token = await getAccessToken(context.locals as unknown as LocalsWithBindings);
 
     console.log('ENDPOINT!!!!! token = ', token);
 

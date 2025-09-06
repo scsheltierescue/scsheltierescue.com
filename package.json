@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --fix",
     "preview": "wrangler types && wrangler pages dev ./dist",
     "start": "wrangler types && astro dev",
-    "type-check": "tsc --noEmit",
+    "type-check": "wrangler types && tsc --noEmit",
     "upgrade": "npx @astrojs/upgrade"
   },
   "dependencies": {
@@ -19,7 +19,6 @@
     "@astrojs/cloudflare": "^12.6.7",
     "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.5.1",
-    "@cloudflare/workers-types": "^4.20250906.0",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.5",
     "astro-icon": "^1.1.5",
