@@ -59,4 +59,4 @@ jobs:
 
       - name: Run ESLint
         run: |
-          pnpm lint -- --cache --cache-location .eslintcache --cache-strategy content
+          pnpm lint --cache --cache-location .eslintcache --cache-strategy content
