@@ -7,6 +7,15 @@ on:
     branches:
       - main
 
+# cancel older runs for the same branch/PR when a new commit arrives
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# principle of least privilege for GITHUB_TOKEN
+permissions:
+  contents: read
+
 env:
   CI: true
 
@@ -14,25 +23,40 @@ jobs:
   eslint:
     name: ESLint
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout Code
         uses: actions/checkout@v5
 
+      - name: Setup Node.js
+        id: setup-node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          check-latest: true # get latest patch
+          # auto caching is on
+
       - name: Setup pnpm
+        id: setup-pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10.15.1
           run_install: false
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: 22
-
       - name: Install Dependencies
         run: |
-          pnpm install
+          pnpm install --frozen-lockfile
+
+      - name: Cache ESLint results
+        uses: actions/cache@v4
+        with:
+          path: .eslintcache
+          key: eslint-${{ runner.os }}-node${{ steps.setup-node.outputs.node-version }}-pnpm${{ steps.setup-pnpm.outputs.pnpm_version }}-${{ hashFiles('**/pnpm-lock.yaml', '.eslintrc*', 'eslint.config.*') }}
+          restore-keys: |
+            eslint-${{ runner.os }}-node${{ steps.setup-node.outputs.node-version }}-pnpm${{ steps.setup-pnpm.outputs.pnpm_version }}-
+            eslint-${{ runner.os }}-
+            eslint-
 
       - name: Run ESLint
         run: |
-          pnpm lint
+          pnpm lint -- --cache --cache-location .eslintcache --cache-strategy content
