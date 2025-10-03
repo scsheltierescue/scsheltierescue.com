@@ -45,7 +45,7 @@
     "globals": "^16.4.0",
     "pnpm": "10.18.0",
     "typescript": "^5.9.3",
-    "wrangler": "^4.41.0"
+    "wrangler": "^4.42.0"
   },
   "packageManager": "pnpm@10.18.0",
   "volta": {
