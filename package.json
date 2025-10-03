@@ -43,13 +43,13 @@
     "eslint": "^9.36.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.4.0",
-    "pnpm": "10.17.1",
+    "pnpm": "10.18.0",
     "typescript": "^5.9.3",
     "wrangler": "^4.41.0"
   },
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.18.0",
   "volta": {
     "node": "22.14.0",
-    "pnpm": "10.17.1"
+    "pnpm": "10.18.0"
   }
 }
