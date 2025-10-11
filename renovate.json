@@ -12,18 +12,31 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": ["node"],
+      "matchPackageNames": [
+        "node"
+      ],
       "enabled": false
     },
     {
-      "matchDepTypes": ["dependencies"],
-      "matchPackageNames": ["@cloudflare/workers-types"],
+      "matchDepTypes": [
+        "dependencies"
+      ],
+      "matchPackageNames": [
+        "@cloudflare/workers-types"
+      ],
       "automerge": true
     },
     {
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["patch", "minor"],
-      "matchPackageNames": ["!pnpm"],
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "matchPackageNames": [
+        "!pnpm"
+      ],
       "automerge": true
     }
   ],
@@ -31,7 +44,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^\\.github/workflows/.*\\.yml$"],
+      "managerFilePatterns": [
+        "/^\\.github/workflows/.*\\.yml$/"
+      ],
       "matchStrings": [
         "version:\\s*(?<currentValue>[\\d\\.]+)"
       ],
