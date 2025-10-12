@@ -3,56 +3,45 @@
   "extends": [
     "config:recommended"
   ],
-  "ignoreDeps": [
-    "node"
-  ],
+  "timezone": "America/New_York",
+  "rangeStrategy": "bump",
+  "rebaseWhen": "behind-base-branch",
+  "minimumReleaseAge": "3 days",
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
   },
+  "ignoreDeps": ["node"],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "node"
-      ],
+      "matchPackageNames": ["node"],
       "enabled": false
     },
     {
-      "matchDepTypes": [
-        "dependencies"
-      ],
-      "matchPackageNames": [
-        "@cloudflare/workers-types"
-      ],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "matchPackageNames": ["!pnpm"],
       "automerge": true
     },
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "matchUpdateTypes": [
-        "patch",
-        "minor"
-      ],
-      "matchPackageNames": [
-        "!pnpm"
-      ],
-      "automerge": true
+      "matchUpdateTypes": ["major"],
+      "minimumReleaseAge": "7 days",
+      "automerge": false
+    },
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "minimumReleaseAge": "24 hours"
     }
   ],
-  "rangeStrategy": "bump",
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/^\\.github/workflows/.*\\.yml$/"
-      ],
-      "matchStrings": [
-        "version:\\s*(?<currentValue>[\\d\\.]+)"
-      ],
+      "managerFilePatterns": ["/^\\.github/workflows/.*\\.yml$/"],
+      "matchStrings": ["version:\\s*(?<currentValue>[\\d\\.]+)"],
       "depNameTemplate": "pnpm",
       "datasourceTemplate": "npm",
       "versioningTemplate": "semver"
     }
-  ]
+  ],
+  "labels": ["dependencies", "renovate"]
 }
