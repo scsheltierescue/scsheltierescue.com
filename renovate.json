@@ -1,58 +1,65 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":semanticCommits",
+    ":dependencyDashboard",
+    "group:allNonMajor"
   ],
-  "ignoreDeps": [
-    "node"
-  ],
+  "timezone": "America/New_York",
+  "rangeStrategy": "bump",
+  "rebaseWhen": "behind-base-branch",
+  "minimumReleaseAge": "3 days",
+  "requiredStatusChecks": ["ESLint"],
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "ignoreUnstable": true,
+  "rollbackPrs": true,
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
   },
+  "ignoreDeps": ["node"],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "node"
-      ],
+      "matchPackageNames": ["node"],
       "enabled": false
     },
     {
-      "matchDepTypes": [
-        "dependencies"
-      ],
-      "matchPackageNames": [
-        "@cloudflare/workers-types"
-      ],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "matchPackageNames": ["!pnpm"],
       "automerge": true
     },
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "matchUpdateTypes": [
-        "patch",
-        "minor"
-      ],
-      "matchPackageNames": [
-        "!pnpm"
-      ],
-      "automerge": true
+      "matchUpdateTypes": ["major"],
+      "minimumReleaseAge": "7 days",
+      "automerge": false
+    },
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "minimumReleaseAge": "24 hours"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "automerge": true,
+      "automergeType": "pr",
+      "ignoreTests": true
     }
   ],
-  "rangeStrategy": "bump",
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/^\\.github/workflows/.*\\.yml$/"
-      ],
-      "matchStrings": [
-        "version:\\s*(?<currentValue>[\\d\\.]+)"
-      ],
+      "managerFilePatterns": ["/^\\.github/workflows/.*\\.yml$/"],
+      "matchStrings": ["version:\\s*(?<currentValue>[\\d\\.]+)"],
       "depNameTemplate": "pnpm",
       "datasourceTemplate": "npm",
       "versioningTemplate": "semver"
     }
-  ]
+  ],
+  "labels": ["dependencies", "renovate"],
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps"
 }
