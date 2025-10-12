@@ -10,6 +10,7 @@
   "rangeStrategy": "bump",
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
+  "requiredStatusChecks": ["ESLint"],
   "schedule": ["before 6am on monday"],
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
