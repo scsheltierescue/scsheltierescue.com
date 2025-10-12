@@ -1,12 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":semanticCommits",
+    ":dependencyDashboard",
+    "group:allNonMajor"
   ],
   "timezone": "America/New_York",
   "rangeStrategy": "bump",
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "ignoreUnstable": true,
+  "rollbackPrs": true,
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
@@ -31,6 +39,13 @@
     {
       "matchPackagePatterns": ["^@types/"],
       "minimumReleaseAge": "24 hours"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "automerge": true,
+      "automergeType": "pr",
+      "ignoreTests": true
     }
   ],
   "customManagers": [
@@ -43,5 +58,7 @@
       "versioningTemplate": "semver"
     }
   ],
-  "labels": ["dependencies", "renovate"]
+  "labels": ["dependencies", "renovate"],
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps"
 }
