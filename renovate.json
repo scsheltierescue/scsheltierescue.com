@@ -21,6 +21,14 @@
     "enabled": true,
     "automerge": true
   },
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": [
+      "dependencies",
+      "security"
+    ],
+    "prCreation": "immediate"
+  },
   "ignoreDeps": [
     "node"
   ],
