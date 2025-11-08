@@ -1,6 +1,9 @@
 name = "scsheltierescue-com"
 pages_build_output_dir = "./dist"
-compatibility_flags = [ "nodejs_compat" ]
+compatibility_flags = [
+  "nodejs_compat",
+  "disable_nodejs_process_v2"
+]
 compatibility_date = "2025-11-01"
 upload_source_maps = true
 kv_namespaces = [
