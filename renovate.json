@@ -57,8 +57,18 @@
       "automerge": false
     },
     {
-      "minimumReleaseAge": "24 hours",
-      "matchPackageNames": ["/^@types\\//"]
+      "matchPackageNames": ["/^@types\\//"],
+      "minimumReleaseAge": "24 hours"
+    },
+    {
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["@types/node"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     },
     {
       "matchManagers": ["github-actions"],
