@@ -6,6 +6,7 @@
     "astro": "astro",
     "build": "wrangler types && astro check && astro build",
     "dev": "wrangler types && astro dev",
+    "dev:host": "wrangler types && astro dev --host",
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
