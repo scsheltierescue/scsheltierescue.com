@@ -34,41 +34,34 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "node"
-      ],
+      "matchDepNames": ["pnpm"],
+      "matchManagers": ["npm", "github-actions", "custom.regex"],
+      "groupName": "pnpm version (everywhere)",
+      "labels": ["dependencies", "renovate", "pnpm"],
+      "automerge": false,
+      "rangeStrategy": "replace"
+    },
+    {
+      "matchPackageNames": ["node"],
       "enabled": false
     },
     {
-      "matchDepTypes": [
-        "devDependencies"
-      ],
-      "matchUpdateTypes": [
-        "patch",
-        "minor"
-      ],
-      "matchPackageNames": [
-        "!pnpm"
-      ],
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "matchPackageNames": ["!pnpm"],
       "automerge": true
     },
     {
-      "matchUpdateTypes": [
-        "major"
-      ],
+      "matchUpdateTypes": ["major"],
       "minimumReleaseAge": "7 days",
       "automerge": false
     },
     {
       "minimumReleaseAge": "24 hours",
-      "matchPackageNames": [
-        "/^@types//"
-      ]
+      "matchPackageNames": ["/^@types\\//"]
     },
     {
-      "matchManagers": [
-        "github-actions"
-      ],
+      "matchManagers": ["github-actions"],
       "groupName": "github-actions",
       "automerge": true,
       "automergeType": "pr",
@@ -78,11 +71,19 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": [
-        "/^\\.github/workflows/.*\\.yml$/"
-      ],
+      "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
       "matchStrings": [
         "version:\\s*(?<currentValue>[\\d\\.]+)"
+      ],
+      "depNameTemplate": "pnpm",
+      "datasourceTemplate": "npm",
+      "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^wrangler\\.toml$/"],
+      "matchStrings": [
+        "PNPM_VERSION\\s*=\\s*\"(?<currentValue>\\d+\\.\\d+\\.\\d+)\""
       ],
       "depNameTemplate": "pnpm",
       "datasourceTemplate": "npm",
