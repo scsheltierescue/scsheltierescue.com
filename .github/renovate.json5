@@ -10,41 +10,28 @@
   "rangeStrategy": "bump",
   "rebaseWhen": "behind-base-branch",
   "minimumReleaseAge": "3 days",
-  "schedule": [
-    "before 6am on monday"
-  ],
+  "schedule": ["before 6am on monday"],
   "prConcurrentLimit": 5,
   "prHourlyLimit": 2,
   "ignoreUnstable": true,
   "rollbackPrs": true,
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
-  },
+  "lockFileMaintenance": {"enabled": true, "automerge": true},
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": [
-      "dependencies",
-      "security"
-    ],
+    "labels": ["dependencies", "security"],
     "prCreation": "immediate"
   },
-  "ignoreDeps": [
-    "node"
-  ],
+  "ignoreDeps": ["node"],
   "packageRules": [
     {
-      "matchDepNames": ["pnpm"],
+      "matchPackageNames": ["pnpm"],
       "matchManagers": ["npm", "github-actions", "custom.regex"],
       "groupName": "pnpm version (everywhere)",
       "labels": ["dependencies", "renovate", "pnpm"],
       "automerge": false,
       "rangeStrategy": "replace"
     },
-    {
-      "matchPackageNames": ["node"],
-      "enabled": false
-    },
+    {"matchPackageNames": ["node"], "enabled": false},
     {
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["patch", "minor"],
@@ -56,10 +43,7 @@
       "minimumReleaseAge": "7 days",
       "automerge": false
     },
-    {
-      "matchPackageNames": ["/^@types\\//"],
-      "minimumReleaseAge": "24 hours"
-    },
+    {"minimumReleaseAge": "24 hours", "matchPackageNames": ["/^@types//"]},
     {
       "matchPackageNames": ["@types/node"],
       "matchUpdateTypes": ["patch", "minor"],
@@ -75,16 +59,15 @@
       "groupName": "github-actions",
       "automerge": true,
       "automergeType": "pr",
-      "ignoreTests": true
+      "ignoreTests": true,
+      "matchPackageNames": ["!pnpm"]
     }
   ],
   "customManagers": [
     {
       "customType": "regex",
       "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
-      "matchStrings": [
-        "version:\\s*(?<currentValue>[\\d\\.]+)"
-      ],
+      "matchStrings": ["version:\\s*(?<currentValue>[\\d\\.]+)"],
       "depNameTemplate": "pnpm",
       "datasourceTemplate": "npm",
       "versioningTemplate": "semver"
@@ -100,10 +83,7 @@
       "versioningTemplate": "semver"
     }
   ],
-  "labels": [
-    "dependencies",
-    "renovate"
-  ],
+  "labels": ["dependencies", "renovate"],
   "semanticCommitType": "chore",
   "semanticCommitScope": "deps"
 }
