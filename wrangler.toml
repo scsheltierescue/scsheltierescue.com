@@ -18,7 +18,7 @@ kv_namespaces = [
 
 [env.production.vars]
 NODE_VERSION = "22.20.0"
-PNPM_VERSION = "10.23.0"
+PNPM_VERSION = "10.24.0"
 SKIP_DEPENDENCY_INSTALL = "1"
 
 [env.preview]
@@ -29,5 +29,5 @@ kv_namespaces = [
 
 [env.preview.vars]
 NODE_VERSION = "22.20.0"
-PNPM_VERSION = "10.23.0"
+PNPM_VERSION = "10.24.0"
 SKIP_DEPENDENCY_INSTALL = "1"
