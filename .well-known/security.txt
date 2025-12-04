@@ -1,0 +1,4 @@
+Contact: mailto:adopt@scsheltierescue.com
+Preferred-Languages: en
+Canonical: https://scsheltierescue.com/.well-known/security.txt
+Expires: 2026-01-01T00:00:00Z
