@@ -4,7 +4,7 @@ export const prerender = false;
 import 'src/styles/global.css';
 
 import Layout from '@layouts/Layout.astro';
-import AdoptableDogs from '@components/AdoptableDogs';
+// import AdoptableDogs from '@components/AdoptableDogs';
 
 import { Icon } from 'astro-icon/components';
 ---
@@ -20,9 +20,48 @@ import { Icon } from 'astro-icon/components';
         <p>You can view our available dogs below or on our <a href="https://www.petfinder.com/pet-search?animal_type=&pet_breed=&pet_age=&pet_size=&specialNeeds=&declawedPets=&children=&status=&shelter_pet_id=&internal=&contact=&name=&shelter_id=SC92&sort=" target="_blank">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please complete and submit our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> form. If you have any questions feel free to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
 
         <div id="pets" class="clearfix">
-          <AdoptableDogs
+          <!--
+            Custom <AdoptableDogs /> component is currently disabled due to Petfinder API decommissioning as of the 2025-11-01 Notice to Users:
+
+            ```
+            Dear Petfinder Community,
+            As part of our ongoing efforts to improve and modernize the Petfinder platform, we’ve decided to decommission the Petfinder public API. This change supports a more streamlined, secure, and scalable foundation for future innovation.
+
+            The Petfinder API will officially stop working on Dece‍mber 2, 20‍25. Until that date, your current integrations will function as usual.
+
+            After this date, we encourage you to use our Custom Pet List Widget, which provides a simple and flexible way to display adoptable pets directly on your website. It’s easy to set up and doesn’t require coding or API access. You can learn more here: [Custom Pet List Widget Transition Guide](https://click.sfmc.petfinder.com/?qs=2040f8b2fe00898a725ca6dbb41199032b265084d305601c7b87e26ad3d2d4258d8b965375c504d9e959b454628f78435fc7f0b4876d95766106274d27bd28a6).
+
+            Please wait until after December 2nd to switch over to the Custom Pet List Widget, as we’re actively working on final updates. Stay tuned—updated widget and setup guidance will be available soon.
+
+            If you need a more advanced solution, please contact our Member Success team to discuss direct integration options. Reach out to us at [help@petfinder.com](https://click.sfmc.petfinder.com/?qs=2040f8b2fe00898a1390703f2a794923acb4938020b8779149186469fe04aba25724d6982a1487e1283dc9190f3194a1badc2b151f9cde546dd3f371bdee6bd3).
+
+            Thank you for being part of the Petfinder community and for helping pets find loving homes!
+
+            ~ Brent B., Member Success Technical Lead
+            ```
+
+            SEE:
+              https://help.petfinder.com/s/article/Custom-Pet-List-Widget-Transition-Guide
+              https://www.petfinder.com/tools-widgets/custom-pet-list/
+          -->
+          <!-- <AdoptableDogs
             client:only="react"
-          />
+          /> -->
+          <!-- Pet List Widget - Start -->
+          <script src="https://www.petfinder.com/pet-scroller.bundle.js"></script>
+          <pet-scroller
+            s3Url="https://dbw3zep4prcju.cloudfront.net/"
+            apiBase="https://psl.petfinder.com/graphql"
+            organization='["d6f7beda-4e29-45df-b0da-93522ec89617"]'
+            status="adoptable"
+            petfinderUrl="https://www.petfinder.com/"
+            hideBreed="false"
+            limit="48"
+            petListTitle="">
+          </pet-scroller>
+          <!-- Pet List Widget - End -->
+
+          <div class="mb-5"></div>
         </div>
       </main>
     </div>
