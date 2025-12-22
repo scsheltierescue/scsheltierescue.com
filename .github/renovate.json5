@@ -43,7 +43,7 @@
       "minimumReleaseAge": "7 days",
       "automerge": false
     },
-    {"minimumReleaseAge": "24 hours", "matchPackageNames": ["/^@types//"]},
+    {"matchPackagePatterns": ["^@types/"], "minimumReleaseAge": "24 hours"},
     {
       "matchPackageNames": ["@types/node"],
       "matchUpdateTypes": ["patch", "minor"],
@@ -56,11 +56,19 @@
     },
     {
       "matchManagers": ["github-actions"],
-      "groupName": "github-actions",
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "github-actions (non-major)",
+      "matchPackageNames": ["!pnpm"],
       "automerge": true,
       "automergeType": "pr",
-      "ignoreTests": true,
-      "matchPackageNames": ["!pnpm"]
+      "ignoreTests": true
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "github-actions (major)",
+      "matchPackageNames": ["!pnpm"],
+      "automerge": false
     }
   ],
   "customManagers": [
