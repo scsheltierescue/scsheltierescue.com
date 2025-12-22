@@ -43,7 +43,7 @@
       "minimumReleaseAge": "7 days",
       "automerge": false
     },
-    {"matchPackagePatterns": ["^@types/"], "minimumReleaseAge": "24 hours"},
+    {"matchPackageNames": ["/^@types//"], "minimumReleaseAge": "24 hours"},
     {
       "matchPackageNames": ["@types/node"],
       "matchUpdateTypes": ["patch", "minor"],
