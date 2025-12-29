@@ -88,8 +88,8 @@ importers:
         specifier: ^16.5.0
         version: 16.5.0
       pnpm:
-        specifier: 10.26.1
-        version: 10.26.1
+        specifier: 10.26.2
+        version: 10.26.2
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -3134,8 +3134,8 @@ packages:
   pkg-types@2.3.0:
     resolution: {integrity: sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==}
 
-  pnpm@10.26.1:
-    resolution: {integrity: sha512-ZkB0q8Nn0skyT9wYA3CXzgqPEmA0Fg9wmSjp6fldmHFDRwROXDFk1lvV2mxZxr42KxB1Rikqjuy3mZGW5c5Y+g==}
+  pnpm@10.26.2:
+    resolution: {integrity: sha512-DjCP8gBfx0EDZvFU9iX2YxqysWsdLnAjhETdaunWMKhILZKkURRN68SSQWiW7Rb3sRSobsaLhASyRDhp5o/9pg==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -3880,6 +3880,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
@@ -3941,6 +3942,7 @@ packages:
   wrangler@4.56.0:
     resolution: {integrity: sha512-Nqi8duQeRbA+31QrD6QlWHW3IZVnuuRxMy7DEg46deUzywivmaRV/euBN5KKXDPtA24VyhYsK7I0tkb7P5DM2w==}
     engines: {node: '>=20.0.0'}
+    deprecated: Version 4.55.0 and 4.56.0 can incorrectly automatically delegate 'wrangler deploy' to 'opennextjs-cloudflare'. Use an older or newer version.
     hasBin: true
     peerDependencies:
       '@cloudflare/workers-types': ^4.20251217.0
@@ -7473,7 +7475,7 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  pnpm@10.26.1: {}
+  pnpm@10.26.2: {}
 
   possible-typed-array-names@1.1.0: {}
 
