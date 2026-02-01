@@ -17,7 +17,7 @@
   "rollbackPrs": true,
   "lockFileMaintenance": {"enabled": true, "automerge": true},
   "vulnerabilityAlerts": {
-    "enabled": true,
+    "enabled": false,
     "labels": ["dependencies", "security"],
     "prCreation": "immediate"
   },
