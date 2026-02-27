@@ -88,8 +88,8 @@ importers:
         specifier: ^17.2.0
         version: 17.3.0
       pnpm:
-        specifier: 10.28.2
-        version: 10.28.2
+        specifier: 10.30.2
+        version: 10.30.2
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -3186,8 +3186,8 @@ packages:
   pkg-types@2.3.0:
     resolution: {integrity: sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==}
 
-  pnpm@10.28.2:
-    resolution: {integrity: sha512-QYcvA3rSL3NI47Heu69+hnz9RI8nJtnPdMCPGVB8MdLI56EVJbmD/rwt9kC1Q43uYCPrsfhO1DzC1lTSvDJiZA==}
+  pnpm@10.30.2:
+    resolution: {integrity: sha512-Ns3HB+e3lAqYjJwez4jQhPhRS1w/CF9TouJEwpIdOyVFvCDdTr4fwkX+7EY7spiuzqemPtH3aAuHfcY3nY0MtA==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -3563,7 +3563,7 @@ packages:
   tar@7.5.3:
     resolution: {integrity: sha512-ENg5JUHUm2rDD7IvKNFGzyElLXNjachNLp6RaGf4+JOgxXHkqA+gq81ZAMCUmtMtqBsoU62lcp6S27g1LCYGGQ==}
     engines: {node: '>=18'}
-    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   tiny-inflate@1.0.3:
     resolution: {integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==}
@@ -7501,7 +7501,7 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  pnpm@10.28.2: {}
+  pnpm@10.30.2: {}
 
   possible-typed-array-names@1.1.0: {}
 
