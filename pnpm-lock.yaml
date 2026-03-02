@@ -88,8 +88,8 @@ importers:
         specifier: ^17.3.0
         version: 17.3.0
       pnpm:
-        specifier: 10.30.2
-        version: 10.30.2
+        specifier: 10.30.3
+        version: 10.30.3
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -3195,8 +3195,8 @@ packages:
   pkg-types@2.3.0:
     resolution: {integrity: sha512-SIqCzDRg0s9npO5XQ3tNZioRY1uK06lA41ynBC1YmFTmnY6FjUjVt6s4LoADmwoig1qqD0oK8h1p/8mlMx8Oig==}
 
-  pnpm@10.30.2:
-    resolution: {integrity: sha512-Ns3HB+e3lAqYjJwez4jQhPhRS1w/CF9TouJEwpIdOyVFvCDdTr4fwkX+7EY7spiuzqemPtH3aAuHfcY3nY0MtA==}
+  pnpm@10.30.3:
+    resolution: {integrity: sha512-yWHR4KLY41TsqlFmuCJRZmi39Ey1vZUSLVkN2Bki9gb1RzttI+xKW+Bef80Y6EiNR9l4u+mBhy8RRdBumnQAFw==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -7514,7 +7514,7 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  pnpm@10.30.2: {}
+  pnpm@10.30.3: {}
 
   possible-typed-array-names@1.1.0: {}
 
