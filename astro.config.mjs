@@ -25,7 +25,4 @@ export default defineConfig({
       'process.env.PETFINDER_API_SECRET': JSON.stringify(process.env.PETFINDER_API_SECRET),
     },
   },
-  experimental: {
-    preserveScriptOrder: true,
-  },
 });
