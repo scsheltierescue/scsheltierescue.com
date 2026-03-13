@@ -5,12 +5,12 @@
     "baseUrl": ".",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "types": ["astro/client", "./worker-configuration.d.ts", "node"],
+    "types": ["astro/client", "node"],
     "paths": {
       "@components/*": ["src/components/*"],
       "@images/*": ["src/images/*"],
       "@layouts/*": ["src/layouts/*"]
     }
   },
-  "include": ["src", "worker-configuration.d.ts"]
+  "include": ["src"]
 }

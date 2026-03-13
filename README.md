@@ -52,7 +52,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## 🚢 Deployment
 
-Automatic deployment using [Cloudflare](https://www.cloudflare.com/) Workers & Pages
+Automatic deployment using [Cloudflare](https://www.cloudflare.com/) Pages
 
 Every push to `main` builds and deploys the site automatically.
 
