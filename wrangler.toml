@@ -1,4 +1,5 @@
 name = "scsheltierescue-com"
+pages_build_output_dir = "./dist"
 compatibility_flags = [
   "nodejs_compat",
   "disable_nodejs_process_v2"
@@ -9,9 +10,9 @@ kv_namespaces = [
   { binding = "TOKEN_CACHE", id = "default-kv-namespace-id" }
 ]
 
-[assets]
-binding = "ASSETS"
-directory = "./dist"
+# [assets]
+# binding = "ASSETS"
+# directory = "./dist"
 
 [env.production]
 name = "scsheltierescue-com"

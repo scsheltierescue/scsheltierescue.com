@@ -12,6 +12,10 @@ export default defineConfig({
   integrations: [react(), icon(), sitemap()],
   output: 'static',
   adapter: cloudflare(),
+  build: {
+    client: './',
+    server: './_worker.js',
+  },
   image: {
     service: passthroughImageService(),
   },
