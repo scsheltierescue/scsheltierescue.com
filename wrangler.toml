@@ -6,7 +6,8 @@ compatibility_flags = [
 compatibility_date = "2025-11-01"
 upload_source_maps = true
 kv_namespaces = [
-  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
+  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" },
+  { binding = "SESSION", id = "4b457c6b082e45e08d4c24223c631fc3" }
 ]
 
 [assets]
@@ -16,7 +17,8 @@ directory = "./dist"
 [env.production]
 name = "scsheltierescue-com-v2"
 kv_namespaces = [
-  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
+  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" },
+  { binding = "SESSION", id = "4b457c6b082e45e08d4c24223c631fc3" }
 ]
 
 [env.production.vars]
@@ -27,7 +29,8 @@ SKIP_DEPENDENCY_INSTALL = "1"
 [env.preview]
 name = "scsheltierescue-com-v2-preview"
 kv_namespaces = [
-  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
+  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" },
+  { binding = "SESSION", id = "4b457c6b082e45e08d4c24223c631fc3" }
 ]
 
 [env.preview.vars]
