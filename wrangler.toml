@@ -1,4 +1,4 @@
-name = "scsheltierescue-com"
+name = "scsheltierescue-com-v2"
 # pages_build_output_dir = "./dist"
 compatibility_flags = [
   "nodejs_compat",
@@ -15,7 +15,7 @@ binding = "ASSETS"
 directory = "./dist"
 
 [env.production]
-name = "scsheltierescue-com"
+name = "scsheltierescue-com-v2"
 kv_namespaces = [
   { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
 ]
@@ -26,7 +26,7 @@ PNPM_VERSION = "10.30.3"
 SKIP_DEPENDENCY_INSTALL = "1"
 
 [env.preview]
-name = "scsheltierescue-com-preview"
+name = "scsheltierescue-com-v2-preview"
 kv_namespaces = [
   { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
 ]
