@@ -1,5 +1,4 @@
 name = "scsheltierescue-com-v2"
-# pages_build_output_dir = "./dist"
 compatibility_flags = [
   "nodejs_compat",
   "disable_nodejs_process_v2"
@@ -7,7 +6,7 @@ compatibility_flags = [
 compatibility_date = "2025-11-01"
 upload_source_maps = true
 kv_namespaces = [
-  { binding = "TOKEN_CACHE", id = "default-kv-namespace-id" }
+  { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" }
 ]
 
 [assets]
