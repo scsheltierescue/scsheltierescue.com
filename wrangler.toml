@@ -1,4 +1,5 @@
-name = "scsheltierescue-com-v2"
+name = "scsheltierescue-com"
+pages_build_output_dir = "./dist"
 compatibility_flags = [
   "nodejs_compat",
   "disable_nodejs_process_v2"
@@ -10,12 +11,12 @@ kv_namespaces = [
   { binding = "SESSION", id = "4b457c6b082e45e08d4c24223c631fc3" }
 ]
 
-[assets]
-binding = "ASSETS"
-directory = "./dist"
+# [assets]
+# binding = "ASSETS"
+# directory = "./dist"
 
 [env.production]
-name = "scsheltierescue-com-v2"
+name = "scsheltierescue-com"
 kv_namespaces = [
   { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" },
   { binding = "SESSION", id = "4b457c6b082e45e08d4c24223c631fc3" }
@@ -27,7 +28,7 @@ PNPM_VERSION = "10.30.3"
 SKIP_DEPENDENCY_INSTALL = "1"
 
 [env.preview]
-name = "scsheltierescue-com-v2-preview"
+name = "scsheltierescue-com-preview"
 kv_namespaces = [
   { binding = "TOKEN_CACHE", id = "30755a9246c24a76b024cadfc3576e47" },
   { binding = "SESSION", id = "4b457c6b082e45e08d4c24223c631fc3" }
