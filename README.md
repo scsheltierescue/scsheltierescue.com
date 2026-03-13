@@ -1,10 +1,17 @@
 <h1 align="center">
-  <img src="https://cdn.rawgit.com/scsheltierescue/scsheltierescue.com/main/public/favicon-512x512.png" alt="SCSR Logo" width="250" height="250">
+  <img src="https://raw.githubusercontent.com/scsheltierescue/scsheltierescue.com/main/public/favicon-512x512.png" alt="SCSR Logo" width="250" height="250">
   <br>
   <a href="https://scsheltierescue.com/">South Carolina Sheltie Rescue</a>
 </h1>
 
-SC Sheltie Rescue is a non-profit volunteer group dedicated to helping Shetland Sheepdogs in Columbia, SC and the surrounding areas.
+South Carolina Sheltie Rescue is a volunteer-run non-profit dedicated to rescuing and rehoming Shetland Sheepdogs across South Carolina.
+
+## 🧰 Tech Stack
+
+- **Astro**
+- **React**
+- **TailwindCSS**
+- **Cloudflare Pages**
 
 ## 🚀 Project Structure
 
@@ -45,4 +52,10 @@ All commands are run from the root of the project, from a terminal:
 
 ## 🚢 Deployment
 
-Automatic deployment using [Cloudflare](https://www.cloudflare.com/) Workers & Pages
+Automatic deployment using [Cloudflare](https://www.cloudflare.com/) Pages
+
+Every push to `main` builds and deploys the site automatically.
+
+## 🤝 Contributing
+
+See **CONTRIBUTING.md** for development setup and maintenance instructions.

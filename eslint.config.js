@@ -14,7 +14,6 @@ export default [
       'node_modules/',
       'dist/',
       'build/',
-      'worker-configuration.d.ts',
     ],
   },
 
@@ -63,6 +62,8 @@ export default [
     },
     rules: {
       ...pluginReact.configs.recommended.rules,
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
     },
   },
 
