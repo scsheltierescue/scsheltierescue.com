@@ -82,8 +82,8 @@ importers:
         specifier: ^17.5.0
         version: 17.6.0
       pnpm:
-        specifier: 10.33.2
-        version: 10.33.2
+        specifier: 10.33.4
+        version: 10.33.4
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1087,6 +1087,7 @@ packages:
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
+    deprecated: Potential CWE-502 - Update to 1.3.1 or higher
 
   '@vitejs/plugin-react@5.2.0':
     resolution: {integrity: sha512-YmKkfhOAi3wsB1PhJq5Scj3GXMn3WvtQ/JC0xoopuHoXSdmtdStOpFrYaT1kie2YgFBcIe64ROzMYRjCrYOdYw==}
@@ -2572,8 +2573,8 @@ packages:
   pkg-types@2.3.1:
     resolution: {integrity: sha512-y+ichcgc2LrADuhLNAx8DFjVfgz91pRxfZdI3UDhxHvcVEZsenLO+7XaU5vOp0u/7V/wZ+plyuQxtrDlZJ+yeg==}
 
-  pnpm@10.33.2:
-    resolution: {integrity: sha512-qQ+vb+6rca1sblf5Tg/hoS9dzCLNdU20CulZPraj4LaxLjVAIYuzeuCDQEsfLObbKkEh6XmCm0r/lLmfSdoc+A==}
+  pnpm@10.33.4:
+    resolution: {integrity: sha512-HGezs1my1AgRm6HtKJ80uPw8aHNBK+xv0mT73IJInlEPy+y5zp0i2ufzt2Jp2EQQRgFL3KU7mXnNelYa1jG4AA==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -6312,7 +6313,7 @@ snapshots:
       exsolve: 1.0.8
       pathe: 2.0.3
 
-  pnpm@10.33.2: {}
+  pnpm@10.33.4: {}
 
   possible-typed-array-names@1.1.0: {}
 
