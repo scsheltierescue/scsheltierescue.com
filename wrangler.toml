@@ -1,0 +1,7 @@
+name = "scsheltierescue-com"
+pages_build_output_dir = "./dist"
+
+[vars]
+NODE_VERSION = "22.22.3"
+PNPM_VERSION = "11.2.2"
+SKIP_DEPENDENCY_INSTALL = "1"

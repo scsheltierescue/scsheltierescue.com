@@ -80,6 +80,16 @@
       "datasourceTemplate": "npm",
       "versioningTemplate": "semver"
     },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^wrangler\\.toml$/"],
+      "matchStrings": [
+        "PNPM_VERSION\\s*=\\s*\"(?<currentValue>[\\d\\.]+)\""
+      ],
+      "depNameTemplate": "pnpm",
+      "datasourceTemplate": "npm",
+      "versioningTemplate": "semver"
+    }
   ],
   "labels": ["dependencies", "renovate"],
   "semanticCommitType": "chore",
