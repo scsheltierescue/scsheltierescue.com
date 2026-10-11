@@ -2,14 +2,14 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
-    "baseUrl": ".",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "types": ["astro/client", "node"],
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@images/*": ["src/images/*"],
-      "@layouts/*": ["src/layouts/*"]
+      "src/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@images/*": ["./src/images/*"],
+      "@layouts/*": ["./src/layouts/*"]
     }
   },
   "include": ["src"]

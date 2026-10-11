@@ -20,8 +20,8 @@ env:
   CI: true
 
 jobs:
-  eslint:
-    name: ESLint
+  validation:
+    name: Project Validation
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -40,7 +40,7 @@ jobs:
         with:
           node-version: 22
           check-latest: true # get latest patch
-          # auto caching is on
+          cache: pnpm
 
       - name: Install Dependencies
         run: |
@@ -59,3 +59,15 @@ jobs:
       - name: Run ESLint
         run: |
           pnpm lint --cache --cache-location .eslintcache
+
+      - name: Run TypeScript Checks
+        run: pnpm type-check
+
+      - name: Build Site
+        run: pnpm build
+
+      # Keep the current advisory backlog visible without blocking dependency
+      # upgrades. Make this step blocking once the Astro 7 upgrade lands.
+      - name: Audit Dependencies
+        continue-on-error: true
+        run: pnpm audit --audit-level high
