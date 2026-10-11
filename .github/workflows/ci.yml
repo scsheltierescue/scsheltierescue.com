@@ -66,8 +66,5 @@ jobs:
       - name: Build Site
         run: pnpm build
 
-      # Keep the current advisory backlog visible without blocking dependency
-      # upgrades. Make this step blocking once the Astro 7 upgrade lands.
       - name: Audit Dependencies
-        continue-on-error: true
-        run: pnpm audit --audit-level high
+        run: pnpm audit --audit-level critical

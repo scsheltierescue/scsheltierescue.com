@@ -18,10 +18,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/react": "^5.0.7",
+    "@astrojs/react": "^7.0.1",
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^6.4.8",
+    "astro": "^7.3.8",
     "astro-icon": "^1.2.0",
     "eslint-plugin-astro": "^1.7.0",
     "react": "^19.3.0",
