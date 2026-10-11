@@ -26,7 +26,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -36,7 +36,7 @@ jobs:
 
       - name: Setup Node.js
         id: setup-node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22
           check-latest: true # get latest patch
@@ -47,7 +47,7 @@ jobs:
           pnpm install --frozen-lockfile
 
       - name: Cache ESLint results
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: .eslintcache
           key: eslint-${{ runner.os }}-node${{ steps.setup-node.outputs.node-version }}-${{ hashFiles('**/pnpm-lock.yaml', '.eslintrc*', 'eslint.config.*') }}
