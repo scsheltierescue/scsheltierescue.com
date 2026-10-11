@@ -15,25 +15,30 @@ South Carolina Sheltie Rescue is a volunteer-run non-profit dedicated to rescuin
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+The main project directories and configuration files are:
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   ├── _headers
+│   └── static site assets
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   ├── icons/
+│   ├── images/
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── pages/
+│   └── styles/
+├── astro.config.mjs
+├── eslint.config.js
+├── package.json
+├── tsconfig.json
+└── wrangler.toml
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Shared Astro and React components live in `src/components/`.
 
 Any static assets, like images, can be placed in the `public/` directory.
 
@@ -43,12 +48,15 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                    | Action                                           |
 | :------------------------- | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm run dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm run build`           | Build your production site to `./dist/`          |
-| `pnpm run preview`         | Preview your build locally, before deploying     |
-| `pnpm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm run astro -- --help` | Get help using the Astro CLI                     |
+| `pnpm install`             | Installs dependencies                                  |
+| `pnpm dev`                 | Starts the local development server at `localhost:4321` |
+| `pnpm check`               | Runs linting, TypeScript checks, and a production build |
+| `pnpm lint`                | Runs ESLint                                             |
+| `pnpm type-check`          | Runs TypeScript without emitting files                  |
+| `pnpm build`               | Checks and builds the production site into `./dist/`    |
+| `pnpm preview`             | Previews the production build locally                   |
+| `pnpm audit`               | Checks dependencies for known vulnerabilities           |
+| `pnpm astro -- --help`     | Displays Astro CLI help                                  |
 
 ## 🚢 Deployment
 

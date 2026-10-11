@@ -33,22 +33,18 @@ http://localhost:4321
 
 ---
 
-# Linting
+# Project Validation
 
-Run ESLint:
-
-```
-pnpm lint
-```
-
----
-
-# Production Build
-
-To verify the production build:
+Run the complete local validation suite before opening a pull request:
 
 ```
-pnpm build
+pnpm check
+```
+
+This runs ESLint, TypeScript, Astro diagnostics, and the production build. Check dependencies for known vulnerabilities separately:
+
+```
+pnpm audit
 ```
 
 Preview the build:
@@ -77,8 +73,8 @@ After upgrading always run:
 
 ```
 pnpm install
-pnpm build
-pnpm lint
+pnpm check
+pnpm audit
 ```
 
 to verify everything works.
@@ -98,8 +94,8 @@ pnpm update
 Then verify:
 
 ```
-pnpm build
-pnpm lint
+pnpm check
+pnpm audit
 ```
 
 ---
@@ -108,7 +104,7 @@ pnpm lint
 
 1. Create a branch
 2. Make your changes
-3. Verify the build locally
+3. Run `pnpm check` and `pnpm audit`
 4. Open a PR
 
 Example commit messages:
