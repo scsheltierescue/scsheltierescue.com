@@ -1,4 +1,4 @@
-import Slider from 'react-slick';
+import ReactSlick from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -15,6 +15,12 @@ export interface Item {
 interface ReactSlickSliderProps {
   items: Item[];
 }
+
+// Vite 8 preserves react-slick's CommonJS default wrapper in browser builds.
+// Unwrap it while retaining compatibility with environments that interop it.
+const Slider = (
+  ReactSlick as unknown as { default?: typeof ReactSlick }
+).default ?? ReactSlick;
 
 export default function ReactSlickSlider({ items }: ReactSlickSliderProps) {
   const settings: Settings = {
