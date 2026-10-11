@@ -3,7 +3,7 @@ import pluginJs from '@eslint/js';
 import tsEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import pluginAstro from 'eslint-plugin-astro';
-import pluginReact from 'eslint-plugin-react';
+import pluginReact from 'eslint-plugin-react-x';
 import stylistic from '@stylistic/eslint-plugin';
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -44,11 +44,6 @@ export default [
   // React-specific rules
   {
     files: ['**/*.jsx', '**/*.tsx'], // Apply React rules only to React files
-    settings: {
-      react: {
-        version: 'detect', // Automatically detect React version
-      },
-    },
     languageOptions: {
       parser: tsParser,
       parserOptions: {
@@ -58,83 +53,82 @@ export default [
       },
     },
     plugins: {
-      react: pluginReact,
+      'react-x': pluginReact,
     },
     rules: {
-      ...pluginReact.configs.recommended.rules,
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-uses-react': 'off',
+      ...pluginReact.configs['recommended-typescript'].rules,
     },
   },
 
   // Astro-specific rules
-  ...pluginAstro.configs.recommended,
+  ...pluginAstro.configs['flat/recommended'],
 
   // Stylistic plugin rules
   {
+    files: ['**/*.{js,mjs,cjs,jsx,ts,tsx}'],
     plugins: {
       '@stylistic': stylistic,
     },
     // extends: ['plugin:@stylistic/recommended'], // Extend recommended rules from the stylistic plugin
     rules: {
       // Enforces consistent spacing inside array brackets
-      'array-bracket-spacing': ['error', 'never'],
+      '@stylistic/array-bracket-spacing': ['error', 'never'],
 
       // Requires parentheses around arrow function parameters regardless of arity
-      'arrow-parens': ['error', 'always'],
+      '@stylistic/arrow-parens': ['error', 'always'],
 
       // Normalize the style of spacing before/after an arrow function’s arrow (`=>`)
       //   `before`: there should be one or more spaces before the arrow (`=>`)
       //   `after`: there should be one or more spaces after the arrow (`=>`)
-      'arrow-spacing': ['error', {
+      '@stylistic/arrow-spacing': ['error', {
         before: true,
         after: true,
       }],
 
       // Enforce spaces inside of blocks after opening block and before closing block
       //    `always`: requires one or more spaces (default)
-      'block-spacing': 'error',
+      '@stylistic/block-spacing': 'error',
 
       // Enforces consistent brace style for blocks
       //   `1tbs`: one true brace (1tbs) style in which the opening brace of a block is placed on the same line as its corresponding statement or declaration
       //   `allowSingleLine`: disallows the opening and closing braces for a block to be on the same line
-      'brace-style': ['error', '1tbs', {
+      '@stylistic/brace-style': ['error', '1tbs', {
         allowSingleLine: false,
       }],
 
       // Requires use of trailing commas when the last element is on a different line than the closing ] or }
-      'comma-dangle': ['error', 'always-multiline'],
+      '@stylistic/comma-dangle': ['error', 'always-multiline'],
 
       // Enforces consistent spacing around commas in variable declarations, array literals, object literals, function parameters, and sequences
       //   `before`: disallows spaces before commas
       //   `after`: requires one or more spaces after commas
-      'comma-spacing': ['error', {
+      '@stylistic/comma-spacing': ['error', {
         before: false,
         after: true,
       }],
 
       // Enforces consistent comma style in array literals, object literals, and variable declarations
       //   `last`: requires a comma after and on the same line as an array element, object property, or variable declaration
-      'comma-style': ['error', 'last'],
+      '@stylistic/comma-style': ['error', 'last'],
 
       // Prevents the use of mixed newlines around the dot in a member expression
       //   `property`: the dot in a member expression should be on the same line as the property portion
-      'dot-location': ['error', 'property'],
+      '@stylistic/dot-location': ['error', 'property'],
 
       // Require newline at the end of files
       //    `always`: enforces that files end with a newline (LF) (default)
-      'eol-last': ['error', 'always'],
+      '@stylistic/eol-last': ['error', 'always'],
 
       // Disallows spaces between the function name and the opening parenthesis
       '@stylistic/function-call-spacing': ['error', 'never'],
 
       // Enforces spacing around the `*` in generator functions
       //   `both`: enforce spacing between the `function` keyword and the `*` as well as between the `*` and the `function` name (or the opening parenthesis for anonymous generator functions)
-      'generator-star-spacing': ['error', 'both'],
+      '@stylistic/generator-star-spacing': ['error', 'both'],
 
       // Enforces a consistent 2-space indentation style
       //   `SwitchCase`: enforce an indentation level of 1 for case clauses in switch statements
-      'indent': ['error', 2, {
+      '@stylistic/indent': ['error', 2, {
         SwitchCase: 1,
       }],
 
@@ -142,7 +136,7 @@ export default [
       //   `beforeColon`: disallow spaces between the key and the colon in object literals
       //   `afterColon`: require at least one space between the colon and the value in object literals
       //   `mode`: enforces exactly one space before or after colons in object literals.
-      'key-spacing': ['error', {
+      '@stylistic/key-spacing': ['error', {
         beforeColon: false,
         afterColon: true,
         mode: 'strict',
@@ -151,52 +145,52 @@ export default [
       // Enforce consistent spacing around keywords
       //   `before`: require at least one space before keywords
       //   `after`: require at least one space after keywords
-      'keyword-spacing': ['error', {
+      '@stylistic/keyword-spacing': ['error', {
         before: true,
         after: true,
       }],
 
       // Enforces a maximum number of statements allowed per line
       //   `max`: limit to 1 statement per line
-      'max-statements-per-line': ['error', {
+      '@stylistic/max-statements-per-line': ['error', {
         max: 1,
       }],
 
       // Disallow arrow functions where they could be confused with comparisons
       //   `allowParens`: warns even if the expression is wrapped in parenthesis
-      'no-confusing-arrow': ['error', {
+      '@stylistic/no-confusing-arrow': ['error', {
         allowParens: false,
       }],
 
       // Disallow floating decimal points whenever a numeric value has a decimal point but is missing a number either before or after it
-      'no-floating-decimal': 'error',
+      '@stylistic/no-floating-decimal': 'error',
 
       // Disallow multiple whitespace around logical expressions, conditional expressions, declarations, array elements, object properties, sequences and function parameters
-      'no-multi-spaces': 'error',
+      '@stylistic/no-multi-spaces': 'error',
 
       // Disallow multiple empty lines in files to reduce the scrolling required when reading through code
       //   `max`: enforce a maximum number of 1 consecutive empty lines
-      'no-multiple-empty-lines': ['error', {
+      '@stylistic/no-multiple-empty-lines': ['error', {
         max: 1,
       }],
 
       // Disallow trailing whitespace (spaces, tabs, and other Unicode whitespace characters) at the end of lines
       //   `ignoreComments`: allows trailing whitespace in comment blocks
-      'no-trailing-spaces': ['error', {
+      '@stylistic/no-trailing-spaces': ['error', {
         ignoreComments: true,
       }],
 
       // Require consistent spacing inside braces of object literals, destructuring assignments, and import/export specifiers
-      'object-curly-spacing': ['error', 'always'],
+      '@stylistic/object-curly-spacing': ['error', 'always'],
 
       // Enforce a consistent linebreaks to be placed after the operator
-      'operator-linebreak': ['error', 'after'],
+      '@stylistic/operator-linebreak': ['error', 'after'],
 
       // Disallow padding within block statements
-      'padded-blocks': ['error', 'never'],
+      '@stylistic/padded-blocks': ['error', 'never'],
 
       // Custom rules for padding between statements
-      'padding-line-between-statements': [
+      '@stylistic/padding-line-between-statements': [
         'error',
         { blankLine: 'always', prev: '*', next: 'return' },
         { blankLine: 'always', prev: '*', next: 'block-like' },
@@ -208,42 +202,42 @@ export default [
       // Enforces the consistent use of single quotes
       //   `avoidEscape`: allows strings to use single-quotes or double-quotes so long as the string contains a quote that would have to be escaped otherwise
       //   `allowTemplateLiterals`: allows strings to use backticks
-      'quotes': ['error', 'single', {
+      '@stylistic/quotes': ['error', 'single', {
         avoidEscape: true,
-        allowTemplateLiterals: true,
+        allowTemplateLiterals: 'always',
       }],
 
       // Requires semicolons at the end of statements
-      'semi': ['error', 'always'],
+      '@stylistic/semi': ['error', 'always'],
 
       // Enforce consistent spacing around a semicolons which improves the readability of your program
       //   `before`: space is disallowed before semicolons
       //   `after`: space is enforced after semicolons
-      'semi-spacing': ['error', {
+      '@stylistic/semi-spacing': ['error', {
         before: false,
         after: true,
       }],
 
       // Require spaces before blocks
-      'space-before-blocks': ['error', 'always'],
+      '@stylistic/space-before-blocks': ['error', 'always'],
 
       // Enforce consistent spacing before function definition opening parenthesis
-      'space-before-function-paren': ['error', {
+      '@stylistic/space-before-function-paren': ['error', {
         'anonymous': 'always',
         'named': 'never',
         'asyncArrow': 'always',
       }],
 
       // Enforce zero spaces inside of parentheses
-      'space-in-parens': ['error', 'never'],
+      '@stylistic/space-in-parens': ['error', 'never'],
 
       // Require spaces around infix operators
-      'space-infix-ops': 'error',
+      '@stylistic/space-infix-ops': 'error',
 
       // Enforce consist spacing after `words` unary operators and after/before `nonwords` unary operators
       //   `words`: applies to unary word operators such as: `new`, `delete`, `typeof`, `void`, `yield`
       //   `nonwords`: applies to unary operators such as: `-`, `+,` `--`, `++,` `!,` `!!`
-      'space-unary-ops': ['error', {
+      '@stylistic/space-unary-ops': ['error', {
         words: true,
         nonwords: false,
       }],
@@ -254,7 +248,7 @@ export default [
       //   `block.balanced`: the `/*` must be followed by at least one whitespace, and the `*/` must be preceded by at least one whitespace
       //   `block.exceptions`: allow the following comment style as the first line of a block comment (`/**********`)
       //   `block.markers`: allow the following comment styles the first line of a block comment (`/*!`)
-      'spaced-comment': ['error', 'always', {
+      '@stylistic/spaced-comment': ['error', 'always', {
         line: {
           markers: ['/'],
           exceptions: ['-', '+'],
