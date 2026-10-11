@@ -45,6 +45,9 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
 
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Cache ESLint results
         uses: actions/cache@v6
         with:
@@ -64,6 +67,9 @@ jobs:
 
       - name: Build Site
         run: pnpm build
+
+      - name: Run Browser Smoke Tests
+        run: pnpm test:e2e
 
       - name: Audit Dependencies
         run: pnpm audit --audit-level high
