@@ -8,7 +8,7 @@
     "check": "pnpm lint && pnpm type-check && pnpm build",
     "dev": "astro dev",
     "dev:host": "astro dev --host",
-    "preinstall": "node scripts/ensure-pnpm.cjs",
+    "preinstall": "npx only-allow pnpm",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "preview": "astro preview",
