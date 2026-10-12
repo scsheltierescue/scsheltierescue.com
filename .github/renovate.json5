@@ -25,7 +25,7 @@
   "packageRules": [
     {
       "matchPackageNames": ["pnpm"],
-      "matchManagers": ["npm", "github-actions", "custom.regex"],
+      "matchManagers": ["npm", "custom.regex"],
       "groupName": "pnpm version (everywhere)",
       "labels": ["dependencies", "renovate", "pnpm"],
       "automerge": false,
@@ -72,14 +72,6 @@
     }
   ],
   "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": ["/^\\.github/workflows/.*\\.ya?ml$/"],
-      "matchStrings": ["version:\\s*(?<currentValue>[\\d\\.]+)"],
-      "depNameTemplate": "pnpm",
-      "datasourceTemplate": "npm",
-      "versioningTemplate": "semver"
-    },
     {
       "customType": "regex",
       "managerFilePatterns": ["/^wrangler\\.toml$/"],
