@@ -197,8 +197,8 @@ importers:
         specifier: ^0.35.5
         version: 0.35.5(@types/node@24.19.2)
       slick-carousel:
-        specifier: ^1.8.1
-        version: 1.8.1(jquery@4.0.0)
+        specifier: ^2.0.0
+        version: 2.0.0(jquery@4.0.0)
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -2293,8 +2293,8 @@ packages:
     engines: {node: '>=20.19.5', npm: '>=10.8.2'}
     hasBin: true
 
-  slick-carousel@1.8.1:
-    resolution: {integrity: sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==}
+  slick-carousel@2.0.0:
+    resolution: {integrity: sha512-GdU9wJUPtYyJij6PTAGhqTu2Dd0FwauvqqYTCUSzfzZg+uhvwJkue6bT1fVQUzAjAid/bXAaZvlcung4cQpuLg==}
     peerDependencies:
       jquery: '>=1.8.0'
 
@@ -4818,7 +4818,7 @@ snapshots:
       arg: 5.0.2
       sax: 1.6.1
 
-  slick-carousel@1.8.1(jquery@4.0.0):
+  slick-carousel@2.0.0(jquery@4.0.0):
     dependencies:
       jquery: 4.0.0
 
