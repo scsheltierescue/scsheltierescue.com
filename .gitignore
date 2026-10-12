@@ -47,3 +47,7 @@ Thumbs.db
 ###################################
 # eslint
 .eslintcache
+
+# Playwright
+playwright-report/
+test-results/
