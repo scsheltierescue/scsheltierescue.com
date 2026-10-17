@@ -77,3 +77,28 @@ test('skip link and mobile navigation expose their state', async ({ page }) => {
   await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
   await expect(menuButton).toHaveAccessibleName('Close navigation menu');
 });
+
+test('desktop navigation brand fits within the navigation bar', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+
+  const brand = page.locator('.name .show-for-large-up');
+
+  await expect(brand).toBeVisible();
+
+  const brandFits = await brand.evaluate((element) => {
+    const container = element.closest('.name');
+
+    if (!container) {
+      return false;
+    }
+
+    const brandBounds = element.getBoundingClientRect();
+    const containerBounds = container.getBoundingClientRect();
+
+    return brandBounds.height <= containerBounds.height &&
+      brandBounds.bottom <= containerBounds.bottom;
+  });
+
+  expect(brandFits).toBe(true);
+});
