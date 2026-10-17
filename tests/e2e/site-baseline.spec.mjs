@@ -142,7 +142,7 @@ test('brand and accessible functional colors remain distinct', async ({ page }) 
 test('homepage presents a clear adoption-first action hierarchy', async ({ page }) => {
   await page.goto('/');
 
-  const actions = page.locator('.home-actions');
+  const actions = page.getByRole('region', { name: 'How You Can Help' });
 
   await expect(actions.getByRole('heading', { name: 'How You Can Help' })).toBeVisible();
   await expect(actions.getByRole('heading', { name: 'Adopt a Sheltie' })).toBeVisible();
