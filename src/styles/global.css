@@ -21,8 +21,8 @@
   :root {
     --scsr-logo-c: #2ba6cb;
     --scsr-selection-c: #b3d4fc;
-    --scsr-primary-c: #008cba;
-    --scsr-primary-c-darker: #0078a0;
+    --scsr-primary-c: #006b8f;
+    --scsr-primary-c-darker: #00536f;
     --scsr-error-c: #f04124;
     --scsr-error-c-darker: #de2d0f;
 
@@ -59,6 +59,11 @@
   
   a:focus, a:hover {
     color: var(--scsr-primary-c-darker);
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 3px;
   }
   
   a:hover {
@@ -264,6 +269,23 @@
       font-size: 1rem
     }
   }
+}
+
+.skip-link {
+  background: #fff;
+  color: #222;
+  font-weight: 700;
+  left: 0.5rem;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  top: 0.5rem;
+  transform: translateY(-200%);
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  color: #222;
+  transform: translateY(0);
 }
 
 @layer utilities {

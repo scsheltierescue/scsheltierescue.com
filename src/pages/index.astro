@@ -19,21 +19,21 @@ import litaImg from '@images/lita_667x500.jpg';
 import type { Item } from '@components/Slider';
 
 const sliderItems: Item[] = [
-  { id: 1, src: kronosImg.src, width: kronosImg.width, height: kronosImg.height, alt: 'Slide 1' },
-  { id: 2, src: nashImg.src, width: nashImg.width, height: nashImg.height, alt: 'Slide 2' },
-  { id: 3, src: shadowImg.src, width: shadowImg.width, height: shadowImg.height, alt: 'Slide 3' },
-  { id: 4, src: savvyImg.src, width: savvyImg.width, height: savvyImg.height, alt: 'Slide 4' },
-  { id: 5, src: nash2Img.src, width: nash2Img.width, height: nash2Img.height, alt: 'Slide 5' },
-  { id: 6, src: brittImg.src, width: brittImg.width, height: brittImg.height, alt: 'Slide 6' },
-  { id: 7, src: litaImg.src, width: litaImg.width, height: litaImg.height, alt: 'Slide 7' },
+  { id: 1, src: kronosImg.src, width: kronosImg.width, height: kronosImg.height, alt: 'Kronos, a rescued Sheltie' },
+  { id: 2, src: nashImg.src, width: nashImg.width, height: nashImg.height, alt: 'Nash, a rescued Sheltie' },
+  { id: 3, src: shadowImg.src, width: shadowImg.width, height: shadowImg.height, alt: 'Shadow, a rescued Sheltie' },
+  { id: 4, src: savvyImg.src, width: savvyImg.width, height: savvyImg.height, alt: 'Savvy, a rescued Sheltie' },
+  { id: 5, src: nash2Img.src, width: nash2Img.width, height: nash2Img.height, alt: 'Nash, a rescued Sheltie' },
+  { id: 6, src: brittImg.src, width: brittImg.width, height: brittImg.height, alt: 'Britt, a rescued Sheltie' },
+  { id: 7, src: litaImg.src, width: litaImg.width, height: litaImg.height, alt: 'Lita, a rescued Sheltie' },
 ];
 ---
 
 <Layout
-  title="SC Sheltie Rescue"
+  title="South Carolina Sheltie Rescue"
   description="South Carolina Sheltie Rescue is a non-profit volunteer group dedicated to helping Shetland Sheepdogs in South Carolina and the surrounding areas."
 >
-  <div class="row">
+  <div id="main-content" class="row">
     <div class="large-12 medium-12 small-12 columns">
       <div class="head_panel clearfix border border-solid border-stone-300 bg-neutral-200 text-zinc-800 p-5 mb-5">
         <div class="large-4 columns">
@@ -45,7 +45,8 @@ const sliderItems: Item[] = [
               class="block mx-auto mb-5"
             />
           </a>
-          <p class="mb-0"><strong>South Carolina Sheltie Rescue</strong> is a non-profit group comprised of volunteers who donate their time, abilities, and homes to help displaced, abandoned, and abused Shelties find a forever home.</p>
+          <h1 class="text-2xl font-semibold">South Carolina Sheltie Rescue</h1>
+          <p class="mb-0">We are a non-profit group comprised of volunteers who donate their time, abilities, and homes to help displaced, abandoned, and abused Shelties find a forever home.</p>
         </div>
         <div class="large-8 columns show-for-large-up">
           <ul class="main-header-picture-slider">
@@ -61,8 +62,8 @@ const sliderItems: Item[] = [
 
   <div class="row">
     <div class="large-12 medium-12 small-12 columns">
-      <main role="main" class="main-content">
-        <ul class="bg-scsr-logo-c mx-0">
+      <main class="main-content">
+        <ul class="bg-primary-c mx-0">
           <li>
             <div class="p-7">
               <h2 class="text-white">Recent Donations - Thank You!</h2>
@@ -100,13 +101,13 @@ const sliderItems: Item[] = [
         </div>
         <div class="large-6 columns">
           <h2 class="headline">Adopting a Rescue Sheltie</h2>
-          <p>The first step to adopting from SC Sheltie Rescue is to fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> in full. Leaving answers blank may result in a delay in processing your application. We do not operate on a first-come, first-served basis. Instead, we aim to place our rescues in the best homes for them based on personality and any behavioral or medical issues that need to be considered. We reserve the right to refuse any applicant.</p>
+          <p>The first step to adopting from SC Sheltie Rescue is to fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> in full. Leaving answers blank may result in a delay in processing your application. We do not operate on a first-come, first-served basis. Instead, we aim to place our rescues in the best homes for them based on personality and any behavioral or medical issues that need to be considered. We reserve the right to refuse any applicant.</p>
         </div>
         <div class="large-6 columns">
           <h2 class="headline">Donations</h2>
           <p>Donations are always needed and welcomed. A vet bill for a Sheltie needing all vaccinations, tests, spay/neuter and pet meds can run about $300.00.</p>
           <p>Sometimes, we end up needing to do a dental and bloodwork as well. Blood panels alone cost $115.00. Donations can be sent via Paypal or mailed to: SC Sheltie Rescue, P.O. Box 11224, Rock Hill, SC 29731.</p>
-          <p>Also, please check out our <a href="https://www.amazon.com/hz/wishlist/ls/1HXQOHF67S4CQ" target="_blank">Wishlist <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> for other great ways to help make a difference!</p>
+          <p>Also, please check out our <a href="https://www.amazon.com/hz/wishlist/ls/1HXQOHF67S4CQ" target="_blank" rel="noopener noreferrer">Wishlist <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> for other great ways to help make a difference!</p>
         </div>
         <div class="large-12 columns">
           <div class="clearfix border border-solid border-stone-300 bg-cyan-50 text-zinc-800 p-5 mb-5">
