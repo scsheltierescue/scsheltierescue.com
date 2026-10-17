@@ -31,7 +31,7 @@ const sliderItems: Item[] = [
 const actionBaseClasses = 'inline-flex min-h-11 w-full items-center justify-center px-5 py-3 text-center font-semibold md:w-auto';
 const primaryActionClasses = `${actionBaseClasses} bg-primary-c text-white hover:bg-primary-c-darker hover:text-white focus:text-white`;
 const secondaryActionClasses = `${actionBaseClasses} bg-neutral-200 text-zinc-800 hover:bg-neutral-300 hover:text-zinc-900 focus:bg-neutral-300 focus:text-zinc-900`;
-const actionCardClasses = 'flex flex-col p-5';
+const actionCardClasses = 'flex flex-col px-5 py-3 md:p-5';
 const cardActionClasses = 'mt-auto inline-flex min-h-11 items-center self-start py-2 font-semibold';
 ---
 
@@ -85,7 +85,7 @@ const cardActionClasses = 'mt-auto inline-flex min-h-11 items-center self-start 
             </div>
           </article>
 
-          <div class="secondary-actions grid gap-4 md:grid-cols-3">
+          <div class="secondary-actions grid gap-2 md:grid-cols-3 md:gap-4">
             <article class={actionCardClasses}>
               <h3 class="text-xl font-semibold">Foster a Sheltie</h3>
               <p class="grow">Open your home temporarily and give a rescued Sheltie the care and stability they need.</p>
