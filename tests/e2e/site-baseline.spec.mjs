@@ -102,3 +102,32 @@ test('desktop navigation brand fits within the navigation bar', async ({ page })
 
   expect(brandFits).toBe(true);
 });
+
+test('brand and accessible functional colors remain distinct', async ({ page }) => {
+  await page.goto('/');
+
+  const colors = await page.evaluate(() => {
+    const styles = getComputedStyle(document.documentElement);
+
+    return {
+      brand: styles.getPropertyValue('--scsr-logo-c').trim(),
+      primary: styles.getPropertyValue('--scsr-primary-c').trim(),
+      primaryDarker: styles.getPropertyValue('--scsr-primary-c-darker').trim(),
+    };
+  });
+
+  expect(colors).toEqual({
+    brand: '#2ba6cb',
+    primary: '#006b8f',
+    primaryDarker: '#00536f',
+  });
+
+  await expect(page.locator('.main-footer .social-media svg').first()).toHaveCSS(
+    'color',
+    'rgb(43, 166, 203)',
+  );
+  await expect(page.locator('.main-content > ul').first()).toHaveCSS(
+    'background-color',
+    'rgb(0, 107, 143)',
+  );
+});
