@@ -63,6 +63,43 @@ const sliderItems: Item[] = [
   <div class="row">
     <div class="large-12 medium-12 small-12 columns">
       <main class="main-content">
+        <section class="home-actions mb-5" aria-labelledby="home-actions-heading">
+          <div class="text-center mb-5">
+            <h2 id="home-actions-heading" class="headline first">How You Can Help</h2>
+            <p class="max-w-2xl mx-auto mb-0">Whether you want to adopt, foster, surrender a Sheltie, or support their care, start with the option that fits your situation.</p>
+          </div>
+
+          <article class="adoption-action border-2 border-primary-c bg-cyan-50 p-6 mb-4">
+            <h3 class="text-2xl font-semibold">Adopt a Sheltie</h3>
+            <p>Meet the Shelties looking for homes, review our adoption requirements, and submit an application when you are ready.</p>
+            <div class="action-links flex flex-wrap gap-3">
+              <a class="primary-action" href="/adoptable-dogs/">View Adoptable Dogs</a>
+              <a class="secondary-action" href="/adoption-requirements/">Review Adoption Requirements</a>
+              <a class="secondary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Apply to Adopt <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a>
+            </div>
+          </article>
+
+          <div class="secondary-actions grid gap-4 md:grid-cols-3">
+            <article class="action-card border border-solid border-stone-300 bg-white p-5">
+              <h3 class="text-xl font-semibold">Foster a Sheltie</h3>
+              <p>Open your home temporarily and give a rescued Sheltie the care and stability they need.</p>
+              <a class="card-action" href="/help/articles/fostering/">Learn About Fostering</a>
+            </article>
+
+            <article class="action-card border border-solid border-stone-300 bg-white p-5">
+              <h3 class="text-xl font-semibold">Surrender a Sheltie</h3>
+              <p>Contact us for help if a Sheltie in your care needs a safe path into rescue.</p>
+              <a class="card-action" href="/surrender/">Get Surrender Information</a>
+            </article>
+
+            <article class="action-card border border-solid border-stone-300 bg-white p-5">
+              <h3 class="text-xl font-semibold">Support the Rescue</h3>
+              <p>Help cover veterinary care, medicine, food, and other needs for Shelties in foster homes.</p>
+              <a class="card-action" href="#donate">Make a Donation</a>
+            </article>
+          </div>
+        </section>
+
         <ul class="bg-primary-c mx-0">
           <li>
             <div class="p-7">
@@ -104,7 +141,7 @@ const sliderItems: Item[] = [
           <p>The first step to adopting from SC Sheltie Rescue is to fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> in full. Leaving answers blank may result in a delay in processing your application. We do not operate on a first-come, first-served basis. Instead, we aim to place our rescues in the best homes for them based on personality and any behavioral or medical issues that need to be considered. We reserve the right to refuse any applicant.</p>
         </div>
         <div class="large-6 columns">
-          <h2 class="headline">Donations</h2>
+          <h2 id="donate" class="headline scroll-mt-16">Donations</h2>
           <p>Donations are always needed and welcomed. A vet bill for a Sheltie needing all vaccinations, tests, spay/neuter and pet meds can run about $300.00.</p>
           <p>Sometimes, we end up needing to do a dental and bloodwork as well. Blood panels alone cost $115.00. Donations can be sent via Paypal or mailed to: SC Sheltie Rescue, P.O. Box 11224, Rock Hill, SC 29731.</p>
           <p>Also, please check out our <a href="https://www.amazon.com/hz/wishlist/ls/1HXQOHF67S4CQ" target="_blank" rel="noopener noreferrer">Wishlist <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> for other great ways to help make a difference!</p>
@@ -134,5 +171,77 @@ const sliderItems: Item[] = [
 <style>
 .head_panel {
   margin-top: 1rem;
+}
+
+.home-actions {
+  background: #f5f5f4;
+  border: 1px solid #d6d3d1;
+  padding: 1.5rem;
+}
+
+.action-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-card p {
+  flex: 1;
+}
+
+.primary-action,
+.secondary-action,
+.card-action {
+  align-items: center;
+  display: inline-flex;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+}
+
+.primary-action {
+  background: var(--scsr-primary-c);
+  color: #fff;
+}
+
+.primary-action:hover,
+.primary-action:focus {
+  background: var(--scsr-primary-c-darker);
+  color: #fff;
+}
+
+.secondary-action {
+  background: #fff;
+  border: 2px solid var(--scsr-primary-c);
+  color: var(--scsr-primary-c);
+}
+
+.secondary-action:hover,
+.secondary-action:focus {
+  background: var(--scsr-primary-c);
+  color: #fff;
+}
+
+.card-action {
+  align-self: flex-start;
+  border-bottom: 2px solid currentColor;
+  min-height: 2.75rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 48.0625rem) {
+  .home-actions {
+    padding: 1.25rem;
+  }
+
+  .action-links {
+    display: grid;
+  }
+
+  .primary-action,
+  .secondary-action {
+    width: 100%;
+  }
 }
 </style>
