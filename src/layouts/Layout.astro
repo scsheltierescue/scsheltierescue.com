@@ -12,6 +12,28 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+
+const siteName = 'South Carolina Sheltie Rescue';
+const pageTitle = title === siteName ? siteName : `${title} | ${siteName}`;
+const siteURL = Astro.site ?? Astro.url.origin;
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+const socialImageURL = new URL('/favicon-512x512.png', siteURL);
+const organizationStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteName,
+  alternateName: 'SC Sheltie Rescue',
+  url: new URL('/', siteURL).href,
+  logo: socialImageURL.href,
+  email: 'adopt@scsheltierescue.com',
+  telephone: '+1-888-399-2220',
+  sameAs: [
+    'https://www.petfinder.com/member/us/sc/rock-hill/south-carolina-sheltie-rescue-sc92/',
+    'https://www.facebook.com/SouthCarolinaSheltieRescue',
+    'https://x.com/scsheltierescue',
+    'https://www.instagram.com/scsheltierescue/',
+  ],
+};
 ---
 
 <!doctype html>
@@ -19,16 +41,25 @@ const { title, description } = Astro.props;
   <head class="h-full">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{title}</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description}>
+    <link rel="canonical" href={canonicalURL}>
 
     <ClientRouter />
 
-    <meta property="og:title" content={title}>
+    <meta property="og:title" content={pageTitle}>
+    <meta property="og:description" content={description}>
     <meta property="og:type" content="website">
-    <meta property="og:url" content={Astro.url}>
-    <meta property="og:image" content="">
-    <meta property="og:image:alt" content="">
+    <meta property="og:url" content={canonicalURL}>
+    <meta property="og:site_name" content={siteName}>
+    <meta property="og:image" content={socialImageURL}>
+    <meta property="og:image:alt" content="South Carolina Sheltie Rescue logo">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content={pageTitle}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:image" content={socialImageURL}>
+    <meta name="twitter:image:alt" content="South Carolina Sheltie Rescue logo">
+    <script type="application/ld+json" set:html={JSON.stringify(organizationStructuredData)}></script>
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/favicon-192x192.png">
@@ -37,6 +68,8 @@ const { title, description } = Astro.props;
   </head>
 
   <body class="topnav-fixed h-full bg-white neutral-800 cursor-auto font-sans not-italic font-normal leading-normal m-0 p-0 relative">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <div class="page-wrap">
       <MainTopNav />
 

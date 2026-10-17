@@ -12,27 +12,27 @@ const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
     <ul class="title-area">
       <!-- Title Area -->
       <li class="name">
-        <h1 class="show-for-large-up"><a href="/">South Carolina Sheltie Rescue</a></h1>
-        <h1 class="show-for-medium-down"><a href="/">SCSR</a></h1>
+        <p class="show-for-large-up"><a href="/">South Carolina Sheltie Rescue</a></p>
+        <p class="show-for-medium-down"><a href="/">SCSR</a></p>
       </li>
       <li class="toggle-topbar menu-icon">
         <!-- Hamburger Button -->
-        <button id="menu-button" class="menu-button" aria-expanded="false">
+        <button id="menu-button" class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation menu">
           <Icon name="hamburger" title="hamburger icon" size=24 class="hamburger-icon text-zinc-100" />
           <Icon name="close" title="close icon" size=24 class="close-icon text-zinc-100" />
         </button>
       </li>
     </ul>
 
-    <section class="top-bar-section">
+    <section id="site-navigation" class="top-bar-section">
       <ul class="float-right">
         <li class={currentPath === '' ? 'active' : ''}><a href="/">Home</a></li>
         <li class={`has-dropdown not-click ${currentPath === 'adoption-requirements' || currentPath === 'adoptable-dogs' ? 'active' : ''}`}><a href="/adoptable-dogs">Adopt</a>
           <ul class="dropdown">
             <li class={currentPath === 'adoption-requirements' ? 'active' : ''}><a href="/adoption-requirements">Adoption Requirements</a></li>
             <li class={currentPath === 'adoptable-dogs' ? 'active' : ''}><a href="/adoptable-dogs">Adoptable Dogs</a></li>
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank">Fostering Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Fostering Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
           </ul>
         </li>
         <li class={currentPath === 'surrender' ? 'active' : ''}><a href="/surrender">Surrender</a></li>
@@ -45,9 +45,17 @@ const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
 
 <script is:inline data-astro-rerun>
   document.getElementById('menu-button')?.addEventListener('click', (e) => {
-    const isExpanded = e.currentTarget.ariaExpanded === 'true';
+    const button = e.currentTarget;
 
-    e.currentTarget.setAttribute('aria-expanded', !isExpanded);
+    if (!(button instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const nextExpanded = !isExpanded;
+
+    button.setAttribute('aria-expanded', String(nextExpanded));
+    button.setAttribute('aria-label', nextExpanded ? 'Close navigation menu' : 'Open navigation menu');
     document.querySelector('[data-topbar]')?.classList.toggle('expanded');
   });
 </script>
