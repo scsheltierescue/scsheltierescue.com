@@ -45,8 +45,15 @@ test('homepage exposes complete sharing and canonical metadata', async ({ page }
     'content',
     'summary',
   );
-  await expect(page.locator('script[type="application/ld+json"]')).toContainText(
-    'South Carolina Sheltie Rescue',
+  const structuredData = await page
+    .locator('script[type="application/ld+json"]')
+    .evaluate((element) => JSON.parse(element.textContent ?? '{}'));
+
+  expect(structuredData).toMatchObject(
+    {
+      '@type': 'Organization',
+      name: 'South Carolina Sheltie Rescue',
+    },
   );
 });
 
@@ -60,8 +67,9 @@ test('skip link and mobile navigation expose their state', async ({ page }) => {
   await expect(skipLink).toBeVisible();
   await expect(skipLink).toHaveAttribute('href', '#main-content');
 
-  const menuButton = page.getByRole('button', { name: 'Open navigation menu' });
+  const menuButton = page.locator('#menu-button');
 
+  await expect(menuButton).toHaveAccessibleName('Open navigation menu');
   await expect(menuButton).toHaveAttribute('aria-controls', 'site-navigation');
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
 
