@@ -28,11 +28,11 @@ const sliderItems: Item[] = [
   { id: 7, src: litaImg.src, width: litaImg.width, height: litaImg.height, alt: 'Lita, a rescued Sheltie' },
 ];
 
-const actionBaseClasses = 'inline-flex min-h-11 w-full items-center justify-center px-4 py-2.5 font-semibold md:w-auto';
+const actionBaseClasses = 'inline-flex min-h-11 w-full items-center justify-center px-5 py-3 font-semibold md:w-auto';
 const primaryActionClasses = `${actionBaseClasses} bg-primary-c text-white hover:bg-primary-c-darker hover:text-white focus:text-white`;
-const secondaryActionClasses = `${actionBaseClasses} border-2 border-primary-c bg-white text-primary-c hover:bg-primary-c hover:text-white focus:bg-primary-c focus:text-white`;
+const secondaryActionClasses = `${actionBaseClasses} bg-neutral-200 text-zinc-800 hover:bg-neutral-300 hover:text-zinc-900 focus:bg-neutral-300 focus:text-zinc-900`;
 const actionCardClasses = 'flex flex-col border border-solid border-stone-300 bg-white p-5';
-const cardActionClasses = 'mt-auto inline-flex min-h-11 items-center self-start border-b-2 border-current py-2.5 font-semibold';
+const cardActionClasses = 'mt-auto inline-flex min-h-11 items-center self-start py-2 font-semibold';
 ---
 
 <Layout
@@ -69,13 +69,13 @@ const cardActionClasses = 'mt-auto inline-flex min-h-11 items-center self-start 
   <div class="row">
     <div class="large-12 medium-12 small-12 columns">
       <main class="main-content">
-        <section class="mb-5 border border-stone-300 bg-stone-100 p-5 md:p-6" aria-labelledby="home-actions-heading">
-          <div class="text-center mb-5">
+        <section class="mb-5 border border-stone-300 bg-stone-100 p-5" aria-labelledby="home-actions-heading">
+          <div class="mb-5">
             <h2 id="home-actions-heading" class="headline first">How You Can Help</h2>
-            <p class="max-w-2xl mx-auto mb-0">Whether you want to adopt, foster, surrender a Sheltie, or support their care, start with the option that fits your situation.</p>
+            <p class="mb-0">Whether you want to adopt, foster, surrender a Sheltie, or support their care, start with the option that fits your situation.</p>
           </div>
 
-          <article class="adoption-action border-2 border-primary-c bg-cyan-50 p-6 mb-4">
+          <article class="adoption-action border border-primary-c bg-cyan-50 p-5 mb-4">
             <h3 class="text-2xl font-semibold">Adopt a Sheltie</h3>
             <p>Meet the Shelties looking for homes, review our adoption requirements, and submit an application when you are ready.</p>
             <div class="grid gap-3 md:flex md:flex-wrap">
