@@ -126,6 +126,13 @@ test('brand and accessible functional colors remain distinct', async ({ page }) 
     'color',
     'rgb(43, 166, 203)',
   );
+
+  const emailLink = page.locator('.main-footer .email-addr a');
+
+  await expect(emailLink).toHaveCSS('color', 'rgb(43, 166, 203)');
+  await emailLink.hover();
+  await expect(emailLink).toHaveCSS('color', 'rgb(255, 255, 255)');
+
   await expect(page.locator('.main-content > ul').first()).toHaveCSS(
     'background-color',
     'rgb(0, 107, 143)',
