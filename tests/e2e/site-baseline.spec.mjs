@@ -166,7 +166,7 @@ test('homepage presents a clear adoption-first action hierarchy', async ({ page 
     'href',
     '/surrender/',
   );
-  await expect(actions.getByRole('link', { name: 'Make a Donation' })).toHaveAttribute(
+  await expect(actions.getByRole('link', { name: 'View Donation Options' })).toHaveAttribute(
     'href',
     '#donate',
   );
