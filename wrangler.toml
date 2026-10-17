@@ -3,5 +3,5 @@ pages_build_output_dir = "./dist"
 
 [vars]
 NODE_VERSION = "24.21.0"
-PNPM_VERSION = "12.11.2"
+PNPM_VERSION = "12.13.0"
 SKIP_DEPENDENCY_INSTALL = "1"
