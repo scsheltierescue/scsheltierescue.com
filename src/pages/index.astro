@@ -27,6 +27,12 @@ const sliderItems: Item[] = [
   { id: 6, src: brittImg.src, width: brittImg.width, height: brittImg.height, alt: 'Britt, a rescued Sheltie' },
   { id: 7, src: litaImg.src, width: litaImg.width, height: litaImg.height, alt: 'Lita, a rescued Sheltie' },
 ];
+
+const actionBaseClasses = 'inline-flex min-h-11 w-full items-center justify-center px-5 py-3 text-center font-semibold md:w-auto';
+const primaryActionClasses = `${actionBaseClasses} bg-primary-c text-white hover:bg-primary-c-darker hover:text-white focus:text-white`;
+const secondaryActionClasses = `${actionBaseClasses} bg-neutral-200 text-zinc-800 hover:bg-neutral-300 hover:text-zinc-900 focus:bg-neutral-300 focus:text-zinc-900`;
+const actionCardClasses = 'flex flex-col px-5 py-3 md:p-5';
+const cardActionClasses = 'mt-auto inline-flex min-h-11 items-center self-start py-2 font-semibold';
 ---
 
 <Layout
@@ -35,7 +41,7 @@ const sliderItems: Item[] = [
 >
   <div id="main-content" class="row">
     <div class="large-12 medium-12 small-12 columns">
-      <div class="head_panel clearfix border border-solid border-stone-300 bg-neutral-200 text-zinc-800 p-5 mb-5">
+      <div class="clearfix mt-4 border border-solid border-stone-300 bg-neutral-200 p-5 mb-5 text-zinc-800">
         <div class="large-4 columns">
           <a href="/">
             <Image
@@ -63,6 +69,43 @@ const sliderItems: Item[] = [
   <div class="row">
     <div class="large-12 medium-12 small-12 columns">
       <main class="main-content">
+        <section class="mb-5 border border-stone-300 bg-stone-100 p-5" aria-labelledby="home-actions-heading">
+          <div class="mb-5">
+            <h2 id="home-actions-heading" class="headline first">How You Can Help</h2>
+            <p class="mb-0">Whether you’re ready to adopt, interested in fostering, need help surrendering a Sheltie, or want to support dogs in our care, choose an option below to get started.</p>
+          </div>
+
+          <article class="adoption-action border border-primary-c bg-cyan-50 p-5 mb-4">
+            <h3 class="text-2xl font-semibold">Adopt a Sheltie</h3>
+            <p>Meet the Shelties looking for homes, review our adoption requirements, and submit an application when you are ready.</p>
+            <div class="grid gap-3 md:flex md:flex-wrap">
+              <a class={primaryActionClasses} href="/adoptable-dogs/">View Adoptable Dogs</a>
+              <a class={secondaryActionClasses} href="/adoption-requirements/">Review Adoption Requirements</a>
+              <a class={secondaryActionClasses} href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Apply to Adopt <Icon name="external-link" title="external link" size=10 class="ml-1 inline align-text-top" /></a>
+            </div>
+          </article>
+
+          <div class="secondary-actions grid gap-2 md:grid-cols-3 md:gap-4">
+            <article class={actionCardClasses}>
+              <h3 class="text-xl font-semibold">Foster a Sheltie</h3>
+              <p class="grow">Open your home temporarily and give a rescued Sheltie the care and stability they need.</p>
+              <a class={cardActionClasses} href="/help/articles/fostering/">Learn About Fostering</a>
+            </article>
+
+            <article class={actionCardClasses}>
+              <h3 class="text-xl font-semibold">Surrender a Sheltie</h3>
+              <p class="grow">Contact us for help if a Sheltie in your care needs a safe path into rescue.</p>
+              <a class={cardActionClasses} href="/surrender/">Get Surrender Information</a>
+            </article>
+
+            <article class={actionCardClasses}>
+              <h3 class="text-xl font-semibold">Support the Rescue</h3>
+              <p class="grow">Help cover veterinary care, medicine, food, and other needs for Shelties in foster homes.</p>
+              <a class={cardActionClasses} href="#donate">View Donation Options</a>
+            </article>
+          </div>
+        </section>
+
         <ul class="bg-primary-c mx-0">
           <li>
             <div class="p-7">
@@ -104,7 +147,7 @@ const sliderItems: Item[] = [
           <p>The first step to adopting from SC Sheltie Rescue is to fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> in full. Leaving answers blank may result in a delay in processing your application. We do not operate on a first-come, first-served basis. Instead, we aim to place our rescues in the best homes for them based on personality and any behavioral or medical issues that need to be considered. We reserve the right to refuse any applicant.</p>
         </div>
         <div class="large-6 columns">
-          <h2 class="headline">Donations</h2>
+          <h2 id="donate" class="headline scroll-mt-16">Donations</h2>
           <p>Donations are always needed and welcomed. A vet bill for a Sheltie needing all vaccinations, tests, spay/neuter and pet meds can run about $300.00.</p>
           <p>Sometimes, we end up needing to do a dental and bloodwork as well. Blood panels alone cost $115.00. Donations can be sent via Paypal or mailed to: SC Sheltie Rescue, P.O. Box 11224, Rock Hill, SC 29731.</p>
           <p>Also, please check out our <a href="https://www.amazon.com/hz/wishlist/ls/1HXQOHF67S4CQ" target="_blank" rel="noopener noreferrer">Wishlist <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> for other great ways to help make a difference!</p>
@@ -130,9 +173,3 @@ const sliderItems: Item[] = [
     </div>
   </div>
 </Layout>
-
-<style>
-.head_panel {
-  margin-top: 1rem;
-}
-</style>

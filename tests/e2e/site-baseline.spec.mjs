@@ -138,3 +138,36 @@ test('brand and accessible functional colors remain distinct', async ({ page }) 
     'rgb(0, 107, 143)',
   );
 });
+
+test('homepage presents a clear adoption-first action hierarchy', async ({ page }) => {
+  await page.goto('/');
+
+  const actions = page.getByRole('region', { name: 'How You Can Help' });
+
+  await expect(actions.getByRole('heading', { name: 'How You Can Help' })).toBeVisible();
+  await expect(actions.getByRole('heading', { name: 'Adopt a Sheltie' })).toBeVisible();
+  await expect(actions.getByRole('link', { name: 'View Adoptable Dogs' })).toHaveAttribute(
+    'href',
+    '/adoptable-dogs/',
+  );
+  await expect(actions.getByRole('link', { name: 'Review Adoption Requirements' })).toHaveAttribute(
+    'href',
+    '/adoption-requirements/',
+  );
+  await expect(actions.getByRole('link', { name: /Apply to Adopt/ })).toHaveAttribute(
+    'target',
+    '_blank',
+  );
+  await expect(actions.getByRole('link', { name: 'Learn About Fostering' })).toHaveAttribute(
+    'href',
+    '/help/articles/fostering/',
+  );
+  await expect(actions.getByRole('link', { name: 'Get Surrender Information' })).toHaveAttribute(
+    'href',
+    '/surrender/',
+  );
+  await expect(actions.getByRole('link', { name: 'View Donation Options' })).toHaveAttribute(
+    'href',
+    '#donate',
+  );
+});
