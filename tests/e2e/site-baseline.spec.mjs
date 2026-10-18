@@ -171,3 +171,22 @@ test('homepage presents a clear adoption-first action hierarchy', async ({ page 
     '#donate',
   );
 });
+
+test('homepage explains donation impact and preserves every donation method', async ({ page }) => {
+  await page.goto('/');
+
+  const donations = page.getByRole('region', { name: 'Support Shelties in Foster Care' });
+
+  await expect(donations).toContainText('does not operate a physical shelter');
+  await expect(donations).toContainText('veterinary evaluations');
+
+  const paypalForm = donations.locator('form[action="https://www.paypal.com/cgi-bin/webscr"]');
+
+  await expect(paypalForm).toHaveAttribute('method', 'post');
+  await expect(paypalForm.locator('input[name="cmd"]')).toHaveValue('_s-xclick');
+  await expect(donations).toContainText('P.O. Box 11224');
+  await expect(donations.getByRole('link', { name: /Shop the Amazon Wishlist/ })).toHaveAttribute(
+    'href',
+    'https://www.amazon.com/hz/wishlist/ls/1HXQOHF67S4CQ',
+  );
+});
