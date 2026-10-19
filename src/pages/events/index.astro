@@ -2,6 +2,10 @@
 import 'src/styles/global.css';
 
 import Layout from '@layouts/Layout.astro';
+
+import { Icon } from 'astro-icon/components';
+
+const actionClasses = 'inline-flex min-h-11 items-center justify-center px-5 py-3 text-center font-semibold';
 ---
 
 <Layout
@@ -12,9 +16,22 @@ import Layout from '@layouts/Layout.astro';
     <div class="large-12 medium-12 small-12 columns">
       <main id="main-content" class="events main-content">
         <h1 class="headline first">Events</h1>
-        <div class="border border-solid block font-normal my-5 p-3 relative bg-primary-c border-primary-c-darker text-zinc-100">
-          <p class="mb-0"><strong>Check back here for scheduled events.</strong></p>
-        </div>
+        <section class="my-5 border border-stone-300 bg-stone-100 p-5 text-zinc-800" aria-labelledby="events-empty-heading">
+          <h2 id="events-empty-heading" class="text-2xl font-semibold">No Events Currently Scheduled</h2>
+          <p>Future SC Sheltie Rescue events will be posted here. You can also follow us on social media for rescue news and announcements.</p>
+
+          <div class="grid gap-3 sm:flex sm:flex-wrap">
+            <a class={`${actionClasses} bg-primary-c text-white hover:bg-primary-c-darker hover:text-white focus:text-white`} href="/adoptable-dogs/">View Adoptable Dogs</a>
+            <a class={`${actionClasses} bg-neutral-200 text-zinc-800 hover:bg-neutral-300 hover:text-zinc-900 focus:bg-neutral-300 focus:text-zinc-900`} href="https://www.facebook.com/SouthCarolinaSheltieRescue" target="_blank" rel="noopener noreferrer">
+              Follow on Facebook
+              <Icon name="external-link" title="external link" size=10 class="ml-1 inline align-text-top" />
+            </a>
+            <a class={`${actionClasses} bg-neutral-200 text-zinc-800 hover:bg-neutral-300 hover:text-zinc-900 focus:bg-neutral-300 focus:text-zinc-900`} href="https://www.instagram.com/scsheltierescue/" target="_blank" rel="noopener noreferrer">
+              Follow on Instagram
+              <Icon name="external-link" title="external link" size=10 class="ml-1 inline align-text-top" />
+            </a>
+          </div>
+        </section>
       </main>
     </div>
   </div>
