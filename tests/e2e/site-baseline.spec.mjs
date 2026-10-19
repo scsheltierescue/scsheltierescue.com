@@ -204,3 +204,23 @@ test('adoptable dogs remain reachable when the Petfinder widget is unavailable',
   );
   await expect(fallbackLink).toHaveAttribute('target', '_blank');
 });
+
+test('events empty state provides useful next actions', async ({ page }) => {
+  await page.goto('/events/');
+
+  const emptyState = page.getByRole('region', { name: 'No Events Currently Scheduled' });
+
+  await expect(emptyState).toContainText('Future SC Sheltie Rescue events will be posted here');
+  await expect(emptyState.getByRole('link', { name: 'View Adoptable Dogs' })).toHaveAttribute(
+    'href',
+    '/adoptable-dogs/',
+  );
+  await expect(emptyState.getByRole('link', { name: /Follow on Facebook/ })).toHaveAttribute(
+    'href',
+    'https://www.facebook.com/SouthCarolinaSheltieRescue',
+  );
+  await expect(emptyState.getByRole('link', { name: /Follow on Instagram/ })).toHaveAttribute(
+    'href',
+    'https://www.instagram.com/scsheltierescue/',
+  );
+});
