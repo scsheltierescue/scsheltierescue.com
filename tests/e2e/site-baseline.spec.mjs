@@ -190,3 +190,17 @@ test('homepage explains donation impact and preserves every donation method', as
     'https://www.amazon.com/hz/wishlist/ls/1HXQOHF67S4CQ',
   );
 });
+
+test('adoptable dogs remain reachable when the Petfinder widget is unavailable', async ({ page }) => {
+  await page.route('https://www.petfinder.com/pet-scroller.bundle.js', (route) => route.abort());
+  await page.goto('/adoptable-dogs/');
+
+  const fallbackLink = page.getByRole('link', { name: /View Available Dogs on Petfinder/ });
+
+  await expect(fallbackLink).toBeVisible();
+  await expect(fallbackLink).toHaveAttribute(
+    'href',
+    'https://www.petfinder.com/search/pets-for-adoption/?shelterRescue=d6f7beda-4e29-45df-b0da-93522ec89617',
+  );
+  await expect(fallbackLink).toHaveAttribute('target', '_blank');
+});
