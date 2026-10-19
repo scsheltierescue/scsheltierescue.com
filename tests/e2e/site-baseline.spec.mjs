@@ -153,7 +153,7 @@ test('homepage donor recognition is semantic and responsive', async ({ page }) =
   expect(await donors.evaluateAll((items) => items.every((item) => item.textContent?.trim()))).toBe(true);
 
   const columnCount = () => donorList.evaluate((list) => (
-    getComputedStyle(list).gridTemplateColumns.split(' ').length
+    Number.parseInt(getComputedStyle(list).columnCount, 10)
   ));
 
   expect(await columnCount()).toBe(1);
