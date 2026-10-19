@@ -4,6 +4,8 @@ import 'src/styles/global.css';
 import Layout from '@layouts/Layout.astro';
 
 import { Icon } from 'astro-icon/components';
+
+const petfinderURL = 'https://www.petfinder.com/search/pets-for-adoption/?shelterRescue=d6f7beda-4e29-45df-b0da-93522ec89617';
 ---
 
 <Layout
@@ -14,12 +16,20 @@ import { Icon } from 'astro-icon/components';
     <div class="large-12 medium-12 small-12 columns">
       <main id="main-content" class="main-content">
         <h1 class="headline first">Available for Adoption</h1>
-        <p>You can view our available dogs below or on our <a href="https://www.petfinder.com/search/pets-for-adoption/?shelterRescue=d6f7beda-4e29-45df-b0da-93522ec89617" target="_blank" rel="noopener noreferrer">Petfinder site</a>. If you are interested in adopting one of our rescue dogs, please complete and submit our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> form. If you have any questions feel free to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
+        <p>You can view our available dogs below. If you are interested in adopting one of our rescue dogs, please complete and submit our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a> form. If you have any questions, feel free to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
+
+        <aside class="mb-5 border border-stone-300 bg-stone-100 p-4" aria-label="Petfinder listing information">
+          <p class="mb-3">Our listings are provided by Petfinder and may take a moment to appear. If they do not load, you can view every available dog directly on Petfinder.</p>
+          <a class="inline-flex min-h-11 items-center font-semibold" href={petfinderURL} target="_blank" rel="noopener noreferrer">
+            View Available Dogs on Petfinder
+            <Icon name="external-link" title="external link" size=10 class="ml-1 inline align-text-top" />
+          </a>
+        </aside>
 
         <div id="pets" class="clearfix">
           <!-- Petfinder public API was retired. This page now uses Petfinder's official widget. -->
           <!-- Pet List Widget - Start -->
-          <script src="https://www.petfinder.com/pet-scroller.bundle.js"></script>
+          <script src="https://www.petfinder.com/pet-scroller.bundle.js" defer></script>
           <pet-scroller
             s3Url="https://dbw3zep4prcju.cloudfront.net/"
             apiBase="https://psl.petfinder.com/graphql"
@@ -31,20 +41,6 @@ import { Icon } from 'astro-icon/components';
             petListTitle="">
           </pet-scroller>
           <!-- Pet List Widget - End -->
-
-          <!-- Fallback option if widget breaks -->
-          <!--
-          <div class="flex justify-center">
-            <a
-              href="https://www.petfinder.com/search/pets-for-adoption/?shelterRescue=d6f7beda-4e29-45df-b0da-93522ec89617"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center text-xl font-semibold px-6 py-3 text-white rounded-lg bg-primary-c hover:bg-primary-c-darker transition"
-            >
-              SC Sheltie Rescue Petfinder site
-            </a>
-          </div>
-          -->
 
           <div class="mb-5"></div>
         </div>
