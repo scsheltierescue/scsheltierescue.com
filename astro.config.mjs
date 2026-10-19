@@ -1,6 +1,5 @@
 // @ts-check
-import { defineConfig, passthroughImageService } from 'astro/config';
-import react from '@astrojs/react';
+import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
@@ -8,11 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://scsheltierescue.com',
-  integrations: [react(), icon(), sitemap()],
+  integrations: [icon(), sitemap()],
   output: 'static',
-  image: {
-    service: passthroughImageService(),
-  },
   vite: {
     plugins: [tailwindcss()],
   },

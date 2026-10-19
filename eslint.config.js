@@ -3,7 +3,6 @@ import pluginJs from '@eslint/js';
 import tsEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import pluginAstro from 'eslint-plugin-astro';
-import pluginReact from '@eslint-react/eslint-plugin';
 import stylistic from '@stylistic/eslint-plugin';
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -38,20 +37,6 @@ export default [
     },
     rules: {
       ...tsEslint.configs.recommended.rules,
-    },
-  },
-
-  // React-specific rules
-  {
-    files: ['**/*.jsx', '**/*.tsx'], // Apply React rules only to React files
-    ...pluginReact.configs['recommended-typescript'],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
     },
   },
 

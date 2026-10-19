@@ -2,7 +2,7 @@
 import 'src/styles/global.css';
 
 import Layout from '@layouts/Layout.astro';
-import Slider from '@components/Slider';
+import Slider from '@components/Slider.astro';
 
 import { Image } from 'astro:assets';
 import { Icon } from 'astro-icon/components';
@@ -16,16 +16,16 @@ import nash2Img from '@images/nash2_667x500.jpg';
 import brittImg from '@images/britt_667x500.jpg';
 import litaImg from '@images/lita_667x500.jpg';
 
-import type { Item } from '@components/Slider';
+import type { Item } from '@components/Slider.astro';
 
 const sliderItems: Item[] = [
-  { id: 1, src: kronosImg.src, width: kronosImg.width, height: kronosImg.height, alt: 'Kronos, a rescued Sheltie' },
-  { id: 2, src: nashImg.src, width: nashImg.width, height: nashImg.height, alt: 'Nash, a rescued Sheltie' },
-  { id: 3, src: shadowImg.src, width: shadowImg.width, height: shadowImg.height, alt: 'Shadow, a rescued Sheltie' },
-  { id: 4, src: savvyImg.src, width: savvyImg.width, height: savvyImg.height, alt: 'Savvy, a rescued Sheltie' },
-  { id: 5, src: nash2Img.src, width: nash2Img.width, height: nash2Img.height, alt: 'Nash, a rescued Sheltie' },
-  { id: 6, src: brittImg.src, width: brittImg.width, height: brittImg.height, alt: 'Britt, a rescued Sheltie' },
-  { id: 7, src: litaImg.src, width: litaImg.width, height: litaImg.height, alt: 'Lita, a rescued Sheltie' },
+  { src: kronosImg, alt: 'Kronos, a rescued Sheltie' },
+  { src: nashImg, alt: 'Nash, a rescued Sheltie' },
+  { src: shadowImg, alt: 'Shadow, a rescued Sheltie' },
+  { src: savvyImg, alt: 'Savvy, a rescued Sheltie' },
+  { src: nash2Img, alt: 'Nash, a rescued Sheltie' },
+  { src: brittImg, alt: 'Britt, a rescued Sheltie' },
+  { src: litaImg, alt: 'Lita, a rescued Sheltie' },
 ];
 
 const actionBaseClasses = 'inline-flex min-h-11 w-full items-center justify-center px-5 py-3 text-center font-semibold md:w-auto';
@@ -54,13 +54,10 @@ const cardActionClasses = 'mt-auto inline-flex min-h-11 items-center self-start 
           <h1 class="text-2xl font-semibold">South Carolina Sheltie Rescue</h1>
           <p class="mb-0">We are a non-profit group comprised of volunteers who donate their time, abilities, and homes to help displaced, abandoned, and abused Shelties find a forever home.</p>
         </div>
-        <div class="large-8 columns show-for-large-up">
-          <ul class="main-header-picture-slider">
-            <Slider
-              items={sliderItems}
-              client:only="react"
-            />
-          </ul>
+        <div class="large-8 columns mt-0 max-md:mt-5 max-md:px-0! md:pr-0!">
+          <div class="main-header-picture-slider mx-auto max-w-[41.6875rem]">
+            <Slider items={sliderItems} />
+          </div>
         </div>
       </div>
     </div>
