@@ -85,19 +85,20 @@ test('skip link and mobile navigation expose their state', async ({ page }) => {
 
 test('primary navigation identifies the current page', async ({ page }) => {
   const destinations = [
-    ['/surrender/', 'Surrender'],
-    ['/adoption-requirements/', 'Adoption Requirements'],
-    ['/events/', 'Events'],
+    ['/surrender/', ['Surrender']],
+    ['/adoption-requirements/', ['Adoption Requirements']],
+    ['/adoptable-dogs/', ['Adopt', 'Adoptable Dogs']],
+    ['/events/', ['Events']],
   ];
 
-  for (const [path, currentPage] of destinations) {
+  for (const [path, currentPages] of destinations) {
     await page.goto(path);
 
     const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
     const currentLinks = navigation.locator('[aria-current="page"]');
 
-    await expect(currentLinks).toHaveCount(1);
-    await expect(currentLinks).toHaveAccessibleName(currentPage);
+    await expect(currentLinks).toHaveCount(currentPages.length);
+    await expect(currentLinks).toHaveText(currentPages);
   }
 });
 

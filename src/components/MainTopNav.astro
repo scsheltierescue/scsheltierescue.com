@@ -27,7 +27,7 @@ const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
     <section id="site-navigation" class="top-bar-section">
       <ul class="float-right">
         <li class={currentPath === '' ? 'active' : ''}><a href="/" aria-current={currentPath === '' ? 'page' : undefined}>Home</a></li>
-        <li class={`has-dropdown not-click ${currentPath === 'adoption-requirements' || currentPath === 'adoptable-dogs' ? 'active' : ''}`}><a href="/adoptable-dogs">Adopt</a>
+        <li class={`has-dropdown not-click ${currentPath === 'adoption-requirements' || currentPath === 'adoptable-dogs' ? 'active' : ''}`}><a href="/adoptable-dogs" aria-current={currentPath === 'adoptable-dogs' ? 'page' : undefined}>Adopt</a>
           <ul class="dropdown">
             <li class={currentPath === 'adoption-requirements' ? 'active' : ''}><a href="/adoption-requirements" aria-current={currentPath === 'adoption-requirements' ? 'page' : undefined}>Adoption Requirements</a></li>
             <li class={currentPath === 'adoptable-dogs' ? 'active' : ''}><a href="/adoptable-dogs" aria-current={currentPath === 'adoptable-dogs' ? 'page' : undefined}>Adoptable Dogs</a></li>
