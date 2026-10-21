@@ -83,6 +83,30 @@ test('skip link and mobile navigation expose their state', async ({ page }) => {
   await expect(menuButton).toBeFocused();
 });
 
+test('desktop Adopt dropdown remains available throughout keyboard navigation', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+
+  const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+  const adoptLink = navigation.getByRole('link', { name: 'Adopt', exact: true });
+  const firstAdoptLink = navigation.getByRole('link', { name: 'Adoption Requirements' });
+
+  await adoptLink.focus();
+  await expect(firstAdoptLink).toBeVisible();
+
+  await page.keyboard.press('Tab');
+  await expect(firstAdoptLink).toBeFocused();
+  await expect(firstAdoptLink).toBeVisible();
+
+  await page.keyboard.press('Escape');
+  await expect(adoptLink).toBeFocused();
+  await expect(firstAdoptLink).not.toBeVisible();
+
+  await page.keyboard.press('ArrowDown');
+  await expect(firstAdoptLink).toBeFocused();
+  await expect(firstAdoptLink).toBeVisible();
+});
+
 test('primary navigation identifies the current page', async ({ page }) => {
   const destinations = [
     ['/surrender/', ['Surrender']],

@@ -47,6 +47,10 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
   (() => {
     const menuButton = document.getElementById('menu-button');
     const topBar = document.querySelector('[data-topbar]');
+    const adoptMenuItem = topBar?.querySelector('.top-bar-section > ul > .has-dropdown');
+    const adoptLink = adoptMenuItem?.querySelector(':scope > a');
+    const firstAdoptLink = adoptMenuItem?.querySelector(':scope > .dropdown a');
+    const desktopNavigation = window.matchMedia('(min-width: 48.063rem)');
 
     const setMenuExpanded = (expanded) => {
       if (!(menuButton instanceof HTMLButtonElement)) {
@@ -74,6 +78,47 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
       if (menuButton?.getAttribute('aria-expanded') === 'true') {
         setMenuExpanded(false);
         menuButton.focus();
+      }
+    });
+
+    adoptMenuItem?.addEventListener('keydown', (event) => {
+      if (!(event instanceof KeyboardEvent) || !desktopNavigation.matches) {
+        return;
+      }
+
+      if (event.key === 'ArrowDown' && event.target === adoptLink) {
+        event.preventDefault();
+        adoptMenuItem.classList.remove('dropdown-dismissed');
+
+        if (firstAdoptLink instanceof HTMLElement) {
+          firstAdoptLink.focus();
+        }
+      }
+
+      if (event.key === 'Escape' && adoptMenuItem.contains(document.activeElement)) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (adoptLink instanceof HTMLElement) {
+          adoptLink.focus();
+          adoptMenuItem.classList.add('dropdown-dismissed');
+        }
+      }
+    });
+
+    adoptLink?.addEventListener('keydown', (event) => {
+      if (event instanceof KeyboardEvent && event.key === 'Tab') {
+        adoptMenuItem?.classList.remove('dropdown-dismissed');
+      }
+    });
+
+    adoptMenuItem?.addEventListener('pointerenter', () => {
+      adoptMenuItem.classList.remove('dropdown-dismissed');
+    });
+
+    adoptMenuItem?.addEventListener('focusout', (event) => {
+      if (!(event.relatedTarget instanceof Node) || !adoptMenuItem.contains(event.relatedTarget)) {
+        adoptMenuItem.classList.remove('dropdown-dismissed');
       }
     });
   })();
@@ -405,7 +450,9 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
       top: 1.40625rem;
     }
 
-    .top-bar-section .has-dropdown.hover>.dropdown,.top-bar-section .has-dropdown.not-click:hover>.dropdown {
+    .top-bar-section .has-dropdown.hover>.dropdown,
+    .top-bar-section .has-dropdown.not-click:hover>.dropdown,
+    .top-bar-section .has-dropdown:focus-within>.dropdown {
       position: static!important;
       height: auto;
       width: auto;
@@ -415,14 +462,11 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
       position: absolute!important;
     }
 
-    .top-bar-section .has-dropdown>a:focus+.dropdown {
-      position: static!important;
-      height: auto;
-      width: auto;
-      overflow: visible;
-      clip: auto;
-      display: block;
-      position: absolute!important;
+    .top-bar-section .has-dropdown.dropdown-dismissed>.dropdown {
+      clip: rect(1px,1px,1px,1px)!important;
+      height: 1px!important;
+      overflow: hidden!important;
+      width: 1px!important;
     }
 
     .top-bar-section .has-dropdown .dropdown li.has-dropdown>a:after {
