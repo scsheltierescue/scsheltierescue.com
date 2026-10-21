@@ -2,6 +2,39 @@
 import 'src/styles/global.css';
 
 import Layout from '@layouts/Layout.astro';
+
+const articles = [
+  {
+    title: 'Housetraining Tips',
+    href: '/help/articles/housetraining/',
+    description: 'Rule out medical causes, prevent accidents, establish a routine, and reward successful outdoor trips.',
+  },
+  {
+    title: 'Bringing Your New Sheltie Home',
+    href: '/help/articles/bringing-your-sheltie-home/',
+    description: 'Prepare essential supplies, make safe introductions, and help your new family member adjust at their own pace.',
+  },
+  {
+    title: 'Communicating with Your Sheltie',
+    href: '/help/articles/communicating/',
+    description: 'Recognize canine body language and understand signs of fear, anxiety, comfort, and play.',
+  },
+  {
+    title: 'My Sheltie Barks',
+    href: '/help/articles/barking/',
+    description: 'Understand why Shelties bark and use practical management and training techniques to reduce it.',
+  },
+  {
+    title: 'Grooming Your Pet Sheltie',
+    href: '/help/articles/grooming/',
+    description: 'Learn about coat care, brushing, bathing, nail trimming, and making grooming a positive experience.',
+  },
+  {
+    title: 'Fostering a Sheltie',
+    href: '/help/articles/fostering/',
+    description: 'Understand the foster-home role and how to prepare a rescued Sheltie for a successful adoption.',
+  },
+];
 ---
 
 <Layout
@@ -14,17 +47,20 @@ import Layout from '@layouts/Layout.astro';
         <h1 class="headline first">Expert Help and Advice</h1>
         <p>Phyllis Beasley is past co-founder of South Carolina Sheltie Rescue. She is a certified professional dog trainer (CPDT-KA) through the Council for the Certification of Professional Dog Trainers. She is an assistant trainer with Pawsitive Results, LLC, and a volunteer trainer for the Greater Columbia Obedience Club. Phyllis also volunteers her training skills with SC Sheltie Rescue to help foster and adoptive homes, including writing helpful articles addressing many issues that arise with sheltie ownership or fostering. Please check back for more articles to come!</p>
 
-        <h2 class="headline">Articles</h2>
-        <div class="large-12 medium-12 small-12 columns">
-          <ul class="block list-none list-outside m-0 py-3.5 px-0 *:mb-1.5 *:text-sm [&_a]:text-cyan-600 [&_a]:block [&_a]:m-0 [&_a]:py-1.5 [&_a]:px-3 [&_a:hover]:text-cyan-400 [&_a:hover]:bg-black/[.025] [&_a:focus]:text-cyan-400 [&_a:focus]:bg-black/[.025] [&_a:active]:text-cyan-400" aria-label="Help articles">
-            <li><a href="/help/articles/housetraining">Housetraining Tips</a></li>
-            <li><a href="/help/articles/bringing-your-sheltie-home">Bringing Your New Sheltie Home</a></li>
-            <li><a href="/help/articles/communicating">Communicating with Your Sheltie</a></li>
-            <li><a href="/help/articles/barking">My Sheltie Barks</a></li>
-            <li><a href="/help/articles/grooming">Grooming Your Pet Sheltie</a></li>
-            <li><a href="/help/articles/fostering">Fostering a Sheltie</a></li>
+        <section class="mb-5" aria-labelledby="help-articles-heading">
+          <h2 id="help-articles-heading" class="headline">Articles</h2>
+          <ul class="m-0 grid list-none gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article) => (
+              <li class="flex">
+                <a class="group flex grow flex-col border border-stone-300 bg-stone-100 p-5 text-zinc-800 hover:border-primary-c hover:bg-neutral-200 hover:text-zinc-900 focus:border-primary-c focus:bg-neutral-200 focus:text-zinc-900" href={article.href}>
+                  <h3 class="text-xl font-semibold text-primary-c group-hover:text-primary-c-darker group-focus:text-primary-c-darker">{article.title}</h3>
+                  <p class="mb-0 grow">{article.description}</p>
+                  <span class="mt-auto pt-3 font-semibold text-primary-c group-hover:text-primary-c-darker group-focus:text-primary-c-darker">Read Article</span>
+                </a>
+              </li>
+            ))}
           </ul>
-        </div>
+        </section>
 
         <h2 class="headline">Community Support</h2>
         <p>
