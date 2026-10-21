@@ -133,10 +133,33 @@ test('brand and accessible functional colors remain distinct', async ({ page }) 
   await emailLink.hover();
   await expect(emailLink).toHaveCSS('color', 'rgb(255, 255, 255)');
 
-  await expect(page.locator('.main-content > ul').first()).toHaveCSS(
+  await expect(page.locator('.recent-donations')).toHaveCSS(
     'background-color',
     'rgb(0, 107, 143)',
   );
+});
+
+test('homepage donor recognition is semantic and responsive', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const donations = page.getByRole('region', { name: 'Recent Donations - Thank You!' });
+  const donorList = donations.getByRole('list');
+  const donors = donations.getByRole('listitem');
+
+  await expect(donations).toBeVisible();
+  await expect(donorList).toBeVisible();
+  expect(await donors.count()).toBeGreaterThan(0);
+  expect(await donors.evaluateAll((items) => items.every((item) => item.textContent?.trim()))).toBe(true);
+
+  const columnCount = () => donorList.evaluate((list) => (
+    Number.parseInt(getComputedStyle(list).columnCount, 10)
+  ));
+
+  expect(await columnCount()).toBe(1);
+
+  await page.setViewportSize({ width: 1440, height: 900 });
+  expect(await columnCount()).toBe(3);
 });
 
 test('homepage presents a clear adoption-first action hierarchy', async ({ page }) => {
