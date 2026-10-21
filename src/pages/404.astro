@@ -1,62 +1,30 @@
-<!doctype html>
-<html lang="en">
+---
+import 'src/styles/global.css';
 
-  <head>
-    <meta charset="utf-8">
-    <title>Page Not Found</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    * {
-      line-height: 1.2;
-      margin: 0;
-    }
+import Layout from '@layouts/Layout.astro';
 
-    html {
-      color: #888;
-      display: table;
-      font-family: sans-serif;
-      height: 100%;
-      text-align: center;
-      width: 100%;
-    }
+const actionClasses = 'inline-flex min-h-11 items-center justify-center px-5 py-3 text-center font-semibold';
+---
 
-    body {
-      display: table-cell;
-      vertical-align: middle;
-      margin: 2em auto;
-    }
+<Layout
+  title="Page Not Found"
+  description="The requested page could not be found on the SC Sheltie Rescue website."
+>
+  <div class="row">
+    <div class="large-12 medium-12 small-12 columns">
+      <main id="main-content" class="main-content">
+        <section class="my-8 border border-stone-300 bg-stone-100 p-6 text-center text-zinc-800 sm:p-8" aria-labelledby="not-found-heading">
+          <p class="mb-2 text-lg font-semibold text-primary-c">Error 404</p>
+          <h1 id="not-found-heading" class="mb-4 text-3xl font-semibold">Page Not Found</h1>
+          <p class="mx-auto mb-6 max-w-2xl">The page may have moved or the address may be incorrect. Use one of the links below to continue exploring SC Sheltie Rescue.</p>
 
-    h1 {
-      color: #555;
-      font-size: 2em;
-      font-weight: 400;
-    }
-
-    p {
-      margin: 0 auto;
-      width: 280px;
-    }
-
-    @media only screen and (max-width: 280px) {
-
-      body,
-      p {
-        width: 95%;
-      }
-
-      h1 {
-        font-size: 1.5em;
-        margin: 0 0 0.3em;
-      }
-
-    }
-    </style>
-  </head>
-
-  <body>
-    <h1>Page Not Found</h1>
-    <p>Sorry, but the page you were trying to view does not exist.</p>
-  </body>
-
-</html>
-<!-- IE needs 512+ bytes: https://docs.microsoft.com/archive/blogs/ieinternals/friendly-http-error-pages -->
+          <div class="grid gap-3 sm:flex sm:flex-wrap sm:justify-center">
+            <a class={`${actionClasses} bg-primary-c text-white hover:bg-primary-c-darker hover:text-white focus:text-white`} href="/">Return Home</a>
+            <a class={`${actionClasses} bg-neutral-200 text-zinc-800 hover:bg-neutral-300 hover:text-zinc-900 focus:bg-neutral-300 focus:text-zinc-900`} href="/adoptable-dogs/">View Adoptable Dogs</a>
+            <a class={`${actionClasses} bg-neutral-200 text-zinc-800 hover:bg-neutral-300 hover:text-zinc-900 focus:bg-neutral-300 focus:text-zinc-900`} href="/help/">Browse Sheltie Help</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</Layout>
