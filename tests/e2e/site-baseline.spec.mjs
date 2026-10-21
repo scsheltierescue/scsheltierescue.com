@@ -247,3 +247,20 @@ test('events empty state provides useful next actions', async ({ page }) => {
     'https://www.instagram.com/scsheltierescue/',
   );
 });
+
+test('help page presents complete article cards with valid internal links', async ({ page }) => {
+  await page.goto('/help/');
+
+  const articles = page.getByRole('region', { name: 'Articles' });
+  const articleLinks = articles.getByRole('link');
+
+  await expect(articles).toBeVisible();
+  expect(await articleLinks.count()).toBeGreaterThan(0);
+  expect(await articleLinks.evaluateAll((links) => links.every((link) => {
+    const href = link.getAttribute('href');
+    const heading = link.querySelector('h3')?.textContent?.trim();
+    const description = link.querySelector('p')?.textContent?.trim();
+
+    return href?.startsWith('/help/articles/') && heading && description;
+  }))).toBe(true);
+});
