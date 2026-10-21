@@ -308,3 +308,48 @@ test('not-found page preserves site navigation and offers recovery paths', async
     '/help/',
   );
 });
+
+test('adoption requirements page is scannable and exposes the complete process', async ({ page }) => {
+  await page.goto('/adoption-requirements/');
+
+  const sectionNavigation = page.getByRole('navigation', { name: 'Adoption requirements sections' });
+  const sectionLinks = sectionNavigation.getByRole('link');
+
+  await expect(sectionNavigation).toBeVisible();
+  expect(await sectionLinks.count()).toBeGreaterThan(0);
+  expect(await sectionLinks.evaluateAll((links) => links.every((link) => (
+    link.getAttribute('href')?.startsWith('#')
+  )))).toBe(true);
+
+  for (const sectionLink of await sectionLinks.all()) {
+    const targetSelector = await sectionLink.getAttribute('href');
+
+    await sectionLink.click();
+
+    const targetClearsNavigation = await page.locator(targetSelector).evaluate((target) => {
+      const navigation = document.querySelector('[data-topbar]');
+
+      return navigation instanceof HTMLElement &&
+        target.getBoundingClientRect().top >= navigation.getBoundingClientRect().bottom;
+    });
+
+    expect(targetClearsNavigation).toBe(true);
+  }
+
+  const process = page.getByRole('region', { name: 'Adoption Process' });
+  const steps = process.getByRole('listitem');
+
+  await expect(process).toBeVisible();
+  expect(await steps.count()).toBeGreaterThan(0);
+  expect(await steps.evaluateAll((items) => items.every((item) => Boolean(
+    item.querySelector('h3')?.textContent?.trim() && item.querySelector('p')?.textContent?.trim(),
+  )))).toBe(true);
+  const inlineApplication = steps.first().getByRole('link', { name: /^Adoption Application/ });
+  const applicationAction = process.getByRole('link', { name: /Start the Adoption Application/ });
+
+  await expect(inlineApplication).toHaveAttribute('href', await applicationAction.getAttribute('href'));
+  await expect(applicationAction).toHaveAttribute(
+    'target',
+    '_blank',
+  );
+});
