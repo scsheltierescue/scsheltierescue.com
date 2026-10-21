@@ -288,3 +288,23 @@ test('surrender page exposes contact methods and a structured process', async ({
     item.querySelector('h3')?.textContent?.trim() && item.querySelector('p')?.textContent?.trim(),
   )))).toBe(true);
 });
+
+test('not-found page preserves site navigation and offers recovery paths', async ({ page }) => {
+  const response = await page.goto('/missing-page-for-test/');
+
+  expect(response?.status()).toBe(404);
+  await expect(page).toHaveTitle('Page Not Found | South Carolina Sheltie Rescue');
+  await expect(page.getByRole('navigation')).toBeVisible();
+
+  const notFound = page.getByRole('region', { name: 'Page Not Found' });
+
+  await expect(notFound.getByRole('link', { name: 'Return Home' })).toHaveAttribute('href', '/');
+  await expect(notFound.getByRole('link', { name: 'View Adoptable Dogs' })).toHaveAttribute(
+    'href',
+    '/adoptable-dogs/',
+  );
+  await expect(notFound.getByRole('link', { name: 'Browse Sheltie Help' })).toHaveAttribute(
+    'href',
+    '/help/',
+  );
+});
