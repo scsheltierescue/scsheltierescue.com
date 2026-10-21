@@ -344,7 +344,11 @@ test('adoption requirements page is scannable and exposes the complete process',
   expect(await steps.evaluateAll((items) => items.every((item) => Boolean(
     item.querySelector('h3')?.textContent?.trim() && item.querySelector('p')?.textContent?.trim(),
   )))).toBe(true);
-  await expect(process.getByRole('link', { name: /Start the Adoption Application/ })).toHaveAttribute(
+  const inlineApplication = steps.first().getByRole('link', { name: /^Adoption Application/ });
+  const applicationAction = process.getByRole('link', { name: /Start the Adoption Application/ });
+
+  await expect(inlineApplication).toHaveAttribute('href', await applicationAction.getAttribute('href'));
+  await expect(applicationAction).toHaveAttribute(
     'target',
     '_blank',
   );
