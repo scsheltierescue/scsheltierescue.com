@@ -308,3 +308,29 @@ test('not-found page preserves site navigation and offers recovery paths', async
     '/help/',
   );
 });
+
+test('adoption requirements page is scannable and exposes the complete process', async ({ page }) => {
+  await page.goto('/adoption-requirements/');
+
+  const sectionNavigation = page.getByRole('navigation', { name: 'Adoption requirements sections' });
+  const sectionLinks = sectionNavigation.getByRole('link');
+
+  await expect(sectionNavigation).toBeVisible();
+  expect(await sectionLinks.count()).toBeGreaterThan(0);
+  expect(await sectionLinks.evaluateAll((links) => links.every((link) => (
+    link.getAttribute('href')?.startsWith('#')
+  )))).toBe(true);
+
+  const process = page.getByRole('region', { name: 'Adoption Process' });
+  const steps = process.getByRole('listitem');
+
+  await expect(process).toBeVisible();
+  expect(await steps.count()).toBeGreaterThan(0);
+  expect(await steps.evaluateAll((items) => items.every((item) => Boolean(
+    item.querySelector('h3')?.textContent?.trim() && item.querySelector('p')?.textContent?.trim(),
+  )))).toBe(true);
+  await expect(process.getByRole('link', { name: /Start the Adoption Application/ })).toHaveAttribute(
+    'target',
+    '_blank',
+  );
+});

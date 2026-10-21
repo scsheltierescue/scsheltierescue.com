@@ -4,6 +4,9 @@ import 'src/styles/global.css';
 import Layout from '@layouts/Layout.astro';
 
 import { Icon } from 'astro-icon/components';
+
+const applicationURL = 'https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform';
+const actionClasses = 'inline-flex min-h-11 items-center justify-center px-5 py-3 text-center font-semibold';
 ---
 
 <Layout
@@ -15,9 +18,18 @@ import { Icon } from 'astro-icon/components';
       <main id="main-content" class="main-content">
         <h1 class="headline first">Adoption Requirements</h1>
 
-        <p>Please read this entire page before filling out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a>. This should answer most of your questions about adopting one of our rescued Shelties. If you have any additional questions, please feel free to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
+        <p>Please read this entire page before filling out the <a href={applicationURL} target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a>. This should answer most of your questions about adopting one of our rescued Shelties. If you have any additional questions, please feel free to <a href="mailto:adopt@scsheltierescue.com">email</a> us.</p>
 
-        <p>Things we look for in a potential adoptive home:</p>
+        <nav class="mb-6 border border-stone-300 bg-stone-100 p-5 text-zinc-800" aria-label="Adoption requirements sections">
+          <p class="mb-3 font-semibold">On this page</p>
+          <ul class="mb-0 grid gap-2 pl-5 md:grid-cols-3">
+            <li><a href="#adoptive-home">Adoptive home requirements</a></li>
+            <li><a href="#breed-fit">Is a Sheltie right for you?</a></li>
+            <li><a href="#adoption-process">Adoption process</a></li>
+          </ul>
+        </nav>
+
+        <h2 id="adoptive-home" class="headline">What we look for in an adoptive home</h2>
 
         <dl class="border border-solid border-stone-300 bg-neutral-200 text-zinc-800 p-5 mb-5">
           <dt class="first:mt-0">A verifiable history of vet care for all current and previous pets</dt>
@@ -41,7 +53,7 @@ import { Icon } from 'astro-icon/components';
 
         <p>Overall, we are looking to make good matches, to ensure that our rescued Shelties are happy and safe. We want them and you to be satisfied with the adoption.</p>
 
-        <h2 class="headline">Is a Sheltie the right dog for you?</h2>
+        <h2 id="breed-fit" class="headline">Is a Sheltie the right dog for you?</h2>
 
         <p>Before applying to adopt one of our rescued Shelties, please make sure you have researched the breed. Here are some facts about Shelties:</p>
 
@@ -66,8 +78,32 @@ import { Icon } from 'astro-icon/components';
 
         <p>If the above describes you and the type of dog you are looking for, please fill out an application. We would love to hear from you and help you find a rescued Sheltie to be your friend for life!</p>
 
-        <h2 class="headline">Adoption Process</h2>
-        <p>The first step is filling out and sending in the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a>. One of our volunteers will review your application and call your vet for a reference. We will be in touch to let you know if your application has been conditionally approved. We will then schedule a home visit, where one of our volunteers comes to your home to make sure it is safe for a dog. This is not a &quot;how clean is your house&quot; visit. We are looking only at the safety of your home, the security of your fence, and how you interact with your current pets. Once your home visit is approved, you are officially approved to adopt one of our rescued Shelties who is a good fit for you.</p>
+        <section id="adoption-process" aria-labelledby="adoption-process-heading">
+          <h2 id="adoption-process-heading" class="headline">Adoption Process</h2>
+          <ol class="mb-5 list-decimal space-y-4 pl-7">
+            <li>
+              <h3 class="text-xl font-semibold">Submit an application</h3>
+              <p class="mb-0">Fill out and send in the Adoption Application so our volunteers can learn about your home and the kind of Sheltie who may be a good fit.</p>
+            </li>
+            <li>
+              <h3 class="text-xl font-semibold">Application and vet reference review</h3>
+              <p class="mb-0">One of our volunteers will review your application and call your veterinarian for a reference. We will contact you if your application is conditionally approved.</p>
+            </li>
+            <li>
+              <h3 class="text-xl font-semibold">Home visit</h3>
+              <p class="mb-0">A volunteer will visit your home to assess its safety, the security of your fence, and how you interact with your current pets. This is not a &quot;how clean is your house&quot; visit.</p>
+            </li>
+            <li>
+              <h3 class="text-xl font-semibold">Approval and matching</h3>
+              <p class="mb-0">Once your home visit is approved, you are eligible to adopt a rescued Sheltie who is a good fit for you.</p>
+            </li>
+          </ol>
+
+          <a class={`${actionClasses} mb-5 bg-primary-c text-white hover:bg-primary-c-darker hover:text-white focus:text-white`} href={applicationURL} target="_blank" rel="noopener noreferrer">
+            Start the Adoption Application
+            <Icon name="external-link" title="external link" size=10 class="ml-1 inline align-text-top" />
+          </a>
+        </section>
       </main>
     </div>
   </div>
