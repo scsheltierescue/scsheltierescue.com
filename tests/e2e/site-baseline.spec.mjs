@@ -264,3 +264,27 @@ test('help page presents complete article cards with valid internal links', asyn
     return href?.startsWith('/help/articles/') && heading && description;
   }))).toBe(true);
 });
+
+test('surrender page exposes contact methods and a structured process', async ({ page }) => {
+  await page.goto('/surrender/');
+
+  const contact = page.getByRole('region', { name: 'Contact SC Sheltie Rescue' });
+
+  await expect(contact.getByRole('link', { name: /Call/ })).toHaveAttribute(
+    'href',
+    'tel:+18883992220',
+  );
+  await expect(contact.getByRole('link', { name: /Email/ })).toHaveAttribute(
+    'href',
+    'mailto:adopt@scsheltierescue.com',
+  );
+
+  const process = page.getByRole('region', { name: 'What happens when you surrender your Sheltie?' });
+  const steps = process.getByRole('listitem');
+
+  await expect(process).toBeVisible();
+  expect(await steps.count()).toBeGreaterThan(0);
+  expect(await steps.evaluateAll((items) => items.every((item) => Boolean(
+    item.querySelector('h3')?.textContent?.trim() && item.querySelector('p')?.textContent?.trim(),
+  )))).toBe(true);
+});

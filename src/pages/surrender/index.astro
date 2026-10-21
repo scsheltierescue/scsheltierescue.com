@@ -2,6 +2,8 @@
 import 'src/styles/global.css';
 
 import Layout from '@layouts/Layout.astro';
+
+const actionClasses = 'inline-flex min-h-11 items-center justify-center px-5 py-3 text-center font-semibold';
 ---
 
 <Layout
@@ -12,15 +14,48 @@ import Layout from '@layouts/Layout.astro';
     <div class="large-12 medium-12 small-12 columns">
       <main id="main-content" class="main-content">
         <h1 class="headline first">Surrendering a Sheltie to Rescue</h1>
-        <p>If you currently own a Sheltie, work with, or know of a shelter that has a Sheltie and you need rescue for him/her, please call us at <a href="tel:+18883992220">+1 (888) 399-2220</a>. If you get our voicemail, please leave a brief message with a contact number and someone will be back in touch with you the same day. You may also <a href="mailto:adopt@scsheltierescue.com">email</a> with a brief description and a photo of the dog in need.</p>
+        <p>If a Sheltie in your care, at a shelter, or in your community needs rescue assistance, please contact SC Sheltie Rescue as soon as possible.</p>
+
+        <section class="mb-5 border border-primary-c bg-cyan-50 p-5 text-zinc-800" aria-labelledby="surrender-contact-heading">
+          <h2 id="surrender-contact-heading" class="text-2xl font-semibold">Contact SC Sheltie Rescue</h2>
+          <p>Call us or send an email with a brief description and photo of the Sheltie in need.</p>
+
+          <div class="grid gap-3 sm:flex sm:flex-wrap">
+            <a class={`${actionClasses} bg-primary-c text-white hover:bg-primary-c-darker hover:text-white focus:text-white`} href="tel:+18883992220">Call +1 (888) 399-2220</a>
+            <a class={`${actionClasses} bg-neutral-200 text-zinc-800 hover:bg-neutral-300 hover:text-zinc-900 focus:bg-neutral-300 focus:text-zinc-900`} href="mailto:adopt@scsheltierescue.com">Email adopt@scsheltierescue.com</a>
+          </div>
+
+          <p class="mb-0 mt-4">If you reach our voicemail, leave a brief message with your contact number and someone will get back to you the same day.</p>
+        </section>
+
         <p>We house rescued Shelties with foster homes throughout the state, and we almost always have room for a new rescue. We are a member of the ASSA (American Shetland Sheepdog Association) National Sheltie Rescue Network, which means we must meet certain requirements for the medical care of our rescues and for approving/screening new homes. We are always ready to provide a vet reference to anyone considering relinquishing their Sheltie(s) to us.</p>
         <p>If you are considering working with another rescue to rehome your dog, PLEASE ask them for a vet reference. If they can't give you a vet to call who will verify that they are a good, responsible rescue, DON'T give them your dog. For every good rescue out there, there are just as many bad ones. Anyone can represent himself as a rescue person. It's up to you to check them out.</p>
 
-        <h2 class="headline">What happens when you surrender your Sheltie?</h2>
-        <p>After the Sheltie is placed in a foster home, the first thing we do is attend to the dog's medical needs: vaccinations, heartworm and fecal tests, spay/neuter, dental cleaning if needed, microchipping, and any other vet work indicated by the dog's age and condition (bloodwork, x-rays, surgery, etc.).</p>
-        <p>We evaluate the dog's behavior, and then place them up for adoption. We accept adoption applications for the dog. If an application looks like a good match, we'll conduct a vet reference check (which means we have to have a vet we can talk to who will verify that the adoption candidate is a responsible pet owner). If the vet check goes well, we then do a home visit and interview with the applicant.</p>
-        <p>Once an applicant is approved to adopt, we allow them to meet any dogs we have who might be a good match for the applicant's home situation.</p>
-        <p>If a good match is made, the applicant fills out and signs a legally binding contract and pays an adoption donation. Most people who adopt from us then become volunteers for our group.</p>
+        <section aria-labelledby="surrender-process-heading">
+          <h2 id="surrender-process-heading" class="headline">What happens when you surrender your Sheltie?</h2>
+          <ol class="mb-5 list-decimal space-y-4 pl-7">
+            <li>
+              <h3 class="text-xl font-semibold">Medical care</h3>
+              <p class="mb-0">After the Sheltie is placed in a foster home, the first thing we do is attend to the dog's medical needs: vaccinations, heartworm and fecal tests, spay/neuter, dental cleaning if needed, microchipping, and any other vet work indicated by the dog's age and condition (bloodwork, x-rays, surgery, etc.).</p>
+            </li>
+            <li>
+              <h3 class="text-xl font-semibold">Behavior evaluation and adoption listing</h3>
+              <p class="mb-0">We evaluate the dog's behavior, place them up for adoption, and begin accepting adoption applications.</p>
+            </li>
+            <li>
+              <h3 class="text-xl font-semibold">Applicant screening</h3>
+              <p class="mb-0">If an application looks like a good match, we'll conduct a vet reference check with a veterinarian who can verify that the applicant is a responsible pet owner. If the vet check goes well, we then conduct a home visit and interview.</p>
+            </li>
+            <li>
+              <h3 class="text-xl font-semibold">Introductions and matching</h3>
+              <p class="mb-0">Once an applicant is approved, we allow them to meet dogs who might be a good match for their home situation.</p>
+            </li>
+            <li>
+              <h3 class="text-xl font-semibold">Adoption</h3>
+              <p class="mb-0">If a good match is made, the applicant signs a legally binding contract and pays an adoption donation. Most people who adopt from us then become volunteers for our group.</p>
+            </li>
+          </ol>
+        </section>
       </main>
     </div>
   </div>
