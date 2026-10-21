@@ -76,6 +76,29 @@ test('skip link and mobile navigation expose their state', async ({ page }) => {
   await menuButton.click();
   await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
   await expect(menuButton).toHaveAccessibleName('Close navigation menu');
+
+  await menuButton.press('Escape');
+  await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(menuButton).toHaveAccessibleName('Open navigation menu');
+  await expect(menuButton).toBeFocused();
+});
+
+test('primary navigation identifies the current page', async ({ page }) => {
+  const destinations = [
+    ['/surrender/', 'Surrender'],
+    ['/adoption-requirements/', 'Adoption Requirements'],
+    ['/events/', 'Events'],
+  ];
+
+  for (const [path, currentPage] of destinations) {
+    await page.goto(path);
+
+    const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+    const currentLinks = navigation.locator('[aria-current="page"]');
+
+    await expect(currentLinks).toHaveCount(1);
+    await expect(currentLinks).toHaveAccessibleName(currentPage);
+  }
 });
 
 test('desktop navigation brand fits within the navigation bar', async ({ page }) => {
