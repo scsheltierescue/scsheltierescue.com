@@ -3,7 +3,7 @@ import 'src/styles/global.css';
 
 import { Icon } from 'astro-icon/components';
 
-const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
+const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
 ---
 
 <div class="contain-to-grid fixed w-full top-0 left-0 z-[99]">

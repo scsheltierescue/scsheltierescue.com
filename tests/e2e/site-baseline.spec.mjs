@@ -102,6 +102,16 @@ test('primary navigation identifies the current page', async ({ page }) => {
   }
 });
 
+test('help articles retain the active Help section without claiming its index is current', async ({ page }) => {
+  await page.goto('/help/articles/housetraining/');
+
+  const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+  const helpLink = navigation.getByRole('link', { name: 'Help', exact: true });
+
+  await expect(helpLink.locator('..')).toHaveClass(/\bactive\b/);
+  await expect(navigation.locator('[aria-current="page"]')).toHaveCount(0);
+});
+
 test('desktop navigation brand fits within the navigation bar', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
