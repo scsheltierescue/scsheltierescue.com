@@ -321,6 +321,21 @@ test('adoption requirements page is scannable and exposes the complete process',
     link.getAttribute('href')?.startsWith('#')
   )))).toBe(true);
 
+  for (const sectionLink of await sectionLinks.all()) {
+    const targetSelector = await sectionLink.getAttribute('href');
+
+    await sectionLink.click();
+
+    const targetClearsNavigation = await page.locator(targetSelector).evaluate((target) => {
+      const navigation = document.querySelector('[data-topbar]');
+
+      return navigation instanceof HTMLElement &&
+        target.getBoundingClientRect().top >= navigation.getBoundingClientRect().bottom;
+    });
+
+    expect(targetClearsNavigation).toBe(true);
+  }
+
   const process = page.getByRole('region', { name: 'Adoption Process' });
   const steps = process.getByRole('listitem');
 
