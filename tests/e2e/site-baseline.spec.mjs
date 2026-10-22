@@ -68,14 +68,97 @@ test('skip link and mobile navigation expose their state', async ({ page }) => {
   await expect(skipLink).toHaveAttribute('href', '#main-content');
 
   const menuButton = page.locator('#menu-button');
+  const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
 
   await expect(menuButton).toHaveAccessibleName('Open navigation menu');
   await expect(menuButton).toHaveAttribute('aria-controls', 'site-navigation');
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(navigation.locator('#site-navigation')).toHaveAttribute('inert', '');
+
+  await menuButton.focus();
+  await page.keyboard.press('Tab');
+  await expect(navigation.locator(':focus')).toHaveCount(0);
 
   await menuButton.click();
   await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
   await expect(menuButton).toHaveAccessibleName('Close navigation menu');
+  await expect(navigation.locator('#site-navigation')).not.toHaveAttribute('inert', '');
+
+  await menuButton.press('Escape');
+  await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(menuButton).toHaveAccessibleName('Open navigation menu');
+  await expect(navigation.locator('#site-navigation')).toHaveAttribute('inert', '');
+  await expect(menuButton).toBeFocused();
+});
+
+test('mobile navigation closes after following an internal link', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const menuButton = page.locator('#menu-button');
+
+  await menuButton.click();
+  await page
+    .getByRole('navigation', { name: 'Primary navigation' })
+    .getByRole('link', { name: 'Adoption Requirements' })
+    .click();
+
+  await expect(page).toHaveURL(/\/adoption-requirements\/?$/);
+  await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(menuButton).toHaveAccessibleName('Open navigation menu');
+});
+
+test('desktop Adopt dropdown remains available throughout keyboard navigation', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+
+  const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+  const adoptLink = navigation.getByRole('link', { name: 'Adopt', exact: true });
+  const firstAdoptLink = navigation.getByRole('link', { name: 'Adoption Requirements' });
+
+  await adoptLink.focus();
+  await expect(firstAdoptLink).toBeVisible();
+
+  await page.keyboard.press('Tab');
+  await expect(firstAdoptLink).toBeFocused();
+  await expect(firstAdoptLink).toBeVisible();
+
+  await page.keyboard.press('Escape');
+  await expect(adoptLink).toBeFocused();
+  await expect(firstAdoptLink).not.toBeVisible();
+
+  await page.keyboard.press('ArrowDown');
+  await expect(firstAdoptLink).toBeFocused();
+  await expect(firstAdoptLink).toBeVisible();
+});
+
+test('primary navigation identifies the current page', async ({ page }) => {
+  const destinations = [
+    ['/surrender/', ['Surrender']],
+    ['/adoption-requirements/', ['Adoption Requirements']],
+    ['/adoptable-dogs/', ['Adopt', 'Adoptable Dogs']],
+    ['/events/', ['Events']],
+  ];
+
+  for (const [path, currentPages] of destinations) {
+    await page.goto(path);
+
+    const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+    const currentLinks = navigation.locator('[aria-current="page"]');
+
+    await expect(currentLinks).toHaveCount(currentPages.length);
+    await expect(currentLinks).toHaveText(currentPages);
+  }
+});
+
+test('help articles retain the active Help section without claiming its index is current', async ({ page }) => {
+  await page.goto('/help/articles/housetraining/');
+
+  const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+  const helpLink = navigation.getByRole('link', { name: 'Help', exact: true });
+
+  await expect(helpLink.locator('..')).toHaveClass(/\bactive\b/);
+  await expect(navigation.locator('[aria-current="page"]')).toHaveCount(0);
 });
 
 test('desktop navigation brand fits within the navigation bar', async ({ page }) => {

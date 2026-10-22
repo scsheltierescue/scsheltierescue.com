@@ -3,11 +3,11 @@ import 'src/styles/global.css';
 
 import { Icon } from 'astro-icon/components';
 
-const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
+const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
 ---
 
 <div class="contain-to-grid fixed w-full top-0 left-0 z-[99]">
-  <nav class="top-bar bg-zinc-800" data-topbar>
+  <nav class="top-bar bg-zinc-800" aria-label="Primary navigation" data-topbar>
     <!-- Desktop -->
     <ul class="title-area">
       <!-- Title Area -->
@@ -26,38 +26,107 @@ const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
 
     <section id="site-navigation" class="top-bar-section">
       <ul class="float-right">
-        <li class={currentPath === '' ? 'active' : ''}><a href="/">Home</a></li>
-        <li class={`has-dropdown not-click ${currentPath === 'adoption-requirements' || currentPath === 'adoptable-dogs' ? 'active' : ''}`}><a href="/adoptable-dogs">Adopt</a>
+        <li class={currentPath === '' ? 'active' : ''}><a href="/" aria-current={currentPath === '' ? 'page' : undefined}>Home</a></li>
+        <li class={`has-dropdown not-click ${currentPath === 'adoption-requirements' || currentPath === 'adoptable-dogs' ? 'active' : ''}`}><a href="/adoptable-dogs" aria-current={currentPath === 'adoptable-dogs' ? 'page' : undefined}>Adopt</a>
           <ul class="dropdown">
-            <li class={currentPath === 'adoption-requirements' ? 'active' : ''}><a href="/adoption-requirements">Adoption Requirements</a></li>
-            <li class={currentPath === 'adoptable-dogs' ? 'active' : ''}><a href="/adoptable-dogs">Adoptable Dogs</a></li>
+            <li class={currentPath === 'adoption-requirements' ? 'active' : ''}><a href="/adoption-requirements" aria-current={currentPath === 'adoption-requirements' ? 'page' : undefined}>Adoption Requirements</a></li>
+            <li class={currentPath === 'adoptable-dogs' ? 'active' : ''}><a href="/adoptable-dogs" aria-current={currentPath === 'adoptable-dogs' ? 'page' : undefined}>Adoptable Dogs</a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Adoption Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
             <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeWT2ExXhpCpz-K5fELnkeUzhv5jFynlBzkv3eXl7bRnoFjVw/viewform" target="_blank" rel="noopener noreferrer">Fostering Application <Icon name="external-link" title="external link" size=10 class="inline align-text-top" /></a></li>
           </ul>
         </li>
-        <li class={currentPath === 'surrender' ? 'active' : ''}><a href="/surrender">Surrender</a></li>
-        <li class={(currentPath === 'help' || currentPath.startsWith('help/articles')) ? 'active' : ''}><a href="/help">Help</a></li>
-        <li class={currentPath === 'events' ? 'active' : ''}><a href="/events">Events</a></li>
+        <li class={currentPath === 'surrender' ? 'active' : ''}><a href="/surrender" aria-current={currentPath === 'surrender' ? 'page' : undefined}>Surrender</a></li>
+        <li class={(currentPath === 'help' || currentPath.startsWith('help/articles')) ? 'active' : ''}><a href="/help" aria-current={currentPath === 'help' ? 'page' : undefined}>Help</a></li>
+        <li class={currentPath === 'events' ? 'active' : ''}><a href="/events" aria-current={currentPath === 'events' ? 'page' : undefined}>Events</a></li>
       </ul>
     </section>
   </nav>
 </div>
 
 <script is:inline data-astro-rerun>
-  document.getElementById('menu-button')?.addEventListener('click', (e) => {
-    const button = e.currentTarget;
+  (() => {
+    const menuButton = document.getElementById('menu-button');
+    const topBar = document.querySelector('[data-topbar]');
+    const siteNavigation = document.getElementById('site-navigation');
+    const adoptMenuItem = topBar?.querySelector('.top-bar-section > ul > .has-dropdown');
+    const adoptLink = adoptMenuItem?.querySelector(':scope > a');
+    const firstAdoptLink = adoptMenuItem?.querySelector(':scope > .dropdown a');
+    const desktopNavigation = window.matchMedia('(min-width: 58.75rem)');
 
-    if (!(button instanceof HTMLButtonElement)) {
-      return;
-    }
+    const setMenuExpanded = (expanded) => {
+      if (!(menuButton instanceof HTMLButtonElement)) {
+        return;
+      }
 
-    const isExpanded = button.getAttribute('aria-expanded') === 'true';
-    const nextExpanded = !isExpanded;
+      menuButton.setAttribute('aria-expanded', String(expanded));
+      menuButton.setAttribute('aria-label', expanded ? 'Close navigation menu' : 'Open navigation menu');
+      topBar?.classList.toggle('expanded', expanded);
+      siteNavigation?.toggleAttribute('inert', !expanded && !desktopNavigation.matches);
+    };
 
-    button.setAttribute('aria-expanded', String(nextExpanded));
-    button.setAttribute('aria-label', nextExpanded ? 'Close navigation menu' : 'Open navigation menu');
-    document.querySelector('[data-topbar]')?.classList.toggle('expanded');
-  });
+    setMenuExpanded(false);
+    desktopNavigation.addEventListener('change', () => setMenuExpanded(false));
+
+    menuButton?.addEventListener('click', () => {
+      if (!(menuButton instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      setMenuExpanded(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+
+    topBar?.addEventListener('keydown', (event) => {
+      if (!(event instanceof KeyboardEvent) || event.key !== 'Escape') {
+        return;
+      }
+
+      if (menuButton?.getAttribute('aria-expanded') === 'true') {
+        setMenuExpanded(false);
+        menuButton.focus();
+      }
+    });
+
+    adoptMenuItem?.addEventListener('keydown', (event) => {
+      if (!(event instanceof KeyboardEvent) || !desktopNavigation.matches) {
+        return;
+      }
+
+      if (event.key === 'ArrowDown' && event.target === adoptLink) {
+        event.preventDefault();
+        adoptMenuItem.classList.remove('dropdown-dismissed');
+
+        if (firstAdoptLink instanceof HTMLElement) {
+          firstAdoptLink.focus();
+        }
+      }
+
+      if (event.key === 'Escape' && adoptMenuItem.contains(document.activeElement)) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (adoptLink instanceof HTMLElement) {
+          adoptLink.focus();
+          adoptMenuItem.classList.add('dropdown-dismissed');
+        }
+      }
+    });
+
+    adoptLink?.addEventListener('keydown', (event) => {
+      if (event instanceof KeyboardEvent && event.key === 'Tab') {
+        adoptMenuItem?.classList.remove('dropdown-dismissed');
+      }
+    });
+
+    adoptMenuItem?.addEventListener('pointerenter', () => {
+      adoptMenuItem.classList.remove('dropdown-dismissed');
+    });
+
+    adoptMenuItem?.addEventListener('focusout', (event) => {
+      if (!(event.relatedTarget instanceof Node) || !adoptMenuItem.contains(event.relatedTarget)) {
+        adoptMenuItem.classList.remove('dropdown-dismissed');
+      }
+    });
+  })();
 </script>
 
 <style>
@@ -386,7 +455,9 @@ const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
       top: 1.40625rem;
     }
 
-    .top-bar-section .has-dropdown.hover>.dropdown,.top-bar-section .has-dropdown.not-click:hover>.dropdown {
+    .top-bar-section .has-dropdown.hover>.dropdown,
+    .top-bar-section .has-dropdown.not-click:hover>.dropdown,
+    .top-bar-section .has-dropdown:focus-within>.dropdown {
       position: static!important;
       height: auto;
       width: auto;
@@ -396,14 +467,12 @@ const currentPath = Astro.url.pathname.replace(/\//g, ''); // Remove all slashes
       position: absolute!important;
     }
 
-    .top-bar-section .has-dropdown>a:focus+.dropdown {
-      position: static!important;
-      height: auto;
-      width: auto;
-      overflow: visible;
-      clip: auto;
-      display: block;
-      position: absolute!important;
+    .top-bar-section .has-dropdown.dropdown-dismissed>.dropdown {
+      clip: rect(1px,1px,1px,1px)!important;
+      display: none!important;
+      height: 1px!important;
+      overflow: hidden!important;
+      width: 1px!important;
     }
 
     .top-bar-section .has-dropdown .dropdown li.has-dropdown>a:after {
