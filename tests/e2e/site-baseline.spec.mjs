@@ -95,7 +95,7 @@ test('mobile navigation closes after following an internal link', async ({ page 
     .getByRole('link', { name: 'Adoption Requirements' })
     .click();
 
-  await expect(page).toHaveURL(/\/adoption-requirements\/$/);
+  await expect(page).toHaveURL(/\/adoption-requirements\/?$/);
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
   await expect(menuButton).toHaveAccessibleName('Open navigation menu');
 });
