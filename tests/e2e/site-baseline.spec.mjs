@@ -83,6 +83,23 @@ test('skip link and mobile navigation expose their state', async ({ page }) => {
   await expect(menuButton).toBeFocused();
 });
 
+test('mobile navigation closes after following an internal link', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const menuButton = page.locator('#menu-button');
+
+  await menuButton.click();
+  await page
+    .getByRole('navigation', { name: 'Primary navigation' })
+    .getByRole('link', { name: 'Adoption Requirements' })
+    .click();
+
+  await expect(page).toHaveURL(/\/adoption-requirements\/$/);
+  await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(menuButton).toHaveAccessibleName('Open navigation menu');
+});
+
 test('desktop Adopt dropdown remains available throughout keyboard navigation', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');

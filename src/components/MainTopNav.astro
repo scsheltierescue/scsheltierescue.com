@@ -62,6 +62,8 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
       topBar?.classList.toggle('expanded', expanded);
     };
 
+    setMenuExpanded(false);
+
     menuButton?.addEventListener('click', () => {
       if (!(menuButton instanceof HTMLButtonElement)) {
         return;
