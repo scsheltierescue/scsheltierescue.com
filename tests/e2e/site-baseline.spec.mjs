@@ -372,6 +372,22 @@ test('surrender page exposes contact methods and a structured process', async ({
   )))).toBe(true);
 });
 
+test('email links opt out of Cloudflare obfuscation', async ({ request }) => {
+  for (const path of ['/adoptable-dogs/', '/adoption-requirements/', '/surrender/']) {
+    const response = await request.get(path);
+    const html = await response.text();
+    const emailLinks = [...html.matchAll(/<!--email_off-->([\s\S]*?)<!--\/email_off-->/g)]
+      .map((match) => match[1])
+      .filter((markup) => markup.includes('mailto:'));
+
+    expect(response.ok()).toBe(true);
+    expect(emailLinks.length).toBeGreaterThan(0);
+    expect(emailLinks.every((markup) => (
+      markup.includes('href="mailto:adopt@scsheltierescue.com"')
+    ))).toBe(true);
+  }
+});
+
 test('not-found page preserves site navigation and offers recovery paths', async ({ page }) => {
   const response = await page.goto('/missing-page-for-test/');
 
