@@ -161,6 +161,51 @@ test('help articles retain the active Help section without claiming its index is
   await expect(navigation.locator('[aria-current="page"]')).toHaveCount(0);
 });
 
+test('help articles expose breadcrumb structured data matching the visible trail', async ({ page }) => {
+  const articles = [
+    '/help/articles/barking/',
+    '/help/articles/bringing-your-sheltie-home/',
+    '/help/articles/communicating/',
+    '/help/articles/fostering/',
+    '/help/articles/grooming/',
+    '/help/articles/housetraining/',
+  ];
+
+  for (const path of articles) {
+    await page.goto(path);
+
+    const visibleBreadcrumbs = page.getByRole('navigation', { name: 'Breadcrumb' });
+    const visibleTrail = await visibleBreadcrumbs.getByRole('listitem').evaluateAll((items) => (
+      items.map((item) => {
+        const link = item.querySelector('a');
+
+        return {
+          name: item.textContent?.trim(),
+          ...(link ? { item: link.href } : {}),
+        };
+      })
+    ));
+    const structuredData = await page
+      .locator('script[type="application/ld+json"]')
+      .evaluateAll((elements) => elements
+        .map((element) => JSON.parse(element.textContent ?? '{}'))
+        .find((data) => data['@type'] === 'BreadcrumbList'));
+
+    expect(visibleTrail.length).toBeGreaterThanOrEqual(2);
+    expect(structuredData).toEqual({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: visibleTrail.map((crumb, index) => {
+        return {
+          '@type': 'ListItem',
+          position: index + 1,
+          ...crumb,
+        };
+      }),
+    });
+  }
+});
+
 test('desktop navigation brand fits within the navigation bar', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');

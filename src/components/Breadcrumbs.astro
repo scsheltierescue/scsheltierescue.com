@@ -10,6 +10,19 @@ interface Props {
 }
 
 const { crumbs } = Astro.props;
+const siteURL = Astro.site ?? Astro.url.origin;
+const breadcrumbStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((crumb, index) => {
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.text,
+      ...(crumb.href ? { item: new URL(crumb.href, siteURL).href } : {}),
+    };
+  }),
+};
 ---
 
 <nav class="breadcrumbs border border-solid border-zinc-300 rounded overflow-hidden py-2.5 px-3.5 bg-zinc-100" aria-label="Breadcrumb">
@@ -31,6 +44,8 @@ const { crumbs } = Astro.props;
     }
   </ol>
 </nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructuredData)}></script>
 
 <style>
   li:first-child:before {
