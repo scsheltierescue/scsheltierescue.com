@@ -47,10 +47,11 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
   (() => {
     const menuButton = document.getElementById('menu-button');
     const topBar = document.querySelector('[data-topbar]');
+    const siteNavigation = document.getElementById('site-navigation');
     const adoptMenuItem = topBar?.querySelector('.top-bar-section > ul > .has-dropdown');
     const adoptLink = adoptMenuItem?.querySelector(':scope > a');
     const firstAdoptLink = adoptMenuItem?.querySelector(':scope > .dropdown a');
-    const desktopNavigation = window.matchMedia('(min-width: 48.063rem)');
+    const desktopNavigation = window.matchMedia('(min-width: 58.75rem)');
 
     const setMenuExpanded = (expanded) => {
       if (!(menuButton instanceof HTMLButtonElement)) {
@@ -60,9 +61,11 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
       menuButton.setAttribute('aria-expanded', String(expanded));
       menuButton.setAttribute('aria-label', expanded ? 'Close navigation menu' : 'Open navigation menu');
       topBar?.classList.toggle('expanded', expanded);
+      siteNavigation?.toggleAttribute('inert', !expanded && !desktopNavigation.matches);
     };
 
     setMenuExpanded(false);
+    desktopNavigation.addEventListener('change', () => setMenuExpanded(false));
 
     menuButton?.addEventListener('click', () => {
       if (!(menuButton instanceof HTMLButtonElement)) {

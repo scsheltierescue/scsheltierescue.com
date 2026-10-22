@@ -68,18 +68,26 @@ test('skip link and mobile navigation expose their state', async ({ page }) => {
   await expect(skipLink).toHaveAttribute('href', '#main-content');
 
   const menuButton = page.locator('#menu-button');
+  const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
 
   await expect(menuButton).toHaveAccessibleName('Open navigation menu');
   await expect(menuButton).toHaveAttribute('aria-controls', 'site-navigation');
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(navigation.locator('#site-navigation')).toHaveAttribute('inert', '');
+
+  await menuButton.focus();
+  await page.keyboard.press('Tab');
+  await expect(navigation.locator(':focus')).toHaveCount(0);
 
   await menuButton.click();
   await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
   await expect(menuButton).toHaveAccessibleName('Close navigation menu');
+  await expect(navigation.locator('#site-navigation')).not.toHaveAttribute('inert', '');
 
   await menuButton.press('Escape');
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
   await expect(menuButton).toHaveAccessibleName('Open navigation menu');
+  await expect(navigation.locator('#site-navigation')).toHaveAttribute('inert', '');
   await expect(menuButton).toBeFocused();
 });
 
