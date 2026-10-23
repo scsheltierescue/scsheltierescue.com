@@ -2,8 +2,8 @@ import { expect, test } from '@playwright/test';
 
 const pages = [
   ['/', 'South Carolina Sheltie Rescue'],
-  ['/adoptable-dogs/', 'Available Dogs | South Carolina Sheltie Rescue'],
-  ['/adoption-requirements/', 'Adoption Requirements | South Carolina Sheltie Rescue'],
+  ['/adoptable-dogs/', 'Adoptable Shelties | South Carolina Sheltie Rescue'],
+  ['/adoption-requirements/', 'Sheltie Adoption Requirements | South Carolina Sheltie Rescue'],
   ['/events/', 'Events | South Carolina Sheltie Rescue'],
   ['/help/', 'Sheltie Care and Training Guides | South Carolina Sheltie Rescue'],
   ['/help/articles/barking/', 'Why Do Shelties Bark So Much? | South Carolina Sheltie Rescue'],
