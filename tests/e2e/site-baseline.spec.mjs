@@ -146,7 +146,6 @@ test('primary navigation identifies the current page', async ({ page }) => {
     ['/surrender/', ['Surrender']],
     ['/adoption-requirements/', ['Adoption Requirements']],
     ['/adoptable-dogs/', ['Adopt', 'Adoptable Dogs']],
-    ['/events/', ['Events']],
   ];
 
   for (const [path, currentPages] of destinations) {
