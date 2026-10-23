@@ -39,11 +39,19 @@ test('homepage exposes complete sharing and canonical metadata', async ({ page }
   );
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     'content',
-    'https://scsheltierescue.com/favicon-512x512.png',
+    'https://scsheltierescue.com/social-share.png',
+  );
+  await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute(
+    'content',
+    '1200',
+  );
+  await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute(
+    'content',
+    '630',
   );
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
     'content',
-    'summary',
+    'summary_large_image',
   );
   const structuredData = await page
     .locator('script[type="application/ld+json"]')
@@ -53,6 +61,7 @@ test('homepage exposes complete sharing and canonical metadata', async ({ page }
     {
       '@type': 'Organization',
       name: 'South Carolina Sheltie Rescue',
+      logo: 'https://scsheltierescue.com/favicon-512x512.png',
     },
   );
 });
