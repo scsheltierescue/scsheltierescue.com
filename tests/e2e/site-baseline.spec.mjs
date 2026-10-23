@@ -175,13 +175,18 @@ test('help articles expose breadcrumb structured data matching the visible trail
     await page.goto(path);
 
     const visibleBreadcrumbs = page.getByRole('navigation', { name: 'Breadcrumb' });
+    const canonicalURL = await page.locator('link[rel="canonical"]').getAttribute('href');
+
+    expect(canonicalURL).toBeTruthy();
+
+    const canonicalOrigin = new URL(canonicalURL).origin;
     const visibleTrail = await visibleBreadcrumbs.getByRole('listitem').evaluateAll((items) => (
       items.map((item) => {
         const link = item.querySelector('a');
 
         return {
           name: item.textContent?.trim(),
-          ...(link ? { item: link.href } : {}),
+          ...(link ? { item: link.getAttribute('href') } : {}),
         };
       })
     ));
@@ -199,7 +204,8 @@ test('help articles expose breadcrumb structured data matching the visible trail
         return {
           '@type': 'ListItem',
           position: index + 1,
-          ...crumb,
+          name: crumb.name,
+          ...(crumb.item ? { item: new URL(crumb.item, canonicalOrigin).href } : {}),
         };
       }),
     });
