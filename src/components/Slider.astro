@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
 import type { ImageMetadata } from 'astro';
 
@@ -47,18 +48,31 @@ const { items } = Astro.props;
     </button>
   </div>
 
-  <div class="carousel-dots" aria-label="Choose a slide">
-    {items.map((_, index) => (
-      <button
-        class:list={['carousel-dot', { 'is-active': index === 0 }]}
-        type="button"
-        data-carousel-dot={index}
-        aria-label={`Show slide ${index + 1}`}
-        aria-current={index === 0 ? 'true' : undefined}
-      >
-        <span aria-hidden="true">•</span>
-      </button>
-    ))}
+  <div class="flex min-h-11 items-center">
+    <span class="hidden size-11 shrink-0 sm:block" aria-hidden="true"></span>
+    <div class="carousel-dots flex min-w-0 flex-1 justify-center gap-0.5" role="group" aria-label="Choose a slide">
+      {items.map((_, index) => (
+        <button
+          class:list={['carousel-dot', { 'is-active': index === 0 }]}
+          type="button"
+          data-carousel-dot={index}
+          aria-label={`Show slide ${index + 1}`}
+          aria-current={index === 0 ? 'true' : undefined}
+        >
+          <span aria-hidden="true">•</span>
+        </button>
+      ))}
+    </div>
+
+    <button
+      class="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center text-primary-c hover:text-primary-c-darker focus:text-primary-c-darker"
+      type="button"
+      data-carousel-toggle
+      aria-label="Pause slideshow"
+    >
+      <Icon name="pause" size=20 aria-hidden="true" data-carousel-pause-icon />
+      <Icon name="play" size=20 class="hidden" aria-hidden="true" data-carousel-play-icon />
+    </button>
   </div>
 
   <p class="sr-only" data-carousel-status aria-live="polite" aria-atomic="true"></p>
@@ -77,9 +91,13 @@ function initializeCarousels() {
     const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
     const viewport = carousel.querySelector<HTMLElement>('[data-carousel-viewport]');
     const status = carousel.querySelector<HTMLElement>('[data-carousel-status]');
+    const playbackToggle = carousel.querySelector<HTMLButtonElement>('[data-carousel-toggle]');
+    const pauseIcon = carousel.querySelector<HTMLElement>('[data-carousel-pause-icon]');
+    const playIcon = carousel.querySelector<HTMLElement>('[data-carousel-play-icon]');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let activeIndex = 0;
     let autoplayTimer: number | undefined;
+    let userPaused = reduceMotion;
     let swipeStart: { x: number; y: number; pointerId: number } | undefined;
 
     function showSlide(index: number, announce = true) {
@@ -119,8 +137,31 @@ function initializeCarousels() {
     function startAutoplay() {
       stopAutoplay();
 
-      if (!reduceMotion) {
+      if (!userPaused) {
         autoplayTimer = window.setInterval(() => showSlide(activeIndex + 1, false), 3000);
+      }
+    }
+
+    function updatePlaybackControl() {
+      const label = userPaused ? 'Play' : 'Pause';
+
+      playbackToggle?.setAttribute('aria-label', `${label} slideshow`);
+      pauseIcon?.classList.toggle('hidden', userPaused);
+      playIcon?.classList.toggle('hidden', !userPaused);
+    }
+
+    function togglePlayback() {
+      userPaused = !userPaused;
+      updatePlaybackControl();
+
+      if (userPaused) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+
+      if (status) {
+        status.textContent = userPaused ? 'Slideshow paused' : 'Slideshow playing';
       }
     }
 
@@ -166,6 +207,7 @@ function initializeCarousels() {
 
     previous?.addEventListener('click', showPrevious);
     next?.addEventListener('click', showNext);
+    playbackToggle?.addEventListener('click', togglePlayback);
     viewport?.addEventListener('pointerdown', beginSwipe);
     viewport?.addEventListener('pointerup', finishSwipe);
     viewport?.addEventListener('pointercancel', cancelSwipe);
@@ -174,12 +216,14 @@ function initializeCarousels() {
     carousel.addEventListener('mouseleave', resume);
     carousel.addEventListener('focusin', pause);
     carousel.addEventListener('focusout', resume);
+    updatePlaybackControl();
     startAutoplay();
 
     cleanups.push(() => {
       stopAutoplay();
       previous?.removeEventListener('click', showPrevious);
       next?.removeEventListener('click', showNext);
+      playbackToggle?.removeEventListener('click', togglePlayback);
       viewport?.removeEventListener('pointerdown', beginSwipe);
       viewport?.removeEventListener('pointerup', finishSwipe);
       viewport?.removeEventListener('pointercancel', cancelSwipe);
@@ -199,7 +243,6 @@ initializeCarousels();
 .slider-container {
   position: relative;
   padding-inline: 1.75rem;
-  padding-bottom: 1.75rem;
 }
 
 .carousel-viewport {
@@ -249,19 +292,9 @@ initializeCarousels();
   right: -1.75rem;
 }
 
-.carousel-dots {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  gap: .125rem;
-}
-
 .carousel-dot {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border: 0;
   background: transparent;
   color: #b3b3b3;
