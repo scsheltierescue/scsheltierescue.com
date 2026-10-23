@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('homepage carousel loads, autoplays, pauses, and advances manually', async ({ page }) => {
+test('homepage carousel loads, autoplays, pauses on request, and advances manually', async ({ page }) => {
   const pageErrors = [];
 
   page.on('pageerror', (error) => {
@@ -34,9 +34,12 @@ test('homepage carousel loads, autoplays, pauses, and advances manually', async 
     { timeout: 5000 },
   ).not.toBe(initialIndex);
 
-  await carousel.hover();
-
   const pausedIndex = await currentSlide.getAttribute('data-index');
+  const playbackToggle = carousel.locator('[data-carousel-toggle]');
+
+  await expect(playbackToggle).toHaveAccessibleName('Pause slideshow');
+  await playbackToggle.click();
+  await expect(playbackToggle).toHaveAccessibleName('Play slideshow');
 
   await page.waitForTimeout(3500);
   await expect.poll(
@@ -70,6 +73,25 @@ test('homepage carousel loads, autoplays, pauses, and advances manually', async 
   await expect(carousel.locator('[data-carousel-dot][aria-current="true"]')).toHaveCount(1);
 
   expect(pageErrors).toEqual([]);
+});
+
+test('homepage carousel starts paused when reduced motion is preferred', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+
+  const carousel = page.locator('.main-header-picture-slider [data-carousel]');
+  const currentSlide = carousel.locator('[data-carousel-slide].is-active');
+  const initialIndex = await currentSlide.getAttribute('data-index');
+  const playbackToggle = carousel.locator('[data-carousel-toggle]');
+
+  await expect(playbackToggle).toHaveAccessibleName('Play slideshow');
+  await page.waitForTimeout(3500);
+  await expect.poll(
+    () => currentSlide.getAttribute('data-index'),
+  ).toBe(initialIndex);
+
+  await playbackToggle.click();
+  await expect(playbackToggle).toHaveAccessibleName('Pause slideshow');
 });
 
 test('homepage carousel spacing changes only below the medium breakpoint', async ({ page }) => {
