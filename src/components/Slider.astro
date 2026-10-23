@@ -65,7 +65,7 @@ const { items } = Astro.props;
     </div>
 
     <button
-      class="inline-flex size-11 shrink-0 items-center justify-center text-primary-c hover:text-primary-c-darker focus:text-primary-c-darker"
+      class="inline-flex size-11 shrink-0 cursor-pointer items-center justify-center text-primary-c hover:text-primary-c-darker focus:text-primary-c-darker"
       type="button"
       data-carousel-toggle
       aria-label="Pause slideshow"
@@ -258,58 +258,3 @@ initializeCarousels();
 }
 
 .carousel-slide.is-active {
-  z-index: 1;
-  opacity: 1;
-}
-
-.carousel-slide :global(img) {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.carousel-arrow {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  width: 1.75rem;
-  height: 2.75rem;
-  border: 0;
-  background: transparent;
-  color: #111;
-  font-size: 2rem;
-  line-height: 1;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.carousel-previous {
-  left: -1.75rem;
-}
-
-.carousel-next {
-  right: -1.75rem;
-}
-
-.carousel-dot {
-  width: 1.5rem;
-  height: 1.5rem;
-  border: 0;
-  background: transparent;
-  color: #b3b3b3;
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.carousel-dot.is-active {
-  color: #111;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .carousel-slide {
-    transition: none;
-  }
-}
-</style>
