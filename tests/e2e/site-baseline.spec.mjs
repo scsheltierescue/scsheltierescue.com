@@ -5,7 +5,7 @@ const pages = [
   ['/adoptable-dogs/', 'Available Dogs | South Carolina Sheltie Rescue'],
   ['/adoption-requirements/', 'Adoption Requirements | South Carolina Sheltie Rescue'],
   ['/events/', 'Events | South Carolina Sheltie Rescue'],
-  ['/help/', 'Help | South Carolina Sheltie Rescue'],
+  ['/help/', 'Sheltie Care and Training Guides | South Carolina Sheltie Rescue'],
   ['/help/articles/barking/', 'Why Do Shelties Bark So Much? | South Carolina Sheltie Rescue'],
   ['/help/articles/bringing-your-sheltie-home/', 'Bringing Home a Rescue Sheltie | South Carolina Sheltie Rescue'],
   ['/help/articles/communicating/', 'How Shelties Communicate | South Carolina Sheltie Rescue'],
