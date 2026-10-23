@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
 import type { ImageMetadata } from 'astro';
 
@@ -47,8 +48,9 @@ const { items } = Astro.props;
     </button>
   </div>
 
-  <div class="relative flex min-h-11 items-center justify-center">
-    <div class="carousel-dots flex justify-center gap-0.5" role="group" aria-label="Choose a slide">
+  <div class="flex min-h-11 items-center">
+    <span class="hidden size-11 shrink-0 sm:block" aria-hidden="true"></span>
+    <div class="carousel-dots flex min-w-0 flex-1 justify-center gap-0.5" role="group" aria-label="Choose a slide">
       {items.map((_, index) => (
         <button
           class:list={['carousel-dot', { 'is-active': index === 0 }]}
@@ -63,12 +65,13 @@ const { items } = Astro.props;
     </div>
 
     <button
-      class="absolute right-0 inline-flex min-h-11 items-center justify-center px-2 text-sm font-semibold text-primary-c hover:text-primary-c-darker focus:text-primary-c-darker"
+      class="inline-flex size-11 shrink-0 items-center justify-center text-primary-c hover:text-primary-c-darker focus:text-primary-c-darker"
       type="button"
       data-carousel-toggle
       aria-label="Pause slideshow"
     >
-      <span data-carousel-toggle-label>Pause</span>
+      <Icon name="pause" size=20 aria-hidden="true" data-carousel-pause-icon />
+      <Icon name="play" size=20 class="hidden" aria-hidden="true" data-carousel-play-icon />
     </button>
   </div>
 
@@ -89,7 +92,8 @@ function initializeCarousels() {
     const viewport = carousel.querySelector<HTMLElement>('[data-carousel-viewport]');
     const status = carousel.querySelector<HTMLElement>('[data-carousel-status]');
     const playbackToggle = carousel.querySelector<HTMLButtonElement>('[data-carousel-toggle]');
-    const playbackToggleLabel = carousel.querySelector<HTMLElement>('[data-carousel-toggle-label]');
+    const pauseIcon = carousel.querySelector<HTMLElement>('[data-carousel-pause-icon]');
+    const playIcon = carousel.querySelector<HTMLElement>('[data-carousel-play-icon]');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let activeIndex = 0;
     let autoplayTimer: number | undefined;
@@ -142,10 +146,8 @@ function initializeCarousels() {
       const label = userPaused ? 'Play' : 'Pause';
 
       playbackToggle?.setAttribute('aria-label', `${label} slideshow`);
-
-      if (playbackToggleLabel) {
-        playbackToggleLabel.textContent = label;
-      }
+      pauseIcon?.classList.toggle('hidden', userPaused);
+      playIcon?.classList.toggle('hidden', !userPaused);
     }
 
     function togglePlayback() {
