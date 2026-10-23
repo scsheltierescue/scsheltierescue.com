@@ -6,11 +6,11 @@ const pages = [
   ['/adoption-requirements/', 'Adoption Requirements | South Carolina Sheltie Rescue'],
   ['/events/', 'Events | South Carolina Sheltie Rescue'],
   ['/help/', 'Help | South Carolina Sheltie Rescue'],
-  ['/help/articles/barking/', 'My Sheltie Barks | South Carolina Sheltie Rescue'],
+  ['/help/articles/barking/', 'Why Do Shelties Bark So Much? | South Carolina Sheltie Rescue'],
   ['/help/articles/bringing-your-sheltie-home/', 'Bringing Your Sheltie Home | South Carolina Sheltie Rescue'],
   ['/help/articles/communicating/', 'Communicating With Your Sheltie | South Carolina Sheltie Rescue'],
   ['/help/articles/fostering/', 'Fostering a Sheltie | South Carolina Sheltie Rescue'],
-  ['/help/articles/grooming/', 'Grooming Your Sheltie | South Carolina Sheltie Rescue'],
+  ['/help/articles/grooming/', 'How to Groom a Sheltie | South Carolina Sheltie Rescue'],
   ['/help/articles/housetraining/', 'Housetraining Tips | South Carolina Sheltie Rescue'],
   ['/surrender/', 'Surrendering a Sheltie | South Carolina Sheltie Rescue'],
 ];
