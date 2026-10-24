@@ -4,7 +4,8 @@
     "config:recommended",
     ":semanticCommits",
     ":dependencyDashboard",
-    "group:allNonMajor"
+    "group:allNonMajor",
+    "helpers:pinGitHubActionDigests"
   ],
   "timezone": "America/New_York",
   "rangeStrategy": "bump",
@@ -17,7 +18,7 @@
   "rollbackPrs": true,
   "lockFileMaintenance": {"enabled": true, "automerge": true},
   "vulnerabilityAlerts": {
-    "enabled": false,
+    "enabled": true,
     "labels": ["dependencies", "security"],
     "prCreation": "immediate"
   },
