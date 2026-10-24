@@ -26,16 +26,16 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@f520eceda224fe1a4aed5a2a27a194379a409996 # v6
         with:
           run_install: false
 
       - name: Setup Node.js
         id: setup-node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: 24.21.0
           cache: pnpm
@@ -48,7 +48,7 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Cache ESLint results
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: .eslintcache
           key: eslint-${{ runner.os }}-node${{ steps.setup-node.outputs.node-version }}-${{ hashFiles('**/pnpm-lock.yaml', '.eslintrc*', 'eslint.config.*') }}
