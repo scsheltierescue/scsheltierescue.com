@@ -74,7 +74,8 @@ test('homepage identifies the rescue as a registered nonprofit', async ({ page }
   const about = page.getByRole('heading', { name: 'About Us' }).locator('..');
   const nonprofitProfile = about.getByRole('link', { name: /View our nonprofit profile on Candid/ });
 
-  await expect(about).toContainText('501(c)(3) public charity (EIN 46-2874220)');
+  await expect(about).toContainText('501(c)(3) public charity');
+  await expect(about).not.toContainText('46-2874220');
   await expect(nonprofitProfile).toHaveAttribute(
     'href',
     'https://app.candid.org/profile/9406292/sc-sheltie-rescue-or-south-carolina-sheltie-rescue-46-2874220',
