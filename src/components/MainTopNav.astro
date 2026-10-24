@@ -37,7 +37,6 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
         </li>
         <li class={currentPath === 'surrender' ? 'active' : ''}><a href="/surrender" aria-current={currentPath === 'surrender' ? 'page' : undefined}>Surrender</a></li>
         <li class={(currentPath === 'help' || currentPath.startsWith('help/articles')) ? 'active' : ''}><a href="/help" aria-current={currentPath === 'help' ? 'page' : undefined}>Help</a></li>
-        <li class={currentPath === 'events' ? 'active' : ''}><a href="/events" aria-current={currentPath === 'events' ? 'page' : undefined}>Events</a></li>
       </ul>
     </section>
   </nav>
