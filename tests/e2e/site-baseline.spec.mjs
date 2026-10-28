@@ -217,6 +217,11 @@ test('desktop Adopt dropdown closes after opening an external application', asyn
 
   await expect(adoptLink).toBeFocused();
   await expect(applicationLink).not.toBeVisible();
+
+  await adoptLink.hover();
+  await expect(applicationLink).toBeVisible();
+  await page.mouse.move(0, 0);
+  await expect(applicationLink).not.toBeVisible();
 });
 
 test('primary navigation identifies the current page', async ({ page }) => {
