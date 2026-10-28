@@ -135,6 +135,26 @@ test('mobile navigation closes after following an internal link', async ({ page 
   await expect(menuButton).toHaveAccessibleName('Open navigation menu');
 });
 
+test('mobile navigation closes after opening an external application', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const menuButton = page.locator('#menu-button');
+  const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+  const applicationLink = navigation.getByRole('link', { name: /Adoption Application/ });
+
+  await menuButton.click();
+  await applicationLink.evaluate((link) => {
+    link.addEventListener('click', (event) => event.preventDefault(), { once: true });
+  });
+  await applicationLink.click();
+
+  await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(menuButton).toHaveAccessibleName('Open navigation menu');
+  await expect(navigation.locator('#site-navigation')).toHaveAttribute('inert', '');
+  await expect(menuButton).toBeFocused();
+});
+
 test('desktop Adopt dropdown remains available throughout keyboard navigation', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
@@ -157,6 +177,25 @@ test('desktop Adopt dropdown remains available throughout keyboard navigation', 
   await page.keyboard.press('ArrowDown');
   await expect(firstAdoptLink).toBeFocused();
   await expect(firstAdoptLink).toBeVisible();
+});
+
+test('desktop Adopt dropdown closes after opening an external application', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+
+  const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
+  const adoptLink = navigation.getByRole('link', { name: 'Adopt', exact: true });
+  const applicationLink = navigation.getByRole('link', { name: /Fostering Application/ });
+
+  await adoptLink.focus();
+  await expect(applicationLink).toBeVisible();
+  await applicationLink.evaluate((link) => {
+    link.addEventListener('click', (event) => event.preventDefault(), { once: true });
+  });
+  await applicationLink.click();
+
+  await expect(adoptLink).toBeFocused();
+  await expect(applicationLink).not.toBeVisible();
 });
 
 test('primary navigation identifies the current page', async ({ page }) => {
