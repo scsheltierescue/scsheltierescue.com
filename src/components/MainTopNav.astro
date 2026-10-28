@@ -50,6 +50,7 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
     const adoptMenuItem = topBar?.querySelector('.top-bar-section > ul > .has-dropdown');
     const adoptLink = adoptMenuItem?.querySelector(':scope > a');
     const firstAdoptLink = adoptMenuItem?.querySelector(':scope > .dropdown a');
+    const externalNavigationLinks = siteNavigation?.querySelectorAll('a[target="_blank"]');
     const desktopNavigation = window.matchMedia('(min-width: 58.75rem)');
 
     const setMenuExpanded = (expanded) => {
@@ -72,6 +73,31 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
       }
 
       setMenuExpanded(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+
+    const dismissExternalNavigation = () => {
+      if (desktopNavigation.matches) {
+        adoptMenuItem?.classList.add('dropdown-dismissed');
+
+        if (adoptLink instanceof HTMLElement) {
+          adoptLink.focus();
+        }
+
+        return;
+      }
+
+      setMenuExpanded(false);
+      menuButton?.focus();
+    };
+
+    externalNavigationLinks?.forEach((link) => {
+      link.addEventListener('click', () => {
+        dismissExternalNavigation();
+
+        window.addEventListener('blur', () => {
+          window.addEventListener('focus', dismissExternalNavigation, { once: true });
+        }, { once: true });
+      });
     });
 
     topBar?.addEventListener('keydown', (event) => {
@@ -118,6 +144,12 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
 
     adoptMenuItem?.addEventListener('pointerenter', () => {
       adoptMenuItem.classList.remove('dropdown-dismissed');
+    });
+
+    adoptMenuItem?.addEventListener('pointerleave', () => {
+      if (desktopNavigation.matches && document.activeElement === adoptLink) {
+        adoptMenuItem.classList.add('dropdown-dismissed');
+      }
     });
 
     adoptMenuItem?.addEventListener('focusout', (event) => {
