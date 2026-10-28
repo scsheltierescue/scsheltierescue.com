@@ -153,6 +153,15 @@ test('mobile navigation closes after opening an external application', async ({ 
   await expect(menuButton).toHaveAccessibleName('Open navigation menu');
   await expect(navigation.locator('#site-navigation')).toHaveAttribute('inert', '');
   await expect(menuButton).toBeFocused();
+
+  await page.evaluate(() => {
+    window.dispatchEvent(new Event('blur'));
+    window.dispatchEvent(new Event('focus'));
+  });
+
+  await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(navigation.locator('#site-navigation')).toHaveAttribute('inert', '');
+  await expect(menuButton).toBeFocused();
 });
 
 test('desktop Adopt dropdown remains available throughout keyboard navigation', async ({ page }) => {
@@ -193,6 +202,18 @@ test('desktop Adopt dropdown closes after opening an external application', asyn
     link.addEventListener('click', (event) => event.preventDefault(), { once: true });
   });
   await applicationLink.click();
+
+  await expect(adoptLink).toBeFocused();
+  await expect(applicationLink).not.toBeVisible();
+
+  await adoptLink.evaluate((link) => {
+    link.dispatchEvent(new FocusEvent('focusout', {
+      bubbles: true,
+      relatedTarget: null,
+    }));
+    window.dispatchEvent(new Event('blur'));
+    window.dispatchEvent(new Event('focus'));
+  });
 
   await expect(adoptLink).toBeFocused();
   await expect(applicationLink).not.toBeVisible();
