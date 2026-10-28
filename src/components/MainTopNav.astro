@@ -75,20 +75,28 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
       setMenuExpanded(menuButton.getAttribute('aria-expanded') !== 'true');
     });
 
-    externalNavigationLinks?.forEach((link) => {
-      link.addEventListener('click', () => {
-        if (desktopNavigation.matches) {
-          adoptMenuItem?.classList.add('dropdown-dismissed');
+    const dismissExternalNavigation = () => {
+      if (desktopNavigation.matches) {
+        adoptMenuItem?.classList.add('dropdown-dismissed');
 
-          if (adoptLink instanceof HTMLElement) {
-            adoptLink.focus();
-          }
-
-          return;
+        if (adoptLink instanceof HTMLElement) {
+          adoptLink.focus();
         }
 
-        setMenuExpanded(false);
-        menuButton?.focus();
+        return;
+      }
+
+      setMenuExpanded(false);
+      menuButton?.focus();
+    };
+
+    externalNavigationLinks?.forEach((link) => {
+      link.addEventListener('click', () => {
+        dismissExternalNavigation();
+
+        window.addEventListener('blur', () => {
+          window.addEventListener('focus', dismissExternalNavigation, { once: true });
+        }, { once: true });
       });
     });
 
