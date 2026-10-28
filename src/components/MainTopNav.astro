@@ -146,6 +146,12 @@ const currentPath = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
       adoptMenuItem.classList.remove('dropdown-dismissed');
     });
 
+    adoptMenuItem?.addEventListener('pointerleave', () => {
+      if (desktopNavigation.matches && document.activeElement === adoptLink) {
+        adoptMenuItem.classList.add('dropdown-dismissed');
+      }
+    });
+
     adoptMenuItem?.addEventListener('focusout', (event) => {
       if (!(event.relatedTarget instanceof Node) || !adoptMenuItem.contains(event.relatedTarget)) {
         adoptMenuItem.classList.remove('dropdown-dismissed');
