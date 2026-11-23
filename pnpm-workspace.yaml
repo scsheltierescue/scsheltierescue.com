@@ -1,3 +1,6 @@
+overrides:
+  '@astrojs/astro2tsx': 0.1.4
+
 allowBuilds:
   '@tailwindcss/oxide': true
   esbuild: false
